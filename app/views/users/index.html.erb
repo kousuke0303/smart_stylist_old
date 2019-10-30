@@ -2,17 +2,30 @@
 <h1>ユーザー一覧</h1>
 
 <div class="col-md-10 col-md-offset-1">
-  <table class="table table-condensed table-hover" id="table-users">
+  <%= will_paginate %>
+  <table class="table table-bordered table-condensed table-hover" id="table-users">
     <thead>
       <tr>
-        <th><%= User.human_attribute_name :name %></th>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
 
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name, user %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to "編集", edit_user_path(user), class: "btn btn-md btn-primary" %></td>
+        <td>
+          <% unless current_user?(user) %>
+            <%= link_to "削除", user, method: :delete, class: "btn btn-md btn-primary",
+                data: { confirm: "削除してよろしいですか？" } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
+  <%= will_paginate %>
 </div>
