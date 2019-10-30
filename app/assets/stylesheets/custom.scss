@@ -70,7 +70,6 @@ p {
   border-radius: 50%;
   height: 300px;
   margin: auto;
-  vertical-align: center;
   text-align: center;
   width: 300px;
 }
@@ -79,4 +78,33 @@ p {
   color: white;
   font-size: 3em;
   line-height: 300px;
+}
+
+/* error_messages */
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+/* debug */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
 }
