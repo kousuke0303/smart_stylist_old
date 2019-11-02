@@ -4,9 +4,14 @@ class UsersController < ApplicationController
   before_action :correct_or_admin_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   before_action :correct_user, only: :show
+  before_action :only_admin_or_once, only: [:new, :create]
   
   def index
-    @users = User.paginate(page: params[:page])
+    if params[:search]
+      @users = User.where("name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page])
+    else
+      @users = User.all.paginate(page: params[:page])
+    end
   end
   
   def show
@@ -49,38 +54,5 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-    
-    # beforeフィルター
-    
-    # paramsハッシュからユーザーを取得します。
-    def set_user
-      @user = User.find(params[:id])
-    end
-
-    # ログイン済みのユーザーか確認します。
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください。"
-        redirect_to login_url
-      end
-    end
-    
-    # アクセスしたユーザーが現在ログインしているユーザー、または管理者か確認します。
-    def correct_or_admin_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user) || current_user.admin?
-    end
-    
-    # アクセスしたユーザーが現在ログインしているユーザーか確認します。
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-    
-    # システム管理権限所有かどうか判定します。
-    def admin_user
-      redirect_to root_url unless current_user.admin?
     end
 end

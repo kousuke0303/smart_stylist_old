@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :login_once, only: [:new, :create]
   
   def new
   end
