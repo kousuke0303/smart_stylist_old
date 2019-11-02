@@ -9,7 +9,7 @@ class Plant < ApplicationRecord
   validates :tel_2, length: { maximum: 20 }
   validates :fax, length: { maximum: 20 }
   validates :email, length: { maximum: 100 }, format: { with: VALID_EMAIL_REGEX },
-                    allow_nil: true
+                    allow_blank: true
   validates :staff_1, length: { maximum: 50 }
   validates :staff_2, length: { maximum: 50 }
   validates :note, length: { maximum: 300 }

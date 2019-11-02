@@ -1,0 +1,34 @@
+<%= form_with(model: @plant, url: user_plants_path(@user), local: true) do |f| %>
+  <%= render 'shared/error_messages', object: @plant %>
+
+  <%= f.label :name, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :name, class: "form-control" %>
+  
+  <%= f.label :address, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :address, class: "form-control" %>
+  
+  <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
+  <%= f.telephone_field :tel_1, class: "form-control" %>
+  
+  <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
+  <%= f.telephone_field :tel_2, class: "form-control" %>
+  
+  <%= f.label :fax, class: "label-#{yield(:class_text)}" %>
+  <%= f.telephone_field :fax, class: "form-control" %>
+
+  <%= f.label :email, class: "label-#{yield(:class_text)}" %>
+  <%= f.email_field :email, class: "form-control" %>
+  
+  <%= f.label :staff_1, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :staff_1, class: "form-control" %>
+  
+  <%= f.label :staff_2, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :staff_2, class: "form-control" %>
+  
+  <%= f.label :note, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :note, class: "form-control" %>
+  
+  <%= f.hidden_field :user_id, value: @user.id %>
+  
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+<% end %>
