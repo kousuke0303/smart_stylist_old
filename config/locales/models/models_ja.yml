@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      plant: 契約工場
     attributes:
         user:
           id: ID
@@ -11,3 +12,14 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+        plant:
+          id: ID
+          name: 工場名
+          address: 住所
+          tel_1: 電話番号(1)
+          tel_2: 電話番号(2)
+          fax: FAX番号
+          email: メールアドレス
+          staff_1: 担当者(1)
+          staff_2: 担当者(2)
+          note: 備考

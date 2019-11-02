@@ -4,21 +4,33 @@
   <div class="col-md-4">
     <div class="select-button-area">
       <div class="circle">
-        <p class="main-select-button">新規オーダー</p>
+        <% if logged_in? %>
+          <%= link_to "新規オーダー", "#", class: "main-select-button" %>
+        <% else %>
+          <p class="main-select-button">新規オーダー</p>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="col-md-4">
     <div class="select-button-area">
       <div class="circle">
-        <p class="main-select-button">取引中オーダー</p>
+        <% if logged_in? %>
+          <%= link_to "取引中オーダー", "#", class: "main-select-button" %>
+        <% else %>
+          <p class="main-select-button">取引中オーダー</p>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="col-md-4">
     <div class="select-button-area">
       <div class="circle">
-        <p class="main-select-button">月間売上管理</p>
+        <% if logged_in? %>
+          <%= link_to "月間売上管理", "#", class: "main-select-button" %>
+        <% else %>
+          <p class="main-select-button">月間売上管理</p>
+        <% end %>
       </div>
     </div>
   </div>
@@ -27,14 +39,22 @@
   <div class="col-md-4">
     <div  class="select-button-area">
       <div class="circle">
-        <p class="main-select-button">顧客情報管理</p>
+        <% if logged_in? %>
+          <%= link_to "顧客情報管理", "#", class: "main-select-button" %>
+        <% else %>
+          <p class="main-select-button">顧客情報管理</p>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="col-md-4">
     <div  class="select-button-area">
       <div class="circle">
-        <p class="main-select-button">工場情報管理</p>
+        <% if logged_in? %>
+          <%= link_to "契約工場管理", user_plants_path(current_user), class: "main-select-button" %>
+        <% else %>
+          <p class="main-select-button">契約工場管理</p>
+        <% end %>
       </div>
     </div>
   </div>
