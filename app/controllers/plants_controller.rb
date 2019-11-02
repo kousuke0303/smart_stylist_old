@@ -1,5 +1,6 @@
 class PlantsController < ApplicationController
   before_action :set_user_id, only: [:show, :index, :create, :new, :edit, :update, :destroy]
+  before_action :set_plant, only: [:show]
 
   def index
     @user = User.find(params[:user_id])
@@ -36,6 +37,10 @@ class PlantsController < ApplicationController
   
   def set_user_id
     @user = User.find(params[:user_id])
+  end
+  
+  def set_plant
+    @plant = Plant.find(params[:id])
   end
   
   private

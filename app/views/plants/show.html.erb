@@ -1,0 +1,45 @@
+<% provide(:title, @plant.name) %>
+
+<h1>工場詳細情報</h1>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-bordered table-condensed" id="plant-table">
+      <tr>
+        <th>工場名</th>
+        <td><%= @plant.name %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @plant.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号(1)</th>
+        <td><%= @plant.tel_1 %></td>
+      </tr>
+      <tr>
+        <th>電話番号(2)</th>
+        <td><%= @plant.tel_2 %></td>
+      </tr>
+      <tr>
+        <th>FAX番号</th>
+        <td><%= @plant.fax %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @plant.email %></td>
+      </tr>
+      <tr>
+        <th>担当者(1)</th>
+        <td><%= @plant.staff_1 %></td>
+      </tr>
+      <tr>
+        <th>担当者(2)</th>
+        <td><%= @plant.staff_2 %></td>
+      </tr>
+      <tr>
+        <th>備考</th>
+        <td><%= @plant.note %></td>
+      </tr>
+    </table>
+  </div>
+</div>
