@@ -1,10 +1,11 @@
 class PlantsController < ApplicationController
-  before_action :set_user_id, only: [:show, :index, :create, :new, :edit, :update, :destroy]
+  before_action :set_user_by_user_id
   before_action :set_plant, only: [:show, :destroy, :edit, :update]
+  before_action :logged_in_user
+  before_action :correct_user_by_user_id
 
   def index
-    @user = User.find(params[:user_id])
-    @plants = @user.plants.all
+    @plants = @user.plants.all.paginate(page: params[:page])
   end
   
   def show
@@ -43,10 +44,6 @@ class PlantsController < ApplicationController
   end
   
   # beforeフィルター
-  
-  def set_user_id
-    @user = User.find(params[:user_id])
-  end
   
   def set_plant
     @plant = Plant.find(params[:id])

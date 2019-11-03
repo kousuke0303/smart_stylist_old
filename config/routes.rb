@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :plants
+    resources :clients
   end
 end

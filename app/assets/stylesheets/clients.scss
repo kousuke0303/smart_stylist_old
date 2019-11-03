@@ -1,3 +1,50 @@
-// Place all the styles related to the Clients controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* ユーザー顧客一覧テーブル */
+
+#user-clients-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+/* 新規顧客登録ページ */
+
+.label-new-client {
+  margin-top: 5px;
+}
+
+.btn-new-client {
+  margin-top: 10px;
+}
+
+/* 顧客f情報編集ページ */
+
+.label-edit-client {
+  margin-top: 5px;
+}
+
+.btn-edit-client {
+  margin-top: 10px;
+}
+
+/* 顧客詳細ページ */
+
+#client-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+    width: 30%;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+.client-show-btn-area {
+  text-align: center;
+}

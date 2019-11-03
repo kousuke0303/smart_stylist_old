@@ -4,7 +4,8 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <table class="table table-bordered table-condensed table-hover" id="user-table-plants">
+    <%= will_paginate %>
+    <table class="table table-bordered table-condensed table-hover" id="user-plants-table">
       <thead>
         <tr>
           <th>工場名</th>
@@ -16,11 +17,14 @@
           <tr>
             <td><%= plant.name %></td>
             <td><%= link_to "詳細", user_plant_path(@user, plant), class: "btn btn-sm btn-primary" %></td>
-            <td><%= link_to "削除", user_plant_path(@user, plant), method: :delete, 
-                    class: "btn btn-sm btn-primary", data: { confirm: "削除してよろしいですか？" } %></td>
+            <td>
+              <%= link_to "削除", user_plant_path(@user, plant), method: :delete,
+                  class: "btn btn-sm btn-primary", data: { confirm: "#{plant.name}を削除してよろしいですか？" } %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= will_paginate %>
   </div>
 </div>

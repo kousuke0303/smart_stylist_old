@@ -6,50 +6,52 @@
   <h1>ユーザー一覧</h1>
 <% end %>
 
-<div class="col-md-10 col-md-offset-1">
-  
-  <div class="row user-search-area">
-    <div class="col-sm-3">
-      <div class="row">
-        <%= form_with url: users_path, method: :get, local: true do |f| %>
-          <div class="form-group">
-            <p class="search-user">ユーザー検索</p>
-            <div class="col-xs-9 user-search-form">
-              <%= f.text_field :search, placeholder: "キーワードを入力...", class: "form-control" %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    
+    <div class="row user-search-area">
+      <div class="col-sm-3">
+        <div class="row">
+          <%= form_with url: users_path, method: :get, local: true do |f| %>
+            <div class="form-group">
+              <p class="search-user">ユーザー検索</p>
+              <div class="col-xs-9 user-search-form">
+                <%= f.text_field :search, placeholder: "キーワードを入力...", class: "form-control" %>
+              </div>
+              <div class="col-xs-3 user-search-form">
+                <%= f.submit "検索", class: "btn btn-sm btn-primary form-control" %>
+              </div>
             </div>
-            <div class="col-xs-3 user-search-form">
-              <%= f.submit "検索", class: "btn btn-sm btn-primary form-control" %>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+    
+    <%= will_paginate %>
+    <table class="table table-bordered table-condensed table-hover" id="table-users">
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
   
-  <%= will_paginate %>
-  <table class="table table-bordered table-condensed table-hover" id="table-users">
-    <thead>
-      <tr>
-        <th>名前</th>
-        <th>メールアドレス</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.name, user %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to "編集", edit_user_path(user), class: "btn btn-md btn-primary" %></td>
-        <td>
-          <% unless current_user?(user) %>
-            <%= link_to "削除", user, method: :delete, class: "btn btn-md btn-primary",
-                data: { confirm: "削除してよろしいですか？" } %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-  <%= will_paginate %>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user %></td>
+          <td><%= user.email %></td>
+          <td><%= link_to "編集", edit_user_path(user), class: "btn btn-md btn-primary" %></td>
+          <td>
+            <% unless current_user?(user) %>
+              <%= link_to "削除", user, method: :delete, class: "btn btn-md btn-primary",
+                  data: { confirm: "#{user.name}を削除してよろしいですか？" } %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate %>
+  </div>
 </div>

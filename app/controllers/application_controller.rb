@@ -4,9 +4,14 @@ class ApplicationController < ActionController::Base
   
   # beforeフィルター
     
-  # paramsハッシュからユーザーを取得します。
+  # params[:id]からユーザーを取得。
   def set_user
     @user = User.find(params[:id])
+  end
+  
+  # params[:user_id]からユーザーを取得。
+  def set_user_by_user_id
+    @user = User.find(params[:user_id])
   end
 
   # ログイン済みのユーザーか確認します。
@@ -24,9 +29,15 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url) unless current_user?(@user) || current_user.admin?
   end
   
-  # アクセスしたユーザーが現在ログインしているユーザーか確認します。
+  # アクセスユーザーが現在ログインしているユーザーか([:idで])確認します。
   def correct_user
     @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+  
+  # アクセスユーザーが現在ログインしているユーザーか([user_:idで])確認します。
+  def correct_user_by_user_id
+    @user = User.find(params[:user_id])
     redirect_to(root_url) unless current_user?(@user)
   end
   

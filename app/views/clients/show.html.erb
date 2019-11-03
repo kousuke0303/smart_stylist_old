@@ -1,0 +1,46 @@
+<% provide(:title, @client.name) %>
+
+<h1>顧客詳細情報</h1>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-bordered table-condensed" id="client-table">
+      <tr>
+        <th>顧客名</th>
+        <td><%= @client.name %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @client.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号(1)</th>
+        <td><%= @client.tel_1 %></td>
+      </tr>
+      <tr>
+        <th>電話番号(2)</th>
+        <td><%= @client.tel_2 %></td>
+      </tr>
+      <tr>
+        <th>FAX番号</th>
+        <td><%= @client.fax %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @client.email %></td>
+      </tr>
+      <tr>
+        <th>職業</th>
+        <td><%= @client.work %></td>
+      </tr>
+      <tr>
+        <th>備考</th>
+        <td><%= @client.note %></td>
+      </tr>
+    </table>
+    
+    <div class="client-show-btn-area">
+      <%= link_to "顧客情報を編集", edit_user_client_path(@user, @client), class: "btn btn-md btn-primary" %>
+      <%= link_to "顧客一覧に戻る", user_clients_url(@user), class: "btn btn-md btn-default" %>
+    </div>
+  </div>
+</div>
