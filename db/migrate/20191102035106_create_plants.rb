@@ -3,9 +3,9 @@ class CreatePlants < ActiveRecord::Migration[5.1]
     create_table :plants do |t|
       t.string :name
       t.string :address
-      t.integer :tel_1
-      t.integer :tel_2
-      t.integer :fax
+      t.string :tel_1
+      t.string :tel_2
+      t.string :fax
       t.string :email
       t.string :staff_1
       t.string :staff_2

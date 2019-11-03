@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20191102035106) do
   create_table "plants", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.integer "tel_1"
-    t.integer "tel_2"
-    t.integer "fax"
+    t.string "tel_1"
+    t.string "tel_2"
+    t.string "fax"
     t.string "email"
     t.string "staff_1"
     t.string "staff_2"
