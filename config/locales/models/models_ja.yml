@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       plant: 契約工場
+      client: 顧客
     attributes:
         user:
           id: ID
@@ -22,4 +23,14 @@ ja:
           email: メールアドレス
           staff_1: 担当者(1)
           staff_2: 担当者(2)
+          note: 備考
+        client:
+          id: ID
+          name: 顧客名
+          address: 住所
+          tel_1: 電話番号(1)
+          tel_2: 電話番号(2)
+          fax: FAX番号
+          email: メールアドレス
+          work: 職業
           note: 備考
