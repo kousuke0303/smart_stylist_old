@@ -1,6 +1,6 @@
 class PlantsController < ApplicationController
   before_action :set_user_id, only: [:show, :index, :create, :new, :edit, :update, :destroy]
-  before_action :set_plant, only: [:show]
+  before_action :set_plant, only: [:show, :destroy, :edit, :update]
 
   def index
     @user = User.find(params[:user_id])
@@ -28,9 +28,18 @@ class PlantsController < ApplicationController
   end
   
   def update
+    if @plant.update_attributes(plant_params)
+      flash[:success] = "工場情報を更新しました。"
+      redirect_to user_plant_url(@user, @plant)
+    else
+      render :edit      
+    end
   end
   
   def destroy
+    @plant.destroy
+    flash[:success] = "#{@plant.name}のデータを削除しました。"
+    redirect_to user_plants_url(@user)
   end
   
   # beforeフィルター

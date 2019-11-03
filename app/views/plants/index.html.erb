@@ -15,8 +15,9 @@
         <% @plants.each do |plant| %>
           <tr>
             <td><%= plant.name %></td>
-            <td><%= link_to "詳細", "#", class: "btn btn-sm btn-primary" %></td>
-            <td><%= link_to "削除", "#", class: "btn btn-sm btn-primary" %></td>
+            <td><%= link_to "詳細", user_plant_path(@user, plant), class: "btn btn-sm btn-primary" %></td>
+            <td><%= link_to "削除", user_plant_path(@user, plant), method: :delete, 
+                    class: "btn btn-sm btn-primary", data: { confirm: "削除してよろしいですか？" } %></td>
           </tr>
         <% end %>
       </tbody>

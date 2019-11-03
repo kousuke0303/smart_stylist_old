@@ -41,5 +41,10 @@
         <td><%= @plant.note %></td>
       </tr>
     </table>
+    
+    <div class="plant-show-btn-area">
+      <%= link_to "工場情報を編集", edit_user_plant_path(@user, @plant), class: "btn btn-md btn-primary" %>
+      <%= link_to "工場一覧に戻る", user_plants_url(@user), class: "btn btn-md btn-default" %>
+    </div>
   </div>
 </div>

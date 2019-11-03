@@ -1,6 +1,6 @@
-<%= form_with(model: @plant, url: user_plants_path(@user), local: true) do |f| %>
+<%= form_with(model: @plant, url: yield(:url), local: true) do |f| %>
   <%= render 'shared/error_messages', object: @plant %>
-
+  
   <%= f.label :name, class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :name, class: "form-control" %>
   
@@ -15,7 +15,7 @@
   
   <%= f.label :fax, class: "label-#{yield(:class_text)}" %>
   <%= f.telephone_field :fax, class: "form-control" %>
-
+  
   <%= f.label :email, class: "label-#{yield(:class_text)}" %>
   <%= f.email_field :email, class: "form-control" %>
   
