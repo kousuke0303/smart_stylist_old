@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       plant: 契約工場
       client: 顧客
+      order: 注文
     attributes:
         user:
           id: ID
@@ -34,3 +35,19 @@ ja:
           email: メールアドレス
           work: 職業
           note: 備考
+        order:
+          id: ID
+          kind: 品名
+          order_date: 受注日
+          sales_date: 売上日
+          retail: 上代
+          wage: 工賃
+          cloth: 生地
+          lining: 裏地
+          button: ボタン
+          postage: 送料
+          other: その他
+          note: 備考
+          plant_id: 発注先工場
+          delivery: 納品予定日
+          

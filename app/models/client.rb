@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
   belongs_to :user
+  has_many :orders, dependent: :destroy
   
   before_save { self.email = email.downcase unless self.email.nil? }
   before_save { self.tel_1 = NKF.nkf('-w -Z4', tel_1).delete("^0-9") }

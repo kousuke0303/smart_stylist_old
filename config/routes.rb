@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'orders/new'
+
   get 'clients/index'
 
   get 'sessions/new'

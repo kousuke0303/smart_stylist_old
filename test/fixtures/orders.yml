@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kind: MyString
+  order_date: 2019-11-05
+  sales_date: 2019-11-05
+  retail: 1
+  wage: 1
+  cloth: 1
+  lining: 1
+  button: 1
+  postage: 1
+  other: 1
+  note: MyString
+  plant_id: 1
+  delivery: 2019-11-05
+  client: one
+
+two:
+  kind: MyString
+  order_date: 2019-11-05
+  sales_date: 2019-11-05
+  retail: 1
+  wage: 1
+  cloth: 1
+  lining: 1
+  button: 1
+  postage: 1
+  other: 1
+  note: MyString
+  plant_id: 1
+  delivery: 2019-11-05
+  client: two
