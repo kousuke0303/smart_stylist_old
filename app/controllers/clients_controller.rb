@@ -5,7 +5,11 @@ class ClientsController < ApplicationController
   before_action :correct_user_by_user_id
   
   def index
-    @clients = @user.clients.all.paginate(page: params[:page])
+    if params[:search]
+      @clients = Client.where("name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page])
+    else
+      @clients = Client.all.paginate(page: params[:page])
+    end
   end
   
   def show

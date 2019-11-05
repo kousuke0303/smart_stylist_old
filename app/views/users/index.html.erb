@@ -1,4 +1,6 @@
 <% provide(:title, "All Users") %>
+<% provide(:search_url, users_path) %>
+<% provide(:search_title, "ユーザー検索") %>
 
 <% if params[:search] %>
   <h1>検索結果</h1>
@@ -8,25 +10,7 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    
-    <div class="row user-search-area">
-      <div class="col-sm-3">
-        <div class="row">
-          <%= form_with url: users_path, method: :get, local: true do |f| %>
-            <div class="form-group">
-              <p class="search-user">ユーザー検索</p>
-              <div class="col-xs-9 user-search-form">
-                <%= f.text_field :search, placeholder: "キーワードを入力...", class: "form-control" %>
-              </div>
-              <div class="col-xs-3 user-search-form">
-                <%= f.submit "検索", class: "btn btn-sm btn-primary form-control" %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    
+    <%= render "shared/search" %>
     <%= will_paginate %>
     <table class="table table-bordered table-condensed table-hover" id="table-users">
       <thead>
