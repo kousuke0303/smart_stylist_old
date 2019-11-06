@@ -13,6 +13,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :other
       t.string :note
       t.integer :plant_id
+      t.integer :user_id
       t.date :delivery
       t.references :client, foreign_key: true
 

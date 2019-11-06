@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :client
   
+  validates :client_id, presence: true
   validates :kind, presence: true
   validates :order_date, presence: true
   validates :retail, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
@@ -11,4 +12,5 @@ class Order < ApplicationRecord
   validates :postage, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
   validates :other, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
   validates :note, length: { maximum: 150 }
+  validates :user_id, presence: true
 end

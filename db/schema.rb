@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.integer "other"
     t.string "note"
     t.integer "plant_id"
+    t.integer "user_id"
     t.date "delivery"
     t.integer "client_id"
     t.datetime "created_at", null: false

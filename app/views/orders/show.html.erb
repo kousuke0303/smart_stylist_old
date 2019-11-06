@@ -1,0 +1,46 @@
+<% provide(:title, "Order Details") %>
+
+<h1>オーダーの詳細情報</h1>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-bordered table-condensed" id="order-show-table">
+      <tr>
+        <th>顧客名</th>
+        <td><%= client_name(@order) %></td>
+      </tr>
+      <tr>
+        <th>品名</th>
+        <td><%= @order.kind %></td>
+      </tr>
+      <tr>
+        <th>受注工場</th>
+        <td><%= plant_name(@order) unless @order.plant_id.nil? %></td>
+      </tr>
+      <tr>
+        <th>上代</th>
+        <td><%= @order.retail %></td>
+      </tr>
+      <tr>
+        <th>受注日</th>
+        <td><%= l(@order.order_date, format: :long) %></td>
+      </tr>
+      <tr>
+        <th>売上日</th>
+        <td><%= l(@order.sales_date, format: :long) if @order.delivery.present? %></td>
+      </tr>
+      <tr>
+        <th>納品予定日</th>
+        <td><%= l(@order.delivery, format: :long) if @order.delivery.present? %></td>
+      </tr>
+      <tr>
+        <th>費用合計</th>
+        <td><%= total_cost(@order) %></td>
+      </tr>
+      <tr>
+        <th>備考</th>
+        <td><%= @order.note %></td>
+      </tr>
+    </table>
+  </div>
+</div>

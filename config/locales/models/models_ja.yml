@@ -25,7 +25,7 @@ ja:
           staff_1: 担当者(1)
           staff_2: 担当者(2)
           note: 備考
-        client:
+        client: 
           id: ID
           name: 顧客名
           address: 住所

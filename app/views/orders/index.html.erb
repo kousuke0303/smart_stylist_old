@@ -1,0 +1,31 @@
+<% provide(:title, "Trading Order") %>
+
+<h1><%= "#{@user.name}様の取引中オーダー一覧" %></h1>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-bordered table-condensed table-hover" id="trading-orders-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>顧客名</th>
+          <th>受注日</th>
+          <th>納品予定日</th>
+          <th>上代</th>
+          <th>費用合計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= link_to "詳細", user_order_path(@user, order), class: "btn btn-sm btn-primary" %></td>
+            <td><%= client_name(order) %></td>
+            <td><%= l(order.order_date, format: :long) %></td>
+            <td><%= l(order.delivery, format: :long) %></td>
+            <td><%= order.retail %></td>
+            <td><%= total_cost(order) %>円</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

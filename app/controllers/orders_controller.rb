@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :correct_user_by_user_id
   before_action :set_clients_of_user, only: [:new, :create, :edit, :update]
   before_action :set_plants_of_user, only: [:new, :create, :edit, :update]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
   
   def new
     @order = Order.new
@@ -20,6 +21,7 @@ class OrdersController < ApplicationController
   end
   
   def index
+    @orders = Order.where(user_id: @user.id, sales_date: nil)
   end
   
   def show
@@ -44,10 +46,14 @@ class OrdersController < ApplicationController
     @plants = Plant.where(user_id: @user.id)
   end
   
+  def set_order
+    @order = Order.find(params[:id])
+  end
+  
   private
 
     def order_params
       params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :note, :order_date, :sales_date,
-                                    :delivery, :wage, :cloth, :lining, :button, :postage, :other)
+                                    :delivery, :wage, :cloth, :lining, :button, :postage, :other, :user_id)
     end
 end

@@ -1,4 +1,4 @@
-/* 新規工場登録ページ */
+/* 新規オーダー登録ページ */
 
 .label-new-order {
   margin-top: 5px;
@@ -13,4 +13,30 @@
   font-weight: bold;
   margin-top: 15px;
   text-align: center;
+}
+
+/* 取引中オーダー一覧テーブル */
+
+#trading-orders-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+/* オーダー詳細テーブル */
+
+#order-show-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
 }

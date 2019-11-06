@@ -78,5 +78,7 @@
     </div>
   </div>
   
+  <%= f.hidden_field :user_id, value: @user.id %>
+  
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
 <% end %>
