@@ -1,2 +1,12 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<% provide(:title, "New Order") %>
+<% provide(:class_text, "new-order") %>
+<% provide(:button_text, "新規作成") %>
+<% provide(:url, user_orders_path(@user)) %>
+
+<h1>新規オーダー作成</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render "form" %>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<%= form_with(model: @order, url: yield(:url), local: true) do |f| %>
+  <%= render 'shared/error_messages', object: @order %>
+  
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.label :client_id, class: "label-#{yield(:class_text)}" %>
+      <%= f.collection_select(:client_id, @clients, :id, :name, {prompt: "顧客を選択"},
+          {class: "form-control"}) %>
+    </div>
+    <div class="col-xs-6">
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-4">
+      <%= f.label :kind, class: "label-#{yield(:class_text)}" %>
+      <%= f.select :kind, ["SP", "SVP", "SPP", "SVPP", "V", "P", "PP", "Sh"],
+          {prompt: "タイプを選択"}, class: "form-control" %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.label :plant_id, class: "label-#{yield(:class_text)}" %>
+      <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
+          {class: "form-control"}) %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.label :retail, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :retail, class: "form-control" %>
+    </div>
+  </div>
+  
+  <%= f.label :note, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :note, class: "form-control" %>
+  
+  <div class="cost-area"><p>費用(円)</p></div>
+  
+  <div class="row">
+    <div class="col-xs-4">
+      <%= f.label :order_date, class: "label-#{yield(:class_text)}" %>
+      <%= f.date_field :order_date, class: "form-control" %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.label :sales_date, class: "label-#{yield(:class_text)}" %>
+      <%= f.date_field :sales_date, class: "form-control" %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.label :delivery, class: "label-#{yield(:class_text)}" %>
+      <%= f.date_field :delivery, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-4">
+      <%= f.label :wage, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :wage, class: "form-control" %>
+    </div> 
+    <div class="col-xs-4">
+      <%= f.label :cloth, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :cloth, class: "form-control" %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.label :lining, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :lining, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-4">
+      <%= f.label :button, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :button, class: "form-control" %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.label :postage, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :postage, class: "form-control" %>
+    </div>
+    <div class="col-xs-4">
+      <%= f.label :other, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :other, class: "form-control" %>
+    </div>
+  </div>
+  
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+<% end %>

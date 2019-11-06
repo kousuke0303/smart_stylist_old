@@ -4,7 +4,7 @@ ja:
       user: ユーザー
       plant: 契約工場
       client: 顧客
-      order: 注文
+      order: オーダー
     attributes:
         user:
           id: ID
@@ -46,8 +46,8 @@ ja:
           lining: 裏地
           button: ボタン
           postage: 送料
-          other: その他
+          other: その他費用
           note: 備考
-          plant_id: 発注先工場
+          plant_id: 発注工場
           delivery: 納品予定日
-          
+          client_id: 顧客名

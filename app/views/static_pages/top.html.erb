@@ -5,7 +5,7 @@
     <div class="select-button-area">
       <div class="circle">
         <% if logged_in? %>
-          <%= link_to "新規オーダー", "#", class: "main-select-button" %>
+          <%= link_to "新規オーダー", new_user_order_path(current_user), class: "main-select-button" %>
         <% else %>
           <p class="main-select-button">新規オーダー</p>
         <% end %>
