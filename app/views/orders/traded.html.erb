@@ -27,18 +27,33 @@
             <td><%= client_name(order) %></td>
             <td><%= l(order.sales_date, format: :long) %></td>
             <td><%= l(order.order_date, format: :long) %></td>
-            <td><%= order.retail %>円</td>
-            <td><%= put_total_cost(order) %></td>
-            <td><%= gross_profit(order) %></td>
+            <td>
+              <%= order.retail %>円
+              <% @total_retail = @total_retail.to_i + order.retail.to_i %>
+            </td>
+            <td>
+              <%= put_total_cost(order) %>
+              <% @all_cost = @all_cost.to_i + total_cost(order).to_i %>
+            </td>
+            <td>
+              <%= put_gross_profit(order) %>
+              <% @total_gross_profit = @total_gross_profit.to_i + put_gross_profit(order).to_i %>
+            </td>
           </tr>
         <% end %>
       </tbody>
       <tfooter>
         <tr>
-          
+          <th colspan=2>合計オーダー件数</th>
+          <th colspan=2>上代合計金額</th>
+          <th colspan=2>費用合計金額</th>
+          <th colspan=2>粗利合計金額</th>
         </tr>
         <tr>
-          <tr></tr>
+          <td colspan=2><%= @orders.count %>件</td>
+          <td colspan=2><%= @total_retail %>円</td>
+          <td colspan=2><%= @all_cost %>円</td>
+          <td colspan=2><%= @total_gross_profit %>円</td>
         </tr>
       </tfooter>
     </table>

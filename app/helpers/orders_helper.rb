@@ -29,6 +29,9 @@ module OrdersHelper
   
   def gross_profit(order)
     gross_profit = order.retail.to_i - total_cost(order).to_i
-    gross_profit > 0 ? "#{gross_profit}円" : "--"
+  end
+  
+  def put_gross_profit(order)
+    gross_profit(order) > 0 ? "#{gross_profit(order)}円" : "--"
   end
 end
