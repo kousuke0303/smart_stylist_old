@@ -61,3 +61,16 @@
 .show-btn-area {
   text-align: center;
 }
+
+/* 取引済オーダーテーブル */
+
+#traded-orders-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}

@@ -1,18 +1,19 @@
-<% provide(:title, "Trading Order") %>
+<% provide(:title, "Traded Order") %>
 
-<h1><%= "#{@user.name}様の取引中オーダー一覧" %></h1>
+<h1>取引済オーダー一覧</h1>
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <table class="table table-bordered table-condensed table-hover" id="trading-orders-table">
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-bordered table-condensed table-hover" id="traded-orders-table">
       <thead>
         <tr>
           <th></th>
           <th></th>
           <th>顧客名</th>
+          <th>売上日</th>
           <th>受注日</th>
-          <th>納品予定日</th>
           <th>上代</th>
           <th>費用合計</th>
+          <th>粗利</th>
         </tr>
       </thead>
       <tbody>
@@ -24,13 +25,18 @@
                   class: "btn btn-sm btn-primary", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
             </td>
             <td><%= client_name(order) %></td>
+            <td><%= l(order.sales_date, format: :long) %></td>
             <td><%= l(order.order_date, format: :long) %></td>
-            <td><%= l(order.delivery, format: :long) if order.delivery.present? %></td>
             <td><%= order.retail %>円</td>
             <td><%= put_total_cost(order) %></td>
+            <td><%= gross_profit(order) %></td>
           </tr>
         <% end %>
       </tbody>
+      <tfooter>
+        <tr></tr>
+        <tr></tr>
+      </tfooter>
     </table>
   </div>
 </div>

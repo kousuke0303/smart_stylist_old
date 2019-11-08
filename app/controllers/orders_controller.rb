@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
-  before_action :set_user_by_user_id
+  before_action :set_user, only: :traded
+  before_action :set_user_by_user_id, only: [:new, :create, :edit, :update, :show, :index, :destroy]
   before_action :logged_in_user
-  before_action :correct_user_by_user_id
+  before_action :correct_user, only: :traded
+  before_action :correct_user_by_user_id, only: [:new, :create, :edit, :update, :show, :index, :destroy]
   before_action :set_clients_of_user, only: [:new, :create, :edit, :update]
   before_action :set_plants_of_user, only: [:new, :create, :edit, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_one_month, only: :traded
   
   def new
     @order = Order.new
@@ -45,6 +48,9 @@ class OrdersController < ApplicationController
     redirect_to user_orders_url(@user)
   end
   
+  def traded
+  end
+  
   # beforeフィルター
   
   def set_clients_of_user
@@ -57,6 +63,14 @@ class OrdersController < ApplicationController
   
   def set_order
     @order = Order.find(params[:id])
+  end
+  
+  def set_one_month
+    @first_day = params[:date].nil? ?
+    Date.current.beginning_of_month : params[:date].to_date
+    @last_day = @first_day.end_of_month
+    one_month = [*@first_day..@last_day]
+    @orders = Order.where(user_id: @user.id, sales_date: @first_day..@last_day).order(:sales_date)
   end
   
   private

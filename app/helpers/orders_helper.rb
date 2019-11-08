@@ -21,6 +21,14 @@ module OrdersHelper
     order.postage.present? ? postage = order.postage.to_i : postage = 0
     order.other.present? ? other = order.other.to_i : other = 0
     total_cost = wage + cloth + lining + button + postage + other
-    total_cost > 0 ? "#{total_cost}円" : "未入力" 
+  end
+  
+  def put_total_cost(order)
+    total_cost(order) > 0 ? "#{total_cost(order)}円" : "未入力"
+  end
+  
+  def gross_profit(order)
+    gross_profit = order.retail.to_i - total_cost(order).to_i
+    gross_profit > 0 ? "#{gross_profit}円" : "--"
   end
 end
