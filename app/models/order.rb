@@ -13,4 +13,15 @@ class Order < ApplicationRecord
   validates :other, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
   validates :note, length: { maximum: 150 }
   validates :user_id, presence: true
+  
+  validate :order_date_than_sales_date_fast_if_invalid
+  validate :order_date_than_delivery_fast_if_invalid
+  
+  def order_date_than_sales_date_fast_if_invalid
+    errors.add(:order_date, "より早い売上日は無効です") if order_date > sales_date
+  end
+  
+  def order_date_than_delivery_fast_if_invalid
+    errors.add(:order_date, "より早い納品予定日は無効です") if order_date > delivery
+  end
 end
