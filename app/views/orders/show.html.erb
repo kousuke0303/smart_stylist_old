@@ -7,40 +7,65 @@
     <table class="table table-bordered table-condensed" id="order-show-table">
       <tr>
         <th>顧客名</th>
-        <td><%= client_name(@order) %></td>
+        <td colspan=3><%= client_name(@order) %></td>
       </tr>
       <tr>
         <th>品名</th>
-        <td><%= @order.kind %></td>
+        <td colspan=3><%= @order.kind %></td>
       </tr>
       <tr>
         <th>受注工場</th>
-        <td><%= plant_name(@order) unless @order.plant_id.nil? %></td>
+        <td colspan=3><%= plant_name(@order) unless @order.plant_id.nil? %></td>
       </tr>
       <tr>
         <th>上代</th>
-        <td><%= @order.retail %></td>
+        <td colspan=3><%= @order.retail %></td>
       </tr>
       <tr>
         <th>受注日</th>
-        <td><%= l(@order.order_date, format: :long) %></td>
+        <td colspan=3><%= l(@order.order_date, format: :long) %></td>
       </tr>
       <tr>
         <th>売上日</th>
-        <td><%= l(@order.sales_date, format: :long) if @order.delivery.present? %></td>
+        <td colspan=3><%= l(@order.sales_date, format: :long) if @order.sales_date.present? %></td>
       </tr>
       <tr>
         <th>納品予定日</th>
-        <td><%= l(@order.delivery, format: :long) if @order.delivery.present? %></td>
+        <td colspan=3><%= l(@order.delivery, format: :long) if @order.delivery.present? %></td>
       </tr>
       <tr>
         <th>費用合計</th>
-        <td><%= total_cost(@order) %></td>
+        <td colspan=3><%= total_cost(@order) %></td>
+      </tr>
+      <tr>
+        <th rowspan=4>費用詳細</th>
+        <th>工賃</th>
+        <th>生地</th>
+        <th>裏地</th>
+      </tr>
+      <tr>
+        <td><%= show_cost_detail(@order.wage) %></td>
+        <td><%= show_cost_detail(@order.cloth) %></td>
+        <td><%= show_cost_detail(@order.lining) %></td>
+      </tr>
+      <tr>
+        <th>ボタン</th>
+        <th>送料</th>
+        <th>その他</th>
+      </tr>
+      <tr>
+        <td><%= show_cost_detail(@order.button) %></td>
+        <td><%= show_cost_detail(@order.postage) %></td>
+        <td><%=show_cost_detail( @order.other) %></td>
       </tr>
       <tr>
         <th>備考</th>
-        <td><%= @order.note %></td>
+        <td colspan=3><%= @order.note %></td>
       </tr>
     </table>
+    <div class="show-btn-area">
+      <%= link_to "オーダー内容を更新する", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
+      <%= link_to "取引中オーダー一覧へ戻る", user_orders_path(@user), class: "btn btn-md btn-default" %>
+    </div>
   </div>
 </div>

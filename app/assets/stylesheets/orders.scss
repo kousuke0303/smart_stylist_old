@@ -15,6 +15,23 @@
   text-align: center;
 }
 
+/* オーダー編集ページ */
+
+.label-edit-order {
+  margin-top: 5px;
+}
+
+.btn-edit-order {
+  margin-top: 10px;
+}
+
+.cost-area {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: center;
+}
+
 /* 取引中オーダー一覧テーブル */
 
 #trading-orders-table {
@@ -39,4 +56,8 @@
     text-align: center;
     vertical-align: middle;
   }
+}
+
+.show-btn-area {
+  text-align: center;
 }

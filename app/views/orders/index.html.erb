@@ -7,6 +7,7 @@
       <thead>
         <tr>
           <th></th>
+          <th></th>
           <th>顧客名</th>
           <th>受注日</th>
           <th>納品予定日</th>
@@ -18,11 +19,15 @@
         <% @orders.each do |order| %>
           <tr>
             <td><%= link_to "詳細", user_order_path(@user, order), class: "btn btn-sm btn-primary" %></td>
+            <td>
+              <%= link_to "削除", user_order_path(@user, order), method: :delete, 
+                  class: "btn btn-sm btn-primary", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
+            </td>
             <td><%= client_name(order) %></td>
             <td><%= l(order.order_date, format: :long) %></td>
-            <td><%= l(order.delivery, format: :long) %></td>
+            <td><%= l(order.delivery, format: :long) if order.delivery.present? %></td>
             <td><%= order.retail %></td>
-            <td><%= total_cost(order) %>円</td>
+            <td><%= total_cost(order) %></td>
           </tr>
         <% end %>
       </tbody>

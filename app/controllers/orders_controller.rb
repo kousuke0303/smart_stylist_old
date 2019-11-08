@@ -31,9 +31,18 @@ class OrdersController < ApplicationController
   end
   
   def update
+    if @order.update_attributes(order_params)
+      flash[:success] = "オーダー内容を更新しました。"
+      redirect_to user_order_url(@user, @order)
+    else
+      render :edit      
+    end
   end
   
   def destroy
+    @order.destroy
+    flash[:success] = "オーダーを削除しました。"
+    redirect_to user_orders_url(@user)
   end
   
   # beforeフィルター
