@@ -23,15 +23,11 @@ module OrdersHelper
     total_cost = wage + cloth + lining + button + postage + other
   end
   
-  def put_total_cost(order)
-    total_cost(order) > 0 ? "#{total_cost(order)}円" : "未入力"
-  end
-  
   def gross_profit(order)
     gross_profit = order.retail.to_i - total_cost(order).to_i
   end
   
-  def put_gross_profit(order)
-    gross_profit(order) > 0 ? "#{gross_profit(order)}円" : "--"
+  def put_price_or_bar(integer)
+    integer > 0 ? "#{integer}円" : "--"
   end
 end

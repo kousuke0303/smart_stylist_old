@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <th>費用合計</th>
-        <td colspan=3><%= put_total_cost(@order) %></td>
+        <td colspan=3><%= put_price_or_bar(total_cost(@order)) %></td>
       </tr>
       <tr>
         <th rowspan=4>費用詳細</th>
@@ -67,6 +67,8 @@
       <%= link_to "オーダー内容を更新する", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
       <%= link_to "取引中オーダー一覧へ戻る", user_orders_path(@user), class: "btn btn-md btn-default" %>
       <%= link_to "取引済オーダー一覧へ戻る", users_orders_traded_path(@user), class: "btn btn-md btn-default" %>
+      <%= link_to "削除", user_order_path(@user, @order), method: :delete, 
+          class: "btn btn-sm btn-danger", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
     </div>
   </div>
 </div>

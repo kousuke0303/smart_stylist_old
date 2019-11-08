@@ -17,7 +17,11 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @order.save
       flash[:success] = "新規オーダーを登録しました。"
-      redirect_to root_url
+      if !@order.sales_date.nil?
+        redirect_to users_orders_traded_url(@user)
+      else
+        redirect_to user_orders_url(@user)
+      end
     else
       render :new
     end
@@ -45,7 +49,11 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     flash[:success] = "オーダーを削除しました。"
-    redirect_to user_orders_url(@user)
+    if !@order.sales_date.nil?
+      redirect_to users_orders_traded_url(@user)
+    else
+      redirect_to user_orders_url(@user)
+    end
   end
   
   def traded
