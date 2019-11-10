@@ -30,4 +30,12 @@ module OrdersHelper
   def put_price_or_bar(integer)
     integer > 0 ? "#{integer}円" : "--"
   end
+  
+  def put_total_price_or_bar(total)
+    if total
+      "#{total}円"
+    else
+      "--"
+    end
+  end
 end

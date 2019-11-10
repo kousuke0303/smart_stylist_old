@@ -38,9 +38,14 @@ class PlantsController < ApplicationController
   end
   
   def destroy
-    @plant.destroy
-    flash[:success] = "#{@plant.name}のデータを削除しました。"
-    redirect_to user_plants_url(@user)
+    if Order.where(plant_id: @plant.id).count > 0
+      flash[:danger] = "オーダーに登録中の工場は削除出来ません。"
+      redirect_to user_plant_url(@user, @plant)
+    else
+      @plant.destroy
+      flash[:success] = "#{@plant.name}のデータを削除しました。"
+      redirect_to user_plants_url(@user)
+    end
   end
   
   # beforeフィルター

@@ -42,9 +42,14 @@ class ClientsController < ApplicationController
   end
   
   def destroy
-    @client.destroy
-    flash[:success] = "#{@client.name}のデータを削除しました。"
-    redirect_to user_clients_url(@user)
+    if Order.where(client_id: @client.id).count > 0
+      flash[:danger] = "オーダーに登録中の顧客は削除出来ません。"
+      redirect_to user_client_url(@user, @client)
+    else
+      @client.destroy
+      flash[:success] = "#{@client.name}のデータを削除しました。"
+      redirect_to user_clients_url(@user)
+    end
   end
   
   # beforeフィルター

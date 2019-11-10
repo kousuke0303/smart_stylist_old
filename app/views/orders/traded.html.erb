@@ -50,9 +50,9 @@
         </tr>
         <tr>
           <td><%= @orders.count %>件</td>
-          <td colspan=2><%= @total_retail %>円</td>
-          <td colspan=2><%= @all_cost %>円</td>
-          <td colspan=2><%= @total_gross_profit %>円</td>
+          <td colspan=2><%= put_total_price_or_bar(@total_retail) %></td>
+          <td colspan=2><%= put_total_price_or_bar(@all_cost) %></td>
+          <td colspan=2><%= put_total_price_or_bar(@total_gross_profit) %></td>
         </tr>
       </tfooter>
     </table>

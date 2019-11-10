@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     if @order.save
       flash[:success] = "新規オーダーを登録しました。"
       if !@order.sales_date.nil?
-        redirect_to users_orders_traded_url(@user)
+        redirect_to users_orders_traded_url(@user, date: @order.sales_date.beginning_of_month)
       else
         redirect_to user_orders_url(@user)
       end
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.where(user_id: @user.id, sales_date: nil)
+    @orders = Order.where(user_id: @user.id, sales_date: nil).order(:order_date)
   end
   
   def show
