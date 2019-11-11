@@ -11,6 +11,12 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :button
       t.integer :postage
       t.integer :other
+      t.boolean :wage_pay, default: false
+      t.boolean :cloth_pay, default: false
+      t.boolean :lining_pay, default: false
+      t.boolean :button_pay, default: false
+      t.boolean :postage_pay, default: false
+      t.boolean :other_pay, default: false
       t.string :note
       t.integer :plant_id
       t.integer :user_id

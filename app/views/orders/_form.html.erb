@@ -50,31 +50,79 @@
   
   <div class="row">
     <div class="col-xs-4">
-      <%= f.label :wage, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :wage, class: "form-control" %>
+      <div class="row">
+        <div class="col-xs-8 cost-left">
+          <%= f.label :wage, class: "label-#{yield(:class_text)}" %>
+          <%= f.text_field :wage, class: "form-control" %>
+        </div>
+        <div class="col-xs-4 cost-right">
+          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
+          <%= f.check_box :wage_pay, class: "pay-checkbox" %>
+        </div>
+      </div> 
     </div> 
     <div class="col-xs-4">
-      <%= f.label :cloth, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :cloth, class: "form-control" %>
+      <div class="row">
+        <div class="col-xs-8 cost-left">
+          <%= f.label :cloth, class: "label-#{yield(:class_text)}" %>
+          <%= f.text_field :cloth, class: "form-control" %>
+        </div>
+        <div class="col-xs-4 cost-right">
+          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
+          <%= f.check_box :cloth_pay, class: "pay-checkbox" %>
+        </div>
+      </div>
     </div>
     <div class="col-xs-4">
-      <%= f.label :lining, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :lining, class: "form-control" %>
+      <div class="row">
+        <div class="col-xs-8 cost-left">
+          <%= f.label :lining, class: "label-#{yield(:class_text)}" %>
+          <%= f.text_field :lining, class: "form-control" %>
+        </div>
+        <div class="col-xs-4 cost-right">
+          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
+          <%= f.check_box :lining_pay, class: "pay-checkbox" %>
+        </div>
+      </div>
     </div>
   </div>
   
   <div class="row">
     <div class="col-xs-4">
-      <%= f.label :button, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :button, class: "form-control" %>
+      <div class="row">
+        <div class="col-xs-8 cost-left">
+          <%= f.label :button, class: "label-#{yield(:class_text)}" %>
+          <%= f.text_field :button, class: "form-control" %>
+        </div>
+        <div class="col-xs-4 cost-right">
+          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
+          <%= f.check_box :button_pay, class: "pay-checkbox" %>
+        </div>
+      </div>
     </div>
     <div class="col-xs-4">
-      <%= f.label :postage, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :postage, class: "form-control" %>
+      <div class="row">
+        <div class="col-xs-8 cost-left">
+          <%= f.label :postage, class: "label-#{yield(:class_text)}" %>
+          <%= f.text_field :postage, class: "form-control" %>
+        </div>
+        <div class="col-xs-4 cost-right">
+          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
+          <%= f.check_box :postage_pay, class: "pay-checkbox" %>
+        </div>
+      </div>
     </div>
     <div class="col-xs-4">
-      <%= f.label :other, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :other, class: "form-control" %>
+      <div class="row">
+        <div class="col-xs-8 cost-left">
+          <%= f.label :other, class: "label-#{yield(:class_text)}" %>
+          <%= f.text_field :other, class: "form-control" %>
+        </div>
+        <div class="col-xs-4 cost-right">
+          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
+          <%= f.check_box :other_pay, class: "pay-checkbox" %>
+        </div>
+      </div>
     </div>
   </div>
   

@@ -15,6 +15,20 @@
   text-align: center;
 }
 
+.cost-left {
+  padding: 0 0 0 15px;
+}
+
+.cost-right {
+  color: red;
+  text-align: center;
+}
+
+input[type=checkbox].pay-checkbox {
+  margin-top: 10px;
+  transform: scale(1.5);
+}
+
 /* オーダー編集ページ */
 
 .label-edit-order {
