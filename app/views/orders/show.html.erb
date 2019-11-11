@@ -7,7 +7,7 @@
     <table class="table table-bordered table-condensed" id="order-show-table">
       <tr>
         <th>顧客名</th>
-        <td colspan=3><%= client_name(@order) %></td>
+        <td colspan=3 width=75%><%= client_name(@order) %></td>
       </tr>
       <tr>
         <th>品名</th>
@@ -15,7 +15,7 @@
       </tr>
       <tr>
         <th>受注工場</th>
-        <td colspan=3><%= plant_name(@order) unless @order.plant_id.nil? %></td>
+        <td colspan=3><%= plant_name(@order) if @order.plant_id.present? %></td>
       </tr>
       <tr>
         <th>上代</th>
@@ -39,14 +39,35 @@
       </tr>
       <tr>
         <th rowspan=4>費用詳細</th>
-        <th>工賃</th>
-        <th>生地</th>
-        <th>裏地</th>
+        <th width=25%>工賃</th>
+        <th width=25%>生地</th>
+        <th width=25%>裏地</th>
       </tr>
       <tr>
-        <td><%= show_cost_detail(@order.wage) %></td>
-        <td><%= show_cost_detail(@order.cloth) %></td>
-        <td><%= show_cost_detail(@order.lining) %></td>
+        <td>
+          <%= show_cost_detail(@order.wage) %>
+          <% if @order.wage.present? && @order.wage_pay == true %>
+            <span class="paid">支払済</span>
+          <% elsif @order.wage.present? && @order.wage_pay == false %>
+            <span class="unpaid">未払い</span>
+          <% end %>
+        </td>
+        <td>
+          <%= show_cost_detail(@order.cloth) %>
+          <% if @order.cloth.present? && @order.cloth_pay == true %>
+            <span class="paid">支払済</span>
+          <% elsif @order.cloth.present? && @order.cloth_pay == false %>
+            <span class="unpaid">未払い</span>
+          <% end %>
+        </td>
+        <td>
+          <%= show_cost_detail(@order.lining) %>
+          <% if @order.lining.present? && @order.lining_pay == true %>
+            <span class="paid">支払済</span>
+          <% elsif @order.lining.present? && @order.lining_pay == false %>
+            <span class="unpaid">未払い</span>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th>ボタン</th>
@@ -54,9 +75,30 @@
         <th>その他</th>
       </tr>
       <tr>
-        <td><%= show_cost_detail(@order.button) %></td>
-        <td><%= show_cost_detail(@order.postage) %></td>
-        <td><%=show_cost_detail( @order.other) %></td>
+        <td>
+          <%= show_cost_detail(@order.button) %>
+          <% if @order.button.present? && @order.button_pay == true %>
+            <span class="paid">支払済</span>
+          <% elsif @order.button.present? && @order.button_pay == false %>
+            <span class="unpaid">未払い</span>
+          <% end %>
+        </td>
+        <td>
+          <%= show_cost_detail(@order.postage) %>
+          <% if @order.postage.present? && @order.postage_pay == true %>
+            <span class="paid">支払済</span>
+          <% elsif @order.postage.present? && @order.postage_pay == false %>
+            <span class="unpaid">未払い</span>
+          <% end %>
+        </td>
+        <td>
+          <%=show_cost_detail( @order.other) %>
+          <% if @order.other.present? && @order.other_pay == true %>
+            <span class="paid">支払済</span>
+          <% elsif @order.other.present? && @order.other_pay == false %>
+            <span class="unpaid">未払い</span>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th>備考</th>

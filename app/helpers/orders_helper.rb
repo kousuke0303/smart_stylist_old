@@ -38,4 +38,10 @@ module OrdersHelper
       "--"
     end
   end
+  
+  def wage_paid_or_not(order)
+    if order.wage.present?
+      order.wage_pay == true ? "支払済" : "未払い"
+    end
+  end
 end

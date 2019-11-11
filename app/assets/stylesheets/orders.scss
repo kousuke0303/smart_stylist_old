@@ -72,6 +72,15 @@ input[type=checkbox].pay-checkbox {
   }
 }
 
+.paid {
+  margin-left: 20px;
+}
+
+.unpaid {
+  color: red;
+  margin-left: 20px;
+}
+
 .show-btn-area {
   text-align: center;
 }
