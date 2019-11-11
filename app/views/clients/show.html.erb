@@ -2,7 +2,7 @@
 
 <h1>顧客詳細情報</h1>
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-6 col-md-offset-3">
     <table class="table table-bordered table-condensed" id="client-table">
       <tr>
         <th>顧客名</th>
@@ -44,5 +44,37 @@
       <%= link_to "削除", user_client_path(@user, @client), method: :delete,
           class: "btn btn-sm btn-danger", data: { confirm: "#{@client.name}を削除してよろしいですか？" } %>
     </div>
+    <% if params[:history] == "display" %>
+      <div class="btn-history">
+        <%= link_to "オーダー履歴を非表示", user_client_path(@user, @client), class: "btn btn-lg btn-primary" %>
+      </div>
+        <%= will_paginate %>
+        <table class="table table-bordered table-condensed table-hover" id="history-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>受注日</th>
+              <th>売上日</th>
+              <th>上代</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @histories.each do |history| %>
+              <tr>
+                <td><%= link_to "詳細", user_order_path(@user, history),class: "btn btn-sm btn-primary" %></td>
+                <td><%= l(history.order_date, format: :long) %></td>
+                <td><%= l(history.sales_date, format: :long) if history.sales_date.present? %></td>
+                <td><%= history.retail %>円</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate %>
+    <% else %>
+      <div class="btn-history">
+        <%= link_to "オーダー履歴を表示", user_client_path(@user, @client, history: "display"),
+            class: "btn btn-lg btn-primary" %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -13,6 +13,8 @@ class ClientsController < ApplicationController
   end
   
   def show
+    @histories = Order.where(client_id: @client.id).paginate(page: params[:page],  per_page: 10).order(order_date: :desc)
+    @clients = @histories
   end
   
   def new
