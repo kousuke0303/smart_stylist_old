@@ -100,15 +100,21 @@
           <% end %>
         </td>
       </tr>
+      <% if total_unpaid(@order) > 0 %>
+        <tr>
+          <th>未払い費用合計金額</th>
+          <td colspan=3 class="total-unpaid"><%= @total_unpaid %>円</td>
+        </tr>
+      <% end %>
       <tr>
         <th>備考</th>
         <td colspan=3><%= @order.note %></td>
       </tr>
     </table>
     <div class="show-btn-area">
-      <%= link_to "オーダー内容を更新する", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
-      <%= link_to "取引中オーダー一覧へ戻る", user_orders_path(@user), class: "btn btn-md btn-default" %>
-      <%= link_to "取引済オーダー一覧へ戻る", users_orders_traded_path(@user), class: "btn btn-md btn-default" %>
+      <%= link_to "オーダー内容を更新", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
+      <%= link_to "取引中オーダー一覧へ", user_orders_path(@user), class: "btn btn-md btn-default" %>
+      <%= link_to "取引済オーダー一覧へ", users_orders_traded_path(@user), class: "btn btn-md btn-default" %>
       <%= link_to "削除", user_order_path(@user, @order), method: :delete, 
           class: "btn btn-sm btn-danger", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
     </div>

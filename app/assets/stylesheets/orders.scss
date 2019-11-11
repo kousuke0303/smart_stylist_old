@@ -70,6 +70,9 @@ input[type=checkbox].pay-checkbox {
     text-align: center;
     vertical-align: middle;
   }
+  td.total-unpaid {
+    color: red;
+  }
 }
 
 .paid {
