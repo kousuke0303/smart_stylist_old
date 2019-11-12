@@ -1,5 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :client
+  include OrdersHelper
+  
+  before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
   
   validates :client_id, presence: true
   validates :kind, presence: true
