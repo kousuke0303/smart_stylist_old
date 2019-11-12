@@ -40,9 +40,11 @@
     
     <div class="client-show-btn-area">
       <%= link_to "顧客情報を編集", edit_user_client_path(@user, @client), class: "btn btn-md btn-primary" %>
-      <%= link_to "顧客一覧に戻る", user_clients_url(@user), class: "btn btn-md btn-default" %>
       <%= link_to "削除", user_client_path(@user, @client), method: :delete,
-          class: "btn btn-sm btn-danger", data: { confirm: "#{@client.name}を削除してよろしいですか？" } %>
+          class: "btn btn-md btn-danger", data: { confirm: "#{@client.name}を削除してよろしいですか？" } %>
+      <%= link_to :back do %>
+        <button class="btn btn-md btn-default">戻る</button>
+      <% end %>
     </div>
     <% if params[:history] == "display" %>
       <div class="btn-history">

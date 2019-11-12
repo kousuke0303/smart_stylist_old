@@ -59,6 +59,9 @@ class OrdersController < ApplicationController
   def traded
   end
   
+  def unpaid
+  end
+  
   # beforeフィルター
   
   def set_clients_of_user

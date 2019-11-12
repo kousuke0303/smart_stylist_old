@@ -44,9 +44,11 @@
     
     <div class="plant-show-btn-area">
       <%= link_to "工場情報を編集", edit_user_plant_path(@user, @plant), class: "btn btn-md btn-primary" %>
-      <%= link_to "工場一覧に戻る", user_plants_url(@user), class: "btn btn-md btn-default" %>
       <%= link_to "削除", user_plant_path(@user, @plant), method: :delete,
-          class: "btn btn-sm btn-danger", data: { confirm: "#{@plant.name}を削除してよろしいですか？" } %>
+          class: "btn btn-md btn-danger", data: { confirm: "#{@plant.name}を削除してよろしいですか？" } %>
+      <%= link_to :back do %>
+        <button class="btn btn-md btn-default">戻る</button>
+      <% end %>
     </div>
   </div>
 </div>

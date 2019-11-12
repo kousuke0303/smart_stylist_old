@@ -5,23 +5,21 @@
 <h1><%= "#{@user.name}様の顧客情報一覧" %></h1>
 
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-6 col-md-offset-3">
     <%= render "shared/search" %>
     <%= will_paginate %>
     <table class="table table-bordered table-condensed table-hover" id="user-clients-table">
       <thead>
         <tr>
-          <th>顧客名</th>
+          <td><%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-sm btn-primary" %></td>
           <th>電話番号(1)</th>
-          <th><%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-md btn-primary" %></th>
         </tr>
       </thead>
       <tbody>
         <% @clients.each do |client| %>
           <tr>
-            <td><%= client.name %></td>
+            <td><%= link_to client.name, user_client_path(@user, client) %></td>
             <td><%= client.tel_1 %></td>
-            <td><%= link_to "詳細", user_client_path(@user, client), class: "btn btn-sm btn-primary" %></td>
           </tr>
         <% end %>
       </tbody>

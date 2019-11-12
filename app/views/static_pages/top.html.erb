@@ -40,6 +40,17 @@
     <div  class="select-button-area">
       <div class="circle">
         <% if logged_in? %>
+          <%= link_to "未払い費用管理", users_orders_unpaid_path(current_user), class: "main-select-button" %>
+        <% else %>
+          <p class="main-select-button">未払い費用管理</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div  class="select-button-area">
+      <div class="circle">
+        <% if logged_in? %>
           <%= link_to "顧客情報管理", user_clients_path(current_user), class: "main-select-button" %>
         <% else %>
           <p class="main-select-button">顧客情報管理</p>

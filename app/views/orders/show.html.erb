@@ -7,7 +7,9 @@
     <table class="table table-bordered table-condensed" id="order-show-table">
       <tr>
         <th>顧客名</th>
-        <td colspan=3 width=75%><%= client_name(@order) %></td>
+        <td colspan=3 width=75%>
+          <%= link_to client_name(@order), user_client_path(@user, @order.client_id) %>
+        </td>
       </tr>
       <tr>
         <th>品名</th>
@@ -15,7 +17,9 @@
       </tr>
       <tr>
         <th>受注工場</th>
-        <td colspan=3><%= plant_name(@order) if @order.plant_id.present? %></td>
+        <td colspan=3>
+          <%= link_to plant_name(@order), user_plant_path(@user, @order.plant_id) if @order.plant_id.present? %>
+          </td>
       </tr>
       <tr>
         <th>上代</th>
@@ -113,10 +117,11 @@
     </table>
     <div class="show-btn-area">
       <%= link_to "オーダー内容を更新", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
-      <%= link_to "取引中オーダー一覧へ", user_orders_path(@user), class: "btn btn-md btn-default" %>
-      <%= link_to "取引済オーダー一覧へ", users_orders_traded_path(@user), class: "btn btn-md btn-default" %>
       <%= link_to "削除", user_order_path(@user, @order), method: :delete, 
-          class: "btn btn-sm btn-danger", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
+          class: "btn btn-md btn-danger", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
+      <%= link_to :back do %>
+        <button class="btn btn-md btn-default">戻る</button>
+      <% end %>
     </div>
   </div>
 </div>

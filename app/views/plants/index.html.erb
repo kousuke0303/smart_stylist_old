@@ -8,15 +8,15 @@
     <table class="table table-bordered table-condensed table-hover" id="user-plants-table">
       <thead>
         <tr>
-          <th>工場名</th>
-          <th><%= link_to "新規工場登録", new_user_plant_path(@user), class: "btn btn-md btn-primary" %></th>
+          <td><%= link_to "新規工場登録", new_user_plant_path(@user), class: "btn btn-md btn-primary" %></td>
+          <th>電話番号(1)</th>
         </tr>
       </thead>
       <tbody>
         <% @plants.each do |plant| %>
           <tr>
-            <td><%= plant.name %></td>
-            <td><%= link_to "詳細", user_plant_path(@user, plant), class: "btn btn-sm btn-primary" %></td>
+            <td><%= link_to plant.name, user_plant_path(@user, plant) %></td>
+            <td><%= plant.tel_1 %></td>
           </tr>
         <% end %>
       </tbody>

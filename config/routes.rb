@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get    '/users/:id/orders/traded', to: 'orders#traded', as: 'users_orders_traded'
+  get    '/users/:id/orders/unpaid', to: 'orders#unpaid', as: 'users_orders_unpaid'
   
   resources :users do
     resources :plants

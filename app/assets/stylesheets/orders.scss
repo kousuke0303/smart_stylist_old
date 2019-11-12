@@ -113,3 +113,16 @@ input[type=checkbox].pay-checkbox {
     vertical-align: middle;
   }
 }
+
+/* 支払い未完了テーブル */
+
+#unpaid-orders-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
