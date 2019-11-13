@@ -2,6 +2,7 @@ class CreatePlants < ActiveRecord::Migration[5.1]
   def change
     create_table :plants do |t|
       t.string :name
+      t.string :zipcode
       t.string :address
       t.string :tel_1
       t.string :tel_2

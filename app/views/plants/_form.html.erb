@@ -9,11 +9,19 @@
   <% end %>
   
   <%= f.label "住所検索", class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :zip, class: "form-control", placeholder: "郵便番号を入力" %>
+  <% if @zipcode %>
+    <%= f.text_field :zipcode, value: @zipcode, class: "form-control", placeholder: "郵便番号を入力" %>
+  <% else %>
+    <%= f.text_field :zipcode, class: "form-control", placeholder: "郵便番号を入力" %>
+  <% end %>
   
   <%= f.label :address, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
-    <%= f.text_field :address, value: params[:plant][:address], class: "form-control" %>
+    <% if @zipcode %>
+      <%= f.text_field :address, value: @result_address, class: "form-control" %>
+    <% else %>
+      <%= f.text_field :address, value: params[:plant][:address], class: "form-control" %>
+    <% end %>
   <% else %>
     <%= f.text_field :address, class: "form-control" %>
   <% end %>
