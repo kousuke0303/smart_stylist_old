@@ -2,33 +2,73 @@
   <%= render "shared/error_messages", object: @plant %>
   
   <%= f.label :name, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :name, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.text_field :name, value: params[:plant][:name], class: "form-control" %>
+  <% else %>
+    <%= f.text_field :name, class: "form-control" %>
+  <% end %>
+  
+  <%= f.label "住所検索", class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :zip, class: "form-control", placeholder: "郵便番号を入力" %>
   
   <%= f.label :address, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :address, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.text_field :address, value: params[:plant][:address], class: "form-control" %>
+  <% else %>
+    <%= f.text_field :address, class: "form-control" %>
+  <% end %>
   
   <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
-  <%= f.telephone_field :tel_1, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.telephone_field :tel_1, value: params[:plant][:tel_1], class: "form-control" %>
+  <% else %>
+    <%= f.telephone_field :tel_1, class: "form-control" %>
+  <% end %>
   
   <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
-  <%= f.telephone_field :tel_2, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.telephone_field :tel_2, value: params[:plant][:tel_2], class: "form-control" %>
+  <% else %>
+    <%= f.telephone_field :tel_2, class: "form-control" %>
+  <% end %>
   
   <%= f.label :fax, class: "label-#{yield(:class_text)}" %>
-  <%= f.telephone_field :fax, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.telephone_field :fax, value: params[:plant][:fax], class: "form-control" %>
+  <% else %>
+    <%= f.telephone_field :fax, class: "form-control" %>
+  <% end %>
   
   <%= f.label :email, class: "label-#{yield(:class_text)}" %>
-  <%= f.email_field :email, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.email_field :email, value: params[:plant][:email], class: "form-control" %>
+  <% else %>
+    <%= f.telephone_field :email, class: "form-control" %>
+  <% end %>
   
   <%= f.label :staff_1, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :staff_1, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.text_field :staff_1, value: params[:plant][:staff_1], class: "form-control" %>
+  <% else %>
+    <%= f.telephone_field :staff_1, class: "form-control" %>
+  <% end %>
   
   <%= f.label :staff_2, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :staff_2, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.text_field :staff_2, value: params[:plant][:staff_2], class: "form-control" %>
+  <% else %>
+    <%= f.telephone_field :staff_1, class: "form-control" %>
+  <% end %>
   
   <%= f.label :note, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :note, class: "form-control" %>
+  <% if params[:plant] %>
+    <%= f.text_field :note, value: params[:plant][:note], class: "form-control" %>
+  <% else %>
+    <%= f.telephone_field :note, class: "form-control" %>
+  <% end %>
   
   <%= f.hidden_field :user_id, value: @user.id %>
   
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+  <%= f.submit "住所検索", name: "zip_search_button", class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
 <% end %>

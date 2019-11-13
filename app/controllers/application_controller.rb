@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  require 'net/http'
+  require 'uri'
+  require 'json'
   include SessionsHelper
   include OrdersHelper
   
