@@ -101,6 +101,19 @@ input[type=checkbox].pay-checkbox {
   }
 }
 
+/* 取引済オーダー集計テーブル */
+
+#traded-total-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
 /* オーダー履歴テーブル */
 
 #history-table {
@@ -125,4 +138,23 @@ input[type=checkbox].pay-checkbox {
     text-align: center;
     vertical-align: middle;
   }
+}
+
+/* 支払い未完了費用合計金額表示テーブル */
+
+#total-unpaid-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+/* 支払い未完了金額を赤で表示 */
+
+span.red {
+  color: red;
 }

@@ -54,12 +54,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
-  
-  # ログイン中のアカウント作成制限
-  def only_admin_or_once
-    if logged_in? && !current_user.admin?
-      flash[:info] = "すでにアカウント作成済です。"
-      redirect_to root_url
-    end
-  end
 end

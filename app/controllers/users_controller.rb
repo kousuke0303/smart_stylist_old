@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   before_action :correct_or_admin_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
   before_action :correct_user, only: :show
-  before_action :only_admin_or_once, only: [:new, :create]
+  before_action :login_once, only: [:new, :create]
   
   def index
     if params[:search]
-      @users = User.where("name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page])
+      @users = User.where("name LIKE ?", "%#{params[:search]}%")
     else
       @users = User.all.paginate(page: params[:page])
     end

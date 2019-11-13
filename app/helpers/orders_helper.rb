@@ -55,4 +55,13 @@ module OrdersHelper
     @total_unpaid = unpaid_w.to_i + unpaid_c.to_i + unpaid_l.to_i +
                    unpaid_b.to_i + unpaid_p.to_i + unpaid_o.to_i
   end
+  
+  def all_unpaid(user)
+    orders = Order.where(user_id: user.id, unpaid: true)
+    orders.each do |order|
+      total_unpaid(order)
+      @all_unpaid = @all_unpaid.to_i + total_unpaid(order).to_i
+    end
+      @all_unpaid
+  end
 end

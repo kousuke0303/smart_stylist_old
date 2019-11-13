@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
-  before_action :set_user, only: :traded
+  before_action :set_user, only: [:traded, :unpaid]
   before_action :set_user_by_user_id, only: [:new, :create, :edit, :update, :show, :index, :destroy]
   before_action :logged_in_user
-  before_action :correct_user, only: :traded
+  before_action :correct_user, only: [:traded, :unpaid]
   before_action :correct_user_by_user_id, only: [:new, :create, :edit, :update, :show, :index, :destroy]
   before_action :set_clients_of_user, only: [:new, :create, :edit, :update]
   before_action :set_plants_of_user, only: [:new, :create, :edit, :update]
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.where(user_id: @user.id, sales_date: nil).order(:order_date)
+    @orders = Order.where(user_id: @user.id, sales_date: nil).order(:order_date).paginate(page: params[:page])
   end
   
   def show
@@ -57,9 +57,17 @@ class OrdersController < ApplicationController
   end
   
   def traded
+    @all_traded_orders.each do |order|
+      @total_retail = @total_retail.to_i + order.retail.to_i
+      total_cost(order)
+      @all_cost = @all_cost.to_i + total_cost(order).to_i
+      gross_profit(order)
+      @total_gross_profit = @total_gross_profit.to_i + gross_profit(order).to_i
+    end
   end
   
   def unpaid
+    @orders = Order.where(user_id: @user.id, unpaid: true).order(:order_date).paginate(page: params[:page])
   end
   
   # beforeフィルター
@@ -81,7 +89,8 @@ class OrdersController < ApplicationController
     Date.current.beginning_of_month : params[:date].to_date
     @last_day = @first_day.end_of_month
     one_month = [*@first_day..@last_day]
-    @orders = Order.where(user_id: @user.id, sales_date: @first_day..@last_day).order(:sales_date)
+    @all_traded_orders = Order.where(user_id: @user.id, sales_date: @first_day..@last_day).order(:sales_date)
+    @orders = @all_traded_orders.paginate(page: params[:page])
   end
   
   private
