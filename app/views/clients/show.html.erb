@@ -42,6 +42,7 @@
       <%= link_to "顧客情報を編集", edit_user_client_path(@user, @client), class: "btn btn-md btn-primary" %>
       <%= link_to "削除", user_client_path(@user, @client), method: :delete,
           class: "btn btn-md btn-danger", data: { confirm: "#{@client.name}を削除してよろしいですか？" } %>
+      <%= link_to "顧客一覧へ", user_clients_path(@user), class: "btn btn-md btn-default" %>
       <%= link_to :back do %>
         <button class="btn btn-md btn-default">戻る</button>
       <% end %>

@@ -8,12 +8,19 @@
     <%= f.text_field :name, class: "form-control" %>
   <% end %>
   
-  <%= f.label "住所検索", class: "label-#{yield(:class_text)}" %>
-  <% if @zipcode %>
-    <%= f.text_field :zipcode, value: @zipcode, class: "form-control", placeholder: "郵便番号を入力" %>
-  <% else %>
-    <%= f.text_field :zipcode, class: "form-control", placeholder: "郵便番号を入力" %>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-9 form-zip-left">
+      <%= f.label "住所検索", class: "label-#{yield(:class_text)}" %>
+      <% if @zipcode %>
+        <%= f.text_field :zipcode, value: @zipcode, class: "form-control", placeholder: "郵便番号を入力" %>
+      <% else %>
+        <%= f.text_field :zipcode, class: "form-control", placeholder: "郵便番号を入力" %>
+      <% end %>
+    </div>
+    <div class="col-xs-3 form-zip-right">
+      <%= f.submit "検索", name: "zip_search_button", class: "btn btn-md btn-primary btn-block" %>
+    </div>
+  </div>
   
   <%= f.label :address, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
@@ -78,5 +85,4 @@
   <%= f.hidden_field :user_id, value: @user.id %>
   
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
-  <%= f.submit "住所検索", name: "zip_search_button", class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
 <% end %>

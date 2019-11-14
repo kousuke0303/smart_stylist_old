@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.string "tel_2"
     t.string "fax"
     t.string "email"
+    t.string "zipcode"
     t.string "address"
     t.string "note"
     t.string "work"

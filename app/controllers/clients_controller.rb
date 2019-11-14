@@ -19,27 +19,37 @@ class ClientsController < ApplicationController
   
   def new
     @client = Client.new
+    zipcode_api(params[:client]) if params[:client]
   end
   
   def create
     @client = Client.new(client_params)
-    if @client.save
-      flash[:success] = "新規顧客を登録しました。"
-      redirect_to user_clients_url(@user)
+    if params[:zip_search_button]
+      redirect_to new_user_client_url(@user, client: client_params)
     else
-      render :new
+      if @client.save
+        flash[:success] = "新規顧客を登録しました。"
+        redirect_to user_client_url(@user, @client)
+      else
+        render :new
+      end
     end
   end
   
   def edit
+    zipcode_api(params[:client]) if params[:client]
   end
   
   def update
-    if @client.update_attributes(client_params)
-      flash[:success] = "顧客情報を更新しました。"
-      redirect_to user_client_url(@user, @client)
+    if params[:zip_search_button]
+      redirect_to edit_user_client_url(@user, @client, client: client_params)
     else
-      render :edit      
+      if @client.update_attributes(client_params)
+        flash[:success] = "顧客情報を更新しました。"
+        redirect_to user_client_url(@user, @client)
+      else
+        render :edit      
+      end
     end
   end
   
@@ -64,6 +74,6 @@ class ClientsController < ApplicationController
 
     def client_params
       params.require(:client).permit(:name, :address, :tel_1, :tel_2, :fax, :email,
-                                     :work, :note, :user_id)
+                                     :work, :note, :user_id, :zipcode)
     end
 end
