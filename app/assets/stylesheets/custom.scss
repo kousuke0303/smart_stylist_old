@@ -107,8 +107,12 @@ p {
   margin: 0;
 }
 
-.search-form {
+.search-form-left {
   padding: 0;
+}
+
+.search-form-right {
+  padding: 0 15px 0 0;
 }
 
 /* 郵便番号検索フォーム */

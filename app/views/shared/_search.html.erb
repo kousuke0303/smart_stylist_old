@@ -1,15 +1,13 @@
 <div class="row search-area" >
-  <div class="col-sm-3 col-sm-offset-9">
+  <div class="col-sm-4 col-sm-offset-8">
     <div class="row">
       <%= form_with url: yield(:search_url), method: :get, local: true do |f| %>
-        <div class="form-group">
           <p class="search-tilte"><%= "#{yield(:search_title)}" %></p>
-          <div class="col-xs-9 search-form">
+          <div class="col-xs-8 search-form-left">
             <%= f.text_field :search, placeholder: "キーワードを入力...", class: "form-control" %>
           </div>
-          <div class="col-xs-3 search-form">
-            <%= f.submit "検索", class: "btn btn-sm btn-primary form-control" %>
-          </div>
+          <div class="col-xs-4 search-form-right">
+            <%= f.submit "検索", class: "btn btn-md btn-block btn-primary" %>
         </div>
       <% end %>
     </div>

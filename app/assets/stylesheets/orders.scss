@@ -1,11 +1,7 @@
-/* 新規オーダー登録ページ */
+/* オーダー情報入力フォーム */
 
 .label-new-order {
   margin-top: 5px;
-}
-
-.btn-new-order {
-  margin-top: 10px;
 }
 
 .cost-area {
@@ -29,20 +25,12 @@ input[type=checkbox].pay-checkbox {
   transform: scale(1.5);
 }
 
-/* オーダー編集ページ */
-
 .label-edit-order {
   margin-top: 5px;
 }
 
-.btn-edit-order {
+.order-submit-area {
   margin-top: 10px;
-}
-
-.cost-area {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-top: 15px;
   text-align: center;
 }
 

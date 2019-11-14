@@ -127,6 +127,11 @@
   </div>
   
   <%= f.hidden_field :user_id, value: @user.id %>
-  
-  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+
+  <div class="order-submit-area">  
+    <%= f.submit yield(:button_text), class: "btn btn-md btn-primary" %>
+    <%= link_to :back do %>
+      <button class="btn btn-md btn-default">戻る</button>
+    <% end %>
+  </div>
 <% end %>

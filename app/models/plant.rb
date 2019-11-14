@@ -5,6 +5,7 @@ class Plant < ApplicationRecord
   before_save { self.tel_1 = NKF.nkf('-w -Z4', tel_1).delete("^0-9") }
   before_save { self.tel_2 = NKF.nkf('-w -Z4', tel_1).delete("^0-9") }
   before_save { self.fax = NKF.nkf('-w -Z4', tel_1).delete("^0-9") }
+  before_save { self.zipcode = nil }
   
   validates :name, presence: true, length: { maximum: 50 }
   validates :address, length: { maximum: 100 }

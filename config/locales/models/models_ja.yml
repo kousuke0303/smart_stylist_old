@@ -17,6 +17,7 @@ ja:
         plant:
           id: ID
           name: 工場名
+          zipcode: 郵便番号
           address: 住所
           tel_1: 電話番号(1)
           tel_2: 電話番号(2)
@@ -28,6 +29,7 @@ ja:
         client: 
           id: ID
           name: 顧客名
+          zipcode: 郵便番号
           address: 住所
           tel_1: 電話番号(1)
           tel_2: 電話番号(2)
