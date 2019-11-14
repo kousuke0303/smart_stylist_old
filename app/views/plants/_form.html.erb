@@ -51,28 +51,28 @@
   <% if params[:plant] %>
     <%= f.email_field :email, value: params[:plant][:email], class: "form-control" %>
   <% else %>
-    <%= f.telephone_field :email, class: "form-control" %>
+    <%= f.email_field :email, class: "form-control" %>
   <% end %>
   
   <%= f.label :staff_1, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
     <%= f.text_field :staff_1, value: params[:plant][:staff_1], class: "form-control" %>
   <% else %>
-    <%= f.telephone_field :staff_1, class: "form-control" %>
+    <%= f.text_field :staff_1, class: "form-control" %>
   <% end %>
   
   <%= f.label :staff_2, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
     <%= f.text_field :staff_2, value: params[:plant][:staff_2], class: "form-control" %>
   <% else %>
-    <%= f.telephone_field :staff_1, class: "form-control" %>
+    <%= f.text_field :staff_2, class: "form-control" %>
   <% end %>
   
   <%= f.label :note, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
     <%= f.text_field :note, value: params[:plant][:note], class: "form-control" %>
   <% else %>
-    <%= f.telephone_field :note, class: "form-control" %>
+    <%= f.text_field :note, class: "form-control" %>
   <% end %>
   
   <%= f.hidden_field :user_id, value: @user.id %>
