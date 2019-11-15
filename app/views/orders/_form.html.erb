@@ -11,7 +11,11 @@
       <div class="row">
         <div class="col-xs-9 narrow-client-left">
           <%= f.label "顧客を絞り込む", class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :narrow, class: "form-control", placeholder: "キーワードを入力" %>
+          <% if params[:order] && params[:order][:narrow].present? %>
+            <%= f.text_field :narrow, value: params[:order][:narrow], class: "form-control" %>
+          <% else %>
+            <%= f.text_field :narrow, class: "form-control", placeholder: "キーワードを入力" %>
+          <% end %>
         </div>
         <div class="col-xs-3 narrow-client-right">
           <%= f.submit "絞り込む", name: "narrow_client_button", class: "btn btn-md btn-primary btn-block" %>
