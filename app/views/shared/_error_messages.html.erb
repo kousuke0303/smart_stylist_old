@@ -1,11 +1,17 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      入力エラーが<%= object.errors.count %>件ありました。
+      <% if object.errors.full_messages[0] == "Clientを入力してください" %>
+        入力エラーが<%= object.errors.count - 1 %>件ありました。
+      <% else %>
+        入力エラーが<%= object.errors.count %>件ありました。
+      <% end %>
     </div>
     <ul>
     <% object.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <% unless msg == "Clientを入力してください" %>
+        <li><%= msg %></li>
+      <% end %>
     <% end %>
     </ul>
   </div>
