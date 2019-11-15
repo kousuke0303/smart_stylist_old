@@ -23,15 +23,10 @@
   <div class="row">
     <div class="col-xs-4">
       <%= f.label :kind, class: "label-#{yield(:class_text)}" %>
-      <% if params[:order] %>
-        <% if params[:order][:kind].blank? %>
-          <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5, "P": 6, "PP": 7, "Sh": 8}),
-              {prompt: "タイプを選択"}, class: "form-control" %>
-        <% else %>
-          <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
-                                                  "P": 6, "PP": 7, "Sh": 8}, params[:order][:kind]),
-              {prompt: "タイプを選択"}, class: "form-control" %>
-        <% end %>
+      <% if params[:order] && params[:order][:kind].present? %>
+        <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
+                                                "P": 6, "PP": 7, "Sh": 8}, params[:order][:kind]),
+            {prompt: "タイプを選択"}, class: "form-control" %>
       <% else %>
         <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5, "P": 6, "PP": 7, "Sh": 8}),
               {prompt: "タイプを選択"}, class: "form-control" %>
@@ -39,14 +34,9 @@
     </div>
     <div class="col-xs-4">
       <%= f.label :plant_id, class: "label-#{yield(:class_text)}" %>
-      <% if params[:order] %>
-        <% if params[:order][:plant_id].blank? %>
-          <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
+      <% if params[:order] && params[:order][:plant_id].present? %>
+        <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]},
               {class: "form-control"}) %>
-        <% else %>
-          <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]},
-              {class: "form-control"}) %>
-        <% end %>
       <% else %>
         <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
             {class: "form-control"}) %>
@@ -55,11 +45,7 @@
     <div class="col-xs-4">
       <%= f.label :retail, class: "label-#{yield(:class_text)}" %>
       <% if params[:order] %>
-        <% if params[:order][:retail].blank? %>
-          <%= f.text_field :retail, class: "form-control" %>
-        <% else %>
-          <%= f.text_field :retail, value: params[:order][:retail], class: "form-control" %>
-        <% end %>
+        <%= f.text_field :retail, value: params[:order][:retail], class: "form-control" %>
       <% else %>
         <%= f.text_field :retail, class: "form-control" %>
       <% end %>
@@ -69,25 +55,33 @@
   <div class="row">
     <div class="col-xs-4">
       <%= f.label :order_date, class: "label-#{yield(:class_text)}" %>
-      <%= f.date_field :order_date, class: "form-control" %>
+      <% if params[:order] && params[:order][:order_date].present? %>
+        <%= f.date_field :order_date, value: params[:order][:order_date], class: "form-control" %>
+      <% else %>
+        <%= f.date_field :order_date, class: "form-control" %>
+      <% end %>
     </div>
     <div class="col-xs-4">
       <%= f.label :sales_date, class: "label-#{yield(:class_text)}" %>
-      <%= f.date_field :sales_date, class: "form-control" %>
+      <% if params[:order] && params[:order][:sales_date].present? %>
+        <%= f.date_field :sales_date, value: params[:order][:sales_date], class: "form-control" %>
+      <% else %>
+        <%= f.date_field :sales_date, class: "form-control" %>
+      <% end %>
     </div>
     <div class="col-xs-4">
       <%= f.label :delivery, class: "label-#{yield(:class_text)}" %>
-      <%= f.date_field :delivery, class: "form-control" %>
+      <% if params[:order] && params[:order][:delivery].present? %>
+        <%= f.date_field :delivery, value: params[:order][:delivery], class: "form-control" %>
+      <% else %>
+        <%= f.date_field :delivery, class: "form-control" %>
+      <% end %>
     </div>
   </div>
   
   <%= f.label :note, class: "label-#{yield(:class_text)}" %>
   <% if params[:order] %>
-    <% if params[:order][:note].blank? %>
-      <%= f.text_field :note, class: "form-control" %>
-    <% else %>
-      <%= f.text_field :note, value: params[:order][:note], class: "form-control" %>
-    <% end %>
+    <%= f.text_field :note, value: params[:order][:note], class: "form-control" %>
   <% else %>
     <%= f.text_field :note, class: "form-control" %>
   <% end %>
@@ -100,7 +94,11 @@
       <div class="row">
         <div class="col-xs-8 cost-left">
           <%= f.label :wage, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :wage, class: "form-control" %>
+          <% if params[:order] %>
+            <%= f.text_field :wage, value: params[:order][:wage], class: "form-control" %>
+          <% else %>
+            <%= f.text_field :wage, class: "form-control" %>
+          <% end %>
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
@@ -112,7 +110,11 @@
       <div class="row">
         <div class="col-xs-8 cost-left">
           <%= f.label :cloth, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :cloth, class: "form-control" %>
+          <% if params[:order] %>
+            <%= f.text_field :cloth, value: params[:order][:cloth], class: "form-control" %>
+          <% else %>
+            <%= f.text_field :cloth, class: "form-control" %>
+          <% end %>
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
@@ -124,7 +126,11 @@
       <div class="row">
         <div class="col-xs-8 cost-left">
           <%= f.label :lining, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :lining, class: "form-control" %>
+          <% if params[:order] %>
+            <%= f.text_field :lining, value: params[:order][:lining], class: "form-control" %>
+          <% else %>
+            <%= f.text_field :lining, class: "form-control" %>
+          <% end %>
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
@@ -139,7 +145,11 @@
       <div class="row">
         <div class="col-xs-8 cost-left">
           <%= f.label :button, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :button, class: "form-control" %>
+          <% if params[:order] %>
+            <%= f.text_field :button, value: params[:order][:button], class: "form-control" %>
+          <% else %>
+            <%= f.text_field :button, class: "form-control" %>
+          <% end %>
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
@@ -151,7 +161,11 @@
       <div class="row">
         <div class="col-xs-8 cost-left">
           <%= f.label :postage, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :postage, class: "form-control" %>
+          <% if params[:order] %>
+            <%= f.text_field :postage, value: params[:order][:postage], class: "form-control" %>
+          <% else %>
+            <%= f.text_field :postage, class: "form-control" %>
+          <% end %>
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
@@ -163,7 +177,11 @@
       <div class="row">
         <div class="col-xs-8 cost-left">
           <%= f.label :other, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :other, class: "form-control" %>
+          <% if params[:order] %>
+            <%= f.text_field :other, value: params[:order][:other], class: "form-control" %>
+          <% else %>
+            <%= f.text_field :other, class: "form-control" %>
+          <% end %>
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
