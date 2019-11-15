@@ -11,19 +11,25 @@ class OrdersController < ApplicationController
   
   def new
     @order = Order.new
+    @kindss = ["SP", "SVP", "SPP", "SVPP", "V", "P", "PP", "Sh"]
   end
   
   def create
-    @order = Order.new(order_params)
-    if @order.save
-      flash[:success] = "新規オーダーを登録しました。"
-      if !@order.sales_date.nil?
-        redirect_to users_orders_traded_url(@user, date: @order.sales_date.beginning_of_month)
-      else
-        redirect_to user_orders_url(@user)
-      end
+    if params[:narrow_client_button]
+      redirect_to new_user_order_url(@user, order: order_params)
     else
-      render :new
+      @order = Order.new(order_params)
+      kind_name(@order)
+      if @order.save
+        flash[:success] = "新規オーダーを登録しました。"
+        if !@order.sales_date.nil?
+          redirect_to users_orders_traded_url(@user, date: @order.sales_date.beginning_of_month)
+        else
+          redirect_to user_orders_url(@user)
+        end
+      else
+        render :new
+      end
     end
   end
   
@@ -96,8 +102,10 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :note, :order_date, :sales_date,
-                                    :delivery, :wage, :cloth, :lining, :button, :postage, :other, :user_id,
-                                    :wage_pay, :cloth_pay, :lining_pay, :button_pay, :postage_pay, :other_pay)
+      params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :note,
+                                    :order_date,  :sales_date, :delivery, :wage,
+                                    :cloth, :lining, :button, :postage, :other, :user_id,
+                                    :wage_pay, :cloth_pay, :lining_pay, :button_pay,
+                                    :postage_pay, :other_pay, :narrow)
     end
 end

@@ -8,23 +8,61 @@
           {class: "form-control"}) %>
     </div>
     <div class="col-xs-6">
+      <div class="row">
+        <div class="col-xs-9 narrow-client-left">
+          <%= f.label "顧客を絞り込む", class: "label-#{yield(:class_text)}" %>
+          <%= f.text_field :narrow, class: "form-control", placeholder: "キーワードを入力" %>
+        </div>
+        <div class="col-xs-3 narrow-client-right">
+          <%= f.submit "絞り込む", name: "narrow_client_button", class: "btn btn-md btn-primary btn-block" %>
+        </div>
+      </div>
     </div> 
   </div>
   
   <div class="row">
     <div class="col-xs-4">
       <%= f.label :kind, class: "label-#{yield(:class_text)}" %>
-      <%= f.select :kind, ["SP", "SVP", "SPP", "SVPP", "V", "P", "PP", "Sh"],
-          {prompt: "タイプを選択"}, class: "form-control" %>
+      <% if params[:order] %>
+        <% if params[:order][:kind].blank? %>
+          <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5, "P": 6, "PP": 7, "Sh": 8}),
+              {prompt: "タイプを選択"}, class: "form-control" %>
+        <% else %>
+          <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
+                                                  "P": 6, "PP": 7, "Sh": 8}, params[:order][:kind]),
+              {prompt: "タイプを選択"}, class: "form-control" %>
+        <% end %>
+      <% else %>
+        <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5, "P": 6, "PP": 7, "Sh": 8}),
+              {prompt: "タイプを選択"}, class: "form-control" %>
+      <% end %>
     </div>
     <div class="col-xs-4">
       <%= f.label :plant_id, class: "label-#{yield(:class_text)}" %>
-      <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
-          {class: "form-control"}) %>
+      <% if params[:order] %>
+        <% if params[:order][:plant_id].blank? %>
+          <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
+              {class: "form-control"}) %>
+        <% else %>
+          <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]},
+              {class: "form-control"}) %>
+        <% end %>
+      <% else %>
+        <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
+            {class: "form-control"}) %>
+      <% end %>
     </div>
     <div class="col-xs-4">
       <%= f.label :retail, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :retail, class: "form-control" %>
+      <% if params[:order] %>
+        <% if params[:order][:retail].blank? %>
+          <%= f.text_field :retail, class: "form-control" %>
+        <% else %>
+          <%= f.text_field :retail, value: params[:order][:retail], class: "form-control" %>
+        <% end %>
+      <% else %>
+        <%= f.text_field :retail, class: "form-control" %>
+      <% end %>
     </div>
   </div>
   
@@ -44,7 +82,16 @@
   </div>
   
   <%= f.label :note, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :note, class: "form-control" %>
+  <% if params[:order] %>
+    <% if params[:order][:note].blank? %>
+      <%= f.text_field :note, class: "form-control" %>
+    <% else %>
+      <%= f.text_field :note, value: params[:order][:note], class: "form-control" %>
+    <% end %>
+  <% else %>
+    <%= f.text_field :note, class: "form-control" %>
+  <% end %>
+  
   
   <div class="cost-area"><p>費用(円)</p></div>
   

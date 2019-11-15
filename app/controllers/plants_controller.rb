@@ -18,10 +18,10 @@ class PlantsController < ApplicationController
   end
   
   def create
-    @plant = Plant.new(plant_params)
     if params[:zip_search_button]
       redirect_to new_user_plant_url(@user, plant: plant_params)
     else
+      @plant = Plant.new(plant_params)
       if @plant.save
         flash[:success] = "新規工場を登録しました。"
         redirect_to user_plant_url(@user, @plant)

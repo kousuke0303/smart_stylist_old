@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.integer "plant_id"
     t.integer "user_id"
     t.date "delivery"
+    t.string "narrow"
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

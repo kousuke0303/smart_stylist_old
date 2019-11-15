@@ -2,7 +2,7 @@
 
 <h1>アカウント情報</h1>
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-8 col-md-offset-2">
     <table class="table table-bordered table-condensed" id="user-table">
       <thead>
         <tr>
@@ -18,7 +18,10 @@
       </tbody>
     </table>
     <div class="to-user-edit">
-      <%= link_to "アカウント情報を編集する", edit_user_path(@user), class: "btn btn-md btn-primary" %>
+      <%= link_to "編集する", edit_user_path(@user), class: "btn btn-md btn-primary" %>
+      <%= link_to :back do %>
+        <button class="btn btn-md btn-default">戻る</button>
+      <% end %>
     </div>
   </div>
 </div>

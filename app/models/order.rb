@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   include OrdersHelper
   
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
+  before_save { self.narrow = nil }
   
   validates :client_id, presence: true
   validates :kind, presence: true

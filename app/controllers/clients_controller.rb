@@ -6,9 +6,10 @@ class ClientsController < ApplicationController
   
   def index
     if params[:search]
-      @clients = Client.where("name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page])
+      @clients = Client.where(user_id: @user.id)
+                 .where("name LIKE ?", "%#{params[:search]}%",).paginate(page: params[:page])
     else
-      @clients = Client.all.paginate(page: params[:page])
+      @clients = Client.where(user_id: @user.id).paginate(page: params[:page])
     end
   end
   
@@ -23,10 +24,10 @@ class ClientsController < ApplicationController
   end
   
   def create
-    @client = Client.new(client_params)
     if params[:zip_search_button]
       redirect_to new_user_client_url(@user, client: client_params)
     else
+      @client = Client.new(client_params)
       if @client.save
         flash[:success] = "新規顧客を登録しました。"
         redirect_to user_client_url(@user, @client)
