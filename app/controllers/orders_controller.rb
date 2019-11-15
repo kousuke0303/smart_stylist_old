@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
   
   def new
     @order = Order.new
-    @kindss = ["SP", "SVP", "SPP", "SVPP", "V", "P", "PP", "Sh"]
   end
   
   def create
@@ -19,14 +18,9 @@ class OrdersController < ApplicationController
       redirect_to new_user_order_url(@user, order: order_params)
     else
       @order = Order.new(order_params)
-      kind_name(@order)
       if @order.save
         flash[:success] = "新規オーダーを登録しました。"
-        if !@order.sales_date.nil?
-          redirect_to users_orders_traded_url(@user, date: @order.sales_date.beginning_of_month)
-        else
-          redirect_to user_orders_url(@user)
-        end
+        redirect_to user_order_url(@user, @order)
       else
         render :new
       end
@@ -44,11 +38,15 @@ class OrdersController < ApplicationController
   end
   
   def update
-    if @order.update_attributes(order_params)
-      flash[:success] = "オーダー内容を更新しました。"
-      redirect_to user_order_url(@user, @order)
+    if params[:narrow_client_button]
+      redirect_to edit_user_order_url(@user, @order, order: order_params)
     else
-      render :edit      
+      if @order.update_attributes(order_params)
+        flash[:success] = "オーダー内容を更新しました。"
+        redirect_to user_order_url(@user, @order)
+      else
+        render :edit      
+      end
     end
   end
   
@@ -79,7 +77,11 @@ class OrdersController < ApplicationController
   # beforeフィルター
   
   def set_clients_of_user
-    @clients = @user.clients.all
+    if params[:order] && params[:order][:narrow].present?
+      @clients = @user.clients.where("name LIKE ?", "%#{params[:order][:narrow]}%")
+    else
+      @clients = @user.clients.all
+    end
   end
   
   def set_plants_of_user

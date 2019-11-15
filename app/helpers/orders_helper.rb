@@ -1,26 +1,5 @@
 module OrdersHelper
   
-  def kind_name(order)
-    case order.kind
-      when "1"
-        order.kind = "SP"
-      when "2"
-        order.kind = "SVP"
-      when "3"
-        order.kind = "SPP"
-      when "4"
-        order.kind = "SVPP"
-      when "5"
-        order.kind = "V"
-      when "6"
-        order.kind = "P"
-      when "7"
-        order.kind = "PP"
-      when "8"
-        order.kind = "Sh"
-    end
-  end
-  
   def client_name(order)
     client = Client.find(order.client_id)
     client.name

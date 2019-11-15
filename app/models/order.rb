@@ -4,6 +4,25 @@ class Order < ApplicationRecord
   
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
   before_save { self.narrow = nil }
+  before_save { case self.kind
+                when "1"
+                  self.kind = "SP"
+                when "2"
+                  self.kind = "SVP"
+                when "3"
+                  self.kind = "SPP"
+                when "4"
+                  self.kind = "SVPP"
+                when "5"
+                  self.kind = "V"
+                when "6"
+                  self.kind = "P"
+                when "7"
+                  self.kind = "PP"
+                when "8"
+                  self.kind = "Sh"
+                end
+               }
   
   validates :client_id, presence: true
   validates :kind, presence: true
