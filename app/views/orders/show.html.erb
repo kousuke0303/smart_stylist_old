@@ -3,10 +3,10 @@
 <h1>オーダーの詳細情報</h1>
 
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-8 col-md-offset-2">
     <table class="table table-bordered table-condensed" id="order-show-table">
       <tr>
-        <th width=10%>顧客名</th>
+        <th width=20%>顧客名</th>
         <td colspan=3 width=75%>
           <%= link_to client_name(@order), user_client_path(@user, @order.client_id) %>
         </td>

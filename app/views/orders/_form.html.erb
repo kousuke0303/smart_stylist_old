@@ -9,7 +9,7 @@
     </div>
     <div class="col-xs-6">
       <div class="row">
-        <div class="col-xs-9 narrow-client-left">
+        <div class="col-xs-8 narrow-client-left">
           <%= f.label "顧客を絞り込む", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:narrow].present? %>
             <%= f.text_field :narrow, value: params[:order][:narrow], class: "form-control" %>
@@ -17,7 +17,7 @@
             <%= f.text_field :narrow, class: "form-control", placeholder: "キーワードを入力" %>
           <% end %>
         </div>
-        <div class="col-xs-3 narrow-client-right">
+        <div class="col-xs-4 narrow-client-right">
           <%= f.submit "絞り込む", name: "narrow_client_button", class: "btn btn-md btn-primary btn-block" %>
         </div>
       </div>
