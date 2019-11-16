@@ -37,6 +37,7 @@ class Order < ApplicationRecord
   validates :note, length: { maximum: 150 }
   validates :user_id, presence: true
   
+  validate :invalid_ratail_if_str
   validate :order_date_than_sales_date_fast_if_invalid
   validate :order_date_than_delivery_fast_if_invalid
   validate :invalid_pay_without_cost
@@ -60,5 +61,11 @@ class Order < ApplicationRecord
     errors.add(:button, "の金額を入力してください。") if button.nil? && button_pay.present?
     errors.add(:postage, "の金額を入力してください。") if postage.nil? && postage_pay.present?
     errors.add(:other, "の金額を入力してください。") if other.nil? && other_pay.present?
+  end
+  
+  def invalid_ratail_if_str
+    if retail.present? && retail !~ /^[0-9]+$/
+      errors.add(:retail, "は数字で入力してください。")
+    end
   end
 end

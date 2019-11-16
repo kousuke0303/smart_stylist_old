@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.string "kind"
     t.date "order_date"
     t.date "sales_date"
-    t.integer "retail"
+    t.string "retail"
     t.integer "wage"
     t.integer "cloth"
     t.integer "lining"
