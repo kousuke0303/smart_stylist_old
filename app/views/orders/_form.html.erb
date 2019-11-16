@@ -32,8 +32,9 @@
                                                 "P": 6, "PP": 7, "Sh": 8}, params[:order][:kind]),
             {prompt: "タイプを選択"}, class: "form-control" %>
       <% else %>
-        <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5, "P": 6, "PP": 7, "Sh": 8}),
-              {prompt: "タイプを選択"}, class: "form-control" %>
+        <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
+                                                "P": 6, "PP": 7, "Sh": 8}),
+            {prompt: "タイプを選択"}, class: "form-control" %>
       <% end %>
     </div>
     <div class="col-xs-4">
@@ -106,7 +107,11 @@
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
-          <%= f.check_box :wage_pay, class: "pay-checkbox" %>
+          <% if params[:order] && params[:order][:wage_pay] == "1" %>
+            <%= f.check_box :wage_pay, class: "pay-checkbox", checked: true %>
+          <% else %>
+            <%= f.check_box :wage_pay, class: "pay-checkbox" %>
+          <% end %>
         </div>
       </div> 
     </div> 
@@ -122,7 +127,11 @@
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
-          <%= f.check_box :cloth_pay, class: "pay-checkbox" %>
+          <% if params[:order] && params[:order][:cloth_pay] == "1" %>
+            <%= f.check_box :cloth_pay, class: "pay-checkbox", checked: true %>
+          <% else %>
+            <%= f.check_box :cloth_pay, class: "pay-checkbox" %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -138,7 +147,11 @@
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
-          <%= f.check_box :lining_pay, class: "pay-checkbox" %>
+          <% if params[:order] && params[:order][:lining_pay] == "1" %>
+            <%= f.check_box :lining_pay, class: "pay-checkbox", checked: true %>
+          <% else %>
+            <%= f.check_box :lining_pay, class: "pay-checkbox" %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -157,7 +170,11 @@
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
-          <%= f.check_box :button_pay, class: "pay-checkbox" %>
+          <% if params[:order] && params[:order][:button_pay] == "1" %>
+            <%= f.check_box :button_pay, class: "pay-checkbox", checked: true %>
+          <% else %>
+            <%= f.check_box :button_pay, class: "pay-checkbox" %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -173,7 +190,11 @@
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
-          <%= f.check_box :postage_pay, class: "pay-checkbox" %>
+          <% if params[:order] && params[:order][:postage_pay] == "1" %>
+            <%= f.check_box :postage_pay, class: "pay-checkbox", checked: true %>
+          <% else %>
+            <%= f.check_box :postage_pay, class: "pay-checkbox" %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -189,7 +210,11 @@
         </div>
         <div class="col-xs-4 cost-right">
           <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %>
-          <%= f.check_box :other_pay, class: "pay-checkbox" %>
+          <% if params[:order] && params[:order][:other_pay] == "1" %>
+            <%= f.check_box :other_pay, class: "pay-checkbox", checked: true %>
+          <% else %>
+            <%= f.check_box :other_pay, class: "pay-checkbox" %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ class Order < ApplicationRecord
   validates :client_id, presence: true
   validates :kind, presence: true
   validates :order_date, presence: true
-  validates :retail, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }
+  validates :retail, presence: true
   validates :wage, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
   validates :cloth, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
   validates :lining, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
