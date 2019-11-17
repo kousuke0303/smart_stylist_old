@@ -27,6 +27,7 @@ ja:
           staff_1: 担当者(1)
           staff_2: 担当者(2)
           note: 備考
+          user_id: ユーザー名
         client: 
           id: ID
           name: 顧客名
@@ -38,6 +39,7 @@ ja:
           email: メールアドレス
           work: 職業
           note: 備考
+          user_id: ユーザー名
         order:
           id: ID
           kind: 品名
