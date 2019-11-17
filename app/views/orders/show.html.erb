@@ -38,6 +38,10 @@
         <td colspan=3><%= l(@order.delivery, format: :long) if @order.delivery.present? %></td>
       </tr>
       <tr>
+        <th>粗利</th>
+        <td colspan=3><%= gross_profit(@order) %>円</td>
+      </tr>
+      <tr>
         <th>費用合計</th>
         <td colspan=3><%= put_price_or_bar(total_cost(@order)) %></td>
       </tr>
