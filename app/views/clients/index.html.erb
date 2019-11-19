@@ -11,8 +11,9 @@
     <table class="table table-bordered table-condensed table-hover" id="user-clients-table">
       <thead>
         <tr>
-          <td><%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-sm btn-primary" %></td>
+          <td width=10%><%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-sm btn-primary" %></td>
           <th>電話番号(1)</th>
+          <th>住所</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,7 @@
           <tr>
             <td><%= link_to client.name, user_client_path(@user, client) %></td>
             <td><%= client.tel_1 %></td>
+            <td><%= client.address %></td>
           </tr>
         <% end %>
       </tbody>

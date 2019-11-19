@@ -30,7 +30,11 @@
       <% if params[:order] && params[:order][:kind].present? %>
         <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
                                                 "P": 6, "PP": 7, "Sh": 8}, params[:order][:kind]),
-            {prompt: "タイプを選択"}, class: "form-control" %>
+            {}, class: "form-control" %>
+      <% elsif @order.kind.present? %>
+        <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
+                                                "P": 6, "PP": 7, "Sh": 8}, @order.kind),
+            {}, class: "form-control" %>
       <% else %>
         <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
                                                 "P": 6, "PP": 7, "Sh": 8}),

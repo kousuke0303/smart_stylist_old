@@ -10,6 +10,9 @@ class CreateClients < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :note
       t.string :work
+      t.date :birth_year
+      t.date :birth_month
+      t.date :birth_day
       t.references :user, foreign_key: true
 
       t.timestamps

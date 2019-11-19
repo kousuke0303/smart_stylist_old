@@ -68,6 +68,43 @@
     <%= f.text_field :work, class: "form-control" %>
   <% end %>
   
+  <%= f.label :"生年月日", class: "label-#{yield(:class_text)}" %>
+  <div class="form-inline">
+  <% if params[:client] && params[:client]["birth_year(1i)"].present? %>
+    <%= f.date_select(:birth_year,{
+          discard_month: true, start_year: Date.current.year,
+          end_yaer: 1900, default: Date.new(params[:client]["birth_year(1i)"].to_i, 1, 1)
+        }, {class: "form-control birth-input"})  %>
+  <% else %>
+    <%= f.date_select(:birth_year,{
+          discard_month: true, start_year: Date.current.year, end_yaer: 1900, prompt: "--"
+        }, {class: "form-control birth-input"}) %>
+  <% end %>
+  年
+   <% if params[:client] && params[:client]["birth_year(1i)"].present? %>
+    <%= f.date_select(:birth_year,{
+          discard_month: true, start_year: Date.current.year,
+          end_yaer: 1900, default: Date.new(params[:client]["birth_year(1i)"].to_i, 1, 1)
+        }, {class: "form-control birth-input"})  %>
+  <% else %>
+    <%= f.date_select(:birth_year,{
+          discard_month: true, start_year: Date.current.year, end_yaer: 1900, prompt: "--"
+        }, {class: "form-control birth-input"}) %>
+  <% end %>
+  月
+  <% if params[:client] && params[:client]["birth_year(1i)"].present? %>
+    <%= f.date_select(:birth_year,{
+          discard_month: true, start_year: Date.current.year,
+          end_yaer: 1900, default: Date.new(params[:client]["birth_year(1i)"].to_i, 1, 1)
+        }, {class: "form-control birth-input"})  %>
+  <% else %>
+    <%= f.date_select(:birth_day,{
+          discard_month: true, prompt: "--"
+        }, {class: "form-control birth-input"}) %>
+  <% end %>
+  日
+  </div>
+  
   <%= f.label :note, class: "label-#{yield(:class_text)}" %>
   <% if params[:client] %>
     <%= f.text_field :note, value: params[:client][:note], class: "form-control" %>

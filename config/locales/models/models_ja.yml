@@ -38,6 +38,9 @@ ja:
           fax: FAX番号
           email: メールアドレス
           work: 職業
+          birth_year: 生年月日(年)
+          birth_month: 生年月日(月)
+          birth_day: 生年月日(日)
           note: 備考
           user_id: ユーザー名
         order:

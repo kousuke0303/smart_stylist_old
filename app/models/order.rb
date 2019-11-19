@@ -4,28 +4,10 @@ class Order < ApplicationRecord
   
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
   before_save { self.narrow = nil }
-  before_save { case self.kind
-                when "1"
-                  self.kind = "SP"
-                when "2"
-                  self.kind = "SVP"
-                when "3"
-                  self.kind = "SPP"
-                when "4"
-                  self.kind = "SVPP"
-                when "5"
-                  self.kind = "V"
-                when "6"
-                  self.kind = "P"
-                when "7"
-                  self.kind = "PP"
-                when "8"
-                  self.kind = "Sh"
-                end
-               }
   
   validates :client_id, presence: true
   validates :kind, presence: true
+  validates :plant_id, presence: true
   validates :order_date, presence: true
   validates :retail, presence: true
   validates :wage, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
