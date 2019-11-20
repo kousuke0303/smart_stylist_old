@@ -10,7 +10,7 @@ class ClientsController < ApplicationController
                  where("name LIKE ?", "%#{params[:search]}%",).paginate(page: params[:page])
     elsif params[:search_birth].present?
       @clients = Client.where(user_id: @user.id, birth_month: params[:search_birth]).
-                 paginate(page: params[:page])
+                 order(:birth_day).paginate(page: params[:page])
     else
       @clients = Client.where(user_id: @user.id).paginate(page: params[:page])
     end

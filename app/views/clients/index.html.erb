@@ -36,7 +36,7 @@
       <thead>
         <tr>
           <td width=10%><%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-sm btn-primary" %></td>
-          <th>電話番号(1)</th>
+          <th><%= params[:search_birth].present? ? "誕生日" : "電話番号" %></th>
           <th>住所</th>
         </tr>
       </thead>
@@ -44,7 +44,15 @@
         <% @clients.each do |client| %>
           <tr>
             <td><%= link_to client.name, user_client_path(@user, client) %></td>
-            <td><%= client.tel_1 %></td>
+            <td>
+              <% if params[:search_birth].present? %>
+                <%= client.birth_year.present? ? client.birth_year.year : "--" %>年
+                <%= client.birth_month.present? ? client.birth_month : "--" %>月
+                <%= client.birth_day.present? ? client.birth_day : "--" %>日
+              <% else %>
+                <%= client.tel_1 %>
+              <% end %>
+            </td>
             <td><%= client.address %></td>
           </tr>
         <% end %>
