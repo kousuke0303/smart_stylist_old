@@ -19,6 +19,41 @@ class OrdersController < ApplicationController
     else
       @order = Order.new(order_params)
       if @order.save
+        if params[:order][:img_1]
+        @order.img_1 = "#{@order.id}_1.png"
+        File.binwrite("public/order_images/#{@order.img_1}", params[:order][:img_1].read)
+        @order.save
+        end
+        if params[:order][:img_2]
+        @order.img_2 = "#{@order.id}_2.png"
+        File.binwrite("public/order_images/#{@order.img_2}", params[:order][:img_2].read)
+        @order.save
+        end
+        if params[:order][:img_3]
+        @order.img_3 = "#{@order.id}_3.png"
+        File.binwrite("public/order_images/#{@order.img_3}", params[:order][:img_3].read)
+        @order.save
+        end
+        if params[:order][:img_4]
+        @order.img_4 = "#{@order.id}_4.png"
+        File.binwrite("public/order_images/#{@order.img_4}", params[:order][:img_4].read)
+        @order.save
+        end
+        if params[:order][:img_5]
+        @order.img_5 = "#{@order.id}_5.png"
+        File.binwrite("public/order_images/#{@order.img_5}", params[:order][:img_5].read)
+        @order.save
+        end
+        if params[:order][:img_6]
+        @order.img_6 = "#{@order.id}_6.png"
+        File.binwrite("public/order_images/#{@order.img_6}", params[:order][:img_6].read)
+        @order.save
+        end
+        if params[:order][:img_7]
+        @order.img_7 = "#{@order.id}_7.png"
+        File.binwrite("public/order_images/#{@order.img_7}", params[:order][:img_7].read)
+        @order.save
+        end
         flash[:success] = "新規オーダーを登録しました。"
         redirect_to user_order_url(@user, @order)
       else
@@ -108,6 +143,9 @@ class OrdersController < ApplicationController
                                     :order_date,  :sales_date, :delivery, :wage,
                                     :cloth, :lining, :button, :postage, :other, :user_id,
                                     :wage_pay, :cloth_pay, :lining_pay, :button_pay,
-                                    :postage_pay, :other_pay, :narrow)
+                                    :postage_pay, :other_pay, :narrow, :img_1, :img_2,
+                                    :img_3, :img_4, :img_5, :img_6, :img_7, :img_1_note,
+                                    :img_2_note, :img_3_note, :img_4_note, :img_5_note,
+                                    :img_6_note, :img_7_note)
     end
 end
