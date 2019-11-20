@@ -2,7 +2,7 @@
 <% provide(:search_url, users_path) %>
 <% provide(:search_title, "ユーザー検索") %>
 
-<% if params[:search] %>
+<% if params[:search].present? %>
   <h1>検索結果</h1>
 <% else %>
   <h1>ユーザー一覧</h1>
@@ -10,7 +10,12 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= render "shared/search" %>
+    <div class="row search-area">
+      <div class="col-sm-5 col-sm-offset-7">
+        <%= render 'shared/search' %>
+      </div>
+    </div>
+    
     <%= will_paginate %>
     <table class="table table-bordered table-condensed table-hover" id="table-users">
       <thead>

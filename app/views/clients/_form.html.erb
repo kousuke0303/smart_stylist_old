@@ -23,12 +23,10 @@
   </div>
   
   <%= f.label :address, class: "label-#{yield(:class_text)}" %>
-  <% if params[:client] %>
-    <% if @zipcode %>
-      <%= f.text_field :address, value: @result_address, class: "form-control" %>
-    <% else %>
-      <%= f.text_field :address, value: params[:client][:address], class: "form-control" %>
-    <% end %>
+  <% if params[:client] && @zipcode %>
+    <%= f.text_field :address, value: @result_address, class: "form-control" %>
+  <% elsif params[:client] %>
+    <%= f.text_field :address, value: params[:client][:address], class: "form-control" %>
   <% else %>
     <%= f.text_field :address, class: "form-control" %>
   <% end %>

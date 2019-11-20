@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   
   def index
     if params[:search]
-      @users = User.where("name LIKE ?", "%#{params[:search]}%")
+      @users = User.where("name LIKE ?", "%#{params[:search]}%").paginate(page: params[:page])
     else
       @users = User.all.paginate(page: params[:page])
     end
