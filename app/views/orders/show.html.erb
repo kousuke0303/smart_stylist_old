@@ -119,6 +119,14 @@
         <td colspan=3><%= @order.note %></td>
       </tr>
     </table>
+    <div class="img-display-btn-area">
+      <% if params[:img] == "display" %>
+        <%= link_to "画像を非表示", user_order_path(@user, @order), class: "btn btn-lg btn-primary" %>
+      <% else %>
+        <%= link_to "画像を表示", user_order_path(@user, @order, img: "display"),
+            class: "btn btn-lg btn-primary" %>
+      <% end %>
+    </div>
     <div class="show-btn-area">
       <%= link_to "オーダー内容を更新", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
       <%= link_to "削除", user_order_path(@user, @order), method: :delete, 

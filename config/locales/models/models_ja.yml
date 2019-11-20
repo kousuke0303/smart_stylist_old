@@ -59,3 +59,17 @@ ja:
           plant_id: 発注工場
           delivery: 納品予定日
           client_id: 顧客名
+          img_1: 画像(1)
+          img_2: 画像(2)
+          img_3: 画像(3)
+          img_4: 画像(4)
+          img_5: 画像(5)
+          img_6: 画像(6)
+          img_7: 画像(7)
+          img_1_note: 画像(1)の詳細
+          img_2_note: 画像(2)の詳細
+          img_3_note: 画像(3)の詳細
+          img_4_note: 画像(4)の詳細
+          img_5_note: 画像(5)の詳細
+          img_6_note: 画像(6)の詳細
+          img_7_note: 画像(7)の詳細

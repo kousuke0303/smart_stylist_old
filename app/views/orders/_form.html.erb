@@ -95,8 +95,7 @@
     <%= f.text_field :note, class: "form-control" %>
   <% end %>
   
-  
-  <div class="cost-area"><p>費用(円)</p></div>
+  <div class="subtitle-area"><p>費用(円)</p></div>
   
   <div class="row">
     <div class="col-xs-4">
@@ -221,6 +220,15 @@
           <% end %>
         </div>
       </div>
+    </div>
+  </div>
+  
+  <div class="subtitle-area"><p>関連画像</p></div>
+  
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.label :img_1, class: "label-#{yield(:class_text)}" %>
+      <%= f.file_field :img_1 %>
     </div>
   </div>
   

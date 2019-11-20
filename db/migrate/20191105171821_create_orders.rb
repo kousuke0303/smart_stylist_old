@@ -23,6 +23,20 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.date :delivery
       t.string :narrow
+      t.string :img_1
+      t.string :img_2
+      t.string :img_3
+      t.string :img_4
+      t.string :img_5
+      t.string :img_6
+      t.string :img_7
+      t.string :img_1_note
+      t.string :img_2_note
+      t.string :img_3_note
+      t.string :img_4_note
+      t.string :img_5_note
+      t.string :img_6_note
+      t.string :img_7_note
       t.references :client, foreign_key: true
 
       t.timestamps
