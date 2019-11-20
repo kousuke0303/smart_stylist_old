@@ -30,6 +30,7 @@ class Order < ApplicationRecord
   validate :order_date_than_sales_date_fast_if_invalid
   validate :order_date_than_delivery_fast_if_invalid
   validate :invalid_pay_without_cost
+  validate :note_with_img
   
   def order_date_than_sales_date_fast_if_invalid
     unless sales_date.blank?
@@ -56,5 +57,15 @@ class Order < ApplicationRecord
     if retail.present? && retail !~ /^[0-9]+$/
       errors.add(:retail, "は数字で入力してください。")
     end
+  end
+  
+  def note_with_img
+    errors.add(:img_1, "が登録されていません。") if img_1.nil? && img_1_note.present?
+    errors.add(:img_2, "が登録されていません。") if img_2.nil? && img_2_note.present?
+    errors.add(:img_3, "が登録されていません。") if img_3.nil? && img_3_note.present?
+    errors.add(:img_4, "が登録されていません。") if img_4.nil? && img_4_note.present?
+    errors.add(:img_5, "が登録されていません。") if img_5.nil? && img_5_note.present?
+    errors.add(:img_6, "が登録されていません。") if img_6.nil? && img_6_note.present?
+    errors.add(:img_7, "が登録されていません。") if img_7.nil? && img_7_note.present?
   end
 end

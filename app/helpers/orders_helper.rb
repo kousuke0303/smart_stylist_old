@@ -1,5 +1,76 @@
 module OrdersHelper
   
+  def new_img
+    if params[:order][:img_1]
+      @order.img_1 = "#{@order.id}_1.png"
+      File.binwrite("public/order_images/#{@order.img_1}", params[:order][:img_1].read)
+    end
+    if params[:order][:img_2]
+      @order.img_2 = "#{@order.id}_2.png"
+      File.binwrite("public/order_images/#{@order.img_2}", params[:order][:img_2].read)
+    end
+    if params[:order][:img_3]
+      @order.img_3 = "#{@order.id}_3.png"
+      File.binwrite("public/order_images/#{@order.img_3}", params[:order][:img_3].read)
+    end
+    if params[:order][:img_4]
+      @order.img_4 = "#{@order.id}_4.png"
+      File.binwrite("public/order_images/#{@order.img_4}", params[:order][:img_4].read)
+    end
+    if params[:order][:img_5]
+      @order.img_5 = "#{@order.id}_5.png"
+      File.binwrite("public/order_images/#{@order.img_5}", params[:order][:img_5].read)
+    end
+    if params[:order][:img_6]
+      @order.img_6 = "#{@order.id}_6.png"
+      File.binwrite("public/order_images/#{@order.img_6}", params[:order][:img_6].read)
+    end
+    if params[:order][:img_7]
+      @order.img_7 = "#{@order.id}_7.png"
+      File.binwrite("public/order_images/#{@order.img_7}", params[:order][:img_7].read)
+    end
+    @order.save
+  end
+  
+  def update_img
+    if params[:order][:img_1]
+      File.delete("public/order_images/#{@order.id}_1.png") if File.exist?("public/order_images/#{@order.id}_1.png")
+      @order.img_1 = "#{@order.id}_1.png"
+      File.binwrite("public/order_images/#{@order.img_1}", params[:order][:img_1].read)
+    end
+    if params[:order][:img_2]
+      File.delete("public/order_images/#{@order.id}_2.png") if File.exist?("public/order_images/#{@order.id}_2.png")
+      @order.img_2 = "#{@order.id}_2.png"
+      File.binwrite("public/order_images/#{@order.img_2}", params[:order][:img_2].read)
+    end
+    if params[:order][:img_3]
+      File.delete("public/order_images/#{@order.id}_3.png") if File.exist?("public/order_images/#{@order.id}_3.png")
+      @order.img_3 = "#{@order.id}_3.png"
+      File.binwrite("public/order_images/#{@order.img_3}", params[:order][:img_3].read)
+    end
+    if params[:order][:img_4]
+      File.delete("public/order_images/#{@order.id}_4.png") if File.exist?("public/order_images/#{@order.id}_4.png")
+      @order.img_4 = "#{@order.id}_4.png"
+      File.binwrite("public/order_images/#{@order.img_4}", params[:order][:img_4].read)
+    end
+    if params[:order][:img_5]
+      File.delete("public/order_images/#{@order.id}_5.png") if File.exist?("public/order_images/#{@order.id}_5.png")
+      @order.img_5 = "#{@order.id}_5.png"
+      File.binwrite("public/order_images/#{@order.img_5}", params[:order][:img_5].read)
+    end
+    if params[:order][:img_6]
+      File.delete("public/order_images/#{@order.id}_6.png") if File.exist?("public/order_images/#{@order.id}_6.png")
+      @order.img_6 = "#{@order.id}_6.png"
+      File.binwrite("public/order_images/#{@order.img_6}", params[:order][:img_6].read)
+    end
+    if params[:order][:img_7]
+      File.delete("public/order_images/#{@order.id}_7.png") if File.exist?("public/order_images/#{@order.id}_7.png")
+      @order.img_7 = "#{@order.id}_7.png"
+      File.binwrite("public/order_images/#{@order.img_7}", params[:order][:img_7].read)
+    end
+    @order.save
+  end
+  
   def client_name(order)
     client = Client.find(order.client_id)
     client.name
