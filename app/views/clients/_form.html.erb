@@ -70,37 +70,61 @@
   
   <%= f.label :"生年月日", class: "label-#{yield(:class_text)}" %>
   <div class="form-inline">
-  <% if params[:client] && params[:client]["birth_year(1i)"].present? %>
-    <%= f.date_select(:birth_year,{
-          discard_month: true, start_year: Date.current.year,
-          end_yaer: 1900, default: Date.new(params[:client]["birth_year(1i)"].to_i, 1, 1)
-        }, {class: "form-control birth-input"})  %>
+  <% if params[:client] %>
+    <%= f.date_select(:birth_year,
+                      {include_blank: true, selected: Date.new(params[:client]["birth_year(1i)"].to_i,1,1),
+                      start_year: Date.current.year, end_year: Date.current.year - 100,
+                      discard_month: true}, {class: "form-control"}
+                      ) %>
   <% else %>
-    <%= f.date_select(:birth_year,{
-          discard_month: true, start_year: Date.current.year, end_yaer: 1900, prompt: "--"
-        }, {class: "form-control birth-input"}) %>
+    <%= f.date_select(:birth_year,
+                      {include_blank: true, start_year: Date.current.year,
+                      end_year: Date.current.year - 100,discard_month: true}, {class: "form-control"}
+                      ) %>
   <% end %>
   年
-   <% if params[:client] && params[:client]["birth_year(1i)"].present? %>
-    <%= f.date_select(:birth_year,{
-          discard_month: true, start_year: Date.current.year,
-          end_yaer: 1900, default: Date.new(params[:client]["birth_year(1i)"].to_i, 1, 1)
-        }, {class: "form-control birth-input"})  %>
+  <% if params[:client] && !params[:client][:birth_month].nil? %>
+    <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                   "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,"12": 12},
+        params[:client][:birth_month]),
+        {include_blank: true}, class: "form-control" %>
+  <% elsif @client.birth_month.present? %>
+    <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                   "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12},
+        selected: @client.birth_month),
+        {include_blank: true}, class: "form-control" %>
   <% else %>
-    <%= f.date_select(:birth_year,{
-          discard_month: true, start_year: Date.current.year, end_yaer: 1900, prompt: "--"
-        }, {class: "form-control birth-input"}) %>
+    <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                   "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12}),
+        {include_blank: true}, class: "form-control" %>
   <% end %>
   月
-  <% if params[:client] && params[:client]["birth_year(1i)"].present? %>
-    <%= f.date_select(:birth_year,{
-          discard_month: true, start_year: Date.current.year,
-          end_yaer: 1900, default: Date.new(params[:client]["birth_year(1i)"].to_i, 1, 1)
-        }, {class: "form-control birth-input"})  %>
+  <% if params[:client] && !params[:client][:birth_day].nil? %>
+    <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                  "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
+                                                  "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
+                                                  "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
+                                                  "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
+                                                  "27": 27, "28": 28, "29": 29, "30": 30, "31": 31},
+        params[:client][:birth_day]),
+        {include_blank: true}, class: "form-control" %>
+  <% elsif @client.birth_day.present? %>
+    <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                  "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
+                                                  "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
+                                                  "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
+                                                  "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
+                                                  "27": 27, "28": 28, "29": 29, "30": 30, "31": 31},
+        @client.birth_day),
+        {include_blank: true}, class: "form-control" %>
   <% else %>
-    <%= f.date_select(:birth_day,{
-          discard_month: true, prompt: "--"
-        }, {class: "form-control birth-input"}) %>
+    <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                  "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
+                                                  "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
+                                                  "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
+                                                  "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
+                                                  "27": 27, "28": 28, "29": 29, "30": 30, "31": 31}),
+        {include_blank: true}, class: "form-control" %>
   <% end %>
   日
   </div>

@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.string "note"
     t.string "work"
     t.date "birth_year"
-    t.date "birth_month"
-    t.date "birth_day"
+    t.integer "birth_month"
+    t.integer "birth_day"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

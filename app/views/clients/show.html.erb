@@ -33,6 +33,14 @@
         <td><%= @client.work %></td>
       </tr>
       <tr>
+        <th>生年月日</th>
+        <td>
+          <%= @client.birth_year.present? ? @client.birth_year.year : "--" %>年
+          <%= @client.birth_month.present? ? @client.birth_month : "--" %>月
+          <%= @client.birth_day.present? ? @client.birth_day : "--" %>日
+        </td>
+      </tr>
+      <tr>
         <th>備考</th>
         <td><%= @client.note %></td>
       </tr>
