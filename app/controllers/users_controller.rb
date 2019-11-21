@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    del_img_with_user
     @user.destroy
     flash[:success] = "#{@user.name}のデータを削除しました。"
     redirect_to users_url

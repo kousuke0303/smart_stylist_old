@@ -53,6 +53,7 @@ class OrdersController < ApplicationController
   end
   
   def destroy
+    del_img_with_order
     @order.destroy
     flash[:success] = "オーダーを削除しました。"
     if !@order.sales_date.nil?

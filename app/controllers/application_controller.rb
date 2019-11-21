@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   require 'json'
   include SessionsHelper
   include OrdersHelper
+  include UsersHelper
   
   # beforeフィルター
     
