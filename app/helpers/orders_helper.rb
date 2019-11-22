@@ -33,37 +33,72 @@ module OrdersHelper
   end
   
   def update_img
-    if params[:order][:img_1]
+    if params[:order][:del_img_1_check] == "1"
+      @order.img_1 = nil
+      @order.img_1_note = nil
+      @order.del_img_1_check = false
+      File.delete("public/order_images/#{@order.id}_1.png")
+    elsif params[:order][:img_1]
       File.delete("public/order_images/#{@order.id}_1.png") if File.exist?("public/order_images/#{@order.id}_1.png")
       @order.img_1 = "#{@order.id}_1.png"
       File.binwrite("public/order_images/#{@order.img_1}", params[:order][:img_1].read)
     end
-    if params[:order][:img_2]
+    if params[:order][:del_img_2_check] == "1"
+      @order.img_2 = nil
+      @order.img_2_note = nil
+      @order.del_img_2_check = false
+      File.delete("public/order_images/#{@order.id}_2.png")
+    elsif params[:order][:img_2]
       File.delete("public/order_images/#{@order.id}_2.png") if File.exist?("public/order_images/#{@order.id}_2.png")
       @order.img_2 = "#{@order.id}_2.png"
       File.binwrite("public/order_images/#{@order.img_2}", params[:order][:img_2].read)
     end
-    if params[:order][:img_3]
+    if params[:order][:del_img_3_check] == "1"
+      @order.img_3 = nil
+      @order.img_3_note = nil
+      @order.del_img_3_check = false
+      File.delete("public/order_images/#{@order.id}_3.png")
+    elsif params[:order][:img_3]
       File.delete("public/order_images/#{@order.id}_3.png") if File.exist?("public/order_images/#{@order.id}_3.png")
       @order.img_3 = "#{@order.id}_3.png"
       File.binwrite("public/order_images/#{@order.img_3}", params[:order][:img_3].read)
     end
-    if params[:order][:img_4]
+    if params[:order][:del_img_4_check] == "1"
+      @order.img_4 = nil
+      @order.img_4_note = nil
+      @order.del_img_4_check = false
+      File.delete("public/order_images/#{@order.id}_4.png")
+    elsif params[:order][:img_4]
       File.delete("public/order_images/#{@order.id}_4.png") if File.exist?("public/order_images/#{@order.id}_4.png")
       @order.img_4 = "#{@order.id}_4.png"
       File.binwrite("public/order_images/#{@order.img_4}", params[:order][:img_4].read)
     end
-    if params[:order][:img_5]
+    if params[:order][:del_img_5_check] == "1"
+      @order.img_5 = nil
+      @order.img_5_note = nil
+      @order.del_img_5_check = false
+      File.delete("public/order_images/#{@order.id}_5.png")
+    elsif params[:order][:img_5]
       File.delete("public/order_images/#{@order.id}_5.png") if File.exist?("public/order_images/#{@order.id}_5.png")
       @order.img_5 = "#{@order.id}_5.png"
       File.binwrite("public/order_images/#{@order.img_5}", params[:order][:img_5].read)
     end
-    if params[:order][:img_6]
+    if params[:order][:del_img_6_check] == "1"
+      @order.img_6 = nil
+      @order.img_6_note = nil
+      @order.del_img_6_check = false
+      File.delete("public/order_images/#{@order.id}_6.png")
+    elsif params[:order][:img_6]
       File.delete("public/order_images/#{@order.id}_6.png") if File.exist?("public/order_images/#{@order.id}_6.png")
       @order.img_6 = "#{@order.id}_6.png"
       File.binwrite("public/order_images/#{@order.img_6}", params[:order][:img_6].read)
     end
-    if params[:order][:img_7]
+    if params[:order][:del_img_7_check] == "1"
+      @order.img_7 = nil
+      @order.img_7_note = nil
+      @order.del_img_7_check = false
+      File.delete("public/order_images/#{@order.id}_7.png")
+    elsif params[:order][:img_7]
       File.delete("public/order_images/#{@order.id}_7.png") if File.exist?("public/order_images/#{@order.id}_7.png")
       @order.img_7 = "#{@order.id}_7.png"
       File.binwrite("public/order_images/#{@order.img_7}", params[:order][:img_7].read)

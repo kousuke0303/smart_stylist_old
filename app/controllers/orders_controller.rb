@@ -107,13 +107,12 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :note,
-                                    :order_date,  :sales_date, :delivery, :wage,
-                                    :cloth, :lining, :button, :postage, :other, :user_id,
-                                    :wage_pay, :cloth_pay, :lining_pay, :button_pay,
-                                    :postage_pay, :other_pay, :narrow, :img_1, :img_2,
-                                    :img_3, :img_4, :img_5, :img_6, :img_7, :img_1_note,
-                                    :img_2_note, :img_3_note, :img_4_note, :img_5_note,
-                                    :img_6_note, :img_7_note)
+      params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :note, :order_date, :sales_date,
+                                    :delivery, :wage, :cloth, :lining, :button, :postage, :other, :user_id,
+                                    :wage_pay, :cloth_pay, :lining_pay, :button_pay, :postage_pay, :other_pay,
+                                    :narrow, :img_1, :img_2, :img_3, :img_4, :img_5, :img_6, :img_7, :img_1_note,
+                                    :img_2_note, :img_3_note, :img_4_note, :img_5_note,:img_6_note, :img_7_note,
+                                    :del_img_1_check, :del_img_2_check, :del_img_3_check, :del_img_4_check,
+                                    :del_img_5_check, :del_img_6_check, :del_img_7_check)
     end
 end
