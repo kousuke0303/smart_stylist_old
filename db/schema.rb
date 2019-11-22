@@ -68,13 +68,13 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.string "img_5_note"
     t.string "img_6_note"
     t.string "img_7_note"
-    t.boolean "del_img_1_check"
-    t.boolean "del_img_2_check"
-    t.boolean "del_img_3_check"
-    t.boolean "del_img_4_check"
-    t.boolean "del_img_5_check"
-    t.boolean "del_img_6_check"
-    t.boolean "del_img_7_check"
+    t.boolean "del_img_1_check", default: false
+    t.boolean "del_img_2_check", default: false
+    t.boolean "del_img_3_check", default: false
+    t.boolean "del_img_4_check", default: false
+    t.boolean "del_img_5_check", default: false
+    t.boolean "del_img_6_check", default: false
+    t.boolean "del_img_7_check", default: false
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

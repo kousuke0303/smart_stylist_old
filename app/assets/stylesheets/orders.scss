@@ -43,8 +43,34 @@ input[type=checkbox].pay-checkbox {
   padding-top: 4px;
 }
 
+.form-img-select-area {
+  margin-top: 5px;
+}
+
+.del-img-check-area {
+  margin-top: 3px;
+  padding: 0 27px 0 0px;
+  text-align: right;
+}
+
+input[type=checkbox].del-checkbox {
+  margin: 10px 0 0 10px;
+  transform: scale(1.5);
+}
+
+.form-img-note-area {
+  margin: 10px 0 10px 0;
+}
+
+.img-note-label-area {
+  padding: 0;
+}
+
+.img-note-text-area {
+  padding: 0;
+}
+
 .order-submit-area {
-  margin-top: 10px;
   text-align: center;
 }
 

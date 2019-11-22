@@ -2,291 +2,428 @@
   <%= render "shared/error_messages", object: @order %>
   
   <div class="row">
-    <div class="col-xs-6">
-      <%= f.label :client_id, class: "label-#{yield(:class_text)}" %>
-      <%= f.collection_select(:client_id, @clients, :id, :name, {prompt: "顧客を選択"},
-          {class: "form-control"}) %>
-    </div>
-    <div class="col-xs-6">
+    <div class="col-md-12">
       <div class="row">
-        <div class="col-xs-8 narrow-client-left">
-          <%= f.label "顧客を絞り込む", class: "label-#{yield(:class_text)}" %>
-          <% if params[:order] && params[:order][:narrow].present? %>
-            <%= f.text_field :narrow, value: params[:order][:narrow], class: "form-control" %>
-          <% else %>
-            <%= f.text_field :narrow, class: "form-control", placeholder: "キーワードを入力" %>
-          <% end %>
-        </div>
-        <div class="col-xs-4 narrow-client-right">
-          <%= f.submit "絞り込む", name: "narrow_client_button", class: "btn btn-md btn-primary btn-block" %>
-        </div>
-      </div>
-    </div> 
-  </div>
-  
-  <div class="row">
-    <div class="col-xs-4">
-      <%= f.label :kind, class: "label-#{yield(:class_text)}" %>
-      <% if params[:order] && params[:order][:kind].present? %>
-        <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
-                                                "P": 6, "PP": 7, "Sh": 8}, params[:order][:kind]),
-            {}, class: "form-control" %>
-      <% elsif @order.kind.present? %>
-        <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
-                                                "P": 6, "PP": 7, "Sh": 8}, @order.kind),
-            {}, class: "form-control" %>
-      <% else %>
-        <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
-                                                "P": 6, "PP": 7, "Sh": 8}),
-            {prompt: "タイプを選択"}, class: "form-control" %>
-      <% end %>
-    </div>
-    <div class="col-xs-4">
-      <%= f.label :plant_id, class: "label-#{yield(:class_text)}" %>
-      <% if params[:order] && params[:order][:plant_id].present? %>
-        <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]},
+        
+        <div class="col-xs-6">
+          <%= f.label :client_id, class: "label-#{yield(:class_text)}" %>
+          <%= f.collection_select(:client_id, @clients, :id, :name, {prompt: "顧客を選択"},
               {class: "form-control"}) %>
-      <% else %>
-        <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
-            {class: "form-control"}) %>
-      <% end %>
-    </div>
-    <div class="col-xs-4">
-      <%= f.label :retail, class: "label-#{yield(:class_text)}" %>
-      <% if params[:order] %>
-        <%= f.text_field :retail, value: params[:order][:retail], class: "form-control" %>
-      <% else %>
-        <%= f.text_field :retail, class: "form-control" %>
-      <% end %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-xs-4">
-      <%= f.label :order_date, class: "label-#{yield(:class_text)}" %>
-      <% if params[:order] && params[:order][:order_date].present? %>
-        <%= f.date_field :order_date, value: params[:order][:order_date], class: "form-control" %>
-      <% else %>
-        <%= f.date_field :order_date, class: "form-control" %>
-      <% end %>
-    </div>
-    <div class="col-xs-4">
-      <%= f.label :sales_date, class: "label-#{yield(:class_text)}" %>
-      <% if params[:order] && params[:order][:sales_date].present? %>
-        <%= f.date_field :sales_date, value: params[:order][:sales_date], class: "form-control" %>
-      <% else %>
-        <%= f.date_field :sales_date, class: "form-control" %>
-      <% end %>
-    </div>
-    <div class="col-xs-4">
-      <%= f.label :delivery, class: "label-#{yield(:class_text)}" %>
-      <% if params[:order] && params[:order][:delivery].present? %>
-        <%= f.date_field :delivery, value: params[:order][:delivery], class: "form-control" %>
-      <% else %>
-        <%= f.date_field :delivery, class: "form-control" %>
-      <% end %>
-    </div>
-  </div>
-  
-  <%= f.label :note, class: "label-#{yield(:class_text)}" %>
-  <% if params[:order] %>
-    <%= f.text_field :note, value: params[:order][:note], class: "form-control" %>
-  <% else %>
-    <%= f.text_field :note, class: "form-control" %>
-  <% end %>
-  
-  <div class="subtitle-area"><p>費用(円)</p></div>
-  
-  <div class="row">
-    <div class="col-xs-4">
-      <div class="row">
-        <div class="col-xs-9 cost-left">
-          <%= f.label :wage, class: "label-#{yield(:class_text)}" %>
-          <% if params[:order] %>
-            <%= f.text_field :wage, value: params[:order][:wage], class: "form-control" %>
-          <% else %>
-            <%= f.text_field :wage, class: "form-control" %>
-          <% end %>
         </div>
-        <div class="col-xs-3 cost-right">
-          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
-          <% if params[:order] && params[:order][:wage_pay] == "1" %>
-            <%= f.check_box :wage_pay, class: "pay-checkbox", checked: true %>
-          <% else %>
-            <%= f.check_box :wage_pay, class: "pay-checkbox" %>
-          <% end %>
-        </div>
-      </div> 
-    </div> 
-    <div class="col-xs-4">
-      <div class="row">
-        <div class="col-xs-9 cost-left">
-          <%= f.label :cloth, class: "label-#{yield(:class_text)}" %>
-          <% if params[:order] %>
-            <%= f.text_field :cloth, value: params[:order][:cloth], class: "form-control" %>
-          <% else %>
-            <%= f.text_field :cloth, class: "form-control" %>
-          <% end %>
-        </div>
-        <div class="col-xs-3 cost-right">
-          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
-          <% if params[:order] && params[:order][:cloth_pay] == "1" %>
-            <%= f.check_box :cloth_pay, class: "pay-checkbox", checked: true %>
-          <% else %>
-            <%= f.check_box :cloth_pay, class: "pay-checkbox" %>
-          <% end %>
-        </div>
+        
+        <div class="col-xs-6">
+          <div class="row">
+            <div class="col-xs-8 narrow-client-left">
+              <%= f.label "顧客を絞り込む", class: "label-#{yield(:class_text)}" %>
+              <% if params[:order] && params[:order][:narrow].present? %>
+                <%= f.text_field :narrow, value: params[:order][:narrow], class: "form-control" %>
+              <% else %>
+                <%= f.text_field :narrow, class: "form-control", placeholder: "キーワードを入力" %>
+              <% end %>
+            </div>
+            <div class="col-xs-4 narrow-client-right">
+              <%= f.submit "検索", name: "narrow_client_button", class: "btn btn-md btn-primary btn-block" %>
+            </div>
+          </div>
+        </div> 
+        
       </div>
-    </div>
-    <div class="col-xs-4">
+    
       <div class="row">
-        <div class="col-xs-9 cost-left">
-          <%= f.label :lining, class: "label-#{yield(:class_text)}" %>
+        
+        <div class="col-xs-4">
+          <%= f.label :kind, class: "label-#{yield(:class_text)}" %>
+          <% if params[:order] && params[:order][:kind].present? %>
+            <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
+                                                    "P": 6, "PP": 7, "Sh": 8}, params[:order][:kind]),
+                {}, class: "form-control" %>
+          <% elsif @order.kind.present? %>
+            <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
+                                                    "P": 6, "PP": 7, "Sh": 8}, @order.kind),
+                {}, class: "form-control" %>
+          <% else %>
+            <%= f.select :kind, options_for_select({"SP": 1, "SVP": 2, "SPP": 3, "SVPP": 4, "V": 5,
+                                                    "P": 6, "PP": 7, "Sh": 8}),
+                {prompt: "タイプを選択"}, class: "form-control" %>
+          <% end %>
+        </div>
+        
+        <div class="col-xs-4">
+          <%= f.label :plant_id, class: "label-#{yield(:class_text)}" %>
+          <% if params[:order] && params[:order][:plant_id].present? %>
+            <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]},
+                  {class: "form-control"}) %>
+          <% else %>
+            <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
+                {class: "form-control"}) %>
+          <% end %>
+        </div>
+        
+        <div class="col-xs-4">
+          <%= f.label :retail, class: "label-#{yield(:class_text)}" %>
           <% if params[:order] %>
-            <%= f.text_field :lining, value: params[:order][:lining], class: "form-control" %>
+            <%= f.text_field :retail, value: params[:order][:retail], class: "form-control" %>
           <% else %>
-            <%= f.text_field :lining, class: "form-control" %>
+            <%= f.text_field :retail, class: "form-control" %>
           <% end %>
         </div>
-        <div class="col-xs-3 cost-right">
-          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
-          <% if params[:order] && params[:order][:lining_pay] == "1" %>
-            <%= f.check_box :lining_pay, class: "pay-checkbox", checked: true %>
-          <% else %>
-            <%= f.check_box :lining_pay, class: "pay-checkbox" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="row">
-        <div class="col-xs-9 cost-left">
-          <%= f.label :button, class: "label-#{yield(:class_text)}" %>
-          <% if params[:order] %>
-            <%= f.text_field :button, value: params[:order][:button], class: "form-control" %>
-          <% else %>
-            <%= f.text_field :button, class: "form-control" %>
-          <% end %>
-        </div>
-        <div class="col-xs-3 cost-right">
-          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
-          <% if params[:order] && params[:order][:button_pay] == "1" %>
-            <%= f.check_box :button_pay, class: "pay-checkbox", checked: true %>
-          <% else %>
-            <%= f.check_box :button_pay, class: "pay-checkbox" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="row">
-        <div class="col-xs-9 cost-left">
-          <%= f.label :postage, class: "label-#{yield(:class_text)}" %>
-          <% if params[:order] %>
-            <%= f.text_field :postage, value: params[:order][:postage], class: "form-control" %>
-          <% else %>
-            <%= f.text_field :postage, class: "form-control" %>
-          <% end %>
-        </div>
-        <div class="col-xs-3 cost-right">
-          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
-          <% if params[:order] && params[:order][:postage_pay] == "1" %>
-            <%= f.check_box :postage_pay, class: "pay-checkbox", checked: true %>
-          <% else %>
-            <%= f.check_box :postage_pay, class: "pay-checkbox" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="row">
-        <div class="col-xs-9 cost-left">
-          <%= f.label :other, class: "label-#{yield(:class_text)}" %>
-          <% if params[:order] %>
-            <%= f.text_field :other, value: params[:order][:other], class: "form-control" %>
-          <% else %>
-            <%= f.text_field :other, class: "form-control" %>
-          <% end %>
-        </div>
-        <div class="col-xs-3 cost-right">
-          <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
-          <% if params[:order] && params[:order][:other_pay] == "1" %>
-            <%= f.check_box :other_pay, class: "pay-checkbox", checked: true %>
-          <% else %>
-            <%= f.check_box :other_pay, class: "pay-checkbox" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="subtitle-area"><p>関連画像</p></div>
-  
-  <div class="row">
-    <div class="col-md-6">
-      <%= f.label :img_1, class: "label-#{yield(:class_text)}" %>
-      <div class="file-select-area"><%= f.file_field :img_1 %></div>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_1_note, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :img_1_note, class: "form-control" %>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_2, class: "label-#{yield(:class_text)}" %>
-      <div class="file-select-area"><%= f.file_field :img_2 %></div>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_2_note, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :img_2_note, class: "form-control" %>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_3, class: "label-#{yield(:class_text)}" %>
-      <div class="file-select-area"><%= f.file_field :img_3 %></div>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_3_note, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :img_3_note, class: "form-control" %>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_4, class: "label-#{yield(:class_text)}" %>
-      <div class="file-select-area"><%= f.file_field :img_4 %></div>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_4_note, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :img_4_note, class: "form-control" %>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_5, class: "label-#{yield(:class_text)}" %>
-      <div class="file-select-area"><%= f.file_field :img_5 %></div>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_5_note, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :img_5_note, class: "form-control" %>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_6, class: "label-#{yield(:class_text)}" %>
-      <div class="file-select-area"><%= f.file_field :img_6 %></div>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_6_note, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :img_6_note, class: "form-control" %>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_7, class: "label-#{yield(:class_text)}" %>
-      <div class="file-select-area"><%= f.file_field :img_7 %></div>
-    </div>
-    <div class="col-md-6">
-      <%= f.label :img_7_note, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_field :img_7_note, class: "form-control" %>
-    </div>
-  </div>
-  
-  <%= f.hidden_field :user_id, value: @user.id %>
 
-  <div class="order-submit-area">  
-    <%= f.submit yield(:button_text), class: "btn btn-md btn-primary" %>
-    <%= link_to :back do %>
-      <button class="btn btn-md btn-default">戻る</button>
-    <% end %>
+        <div class="col-xs-4">
+          <%= f.label :order_date, class: "label-#{yield(:class_text)}" %>
+          <% if params[:order] && params[:order][:order_date].present? %>
+            <%= f.date_field :order_date, value: params[:order][:order_date], class: "form-control" %>
+          <% else %>
+            <%= f.date_field :order_date, class: "form-control" %>
+          <% end %>
+        </div>
+        
+        <div class="col-xs-4">
+          <%= f.label :sales_date, class: "label-#{yield(:class_text)}" %>
+          <% if params[:order] && params[:order][:sales_date].present? %>
+            <%= f.date_field :sales_date, value: params[:order][:sales_date], class: "form-control" %>
+          <% else %>
+            <%= f.date_field :sales_date, class: "form-control" %>
+          <% end %>
+        </div>
+        
+        <div class="col-xs-4">
+          <%= f.label :delivery, class: "label-#{yield(:class_text)}" %>
+          <% if params[:order] && params[:order][:delivery].present? %>
+            <%= f.date_field :delivery, value: params[:order][:delivery], class: "form-control" %>
+          <% else %>
+            <%= f.date_field :delivery, class: "form-control" %>
+          <% end %>
+        </div>
+        
+      </div>
+    
+      <%= f.label :note, class: "label-#{yield(:class_text)}" %>
+      <% if params[:order] %>
+        <%= f.text_field :note, value: params[:order][:note], class: "form-control" %>
+      <% else %>
+        <%= f.text_field :note, class: "form-control" %>
+      <% end %>
+    
+      <div class="subtitle-area"><p>費用(円)</p></div>
+    
+      <div class="row">
+        
+        <div class="col-xs-4">
+          <div class="row">
+            <div class="col-xs-8 cost-left">
+              <%= f.label :wage, class: "label-#{yield(:class_text)}" %>
+              <% if params[:order] %>
+                <%= f.text_field :wage, value: params[:order][:wage], class: "form-control" %>
+              <% else %>
+                <%= f.text_field :wage, class: "form-control" %>
+              <% end %>
+            </div>
+            <div class="col-xs-4 cost-right">
+              <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
+              <% if params[:order] && params[:order][:wage_pay] == "1" %>
+                <%= f.check_box :wage_pay, class: "pay-checkbox", checked: true %>
+              <% else %>
+                <%= f.check_box :wage_pay, class: "pay-checkbox" %>
+              <% end %>
+            </div>
+          </div> 
+        </div>
+        
+        <div class="col-xs-4">
+          <div class="row">
+            <div class="col-xs-8 cost-left">
+              <%= f.label :cloth, class: "label-#{yield(:class_text)}" %>
+              <% if params[:order] %>
+                <%= f.text_field :cloth, value: params[:order][:cloth], class: "form-control" %>
+              <% else %>
+                <%= f.text_field :cloth, class: "form-control" %>
+              <% end %>
+            </div>
+            <div class="col-xs-4 cost-right">
+              <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
+              <% if params[:order] && params[:order][:cloth_pay] == "1" %>
+                <%= f.check_box :cloth_pay, class: "pay-checkbox", checked: true %>
+              <% else %>
+                <%= f.check_box :cloth_pay, class: "pay-checkbox" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xs-4">
+          <div class="row">
+            <div class="col-xs-8 cost-left">
+              <%= f.label :lining, class: "label-#{yield(:class_text)}" %>
+              <% if params[:order] %>
+                <%= f.text_field :lining, value: params[:order][:lining], class: "form-control" %>
+              <% else %>
+                <%= f.text_field :lining, class: "form-control" %>
+              <% end %>
+            </div>
+            <div class="col-xs-4 cost-right">
+              <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
+              <% if params[:order] && params[:order][:lining_pay] == "1" %>
+                <%= f.check_box :lining_pay, class: "pay-checkbox", checked: true %>
+              <% else %>
+                <%= f.check_box :lining_pay, class: "pay-checkbox" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xs-4">
+          <div class="row">
+            <div class="col-xs-8 cost-left">
+              <%= f.label :button, class: "label-#{yield(:class_text)}" %>
+              <% if params[:order] %>
+                <%= f.text_field :button, value: params[:order][:button], class: "form-control" %>
+              <% else %>
+                <%= f.text_field :button, class: "form-control" %>
+              <% end %>
+            </div>
+            <div class="col-xs-4 cost-right">
+              <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
+              <% if params[:order] && params[:order][:button_pay] == "1" %>
+                <%= f.check_box :button_pay, class: "pay-checkbox", checked: true %>
+              <% else %>
+                <%= f.check_box :button_pay, class: "pay-checkbox" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xs-4">
+          <div class="row">
+            <div class="col-xs-8 cost-left">
+              <%= f.label :postage, class: "label-#{yield(:class_text)}" %>
+              <% if params[:order] %>
+                <%= f.text_field :postage, value: params[:order][:postage], class: "form-control" %>
+              <% else %>
+                <%= f.text_field :postage, class: "form-control" %>
+              <% end %>
+            </div>
+            <div class="col-xs-4 cost-right">
+              <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
+              <% if params[:order] && params[:order][:postage_pay] == "1" %>
+                <%= f.check_box :postage_pay, class: "pay-checkbox", checked: true %>
+              <% else %>
+                <%= f.check_box :postage_pay, class: "pay-checkbox" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-xs-4">
+          <div class="row">
+            <div class="col-xs-8 cost-left">
+              <%= f.label :other, class: "label-#{yield(:class_text)}" %>
+              <% if params[:order] %>
+                <%= f.text_field :other, value: params[:order][:other], class: "form-control" %>
+              <% else %>
+                <%= f.text_field :other, class: "form-control" %>
+              <% end %>
+            </div>
+            <div class="col-xs-4 cost-right">
+              <%= f.label :"支払済", class: "label-#{yield(:class_text)}" %><br>
+              <% if params[:order] && params[:order][:other_pay] == "1" %>
+                <%= f.check_box :other_pay, class: "pay-checkbox", checked: true %>
+              <% else %>
+                <%= f.check_box :other_pay, class: "pay-checkbox" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="subtitle-area"><p>関連画像</p></div>
+    
+      <div class="row">
+        
+        <div class="col-xs-9 form-inline form-img-select-area">
+          <div class="form-group">
+            <%= f.label :img_1, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="form-group"><%= f.file_field :img_1 %></div>
+        </div>
+        <% if @order.img_1.present? %>
+          <div class="col-xs-3 del-img-check-area">
+            <%= f.label :del_img_1_check, class: "label-#{yield(:class_text)}" %>
+            <%= f.check_box :del_img_1_check, class: "del-checkbox" %>
+          </div>
+        <% end %>
+        <div class="col-xs-12 form-img-note-area">
+          <div class="col-xs-2 img-note-label-area">
+            <%= f.label :img_1_note, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="col-xs-10 img-note-text-area">
+            <% if params[:order] %>
+              <%= f.text_field :img_1_note, value: params[:order][:img_1_note], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :img_1_note, class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="col-xs-9 form-inline img-select-area">
+          <div class="form-group">
+            <%= f.label :img_2, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="form-group"><%= f.file_field :img_2 %></div>
+        </div>
+        <% if @order.img_2.present? %>
+          <div class="col-xs-3 del-img-check-area">
+            <%= f.label :del_img_2_check, class: "label-#{yield(:class_text)}" %>
+            <%= f.check_box :del_img_2_check, class: "del-checkbox" %>
+          </div>
+        <% end %>
+        <div class="col-xs-12 form-img-note-area">
+          <div class="col-xs-2 img-note-label-area">
+            <%= f.label :img_2_note, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="col-xs-10 img-note-text-area">
+            <% if params[:order] %>
+              <%= f.text_field :img_2_note, value: params[:order][:img_2_note], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :img_2_note, class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="col-xs-9 form-inline img-select-area">
+          <div class="form-group">
+            <%= f.label :img_3, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="form-group"><%= f.file_field :img_3 %></div>
+        </div>
+        <% if @order.img_3.present? %>
+          <div class="col-xs-3 del-img-check-area">
+            <%= f.label :del_img_3_check, class: "label-#{yield(:class_text)}" %>
+            <%= f.check_box :del_img_3_check, class: "del-checkbox" %>
+          </div>
+        <% end %>
+        <div class="col-xs-12 form-img-note-area">
+          <div class="col-xs-2 img-note-label-area">
+            <%= f.label :img_3_note, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="col-xs-10 img-note-text-area">
+            <% if params[:order] %>
+              <%= f.text_field :img_3_note, value: params[:order][:img_3_note], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :img_3_note, class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="col-xs-9 form-inline img-select-area">
+          <div class="form-group">
+            <%= f.label :img_4, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="form-group"><%= f.file_field :img_4 %></div>
+        </div>
+        <% if @order.img_4.present? %>
+          <div class="col-xs-3 del-img-check-area">
+            <%= f.label :del_img_4_check, class: "label-#{yield(:class_text)}" %>
+            <%= f.check_box :del_img_4_check, class: "del-checkbox" %>
+          </div>
+        <% end %>
+        <div class="col-xs-12 form-img-note-area">
+          <div class="col-xs-2 img-note-label-area">
+            <%= f.label :img_4_note, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="col-xs-10 img-note-text-area">
+            <% if params[:order] %>
+              <%= f.text_field :img_4_note, value: params[:order][:img_4_note], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :img_4_note, class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="col-xs-9 form-inline img-select-area">
+          <div class="form-group">
+            <%= f.label :img_5, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="form-group"><%= f.file_field :img_5 %></div>
+        </div>
+        <% if @order.img_5.present? %>
+          <div class="col-xs-3 del-img-check-area">
+            <%= f.label :del_img_5_check, class: "label-#{yield(:class_text)}" %>
+            <%= f.check_box :del_img_5_check, class: "del-checkbox" %>
+          </div>
+        <% end %>
+        <div class="col-xs-12 form-img-note-area">
+          <div class="col-xs-2 img-note-label-area">
+            <%= f.label :img_5_note, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="col-xs-10 img-note-text-area">
+            <% if params[:order] %>
+              <%= f.text_field :img_5_note, value: params[:order][:img_5_note], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :img_5_note, class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="col-xs-9 form-inline img-select-area">
+          <div class="form-group">
+            <%= f.label :img_6, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="form-group"><%= f.file_field :img_6 %></div>
+        </div>
+        <% if @order.img_6.present? %>
+          <div class="col-xs-3 del-img-check-area">
+            <%= f.label :del_img_6_check, class: "label-#{yield(:class_text)}" %>
+            <%= f.check_box :del_img_6_check, class: "del-checkbox" %>
+          </div>
+        <% end %>
+        <div class="col-xs-12 form-img-note-area">
+          <div class="col-xs-2 img-note-label-area">
+            <%= f.label :img_6_note, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="col-xs-10 img-note-text-area">
+            <% if params[:order] %>
+              <%= f.text_field :img_6_note, value: params[:order][:img_6_note], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :img_6_note, class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="col-xs-9 form-inline img-select-area">
+          <div class="form-group">
+            <%= f.label :img_7, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="form-group"><%= f.file_field :img_7 %></div>
+        </div>
+        <% if @order.img_7.present? %>
+          <div class="col-xs-3 del-img-check-area">
+            <%= f.label :del_img_7_check, class: "label-#{yield(:class_text)}" %>
+            <%= f.check_box :del_img_7_check, class: "del-checkbox" %>
+          </div>
+        <% end %>
+        <div class="col-xs-12 form-img-note-area">
+          <div class="col-xs-2 img-note-label-area">
+            <%= f.label :img_7_note, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="col-xs-10 img-note-text-area">
+            <% if params[:order] %>
+              <%= f.text_field :img_7_note, value: params[:order][:img_7_note], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :img_7_note, class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+        
+      </div>
+    
+      <%= f.hidden_field :user_id, value: @user.id %>
+    
+      <div class="order-submit-area">  
+        <%= f.submit yield(:button_text), class: "btn btn-md btn-primary" %>
+        <%= link_to :back do %>
+          <button class="btn btn-md btn-default">戻る</button>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>
