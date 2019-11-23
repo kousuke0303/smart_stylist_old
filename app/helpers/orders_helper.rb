@@ -1,4 +1,5 @@
 module OrdersHelper
+  require 'mini_magick'
   
   def new_img
     if params[:order][:img_1]
