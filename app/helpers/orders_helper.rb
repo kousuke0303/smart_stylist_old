@@ -4,31 +4,45 @@ module OrdersHelper
   def new_img
     if params[:order][:img_1]
       @order.img_1 = "#{@order.id}_1.png"
-      File.binwrite("public/order_images/#{@order.img_1}", params[:order][:img_1].read)
+      image = MiniMagick::Image.read(params[:order][:img_1])
+      image.resize "300x400"
+      image.write "public/order_images/#{@order.img_1}"
     end
     if params[:order][:img_2]
       @order.img_2 = "#{@order.id}_2.png"
-      File.binwrite("public/order_images/#{@order.img_2}", params[:order][:img_2].read)
+      image = MiniMagick::Image.read(params[:order][:img_2])
+      image.resize "300x400"
+      image.write "public/order_images/#{@order.img_2}"
     end
     if params[:order][:img_3]
       @order.img_3 = "#{@order.id}_3.png"
-      File.binwrite("public/order_images/#{@order.img_3}", params[:order][:img_3].read)
+      image = MiniMagick::Image.read(params[:order][:img_3])
+      image.resize "300x400"
+      image.write "public/order_images/#{@order.img_3}"
     end
     if params[:order][:img_4]
       @order.img_4 = "#{@order.id}_4.png"
-      File.binwrite("public/order_images/#{@order.img_4}", params[:order][:img_4].read)
+      image = MiniMagick::Image.read(params[:order][:img_4])
+      image.resize "300x400"
+      image.write "public/order_images/#{@order.img_4}"
     end
     if params[:order][:img_5]
       @order.img_5 = "#{@order.id}_5.png"
-      File.binwrite("public/order_images/#{@order.img_5}", params[:order][:img_5].read)
+      image = MiniMagick::Image.read(params[:order][:img_5])
+      image.resize "300x400"
+      image.write "public/order_images/#{@order.img_5}"
     end
     if params[:order][:img_6]
       @order.img_6 = "#{@order.id}_6.png"
-      File.binwrite("public/order_images/#{@order.img_6}", params[:order][:img_6].read)
+      image = MiniMagick::Image.read(params[:order][:img_6])
+      image.resize "300x400"
+      image.write "public/order_images/#{@order.img_6}"
     end
     if params[:order][:img_7]
       @order.img_7 = "#{@order.id}_7.png"
-      File.binwrite("public/order_images/#{@order.img_7}", params[:order][:img_7].read)
+      image = MiniMagick::Image.read(params[:order][:img_7])
+      image.resize "300x400"
+      image.write "public/order_images/#{@order.img_7}"
     end
     @order.save
   end
