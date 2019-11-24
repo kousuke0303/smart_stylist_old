@@ -5,43 +5,43 @@ module OrdersHelper
     if params[:order][:img_1]
       @order.img_1 = "#{@order.id}_1.png"
       image = MiniMagick::Image.read(params[:order][:img_1])
-      image.resize "300x400"
+      image.resize "390x520"
       image.write "public/order_images/#{@order.img_1}"
     end
     if params[:order][:img_2]
       @order.img_2 = "#{@order.id}_2.png"
       image = MiniMagick::Image.read(params[:order][:img_2])
-      image.resize "300x400"
+      image.resize "390x520"
       image.write "public/order_images/#{@order.img_2}"
     end
     if params[:order][:img_3]
       @order.img_3 = "#{@order.id}_3.png"
       image = MiniMagick::Image.read(params[:order][:img_3])
-      image.resize "300x400"
+      image.resize "390x520"
       image.write "public/order_images/#{@order.img_3}"
     end
     if params[:order][:img_4]
       @order.img_4 = "#{@order.id}_4.png"
       image = MiniMagick::Image.read(params[:order][:img_4])
-      image.resize "300x400"
+      image.resize "390x520"
       image.write "public/order_images/#{@order.img_4}"
     end
     if params[:order][:img_5]
       @order.img_5 = "#{@order.id}_5.png"
       image = MiniMagick::Image.read(params[:order][:img_5])
-      image.resize "300x400"
+      image.resize "390x520"
       image.write "public/order_images/#{@order.img_5}"
     end
     if params[:order][:img_6]
       @order.img_6 = "#{@order.id}_6.png"
       image = MiniMagick::Image.read(params[:order][:img_6])
-      image.resize "300x400"
+      image.resize "390x520"
       image.write "public/order_images/#{@order.img_6}"
     end
     if params[:order][:img_7]
       @order.img_7 = "#{@order.id}_7.png"
       image = MiniMagick::Image.read(params[:order][:img_7])
-      image.resize "300x400"
+      image.resize "390x520"
       image.write "public/order_images/#{@order.img_7}"
     end
     @order.save
@@ -56,7 +56,9 @@ module OrdersHelper
     elsif params[:order][:img_1]
       File.delete("public/order_images/#{@order.id}_1.png") if File.exist?("public/order_images/#{@order.id}_1.png")
       @order.img_1 = "#{@order.id}_1.png"
-      File.binwrite("public/order_images/#{@order.img_1}", params[:order][:img_1].read)
+      image = MiniMagick::Image.read(params[:order][:img_1])
+      image.resize "390x520"
+      image.write "public/order_images/#{@order.img_1}"
     end
     if params[:order][:del_img_2_check] == "1"
       @order.img_2 = nil
@@ -66,7 +68,9 @@ module OrdersHelper
     elsif params[:order][:img_2]
       File.delete("public/order_images/#{@order.id}_2.png") if File.exist?("public/order_images/#{@order.id}_2.png")
       @order.img_2 = "#{@order.id}_2.png"
-      File.binwrite("public/order_images/#{@order.img_2}", params[:order][:img_2].read)
+      image = MiniMagick::Image.read(params[:order][:img_2])
+      image.resize "390x520"
+      image.write "public/order_images/#{@order.img_2}"
     end
     if params[:order][:del_img_3_check] == "1"
       @order.img_3 = nil
@@ -76,7 +80,9 @@ module OrdersHelper
     elsif params[:order][:img_3]
       File.delete("public/order_images/#{@order.id}_3.png") if File.exist?("public/order_images/#{@order.id}_3.png")
       @order.img_3 = "#{@order.id}_3.png"
-      File.binwrite("public/order_images/#{@order.img_3}", params[:order][:img_3].read)
+      image = MiniMagick::Image.read(params[:order][:img_3])
+      image.resize "390x520"
+      image.write "public/order_images/#{@order.img_3}"
     end
     if params[:order][:del_img_4_check] == "1"
       @order.img_4 = nil
@@ -86,7 +92,9 @@ module OrdersHelper
     elsif params[:order][:img_4]
       File.delete("public/order_images/#{@order.id}_4.png") if File.exist?("public/order_images/#{@order.id}_4.png")
       @order.img_4 = "#{@order.id}_4.png"
-      File.binwrite("public/order_images/#{@order.img_4}", params[:order][:img_4].read)
+      image = MiniMagick::Image.read(params[:order][:img_4])
+      image.resize "390x520"
+      image.write "public/order_images/#{@order.img_4}"
     end
     if params[:order][:del_img_5_check] == "1"
       @order.img_5 = nil
@@ -96,7 +104,9 @@ module OrdersHelper
     elsif params[:order][:img_5]
       File.delete("public/order_images/#{@order.id}_5.png") if File.exist?("public/order_images/#{@order.id}_5.png")
       @order.img_5 = "#{@order.id}_5.png"
-      File.binwrite("public/order_images/#{@order.img_5}", params[:order][:img_5].read)
+      image = MiniMagick::Image.read(params[:order][:img_5])
+      image.resize "390x520"
+      image.write "public/order_images/#{@order.img_5}"
     end
     if params[:order][:del_img_6_check] == "1"
       @order.img_6 = nil
@@ -106,7 +116,9 @@ module OrdersHelper
     elsif params[:order][:img_6]
       File.delete("public/order_images/#{@order.id}_6.png") if File.exist?("public/order_images/#{@order.id}_6.png")
       @order.img_6 = "#{@order.id}_6.png"
-      File.binwrite("public/order_images/#{@order.img_6}", params[:order][:img_6].read)
+      image = MiniMagick::Image.read(params[:order][:img_6])
+      image.resize "390x520"
+      image.write "public/order_images/#{@order.img_6}"
     end
     if params[:order][:del_img_7_check] == "1"
       @order.img_7 = nil
@@ -116,7 +128,9 @@ module OrdersHelper
     elsif params[:order][:img_7]
       File.delete("public/order_images/#{@order.id}_7.png") if File.exist?("public/order_images/#{@order.id}_7.png")
       @order.img_7 = "#{@order.id}_7.png"
-      File.binwrite("public/order_images/#{@order.img_7}", params[:order][:img_7].read)
+      image = MiniMagick::Image.read(params[:order][:img_7])
+      image.resize "390x520"
+      image.write "public/order_images/#{@order.img_7}"
     end
     @order.save
   end
