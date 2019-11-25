@@ -117,34 +117,34 @@ input[type=checkbox].del-checkbox {
   text-align: center;
 }
 
-.img-title-area {
-  h3 {
-    margin: 5px 0 0;
-    text-align: center;
-  }
-  p {
-    margin-top: 20px;
-    text-align: center;
-  }
-  background-color: whitesmoke;
-  border-left: 2px solid;
-  border-right: 2px solid;
-  border-top: 2px solid;
-  height: 115px;
-  padding: 0 10px;
-  width: 394px;
-  margin: 0 auto;
-}
-
 .img-display-area {
   align-items: center;
   background-color: black;
   border: 2px solid;
   display: flex;
-  height: 524px;
+  height: 764px;
   justify-content: center;
+  margin: 0 auto;
+  width: 574px;
+}
+
+.img-title-area {
+  h3 {
+    margin: 0;
+    text-align: center;
+  }
+  p {
+    margin-top: 10px;
+    text-align: center;
+  }
+  background-color: whitesmoke;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-right: 2px solid;
+  height: 80px;
   margin: 0 auto 20px;
-  width: 394px;
+  padding: 5px 10px;
+  width: 574px;
 }
 
 .show-btn-area {

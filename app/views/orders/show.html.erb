@@ -2,8 +2,8 @@
 
 <h1>オーダーの詳細情報</h1>
 
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
+<div class="row first-row">
+  <div class="col-md-8 col-md-offset-2">
     <table class="table table-bordered table-condensed" id="order-show-table">
       <tr>
         <th width=20%>顧客名</th>
@@ -119,125 +119,124 @@
         <td colspan=3><%= @order.note %></td>
       </tr>
     </table>
+  </div>
     
-    <% if params[:img] == "display" %>
-      <div class="img-display-btn-area">
-        <%= link_to "画像を非表示", user_order_path(@user, @order), class: "btn btn-lg btn-primary" %>
-      </div>
-      <div class="row">
-        <% if @order.img_1.present? %>
-          <div class="col-md-6">
-            <div class="img-title-area">
-              <h3>画像(1)</h3>
-              <% if @order.img_1_note.present? %>
-                <%= @order.img_1_note %>
-              <% else %>
-                <p>詳細なし</p>
-              <% end %>
-            </div>
-            <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_1}" %></div>
-          </div>
-        <% end %>
-        
-        <% if @order.img_2.present? %>
-          <div class="col-md-6">
-            <div class="img-title-area">
-              <h3>画像(2)</h3>
-              <% if @order.img_2_note.present? %>
-                <%= @order.img_2_note %>
-              <% else %>
-                <p>詳細なし</p>
-              <% end %>
-            </div>
-            <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_2}" %></div>
-          </div>
-        <% end %>
-        
-        <% if @order.img_3.present? %>
-          <div class="col-md-6">
-            <div class="img-title-area">
-              <h3>画像(3)</h3>
-              <% if @order.img_3_note.present? %>
-                <%= @order.img_3_note %>
-              <% else %>
-                <p>詳細なし</p>
-              <% end %>
-            </div>
-            <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_3}" %></div>
-          </div>
-        <% end %>
-        
-        <% if @order.img_4.present? %>
-          <div class="col-md-6">
-            <div class="img-title-area">
-              <h3>画像(4)</h3>
-              <% if @order.img_4_note.present? %>
-                <%= @order.img_4_note %>
-              <% else %>
-                <p>詳細なし</p>
-              <% end %>
-            </div>
-            <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_4}" %></div>
-          </div>
-        <% end %>
-        
-        <% if @order.img_5.present? %>
-          <div class="col-md-6">
-            <div class="img-title-area">
-              <h3>画像(5)</h3>
-              <% if @order.img_5_note.present? %>
-                <%= @order.img_5_note %>
-              <% else %>
-                <p>詳細なし</p>
-              <% end %>
-            </div>
-            <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_5}" %></div>
-          </div>
-        <% end %>
-        
-        <% if @order.img_6.present? %>
-          <div class="col-md-6">
-            <div class="img-title-area">
-              <h3>画像(6)</h3>
-              <% if @order.img_6_note.present? %>
-                <%= @order.img_6_note %>
-              <% else %>
-                <p>詳細なし</p>
-              <% end %>
-            </div>
-            <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_6}" %></div>
-          </div>
-        <% end %>
-        
-        <% if @order.img_7.present? %>
-          <div class="col-md-6">
-            <div class="img-title-area">
-              <h3>画像(7)</h3>
-              <% if @order.img_7_note.present? %>
-                <%= @order.img_7_note %>
-              <% else %>
-                <p>詳細なし</p>
-              <% end %>
-            </div>
-            <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_7}" %></div>
-          </div>
-        <% end %>
-        
-      </div>
-    <% else %>
-      <div class="img-display-btn-area">
-        <%= link_to "画像を表示", user_order_path(@user, @order, img: "display"),
-            class: "btn btn-lg btn-primary" %>
+  <% if params[:img] == "display" %>
+    <div class="col-md-8 col-md-offset-2 img-display-btn-area">
+      <%= link_to "画像を非表示", user_order_path(@user, @order), class: "btn btn-lg btn-primary" %>
+    </div>
+      
+    <% if @order.img_1.present? %>
+      <div class="col-lg-6">
+        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_1}" %></div>
+        <div class="img-title-area">
+          <h3>画像(1)</h3>
+          <% if @order.img_1_note.present? %>
+            <%= @order.img_1_note %>
+          <% else %>
+            <p>詳細なし</p>
+          <% end %>
+        </div>
       </div>
     <% end %>
+    
+    <% if @order.img_2.present? %>
+      <div class="col-lg-6">
+        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_2}" %></div>
+        <div class="img-title-area">
+          <h3>画像(2)</h3>
+          <% if @order.img_2_note.present? %>
+            <%= @order.img_2_note %>
+          <% else %>
+            <p>詳細なし</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if @order.img_3.present? %>
+      <div class="col-lg-6">
+        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_3}" %></div>
+        <div class="img-title-area">
+          <h3>画像(3)</h3>
+          <% if @order.img_3_note.present? %>
+            <%= @order.img_3_note %>
+          <% else %>
+            <p>詳細なし</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if @order.img_4.present? %>
+      <div class="col-lg-6">
+        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_4}" %></div>
+        <div class="img-title-area">
+          <h3>画像(4)</h3>
+          <% if @order.img_4_note.present? %>
+            <%= @order.img_4_note %>
+          <% else %>
+            <p>詳細なし</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if @order.img_5.present? %>
+      <div class="col-lg-6">
+        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_5}" %></div>
+        <div class="img-title-area">
+          <h3>画像(5)</h3>
+          <% if @order.img_5_note.present? %>
+            <%= @order.img_5_note %>
+          <% else %>
+            <p>詳細なし</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if @order.img_6.present? %>
+      <div class="col-lg-6">
+        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_6}" %></div>
+        <div class="img-title-area">
+          <h3>画像(6)</h3>
+          <% if @order.img_6_note.present? %>
+            <%= @order.img_6_note %>
+          <% else %>
+            <p>詳細なし</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if @order.img_7.present? %>
+      <div class="col-lg-6">
+        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_7}" %></div>
+        <div class="img-title-area">
+          <h3>画像(7)</h3>
+          <% if @order.img_7_note.present? %>
+            <%= @order.img_7_note %>
+          <% else %>
+            <p>詳細なし</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+        
+  <% else %>
+    <div class="col-md-8 col-md-offset-2 img-display-btn-area">
+      <%= link_to "画像を表示", user_order_path(@user, @order, img: "display"),
+          class: "btn btn-lg btn-primary" %>
     </div>
-    <div class="show-btn-area">
-      <%= link_to "オーダー内容を更新", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
-      <%= link_to "削除", user_order_path(@user, @order), method: :delete, 
-          class: "btn btn-md btn-danger", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
-      <%= link_to :back do %>
-        <button class="btn btn-md btn-default">戻る</button>
-      <% end %>
-    </div>
+  <% end %>
+    
+  <div class="col-md-8 col-md-offset-2 show-btn-area">
+    <%= link_to "オーダー内容を更新", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
+    <%= link_to "削除", user_order_path(@user, @order), method: :delete, 
+        class: "btn btn-md btn-danger", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
+    <%= link_to :back do %>
+      <button class="btn btn-md btn-default">戻る</button>
+    <% end %>
   </div>
 </div>
