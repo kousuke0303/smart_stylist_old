@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.string "img_5"
     t.string "img_6"
     t.string "img_7"
+    t.string "img_8"
     t.string "img_1_note"
     t.string "img_2_note"
     t.string "img_3_note"
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.string "img_5_note"
     t.string "img_6_note"
     t.string "img_7_note"
+    t.string "img_8_note"
     t.boolean "del_img_1_check", default: false
     t.boolean "del_img_2_check", default: false
     t.boolean "del_img_3_check", default: false
@@ -75,6 +77,7 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.boolean "del_img_5_check", default: false
     t.boolean "del_img_6_check", default: false
     t.boolean "del_img_7_check", default: false
+    t.boolean "del_img_8_check", default: false
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -66,6 +66,7 @@ ja:
           img_5: 画像(5)
           img_6: 画像(6)
           img_7: 画像(7)
+          img_8: 画像(8)
           img_1_note: 画像(1)の詳細
           img_2_note: 画像(2)の詳細
           img_3_note: 画像(3)の詳細
@@ -73,6 +74,7 @@ ja:
           img_5_note: 画像(5)の詳細
           img_6_note: 画像(6)の詳細
           img_7_note: 画像(7)の詳細
+          img_8_note: 画像(8)の詳細
           del_img_1_check: 画像(1)を削除
           del_img_2_check: 画像(2)を削除
           del_img_3_check: 画像(3)を削除
@@ -80,3 +82,4 @@ ja:
           del_img_5_check: 画像(5)を削除
           del_img_6_check: 画像(6)を削除
           del_img_7_check: 画像(7)を削除
+          del_img_8_check: 画像(8)を削除

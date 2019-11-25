@@ -414,6 +414,31 @@
           </div>
         </div>
         
+        <div class="col-xs-9 form-inline form-img-select-area">
+          <div class="form-group">
+            <%= f.label :img_8, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="form-group"><%= f.file_field :img_8 %></div>
+        </div>
+        <% if @order.img_8.present? %>
+          <div class="col-xs-3 del-img-check-area">
+            <%= f.label :del_img_8_check, class: "label-#{yield(:class_text)}" %>
+            <%= f.check_box :del_img_8_check, class: "del-checkbox" %>
+          </div>
+        <% end %>
+        <div class="col-xs-12 form-img-note-area">
+          <div class="col-xs-2 img-note-label-area">
+            <%= f.label :img_8_note, class: "label-#{yield(:class_text)}" %>
+          </div>
+          <div class="col-xs-10 img-note-text-area">
+            <% if params[:order] %>
+              <%= f.text_field :img_8_note, value: params[:order][:img_8_note], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :img_8_note, class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+        
       </div>
     
       <%= f.hidden_field :user_id, value: @user.id %>

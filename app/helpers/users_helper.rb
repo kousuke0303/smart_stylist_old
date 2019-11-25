@@ -9,6 +9,7 @@ module UsersHelper
       File.delete("public/order_images/#{order.id}_5.png") if File.exist?("public/order_images/#{order.id}_5.png")
       File.delete("public/order_images/#{order.id}_6.png") if File.exist?("public/order_images/#{order.id}_6.png")
       File.delete("public/order_images/#{order.id}_7.png") if File.exist?("public/order_images/#{order.id}_7.png")
+      File.delete("public/order_images/#{order.id}_8.png") if File.exist?("public/order_images/#{order.id}_8.png")
     end
   end
 end

@@ -44,6 +44,12 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_7}"
     end
+    if params[:order][:img_8]
+      @order.img_8 = "#{@order.id}_8.png"
+      image = MiniMagick::Image.read(params[:order][:img_8])
+      image.resize "570x760"
+      image.write "public/order_images/#{@order.img_8}"
+    end
     @order.save
   end
   
@@ -132,6 +138,18 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_7}"
     end
+    if params[:order][:del_img_8_check] == "1"
+      @order.img_8 = nil
+      @order.img_8_note = nil
+      @order.del_img_8_check = false
+      File.delete("public/order_images/#{@order.id}_8.png")
+    elsif params[:order][:img_8]
+      File.delete("public/order_images/#{@order.id}_8.png") if File.exist?("public/order_images/#{@order.id}_8.png")
+      @order.img_8 = "#{@order.id}_8.png"
+      image = MiniMagick::Image.read(params[:order][:img_8])
+      image.resize "570x760"
+      image.write "public/order_images/#{@order.img_8}"
+    end
     @order.save
   end
   
@@ -143,6 +161,7 @@ module OrdersHelper
     File.delete("public/order_images/#{@order.id}_5.png") if File.exist?("public/order_images/#{@order.id}_5.png")
     File.delete("public/order_images/#{@order.id}_6.png") if File.exist?("public/order_images/#{@order.id}_6.png")
     File.delete("public/order_images/#{@order.id}_7.png") if File.exist?("public/order_images/#{@order.id}_7.png")
+    File.delete("public/order_images/#{@order.id}_8.png") if File.exist?("public/order_images/#{@order.id}_8.png")
   end
 
   def client_name(order)
@@ -204,12 +223,6 @@ module OrdersHelper
       "#{total}円"
     else
       "--"
-    end
-  end
-  
-  def wage_paid_or_not(order)
-    if order.wage.present?
-      order.wage_pay == true ? "支払済" : "未払い"
     end
   end
   

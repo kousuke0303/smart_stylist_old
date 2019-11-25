@@ -223,6 +223,20 @@
         </div>
       </div>
     <% end %>
+    
+    <% if @order.img_8.present? %>
+      <div class="col-lg-6">
+        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_8}" %></div>
+        <div class="img-title-area">
+          <h3>画像(8)</h3>
+          <% if @order.img_8_note.present? %>
+            <%= @order.img_8_note %>
+          <% else %>
+            <p>詳細なし</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
         
   <% else %>
     <div class="col-md-8 col-md-offset-2 img-display-btn-area">

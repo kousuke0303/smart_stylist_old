@@ -24,6 +24,7 @@ class Order < ApplicationRecord
   validates :img_5_note, length: { maximum: 100 }
   validates :img_6_note, length: { maximum: 100 }
   validates :img_7_note, length: { maximum: 100 }
+  validates :img_8_note, length: { maximum: 100 }
   validates :user_id, presence: true
   
   validate :invalid_ratail_if_str
@@ -67,5 +68,6 @@ class Order < ApplicationRecord
     errors.add(:img_5, "が登録されていません。") if img_5.nil? && img_5_note.present?
     errors.add(:img_6, "が登録されていません。") if img_6.nil? && img_6_note.present?
     errors.add(:img_7, "が登録されていません。") if img_7.nil? && img_7_note.present?
+    errors.add(:img_8, "が登録されていません。") if img_8.nil? && img_8_note.present?
   end
 end
