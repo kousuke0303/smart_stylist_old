@@ -4,7 +4,7 @@
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 .container {
@@ -50,12 +50,11 @@ p {
 
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 3em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding: 7px 0;
   font-weight: bold;
 }
 
@@ -63,24 +62,42 @@ p {
   color: #fff;
   text-decoration: none;
 }
-/* top-page */
+
+.nav {
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+.dropdown-menu {
+  font-size: 1em;
+}
+
+th {
+  font-size: 1.5em;
+}
+
+td {
+  font-size: 1.3em;
+}
+
+/* トップページ */
 
 .select-button-area {
-  padding: 30px;
+
 }
 
 .circle {
   background: dodgerblue;
   border-radius: 50%;
   height: 200px;
-  margin: auto;
+  margin: 30px auto;
   text-align: center;
-  width: 350px;
+  width: 390px;
 }
 
 .main-select-button {
   color: white;
-  font-size: 3em;
+  font-size: 3.5em;
   line-height: 200px;
 }
 
