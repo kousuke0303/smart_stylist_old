@@ -4,61 +4,37 @@
   
   <div class="col-lg-4 col-md-6 select-button-area">
     <div class="circle">
-      <% if logged_in? %>
-        <%= link_to "新規オーダー", new_user_order_path(current_user), class: "main-select-button" %>
-      <% else %>
-        <p class="main-select-button">新規オーダー</p>
-      <% end %>
+      <%= link_to "新規オーダー", new_user_order_path(current_user), class: "main-select-button" %>
     </div>
   </div>
   
   <div class="col-lg-4 col-md-6 select-button-area">
     <div class="circle">
-      <% if logged_in? %>
-        <%= link_to "取引中オーダー", user_orders_path(current_user), class: "main-select-button" %>
-      <% else %>
-        <p class="main-select-button">取引中オーダー</p>
-      <% end %>
+      <%= link_to "取引中オーダー", user_orders_path(current_user), class: "main-select-button" %>
     </div>
   </div>
   
   <div class="col-lg-4 col-md-6 select-button-area">
     <div class="circle">
-      <% if logged_in? %>
-        <%= link_to "月間売上管理", users_orders_traded_path(current_user), class: "main-select-button" %>
-      <% else %>
-        <p class="main-select-button">月間売上管理</p>
-      <% end %>
+      <%= link_to "月間売上管理", users_orders_traded_path(current_user), class: "main-select-button" %>
     </div>
   </div>
 
   <div class="col-lg-4 col-md-6 select-button-area">
     <div class="circle">
-      <% if logged_in? %>
-        <%= link_to "未払い費用管理", users_orders_unpaid_path(current_user), class: "main-select-button" %>
-      <% else %>
-        <p class="main-select-button">未払い費用管理</p>
-      <% end %>
+      <%= link_to "未払い費用管理", users_orders_unpaid_path(current_user), class: "main-select-button" %>
     </div>
   </div>
   
   <div class="col-lg-4 col-md-6 select-button-area">
     <div class="circle">
-      <% if logged_in? %>
-        <%= link_to "顧客情報管理", user_clients_path(current_user), class: "main-select-button" %>
-      <% else %>
-        <p class="main-select-button">顧客情報管理</p>
-      <% end %>
+      <%= link_to "顧客情報管理", user_clients_path(current_user), class: "main-select-button" %>
     </div>
   </div>
   
   <div class="col-lg-4 col-md-6 select-button-area">
     <div class="circle">
-      <% if logged_in? %>
-        <%= link_to "契約工場管理", user_plants_path(current_user), class: "main-select-button" %>
-      <% else %>
-        <p class="main-select-button">契約工場管理</p>
-      <% end %>
+      <%= link_to "契約工場管理", user_plants_path(current_user), class: "main-select-button" %>
     </div>
   </div>
 </div>
