@@ -177,9 +177,22 @@ input[type=checkbox].del-checkbox {
   }
 }
 
-/* オーダー履歴テーブル */
+/* 顧客オーダー履歴テーブル */
 
-#history-table {
+#client-history-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+/* 工場オーダー履歴テーブル */
+
+#plant-history-table {
   th {
     text-align: center;
     vertical-align: middle;
