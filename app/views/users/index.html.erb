@@ -34,7 +34,7 @@
           <td><%= link_to "編集", edit_user_path(user), class: "btn btn-md btn-primary" %></td>
           <td>
             <% unless current_user?(user) %>
-              <%= link_to "削除", user, method: :delete, class: "btn btn-md btn-primary",
+              <%= link_to "削除", user, method: :delete, class: "btn btn-md btn-danger",
                   data: { confirm: "#{user.name}を削除してよろしいですか？" } %>
             <% end %>
           </td>
