@@ -248,7 +248,11 @@
         <% if @order.img_1.present? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_1_check, class: "label-#{yield(:class_text)}" %>
-            <%= f.check_box :del_img_1_check, class: "del-checkbox" %>
+            <% if params[:order] && params[:order][:del_img_1_check] == "1" %>
+              <%= f.check_box :del_img_1_check, checked: true, class: "del-checkbox" %>
+            <% else %>
+              <%= f.check_box :del_img_1_check, class: "del-checkbox" %>
+            <% end %>
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
@@ -273,7 +277,11 @@
         <% if @order.img_2.present? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_2_check, class: "label-#{yield(:class_text)}" %>
-            <%= f.check_box :del_img_2_check, class: "del-checkbox" %>
+            <% if params[:order] && params[:order][:del_img_2_check] == "1" %>
+              <%= f.check_box :del_img_2_check, checked: true, class: "del-checkbox" %>
+            <% else %>
+              <%= f.check_box :del_img_2_check, class: "del-checkbox" %>
+            <% end %>
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
@@ -298,7 +306,11 @@
         <% if @order.img_3.present? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_3_check, class: "label-#{yield(:class_text)}" %>
-            <%= f.check_box :del_img_3_check, class: "del-checkbox" %>
+            <% if params[:order] && params[:order][:del_img_3_check] == "1" %>
+              <%= f.check_box :del_img_3_check, checked: true, class: "del-checkbox" %>
+            <% else %>
+              <%= f.check_box :del_img_3_check, class: "del-checkbox" %>
+            <% end %>
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
@@ -323,7 +335,11 @@
         <% if @order.img_4.present? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_4_check, class: "label-#{yield(:class_text)}" %>
-            <%= f.check_box :del_img_4_check, class: "del-checkbox" %>
+            <% if params[:order] && params[:order][:del_img_4_check] == "1" %>
+              <%= f.check_box :del_img_4_check, checked: true, class: "del-checkbox" %>
+            <% else %>
+              <%= f.check_box :del_img_4_check, class: "del-checkbox" %>
+            <% end %>
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
@@ -348,7 +364,11 @@
         <% if @order.img_5.present? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_5_check, class: "label-#{yield(:class_text)}" %>
-            <%= f.check_box :del_img_5_check, class: "del-checkbox" %>
+            <% if params[:order] && params[:order][:del_img_5_check] == "1" %>
+              <%= f.check_box :del_img_5_check, checked: true, class: "del-checkbox" %>
+            <% else %>
+              <%= f.check_box :del_img_5_check, class: "del-checkbox" %>
+            <% end %>
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
@@ -373,7 +393,11 @@
         <% if @order.img_6.present? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_6_check, class: "label-#{yield(:class_text)}" %>
-            <%= f.check_box :del_img_6_check, class: "del-checkbox" %>
+            <% if params[:order] && params[:order][:del_img_6_check] == "1" %>
+              <%= f.check_box :del_img_6_check, checked: true, class: "del-checkbox" %>
+            <% else %>
+              <%= f.check_box :del_img_6_check, class: "del-checkbox" %>
+            <% end %>
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
@@ -398,7 +422,11 @@
         <% if @order.img_7.present? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_7_check, class: "label-#{yield(:class_text)}" %>
-            <%= f.check_box :del_img_7_check, class: "del-checkbox" %>
+            <% if params[:order] && params[:order][:del_img_7_check] == "1" %>
+              <%= f.check_box :del_img_7_check, checked: true, class: "del-checkbox" %>
+            <% else %>
+              <%= f.check_box :del_img_7_check, class: "del-checkbox" %>
+            <% end %>
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
@@ -423,7 +451,11 @@
         <% if @order.img_8.present? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_8_check, class: "label-#{yield(:class_text)}" %>
-            <%= f.check_box :del_img_8_check, class: "del-checkbox" %>
+            <% if params[:order] && params[:order][:del_img_8_check] == "1" %>
+              <%= f.check_box :del_img_8_check, checked: true, class: "del-checkbox" %>
+            <% else %>
+              <%= f.check_box :del_img_8_check, class: "del-checkbox" %>
+            <% end %>
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">

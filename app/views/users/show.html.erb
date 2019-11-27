@@ -19,6 +19,8 @@
     </table>
     <div class="to-user-edit">
       <%= link_to "編集する", edit_user_path(@user), class: "btn btn-md btn-primary" %>
+      <%= link_to "アカウントを削除", user_path(@user), method: :delete, class: "btn btn-md btn-danger",
+          data: { confirm: "#{@user.name}に関する全データを削除してよろしいですか？" } %>
       <%= link_to :back do %>
         <button class="btn btn-md btn-default">戻る</button>
       <% end %>
