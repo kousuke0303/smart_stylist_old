@@ -87,7 +87,7 @@ td {
 }
 
 .circle {
-  background: dodgerblue;
+  background: midnightblue;
   border-radius: 50%;
   height: 200px;
   margin: 30px auto;
@@ -99,6 +99,11 @@ td {
   color: white;
   font-size: 3.5em;
   line-height: 200px;
+}
+
+.main-select-button:hover {
+  color: gainsboro;
+  text-decoration: none;
 }
 
 /* error_messages */
