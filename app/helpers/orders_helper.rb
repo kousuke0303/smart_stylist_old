@@ -219,11 +219,7 @@ module OrdersHelper
   end
   
   def put_total_price_or_bar(total)
-    if total
-      "#{total}円"
-    else
-      "--"
-    end
+    total ? "#{total}円" : "--"
   end
   
   def total_unpaid(order)

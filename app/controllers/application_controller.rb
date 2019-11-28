@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
         @address1 = @result["results"][0]["address1"]
         @address2 = @result["results"][0]["address2"]
         @address3 = @result["results"][0]["address3"]
-        @result_address = "〒#{@zipcode}　""#{@address1}""#{@address2}""#{@address3}"
+        @result_address = "〒" + @zipcode.insert(3, "-") + " " + @address1 + @address2 + @address3
       # 別のURLに飛ばされた場合
       when Net::HTTPRedirection
         @message = "Redirection: code=#{response.code} message=#{response.message}"
