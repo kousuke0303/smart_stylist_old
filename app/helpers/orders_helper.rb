@@ -178,28 +178,6 @@ module OrdersHelper
     plant.name
   end
   
-  def kind_name(order)
-    case order.kind
-      when "1"
-        kind = "SP"
-      when "2"
-        kind = "SVP"
-      when "3"
-        kind = "SPP"
-      when "4"
-        kind = "SVPP"
-      when "5"
-        kind = "V"
-      when "6"
-        kind = "P"
-      when "7"
-        kind = "PP"
-      when "8"
-        kind = "Sh"
-    end
-    kind
-  end
-  
   def total_cost(order)
     order.wage.present? ? wage = order.wage.to_i : wage = 0
     order.cloth.present? ? cloth = order.cloth.to_i : cloth = 0
