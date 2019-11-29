@@ -3,8 +3,8 @@ class Plant < ApplicationRecord
   
   before_save { self.email = email.downcase unless self.email.nil? }
   before_save { self.tel_1 = NKF.nkf('-w -Z4', tel_1).delete("^0-9") }
-  before_save { self.tel_2 = NKF.nkf('-w -Z4', tel_1).delete("^0-9") }
-  before_save { self.fax = NKF.nkf('-w -Z4', tel_1).delete("^0-9") }
+  before_save { self.tel_2 = NKF.nkf('-w -Z4', tel_2).delete("^0-9") }
+  before_save { self.fax = NKF.nkf('-w -Z4', fax).delete("^0-9") }
   before_save { self.zipcode = nil }
   
   validates :name, presence: true, length: { maximum: 50 }

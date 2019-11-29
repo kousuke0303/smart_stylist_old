@@ -55,6 +55,8 @@
       <div class="btn-plant-history">
         <%= link_to "オーダー履歴を非表示", user_plant_path(@user, @plant), class: "btn btn-lg btn-primary" %>
       </div>
+        
+      <% if @histories.count > 0 %>
         <%= will_paginate %>
         <table class="table table-bordered table-condensed table-hover" id="plant-history-table">
           <thead>
@@ -77,6 +79,8 @@
           </tbody>
         </table>
         <%= will_paginate %>
+      <% end %>
+        
     <% else %>
       <div class="btn-plant-history">
         <%= link_to "オーダー履歴を表示", user_plant_path(@user, @plant, history: "display"),
