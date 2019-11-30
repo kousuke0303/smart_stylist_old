@@ -2,7 +2,7 @@
 <% provide(:search_url, user_clients_path(@user)) %>
 <% provide(:search_title, "キーワード検索") %>
 
-<% if params[:search].present? %>
+<% if params[:search].present? || params[:search_birth].present? %>
   <h1>検索結果</h1>
 <% else %>
   <h1>顧客情報一覧</h1>
