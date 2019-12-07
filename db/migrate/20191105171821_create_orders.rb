@@ -39,14 +39,6 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :img_6_note
       t.string :img_7_note
       t.string :img_8_note
-      t.boolean :del_img_1_check, default: false
-      t.boolean :del_img_2_check, default: false
-      t.boolean :del_img_3_check, default: false
-      t.boolean :del_img_4_check, default: false
-      t.boolean :del_img_5_check, default: false
-      t.boolean :del_img_6_check, default: false
-      t.boolean :del_img_7_check, default: false
-      t.boolean :del_img_8_check, default: false
       t.references :client, foreign_key: true
 
       t.timestamps

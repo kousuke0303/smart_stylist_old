@@ -112,8 +112,7 @@ class OrdersController < ApplicationController
                                     :wage_pay, :cloth_pay, :lining_pay, :button_pay, :postage_pay, :other_pay,
                                     :narrow, :img_1, :img_2, :img_3, :img_4, :img_5, :img_6, :img_7, :img_8,
                                     :img_1_note, :img_2_note, :img_3_note, :img_4_note, :img_5_note,:img_6_note,
-                                    :img_7_note, :img_8_note, :del_img_1_check, :del_img_2_check,
-                                    :del_img_3_check, :del_img_4_check, :del_img_5_check, :del_img_6_check,
-                                    :del_img_7_check, :del_img_8_check)
+                                    :img_7_note, :img_8_note, :del_img_1, :del_img_2, :del_img_3, :del_img_4,
+                                    :del_img_5, :del_img_6, :del_img_7, :del_img_8)
     end
 end

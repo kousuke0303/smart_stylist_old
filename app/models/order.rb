@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :client
   include OrdersHelper
   
+  attr_accessor :del_img_1, :del_img_2, :del_img_3, :del_img_4, :del_img_5, :del_img_6, :del_img_7, :del_img_8
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
   before_save { self.narrow = nil }
   

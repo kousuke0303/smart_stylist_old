@@ -54,10 +54,9 @@ module OrdersHelper
   end
   
   def update_img
-    if params[:order][:del_img_1_check] == "1"
+    if params[:order][:del_img_1] == "1"
       @order.img_1 = nil
       @order.img_1_note = nil
-      @order.del_img_1_check = false
       File.delete("public/order_images/#{@order.id}_1.png")
     elsif params[:order][:img_1]
       File.delete("public/order_images/#{@order.id}_1.png") if File.exist?("public/order_images/#{@order.id}_1.png")
@@ -66,10 +65,9 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_1}"
     end
-    if params[:order][:del_img_2_check] == "1"
+    if params[:order][:del_img_2] == "1"
       @order.img_2 = nil
       @order.img_2_note = nil
-      @order.del_img_2_check = false
       File.delete("public/order_images/#{@order.id}_2.png")
     elsif params[:order][:img_2]
       File.delete("public/order_images/#{@order.id}_2.png") if File.exist?("public/order_images/#{@order.id}_2.png")
@@ -78,10 +76,9 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_2}"
     end
-    if params[:order][:del_img_3_check] == "1"
+    if params[:order][:del_img_3] == "1"
       @order.img_3 = nil
       @order.img_3_note = nil
-      @order.del_img_3_check = false
       File.delete("public/order_images/#{@order.id}_3.png")
     elsif params[:order][:img_3]
       File.delete("public/order_images/#{@order.id}_3.png") if File.exist?("public/order_images/#{@order.id}_3.png")
@@ -90,10 +87,9 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_3}"
     end
-    if params[:order][:del_img_4_check] == "1"
+    if params[:order][:del_img_4] == "1"
       @order.img_4 = nil
       @order.img_4_note = nil
-      @order.del_img_4_check = false
       File.delete("public/order_images/#{@order.id}_4.png")
     elsif params[:order][:img_4]
       File.delete("public/order_images/#{@order.id}_4.png") if File.exist?("public/order_images/#{@order.id}_4.png")
@@ -102,10 +98,9 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_4}"
     end
-    if params[:order][:del_img_5_check] == "1"
+    if params[:order][:del_img_5] == "1"
       @order.img_5 = nil
       @order.img_5_note = nil
-      @order.del_img_5_check = false
       File.delete("public/order_images/#{@order.id}_5.png")
     elsif params[:order][:img_5]
       File.delete("public/order_images/#{@order.id}_5.png") if File.exist?("public/order_images/#{@order.id}_5.png")
@@ -114,10 +109,9 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_5}"
     end
-    if params[:order][:del_img_6_check] == "1"
+    if params[:order][:del_img_6] == "1"
       @order.img_6 = nil
       @order.img_6_note = nil
-      @order.del_img_6_check = false
       File.delete("public/order_images/#{@order.id}_6.png")
     elsif params[:order][:img_6]
       File.delete("public/order_images/#{@order.id}_6.png") if File.exist?("public/order_images/#{@order.id}_6.png")
@@ -126,10 +120,9 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_6}"
     end
-    if params[:order][:del_img_7_check] == "1"
+    if params[:order][:del_img_7] == "1"
       @order.img_7 = nil
       @order.img_7_note = nil
-      @order.del_img_7_check = false
       File.delete("public/order_images/#{@order.id}_7.png")
     elsif params[:order][:img_7]
       File.delete("public/order_images/#{@order.id}_7.png") if File.exist?("public/order_images/#{@order.id}_7.png")
@@ -138,10 +131,9 @@ module OrdersHelper
       image.resize "570x760"
       image.write "public/order_images/#{@order.img_7}"
     end
-    if params[:order][:del_img_8_check] == "1"
+    if params[:order][:del_img_8] == "1"
       @order.img_8 = nil
       @order.img_8_note = nil
-      @order.del_img_8_check = false
       File.delete("public/order_images/#{@order.id}_8.png")
     elsif params[:order][:img_8]
       File.delete("public/order_images/#{@order.id}_8.png") if File.exist?("public/order_images/#{@order.id}_8.png")
