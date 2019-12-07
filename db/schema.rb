@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.integer "plant_id"
     t.integer "user_id"
     t.date "delivery"
-    t.string "narrow"
     t.string "img_1"
     t.string "img_2"
     t.string "img_3"

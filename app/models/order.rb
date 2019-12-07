@@ -2,9 +2,9 @@ class Order < ApplicationRecord
   belongs_to :client
   include OrdersHelper
   
-  attr_accessor :del_img_1, :del_img_2, :del_img_3, :del_img_4, :del_img_5, :del_img_6, :del_img_7, :del_img_8
+  attr_accessor :del_img_1, :del_img_2, :del_img_3, :del_img_4, :del_img_5, :del_img_6, :del_img_7, :del_img_8,
+                :narrow
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
-  before_save { self.narrow = nil }
   
   validates :client_id, presence: true
   validates :kind, presence: true
@@ -28,22 +28,18 @@ class Order < ApplicationRecord
   validates :img_8_note, length: { maximum: 100 }
   validates :user_id, presence: true
   
-  validate :invalid_ratail_if_str
+  validate :ratail_rule
   validate :order_date_than_sales_date_fast_if_invalid
   validate :order_date_than_delivery_fast_if_invalid
   validate :invalid_pay_without_cost
   validate :note_with_img
   
   def order_date_than_sales_date_fast_if_invalid
-    unless sales_date.blank?
-      errors.add(:order_date, "より早い売上日は無効です。") if order_date > sales_date
-    end
+    errors.add(:order_date, "より早い売上日は無効です。") if order_date.present? && sales_date.present? && order_date > sales_date
   end
   
   def order_date_than_delivery_fast_if_invalid
-    unless delivery.blank?
-      errors.add(:order_date, "より早い納品予定日は無効です。") if order_date > delivery
-    end
+    errors.add(:order_date, "より早い納品予定日は無効です。") if order_date.present? && delivery.present? && order_date > delivery
   end
   
   def invalid_pay_without_cost
@@ -55,10 +51,9 @@ class Order < ApplicationRecord
     errors.add(:other, "の金額を入力してください。") if other.nil? && other_pay.present?
   end
   
-  def invalid_ratail_if_str
-    if retail.present? && retail !~ /^[0-9]+$/
-      errors.add(:retail, "は数字で入力してください。")
-    end
+  def ratail_rule
+    errors.add(:retail, "は数字で入力してください。") if retail.present? && retail !~ /^[0-9]+$/
+    errors.add(:retail, "が費用に対して不足しています。") if retail.present? && total_unpaid(self) > self.retail.to_i
   end
   
   def note_with_img

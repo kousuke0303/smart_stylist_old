@@ -22,7 +22,6 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :plant_id
       t.integer :user_id
       t.date :delivery
-      t.string :narrow
       t.string :img_1
       t.string :img_2
       t.string :img_3
