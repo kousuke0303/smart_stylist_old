@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20191105171821) do
     t.string "tel_2"
     t.string "fax"
     t.string "email"
-    t.string "zipcode"
     t.string "address"
     t.string "note"
     t.string "work"
@@ -86,7 +85,6 @@ ActiveRecord::Schema.define(version: 20191105171821) do
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
-    t.string "zipcode"
     t.string "address"
     t.string "tel_1"
     t.string "tel_2"
