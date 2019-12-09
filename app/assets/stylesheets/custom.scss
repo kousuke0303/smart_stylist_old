@@ -86,8 +86,8 @@ td {
 
 /* トップページ */
 
-.select-button-area {
-
+a.main-link {
+  text-decoration: none;
 }
 
 .circle {
@@ -99,15 +99,10 @@ td {
   width: 390px;
 }
 
-.main-select-button {
+.main-btn {
   color: white;
   font-size: 3.5em;
   line-height: 200px;
-}
-
-.main-select-button:hover {
-  color: gainsboro;
-  text-decoration: none;
 }
 
 /* error_messages */

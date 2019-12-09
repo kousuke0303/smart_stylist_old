@@ -2,39 +2,101 @@
 
 <div class="row">
   
-  <div class="col-lg-4 col-md-6 select-button-area">
-    <div class="circle">
-      <%= link_to "新規オーダー", new_user_order_path(current_user), class: "main-select-button" %>
-    </div>
+  <div class="col-lg-4 col-md-6">
+    <%= link_to(new_user_order_path(current_user), class: "main-link") do %>
+      <div class="circle circle-1"><span class="main-btn main-btn-1">新規オーダー</span></div>
+    <% end %>
   </div>
   
-  <div class="col-lg-4 col-md-6 select-button-area">
-    <div class="circle">
-      <%= link_to "取引中オーダー", user_orders_path(current_user), class: "main-select-button" %>
-    </div>
+  <div class="col-lg-4 col-md-6">
+    <%= link_to(user_orders_path(current_user), class: "main-link") do %>
+      <div class="circle circle-2"><span class="main-btn main-btn-2">取引中オーダー</span></div>
+    <% end %>
   </div>
   
-  <div class="col-lg-4 col-md-6 select-button-area">
-    <div class="circle">
-      <%= link_to "月間売上管理", users_orders_traded_path(current_user), class: "main-select-button" %>
-    </div>
+  <div class="col-lg-4 col-md-6">
+    <%= link_to(users_orders_traded_path(current_user), class: "main-link") do %>
+      <div class="circle circle-3"><span class="main-btn main-btn-3">月間売上管理</span></div>
+    <% end %>
   </div>
 
-  <div class="col-lg-4 col-md-6 select-button-area">
-    <div class="circle">
-      <%= link_to "未払い費用管理", users_orders_unpaid_path(current_user), class: "main-select-button" %>
-    </div>
+  <div class="col-lg-4 col-md-6">
+    <%= link_to(users_orders_unpaid_path(current_user), class: "main-link") do %>
+      <div class="circle circle-4"><span class="main-btn main-btn-4">未払い費用管理</span></div>
+    <% end %>
   </div>
   
-  <div class="col-lg-4 col-md-6 select-button-area">
-    <div class="circle">
-      <%= link_to "顧客情報管理", user_clients_path(current_user), class: "main-select-button" %>
-    </div>
+  <div class="col-lg-4 col-md-6">
+    <%= link_to(user_clients_path(current_user), class: "main-link") do %>
+      <div class="circle circle-5"><span class="main-btn main-btn-5">顧客情報管理</span></div>
+    <% end %>
   </div>
   
-  <div class="col-lg-4 col-md-6 select-button-area">
-    <div class="circle">
-      <%= link_to "契約工場管理", user_plants_path(current_user), class: "main-select-button" %>
-    </div>
+  <div class="col-lg-4 col-md-6">
+    <%= link_to(user_plants_path(current_user), class: "main-link") do %>
+      <div class="circle circle-6"><span class="main-btn main-btn-6">契約工場管理</span></div>
+    <% end %>
   </div>
 </div>
+
+<script>
+  $(function() {
+    $('div.circle-1').hover(function() {
+      $(this).css('background', 'navy');
+      $('span.main-btn-1').css('color', 'gainsboro');
+    }, function() {
+    $(this).css('background', '');
+    $('span.main-btn-1').css('color', '');
+    });
+  });
+  
+  $(function() {
+    $('div.circle-2').hover(function() {
+      $(this).css('background', 'navy');
+      $('span.main-btn-2').css('color', 'gainsboro');
+    }, function() {
+    $(this).css('background', '');
+    $('span.main-btn-2').css('color', '');
+    });
+  });
+  
+  $(function() {
+    $('div.circle-3').hover(function() {
+      $(this).css('background', 'navy');
+      $('span.main-btn-3').css('color', 'gainsboro');
+    }, function() {
+    $(this).css('background', '');
+    $('span.main-btn-3').css('color', '');
+    });
+  });
+  
+  $(function() {
+    $('div.circle-4').hover(function() {
+      $(this).css('background', 'navy');
+      $('span.main-btn-4').css('color', 'gainsboro');
+    }, function() {
+    $(this).css('background', '');
+    $('span.main-btn-4').css('color', '');
+    });
+  });
+  
+  $(function() {
+    $('div.circle-5').hover(function() {
+      $(this).css('background', 'navy');
+      $('span.main-btn-5').css('color', 'gainsboro');
+    }, function() {
+    $(this).css('background', '');
+    $('span.main-btn-5').css('color', '');
+    });
+  });
+  
+  $(function() {
+    $('div.circle-6').hover(function() {
+      $(this).css('background', 'navy');
+      $('span.main-btn-6').css('color', 'gainsboro');
+    }, function() {
+    $(this).css('background', '');
+    $('span.main-btn-6').css('color', '');
+    });
+  });
+</script>
