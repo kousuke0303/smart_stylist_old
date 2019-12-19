@@ -46,9 +46,7 @@
       <%= link_to "工場情報を編集", edit_user_plant_path(@user, @plant), class: "btn btn-md btn-primary" %>
       <%= link_to "削除", user_plant_path(@user, @plant), method: :delete,
           class: "btn btn-md btn-danger", data: { confirm: "#{@plant.name}を削除してよろしいですか？" } %>
-      <%= link_to :back do %>
-        <button class="btn btn-md btn-default">戻る</button>
-      <% end %>
+      <%= link_to "工場一覧へ", user_plants_path(@user), class: "btn btn-md btn-default" %>
     </div>
     
     <% if params[:history] == "display" %>
