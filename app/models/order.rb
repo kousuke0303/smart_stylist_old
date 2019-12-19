@@ -53,7 +53,7 @@ class Order < ApplicationRecord
   
   def ratail_rule
     errors.add(:retail, "は数字で入力してください。") if retail.present? && retail !~ /^[0-9]+$/
-    errors.add(:retail, "が費用に対して不足しています。") if retail.present? && total_unpaid(self) > self.retail.to_i
+    errors.add(:retail, "が費用に対して不足しています。") if retail.present? && total_cost(self) > self.retail.to_i
   end
   
   def note_with_img

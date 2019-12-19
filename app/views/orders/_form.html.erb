@@ -34,16 +34,22 @@
         <div class="col-xs-4">
           <%= f.label :kind, class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:kind].present? %>
-            <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "V": "V",
-                                                    "P": "P", "PP": "PP", "Sh": "Sh"}, params[:order][:kind]),
+            <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "WSP": "WSP",
+                                                    "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP","V": "V", "WV": "WV",
+                                                    "P": "P", "PP": "PP", "COAT": "COAT","SHIRT": "SHIRT",
+                                                    "SHOES": "SHOES"}, params[:order][:kind]),
                 {}, class: "form-control" %>
           <% elsif @order.kind.present? %>
-            <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "V": "V",
-                                                    "P": "P", "PP": "PP", "Sh": "Sh"}, @order.kind),
+            <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "WSP": "WSP",
+                                                    "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP","V": "V", "WV": "WV",
+                                                    "P": "P", "PP": "PP", "COAT": "COAT","SHIRT": "SHIRT",
+                                                    "SHOES": "SHOES"}, @order.kind),
                 {}, class: "form-control" %>
           <% else %>
-            <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "V": "V",
-                                                    "P": "P", "PP": "PP", "Sh": "Sh"}),
+            <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "WSP": "WSP",
+                                                    "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP","V": "V", "WV": "WV",
+                                                    "P": "P", "PP": "PP", "COAT": "COAT","SHIRT": "SHIRT",
+                                                    "SHOES": "SHOES"}),
                 {prompt: "タイプを選択"}, class: "form-control" %>
           <% end %>
         </div>
