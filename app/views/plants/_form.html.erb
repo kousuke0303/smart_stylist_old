@@ -1,7 +1,7 @@
 <%= form_with(model: @plant, url: yield(:url), local: true) do |f| %>
   <%= render "shared/error_messages", object: @plant %>
   
-  <%= f.label :name, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :name, "工場名 (必須)", class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
     <%= f.text_field :name, value: params[:plant][:name], class: "form-control" %>
   <% else %>

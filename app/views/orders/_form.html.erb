@@ -6,7 +6,7 @@
       <div class="row">
         
         <div class="col-xs-6">
-          <%= f.label :client_id, class: "label-#{yield(:class_text)}" %>
+          <%= f.label :client_id, "顧客名 (必須)", class: "label-#{yield(:class_text)}" %>
           <%= f.collection_select(:client_id, @clients, :id, :name, {prompt: "顧客を選択"},
               {class: "form-control"}) %>
         </div>
@@ -32,7 +32,7 @@
       <div class="row">
         
         <div class="col-xs-4">
-          <%= f.label :kind, class: "label-#{yield(:class_text)}" %>
+          <%= f.label :kind, "品名 (必須)", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:kind].present? %>
             <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "WSP": "WSP",
                                                     "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP","V": "V", "WV": "WV",
@@ -55,7 +55,7 @@
         </div>
         
         <div class="col-xs-4">
-          <%= f.label :plant_id, class: "label-#{yield(:class_text)}" %>
+          <%= f.label :plant_id, "発注工場 (必須)", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:plant_id].present? %>
             <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]},
                   {class: "form-control"}) %>
@@ -66,7 +66,7 @@
         </div>
         
         <div class="col-xs-4">
-          <%= f.label :retail, class: "label-#{yield(:class_text)}" %>
+          <%= f.label :retail, "上代 (必須)", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] %>
             <%= f.text_field :retail, value: params[:order][:retail], class: "form-control" %>
           <% else %>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="col-xs-4">
-          <%= f.label :order_date, class: "label-#{yield(:class_text)}" %>
+          <%= f.label :order_date, "受注日 (必須)", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:order_date].present? %>
             <%= f.date_field :order_date, value: params[:order][:order_date], class: "form-control" %>
           <% else %>

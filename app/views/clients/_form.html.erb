@@ -1,7 +1,7 @@
 <%= form_with(model: @client, url: yield(:url), local: true) do |f| %>
   <%= render 'shared/error_messages', object: @client %>
   
-  <%= f.label :name, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :name, "顧客名 (必須)", class: "label-#{yield(:class_text)}" %>
   <% if params[:client] %>
     <%= f.text_field :name, value: params[:client][:name], class: "form-control" %>
   <% else %>
