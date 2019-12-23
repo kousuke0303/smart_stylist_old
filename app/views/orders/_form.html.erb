@@ -95,9 +95,9 @@
         <div class="col-xs-4">
           <%= f.label :delivery, class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:delivery].present? %>
-            <%= f.date_field :delivery, value: params[:order][:delivery], class: "form-control" %>
+            <%= f.text_field :delivery,value: params[:order][:delivery], id: "datepicker", class: "form-control" %>
           <% else %>
-            <%= f.date_field :delivery, class: "form-control" %>
+            <%= f.text_field :delivery, id: "datepicker", class: "form-control" %>
           <% end %>
         </div>
         
@@ -490,3 +490,26 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  $('#datepicker').datepicker({
+    showButtonPanel: true,
+  });
+  
+  $.datepicker._gotoToday = function(id) { 
+    $(id).datepicker('setDate', new Date()).datepicker('hide').blur().change();
+  };
+  
+  (function(){
+    var old_fn = $.datepicker._updateDatepicker;
+    $.datepicker._updateDatepicker = function(inst) {
+      old_fn.call(this, inst);
+      var buttonPane = $(this).datepicker("widget").find(".ui-datepicker-buttonpane");
+      var buttonHtml = "<button type='button' class='ui-datepicker-clean ui-state-default ui-priority-primary ui-corner-all'>削除</button>";
+      $(buttonHtml).appendTo(buttonPane).click(
+        function(ev) {
+          $.datepicker._clearDate(inst.input);
+      });
+    }
+  })();
+</script>
