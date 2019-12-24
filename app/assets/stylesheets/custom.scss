@@ -3,10 +3,6 @@
 
 /* universal */
 
-body {
-  padding-top: 80px;
-}
-
 .container {
   padding: 0;
 }
@@ -50,6 +46,8 @@ p {
 
 .navbar {
   background: black;
+  margin-bottom: 15px;
+  position: relative;
 }
 
 #logo {

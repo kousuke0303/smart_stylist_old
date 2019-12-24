@@ -13,6 +13,11 @@
   padding: 0 15px 0 0;
 }
 
+div.ui-datepicker {
+  font-size: 85%;
+  width: 220px;
+}
+
 .subtitle-area {
   font-size: 1.5em;
   font-weight: bold;
@@ -233,9 +238,4 @@ input[type=checkbox].del-checkbox {
 
 span.red {
   color: red;
-}
-
-div.ui-datepicker {
-  width: 220px;
-  font-size: 90%;
 }

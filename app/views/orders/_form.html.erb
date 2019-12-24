@@ -77,27 +77,33 @@
         <div class="col-xs-4">
           <%= f.label :order_date, "受注日 (必須)", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:order_date].present? %>
-            <%= f.date_field :order_date, value: params[:order][:order_date], class: "form-control" %>
+            <%= f.text_field :order_date,value: params[:order][:order_date], class: "datepicker form-control" %>
+          <% elsif @order.order_date.present? %>
+            <%= f.text_field :order, value: @order.order_date.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
           <% else %>
-            <%= f.date_field :order_date, class: "form-control" %>
+            <%= f.text_field :order_date, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
         </div>
         
         <div class="col-xs-4">
           <%= f.label :sales_date, class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:sales_date].present? %>
-            <%= f.date_field :sales_date, value: params[:order][:sales_date], class: "form-control" %>
+            <%= f.text_field :sales_date,value: params[:order][:sales_date], class: "datepicker form-control" %>
+          <% elsif @order.sales_date.present? %>
+            <%= f.text_field :sales_date, value: @order.sales_date.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
           <% else %>
-            <%= f.date_field :sales_date, class: "form-control" %>
+            <%= f.text_field :sales_date, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
         </div>
         
         <div class="col-xs-4">
           <%= f.label :delivery, class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:delivery].present? %>
-            <%= f.text_field :delivery,value: params[:order][:delivery], id: "datepicker", class: "form-control" %>
+            <%= f.text_field :delivery,value: params[:order][:delivery], class: "datepicker form-control" %>
+          <% elsif @order.delivery.present? %>
+            <%= f.text_field :delivery, value: @order.delivery.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
           <% else %>
-            <%= f.text_field :delivery, id: "datepicker", class: "form-control" %>
+            <%= f.text_field :delivery, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
         </div>
         
@@ -492,7 +498,7 @@
 <% end %>
 
 <script>
-  $('#datepicker').datepicker({
+  $('.datepicker').datepicker({
     showButtonPanel: true,
   });
   
