@@ -8,6 +8,7 @@ gem 'bootstrap-sass'
 gem 'will_paginate' 
 gem 'bootstrap-will_paginate'
 gem 'mini_magick'
+gem "aws-sdk-s3", require: false
 gem 'puma',         '~> 3.7'
 gem 'sass-rails',   '~> 5.0'
 gem 'uglifier',     '>= 1.3.0'
