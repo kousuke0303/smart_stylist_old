@@ -1,6 +1,14 @@
 class Order < ApplicationRecord
   belongs_to :client
   include OrdersHelper
+  has_one_attached :img_1
+  has_one_attached :img_2
+  has_one_attached :img_3
+  has_one_attached :img_4
+  has_one_attached :img_5
+  has_one_attached :img_6
+  has_one_attached :img_7
+  has_one_attached :img_8
   
   attr_accessor :del_img_1, :del_img_2, :del_img_3, :del_img_4, :del_img_5, :del_img_6, :del_img_7, :del_img_8,
                 :narrow

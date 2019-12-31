@@ -120,15 +120,16 @@
       </tr>
     </table>
   </div>
+  
     
   <% if params[:img] == "display" %>
     <div class="col-md-8 col-md-offset-2 img-display-btn-area">
       <%= link_to "画像を非表示", user_order_path(@user, @order), class: "btn btn-lg btn-primary" %>
     </div>
       
-    <% if @order.img_1.present? %>
+    <% if @order.img_1.attached? %>
       <div class="col-lg-6">
-        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_1}" %></div>
+        <div class="img-display-area"><%= image_tag @order.img_1.variant(resize: "570x760") %></div>
         <div class="img-title-area">
           <h3>画像(1)</h3>
           <% if @order.img_1_note.present? %>
@@ -140,9 +141,9 @@
       </div>
     <% end %>
     
-    <% if @order.img_2.present? %>
+    <% if @order.img_2.attached? %>
       <div class="col-lg-6">
-        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_2}" %></div>
+        <div class="img-display-area"><%= image_tag @order.img_2.variant(resize: "570x760") %></div>
         <div class="img-title-area">
           <h3>画像(2)</h3>
           <% if @order.img_2_note.present? %>
@@ -154,9 +155,9 @@
       </div>
     <% end %>
     
-    <% if @order.img_3.present? %>
+    <% if @order.img_3.attached? %>
       <div class="col-lg-6">
-        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_3}" %></div>
+        <div class="img-display-area"><%= image_tag @order.img_3.variant(resize: "570x760") %></div>
         <div class="img-title-area">
           <h3>画像(3)</h3>
           <% if @order.img_3_note.present? %>
@@ -168,9 +169,9 @@
       </div>
     <% end %>
     
-    <% if @order.img_4.present? %>
+    <% if @order.img_4.attached? %>
       <div class="col-lg-6">
-        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_4}" %></div>
+        <div class="img-display-area"><%= image_tag @order.img_4.variant(resize: "570x760") %></div>
         <div class="img-title-area">
           <h3>画像(4)</h3>
           <% if @order.img_4_note.present? %>
@@ -182,9 +183,9 @@
       </div>
     <% end %>
     
-    <% if @order.img_5.present? %>
+    <% if @order.img_5.attached? %>
       <div class="col-lg-6">
-        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_5}" %></div>
+        <div class="img-display-area"><%= image_tag @order.img_5.variant(resize: "570x760") %></div>
         <div class="img-title-area">
           <h3>画像(5)</h3>
           <% if @order.img_5_note.present? %>
@@ -196,9 +197,9 @@
       </div>
     <% end %>
     
-    <% if @order.img_6.present? %>
+    <% if @order.img_6.attached? %>
       <div class="col-lg-6">
-        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_6}" %></div>
+        <div class="img-display-area"><%= image_tag @order.img_6.variant(resize: "570x760") %></div>
         <div class="img-title-area">
           <h3>画像(6)</h3>
           <% if @order.img_6_note.present? %>
@@ -210,9 +211,9 @@
       </div>
     <% end %>
     
-    <% if @order.img_7.present? %>
+    <% if @order.img_7.attached? %>
       <div class="col-lg-6">
-        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_7}" %></div>
+        <div class="img-display-area"><%= image_tag @order.img_7.variant(resize: "570x760") %></div>
         <div class="img-title-area">
           <h3>画像(7)</h3>
           <% if @order.img_7_note.present? %>
@@ -224,9 +225,9 @@
       </div>
     <% end %>
     
-    <% if @order.img_8.present? %>
+    <% if @order.img_8.attached? %>
       <div class="col-lg-6">
-        <div class="img-display-area"><%= image_tag "/order_images/#{@order.img_8}" %></div>
+        <div class="img-display-area"><%= image_tag @order.img_8.variant(resize: "570x760") %></div>
         <div class="img-title-area">
           <h3>画像(8)</h3>
           <% if @order.img_8_note.present? %>

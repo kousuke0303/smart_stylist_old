@@ -7,7 +7,7 @@ gem 'faker'
 gem 'bootstrap-sass'
 gem 'will_paginate' 
 gem 'bootstrap-will_paginate'
-gem 'mini_magick'
+gem 'mini_magick',  '~> 4.8'
 gem "aws-sdk-s3", require: false
 gem 'puma',         '~> 3.7'
 gem 'sass-rails',   '~> 5.0'
