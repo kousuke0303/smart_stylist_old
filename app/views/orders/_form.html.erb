@@ -39,17 +39,11 @@
                                                     "P": "P", "PP": "PP", "COAT": "COAT","SHIRT": "SHIRT",
                                                     "SHOES": "SHOES"}, params[:order][:kind]),
                 {}, class: "form-control" %>
-          <% elsif @order.kind.present? %>
-            <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "WSP": "WSP",
-                                                    "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP","V": "V", "WV": "WV",
-                                                    "P": "P", "PP": "PP", "COAT": "COAT","SHIRT": "SHIRT",
-                                                    "SHOES": "SHOES"}, @order.kind),
-                {}, class: "form-control" %>
           <% else %>
             <%= f.select :kind, options_for_select({"SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "WSP": "WSP",
                                                     "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP","V": "V", "WV": "WV",
                                                     "P": "P", "PP": "PP", "COAT": "COAT","SHIRT": "SHIRT",
-                                                    "SHOES": "SHOES"}),
+                                                    "SHOES": "SHOES"}, @order.kind),
                 {prompt: "タイプを選択"}, class: "form-control" %>
           <% end %>
         </div>
@@ -257,7 +251,7 @@
           </div>
           <div class="form-group"><%= f.file_field :img_1 %></div>
         </div>
-        <% if @order.img_1.present? %>
+        <% if @order.img_1.attached? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_1, class: "label-#{yield(:class_text)}" %>
             <% if params[:order] && params[:order][:del_img_1] == "1" %>
@@ -286,7 +280,7 @@
           </div>
           <div class="form-group"><%= f.file_field :img_2 %></div>
         </div>
-        <% if @order.img_2.present? %>
+        <% if @order.img_2.attached? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_2, class: "label-#{yield(:class_text)}" %>
             <% if params[:order] && params[:order][:del_img_2] == "1" %>
@@ -315,7 +309,7 @@
           </div>
           <div class="form-group"><%= f.file_field :img_3 %></div>
         </div>
-        <% if @order.img_3.present? %>
+        <% if @order.img_3.attached? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_3, class: "label-#{yield(:class_text)}" %>
             <% if params[:order] && params[:order][:del_img_3] == "1" %>
@@ -344,7 +338,7 @@
           </div>
           <div class="form-group"><%= f.file_field :img_4 %></div>
         </div>
-        <% if @order.img_4.present? %>
+        <% if @order.img_4.attached? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_4, class: "label-#{yield(:class_text)}" %>
             <% if params[:order] && params[:order][:del_img_4] == "1" %>
@@ -373,7 +367,7 @@
           </div>
           <div class="form-group"><%= f.file_field :img_5 %></div>
         </div>
-        <% if @order.img_5.present? %>
+        <% if @order.img_5.attached? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_5, class: "label-#{yield(:class_text)}" %>
             <% if params[:order] && params[:order][:del_img_5] == "1" %>
@@ -402,7 +396,7 @@
           </div>
           <div class="form-group"><%= f.file_field :img_6 %></div>
         </div>
-        <% if @order.img_6.present? %>
+        <% if @order.img_6.attached? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_6, class: "label-#{yield(:class_text)}" %>
             <% if params[:order] && params[:order][:del_img_6] == "1" %>
@@ -431,7 +425,7 @@
           </div>
           <div class="form-group"><%= f.file_field :img_7 %></div>
         </div>
-        <% if @order.img_7.present? %>
+        <% if @order.img_7.attached? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_7, class: "label-#{yield(:class_text)}" %>
             <% if params[:order] && params[:order][:del_img_7] == "1" %>
@@ -460,7 +454,7 @@
           </div>
           <div class="form-group"><%= f.file_field :img_8 %></div>
         </div>
-        <% if @order.img_8.present? %>
+        <% if @order.img_8.attached? %>
           <div class="col-xs-3 del-img-check-area">
             <%= f.label :del_img_8, class: "label-#{yield(:class_text)}" %>
             <% if params[:order] && params[:order][:del_img_8] == "1" %>

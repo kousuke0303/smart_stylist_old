@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :plants, dependent: :destroy
   has_many :clients, dependent: :destroy
+  has_many :orders, dependent: :destroy
   
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
