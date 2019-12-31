@@ -42,6 +42,7 @@ class OrdersController < ApplicationController
       redirect_to edit_user_order_url(@user, @order, order: order_params)
     else
       if @order.update_attributes(order_params)
+        del_img
         flash[:success] = "オーダー内容を更新しました。"
         redirect_to user_order_url(@user, @order)
       else

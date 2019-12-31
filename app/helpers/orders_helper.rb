@@ -1,4 +1,15 @@
 module OrdersHelper
+  
+  def del_img
+    @order.img_1.purge if params[:order][:del_img_1] == "1"
+    @order.img_2.purge if params[:order][:del_img_2] == "1"
+    @order.img_3.purge if params[:order][:del_img_3] == "1"
+    @order.img_4.purge if params[:order][:del_img_4] == "1"
+    @order.img_5.purge if params[:order][:del_img_5] == "1"
+    @order.img_6.purge if params[:order][:del_img_6] == "1"
+    @order.img_7.purge if params[:order][:del_img_7] == "1"
+    @order.img_8.purge if params[:order][:del_img_8] == "1"
+  end
 
   def client_name(order)
     client = Client.find(order.client_id)
