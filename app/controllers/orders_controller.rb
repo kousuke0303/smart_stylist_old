@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     else
       @order = Order.new(order_params)
       if @order.save
-        new_img
+        
         flash[:success] = "新規オーダーを登録しました。"
         redirect_to user_order_url(@user, @order)
       else

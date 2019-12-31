@@ -204,6 +204,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activestorage (~> 5.2.0)
   aws-sdk-s3
   bcrypt
   bootsnap
