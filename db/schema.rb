@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
+    t.string "kana"
     t.string "tel_1"
     t.string "tel_2"
     t.string "fax"
