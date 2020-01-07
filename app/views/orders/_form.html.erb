@@ -39,17 +39,11 @@
                                                     "V": "V", "WV": "WV", "P": "P", "PP": "PP", "COAT": "COAT",
                                                     "SHIRT": "SHIRT", "SHOES": "SHOES"}, params[:order][:kind]),
                 {}, class: "form-control" %>
-          <% elsif @order.kind.present? %>
-            <%= f.select :kind, options_for_select({"S": "S", "SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP",
-                                                    "WSP": "WSP", "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP",
-                                                    "V": "V", "WV": "WV", "P": "P", "PP": "PP", "COAT": "COAT",
-                                                    "SHIRT": "SHIRT", "SHOES": "SHOES"}, @order.kind),
-                {}, class: "form-control" %>
           <% else %>
             <%= f.select :kind, options_for_select({"S": "S", "SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP",
                                                     "WSP": "WSP", "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP",
                                                     "V": "V", "WV": "WV", "P": "P", "PP": "PP", "COAT": "COAT",
-                                                    "SHIRT": "SHIRT", "SHOES": "SHOES"}),
+                                                    "SHIRT": "SHIRT", "SHOES": "SHOES"}, @order.kind),
                 {prompt: "タイプを選択"}, class: "form-control" %>
           <% end %>
         </div>
