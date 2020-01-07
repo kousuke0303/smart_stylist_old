@@ -1,12 +1,25 @@
 <%= form_with(model: @client, url: yield(:url), local: true) do |f| %>
   <%= render 'shared/error_messages', object: @client %>
   
-  <%= f.label :name, "顧客名 (必須)", class: "label-#{yield(:class_text)}" %>
-  <% if params[:client] %>
-    <%= f.text_field :name, value: params[:client][:name], class: "form-control" %>
-  <% else %>
-    <%= f.text_field :name, class: "form-control" %>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <%= f.label :name, "顧客名 (必須)", class: "label-#{yield(:class_text)}" %>
+      <% if params[:client] %>
+        <%= f.text_field :name, value: params[:client][:name], class: "form-control" %>
+      <% else %>
+        <%= f.text_field :name, class: "form-control" %>
+      <% end %>
+    </div>
+    
+    <div class="col-xs-6 col-md-6">
+      <%= f.label :kana, class: "label-#{yield(:class_text)}" %>
+      <% if params[:client] %>
+        <%= f.text_field :kana, value: params[:client][:kana], class: "form-control" %>
+      <% else %>
+        <%= f.text_field :kana, class: "form-control" %>
+      <% end %>
+    </div>
+  </div>
   
   <div class="row">
     <div class="col-xs-9 form-zip-left">
@@ -31,19 +44,25 @@
     <%= f.text_field :address, class: "form-control" %>
   <% end %>
   
-  <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
-  <% if params[:client] %>
-    <%= f.telephone_field :tel_1, value: params[:client][:tel_1], class: "form-control" %>
-  <% else %>
-    <%= f.telephone_field :tel_1, class: "form-control" %>
-  <% end %>
-  
-  <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
-  <% if params[:client] %>
-    <%= f.telephone_field :tel_2, value: params[:client][:tel_2], class: "form-control" %>
-  <% else %>
-    <%= f.telephone_field :tel_2, class: "form-control" %>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
+      <% if params[:client] %>
+        <%= f.telephone_field :tel_1, value: params[:client][:tel_1], class: "form-control" %>
+      <% else %>
+        <%= f.telephone_field :tel_1, class: "form-control" %>
+      <% end %>
+    </div>
+    
+    <div class="col-xs-6 col-md-6"> 
+      <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
+      <% if params[:client] %>
+        <%= f.telephone_field :tel_2, value: params[:client][:tel_2], class: "form-control" %>
+      <% else %>
+        <%= f.telephone_field :tel_2, class: "form-control" %>
+      <% end %>
+    </div>
+  </div>
   
   <%= f.label :fax, class: "label-#{yield(:class_text)}" %>
   <% if params[:client] %>
@@ -59,72 +78,78 @@
     <%= f.email_field :email, class: "form-control" %>
   <% end %>
   
-  <%= f.label :work, class: "label-#{yield(:class_text)}" %>
-  <% if params[:client] %>
-    <%= f.text_field :work, value: params[:client][:work], class: "form-control" %>
-  <% else %>
-    <%= f.text_field :work, class: "form-control" %>
-  <% end %>
-  
-  <%= f.label :"生年月日", class: "label-#{yield(:class_text)}" %>
-  <div class="form-inline">
-  <% if params[:client] %>
-    <%= f.date_select(:birth_year,
-                      {include_blank: true, selected: Date.new(params[:client]["birth_year(1i)"].to_i,1,1),
-                      start_year: Date.current.year, end_year: Date.current.year - 100,
-                      discard_month: true}, {class: "form-control"}
-                      ) %>
-  <% else %>
-    <%= f.date_select(:birth_year,
-                      {include_blank: true, start_year: Date.current.year,
-                      end_year: Date.current.year - 100,discard_month: true}, {class: "form-control"}
-                      ) %>
-  <% end %>
-  年
-  <% if params[:client] && !params[:client][:birth_month].nil? %>
-    <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
-                                                   "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,"12": 12},
-        params[:client][:birth_month]),
-        {include_blank: true}, class: "form-control" %>
-  <% elsif @client.birth_month.present? %>
-    <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
-                                                   "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12},
-        selected: @client.birth_month),
-        {include_blank: true}, class: "form-control" %>
-  <% else %>
-    <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
-                                                   "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12}),
-        {include_blank: true}, class: "form-control" %>
-  <% end %>
-  月
-  <% if params[:client] && !params[:client][:birth_day].nil? %>
-    <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
-                                                  "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
-                                                  "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
-                                                  "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
-                                                  "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
-                                                  "27": 27, "28": 28, "29": 29, "30": 30, "31": 31},
-        params[:client][:birth_day]),
-        {include_blank: true}, class: "form-control" %>
-  <% elsif @client.birth_day.present? %>
-    <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
-                                                  "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
-                                                  "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
-                                                  "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
-                                                  "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
-                                                  "27": 27, "28": 28, "29": 29, "30": 30, "31": 31},
-        @client.birth_day),
-        {include_blank: true}, class: "form-control" %>
-  <% else %>
-    <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
-                                                  "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
-                                                  "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
-                                                  "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
-                                                  "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
-                                                  "27": 27, "28": 28, "29": 29, "30": 30, "31": 31}),
-        {include_blank: true}, class: "form-control" %>
-  <% end %>
-  日
+  <div class="row">
+    <div class="form-inline col-xs-6 col-md-6">
+      <%= f.label :"生年月日", class: "label-#{yield(:class_text)}" %>
+      <div class="form-inline">
+        <% if params[:client] %>
+          <%= f.date_select(:birth_year,
+                            {include_blank: true, selected: Date.new(params[:client]["birth_year(1i)"].to_i,1,1),
+                            start_year: Date.current.year, end_year: Date.current.year - 100,
+                            discard_month: true}, {class: "form-control"}
+                            ) %>
+        <% else %>
+          <%= f.date_select(:birth_year,
+                            {include_blank: true, start_year: Date.current.year,
+                            end_year: Date.current.year - 100,discard_month: true}, {class: "form-control"}
+                            ) %>
+        <% end %>
+        年
+        <% if params[:client] && !params[:client][:birth_month].nil? %>
+          <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                         "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,"12": 12},
+              params[:client][:birth_month]),
+              {include_blank: true}, class: "form-control" %>
+        <% elsif @client.birth_month.present? %>
+          <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                         "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12},
+              selected: @client.birth_month),
+              {include_blank: true}, class: "form-control" %>
+        <% else %>
+          <%= f.select :birth_month, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                         "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12}),
+              {include_blank: true}, class: "form-control" %>
+        <% end %>
+        月
+        <% if params[:client] && !params[:client][:birth_day].nil? %>
+          <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                        "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
+                                                        "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
+                                                        "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
+                                                        "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
+                                                        "27": 27, "28": 28, "29": 29, "30": 30, "31": 31},
+              params[:client][:birth_day]),
+              {include_blank: true}, class: "form-control" %>
+        <% elsif @client.birth_day.present? %>
+          <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                        "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
+                                                        "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
+                                                        "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
+                                                        "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
+                                                        "27": 27, "28": 28, "29": 29, "30": 30, "31": 31},
+              @client.birth_day),
+              {include_blank: true}, class: "form-control" %>
+        <% else %>
+          <%= f.select :birth_day, options_for_select({"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
+                                                        "7": 7, "8": 8, "9": 9, "10": 10, "11": 11,
+                                                        "12": 12, "13": 13, "14": 14, "15": 15, "16": 16,
+                                                        "17": 17, "18": 18, "19": 19, "20": 20, "21": 21,
+                                                        "22": 22, "23": 23, "24": 24, "25": 25, "26": 26,
+                                                        "27": 27, "28": 28, "29": 29, "30": 30, "31": 31}),
+              {include_blank: true}, class: "form-control" %>
+        <% end %>
+        日
+      </div>
+    </div>
+    
+    <div class="col-xs-6 col-md-6">
+      <%= f.label :work, class: "label-#{yield(:class_text)}" %>
+      <% if params[:client] %>
+        <%= f.text_field :work, value: params[:client][:work], class: "form-control" %>
+      <% else %>
+        <%= f.text_field :work, class: "form-control" %>
+      <% end %>
+    </div>
   </div>
   
   <%= f.label :note, class: "label-#{yield(:class_text)}" %>

@@ -30,6 +30,7 @@ ja:
         client: 
           id: ID
           name: 顧客名
+          kana: フリガナ
           address: 住所
           tel_1: 電話番号(1)
           tel_2: 電話番号(2)
