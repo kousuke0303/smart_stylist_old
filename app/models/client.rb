@@ -9,6 +9,7 @@ class Client < ApplicationRecord
   before_save { self.fax = NKF.nkf('-w -Z4', fax).delete("^0-9") unless fax.blank? }
   
   validates :name, presence: true, length: { maximum: 50 }
+  validates :kana, length: { maximum: 50 }
   validates :tel_1, length: { maximum: 20 }
   validates :tel_2, length: { maximum: 20 }
   validates :fax, length: { maximum: 20 }

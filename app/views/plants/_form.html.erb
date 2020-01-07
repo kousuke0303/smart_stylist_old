@@ -31,19 +31,25 @@
     <%= f.text_field :address, class: "form-control" %>
   <% end %>
   
-  <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
-  <% if params[:plant] %>
-    <%= f.telephone_field :tel_1, value: params[:plant][:tel_1], class: "form-control" %>
-  <% else %>
-    <%= f.telephone_field :tel_1, class: "form-control" %>
-  <% end %>
-  
-  <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
-  <% if params[:plant] %>
-    <%= f.telephone_field :tel_2, value: params[:plant][:tel_2], class: "form-control" %>
-  <% else %>
-    <%= f.telephone_field :tel_2, class: "form-control" %>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
+      <% if params[:plant] %>
+        <%= f.telephone_field :tel_1, value: params[:plant][:tel_1], class: "form-control" %>
+      <% else %>
+        <%= f.telephone_field :tel_1, class: "form-control" %>
+      <% end %>
+    </div>
+    
+    <div class="col-xs-6 col-md-6"> 
+      <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
+      <% if params[:plant] %>
+        <%= f.telephone_field :tel_2, value: params[:plant][:tel_2], class: "form-control" %>
+      <% else %>
+        <%= f.telephone_field :tel_2, class: "form-control" %>
+      <% end %>
+    </div>
+  </div>
   
   <%= f.label :fax, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
@@ -59,19 +65,25 @@
     <%= f.email_field :email, class: "form-control" %>
   <% end %>
   
-  <%= f.label :staff_1, class: "label-#{yield(:class_text)}" %>
-  <% if params[:plant] %>
-    <%= f.text_field :staff_1, value: params[:plant][:staff_1], class: "form-control" %>
-  <% else %>
-    <%= f.text_field :staff_1, class: "form-control" %>
-  <% end %>
-  
-  <%= f.label :staff_2, class: "label-#{yield(:class_text)}" %>
-  <% if params[:plant] %>
-    <%= f.text_field :staff_2, value: params[:plant][:staff_2], class: "form-control" %>
-  <% else %>
-    <%= f.text_field :staff_2, class: "form-control" %>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <%= f.label :staff_1, class: "label-#{yield(:class_text)}" %>
+      <% if params[:plant] %>
+        <%= f.text_field :staff_1, value: params[:plant][:staff_1], class: "form-control" %>
+      <% else %>
+        <%= f.text_field :staff_1, class: "form-control" %>
+      <% end %>
+    </div>
+    
+    <div class="col-xs-6 col-md-6">   
+      <%= f.label :staff_2, class: "label-#{yield(:class_text)}" %>
+      <% if params[:plant] %>
+        <%= f.text_field :staff_2, value: params[:plant][:staff_2], class: "form-control" %>
+      <% else %>
+        <%= f.text_field :staff_2, class: "form-control" %>
+      <% end %>
+    </div>
+  </div>
   
   <%= f.label :note, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
