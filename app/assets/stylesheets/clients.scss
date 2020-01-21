@@ -51,3 +51,43 @@
   margin: 20px 0;
   text-align: center;
 }
+
+.birth_year_form {
+  display: inline-block;
+}
+
+.year-form {
+  padding: 0 0 0 15px !important;
+  width: 28% !important;
+}
+
+.year-string {
+  font-size: 1.2em;
+  padding: 4px !important;
+  text-align: right;
+  width: 5% !important;
+}
+
+.month-form {
+  padding: 0 0 0 15px !important;
+  width: 28% !important;
+}
+
+.month-string {
+  font-size: 1.2em;
+  padding: 4px !important;
+  text-align: right;
+  width: 5% !important;
+}
+
+.day-form {
+  padding: 0 0 0 15px !important;
+  width: 28% !important;
+}
+
+.day-string {
+  font-size: 1.2em;
+  padding: 4px !important;
+  text-align: right;
+  width: 5% !important;
+}
