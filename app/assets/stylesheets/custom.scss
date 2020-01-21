@@ -7,10 +7,6 @@ body {
   padding-bottom: 20px;
 }
 
-.container {
-  padding: 0;
-}
-
 section {
   overflow: auto;
 }
@@ -98,12 +94,12 @@ a.main-link {
   height: 200px;
   margin: 30px auto;
   text-align: center;
-  width: 390px;
+  width: 350px;
 }
 
 .main-btn {
   color: white;
-  font-size: 3.5em;
+  font-size: 3.4em;
   line-height: 200px;
 }
 
@@ -132,6 +128,7 @@ a.main-link {
 
 .search-tilte {
   margin: 0;
+  padding-left: 15px;
 }
 
 .search-birth-tilte {
@@ -140,7 +137,7 @@ a.main-link {
 }
 
 .search-form-left {
-  padding: 0;
+  padding: 0 0 0 15px;
 }
 
 .search-form-right {
