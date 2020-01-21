@@ -35,8 +35,13 @@ div.ui-datepicker {
   text-align: center;
 }
 
+.payed {
+  font-size: 0.5em !important;
+  padding-top: 2px;
+}
+
 input[type=checkbox].pay-checkbox {
-  margin-top: 10px;
+  margin-top: 13px;
   transform: scale(1.5);
 }
 

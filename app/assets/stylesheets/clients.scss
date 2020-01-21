@@ -29,33 +29,6 @@
   text-align: center;
 }
 
-/* 顧客詳細ページ */
-
-#client-table {
-  th {
-    text-align: center;
-    vertical-align: middle;
-    width: 30%;
-  }
-  td {
-    text-align: center;
-    vertical-align: middle;
-  }
-}
-
-.client-show-btn-area {
-  text-align: center;
-}
-
-.btn-client-history {
-  margin: 20px 0;
-  text-align: center;
-}
-
-.birth_year_form {
-  display: inline-block;
-}
-
 .year-form {
   padding: 0 0 0 15px !important;
   width: 28% !important;
@@ -90,4 +63,27 @@
   padding: 4px !important;
   text-align: right;
   width: 5% !important;
+}
+
+/* 顧客詳細ページ */
+
+#client-table {
+  th {
+    text-align: center;
+    vertical-align: middle;
+    width: 30%;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+.client-show-btn-area {
+  text-align: center;
+}
+
+.btn-client-history {
+  margin: 20px 0;
+  text-align: center;
 }
