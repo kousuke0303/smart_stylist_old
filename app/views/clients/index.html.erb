@@ -2,16 +2,17 @@
 <% provide(:search_url, user_clients_path(@user)) %>
 <% provide(:search_title, "キーワード検索") %>
 
-<% if params[:search].present? || params[:search_birth].present? %>
-  <h1>検索結果</h1>
-<% else %>
-  <h1>顧客情報一覧</h1>
-<% end %>
-
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+    <% if params[:search].present? || params[:search_birth].present? %>
+      <h1>検索結果</h1>
+    <% else %>
+      <h1>顧客情報一覧</h1>
+    <% end %>
+
     <div class="row search-area">
-      <div class="col-xs-5">
+      <div class="col-xs-6 col-md-5">
         <div class="row">
           <%= form_with url: yield(:search_url), method: :get, local: true do |f| %>
             <p class="search-birth-tilte">誕生月で検索</p>
@@ -26,7 +27,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-xs-5 col-xs-offset-2">
+      <div class="col-xs-6 col-md-5 col-md-offset-2">
         <%= render 'shared/search' %>
       </div>
     </div>
