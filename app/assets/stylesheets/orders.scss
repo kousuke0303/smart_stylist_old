@@ -154,7 +154,12 @@ input[type=checkbox].del-checkbox {
   height: 764px;
   justify-content: center;
   margin: 0 auto;
-  width: 574px;
+  width: 100%;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .img-title-area {
@@ -173,7 +178,7 @@ input[type=checkbox].del-checkbox {
   height: 80px;
   margin: 0 auto 20px;
   padding: 5px 10px;
-  width: 574px;
+  width: auto;
 }
 
 .show-btn-area {

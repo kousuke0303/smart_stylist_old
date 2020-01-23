@@ -20,9 +20,7 @@
             <td><%= link_to "詳細", user_order_path(@user, order), class: "btn btn-sm btn-primary" %></td>
             <td><%= l(order.order_date, format: :long) %></td>
             <td><%= l(order.sales_date, format: :long) if order.sales_date.present? %></td>
-            <td>
-              <span class="red"><%= total_unpaid(order) %></span>円
-            </td>
+            <td><span class="red"><%= total_unpaid(order) %></span>円</td>
           </tr>
         <% end %>
       </tbody>
