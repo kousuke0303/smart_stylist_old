@@ -157,6 +157,19 @@ input[type=checkbox].del-checkbox {
   width: 100%;
 }
 
+@media screen and (max-width: 640px) {
+	.img-display-area {
+    align-items: center;
+    background-color: black;
+    border: 2px solid;
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+}
+}
+
 img {
   max-height: 100%;
   max-width: 100%;
