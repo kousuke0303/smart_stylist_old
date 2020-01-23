@@ -1,6 +1,6 @@
 <% provide(:title, "Unpaid Orders") %>
 
-<h1>支払い未完了オーダー一覧</h1>
+<h1>費用未払オーダー一覧</h1>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
@@ -11,7 +11,7 @@
           <th width=5%></th>
           <th>受注日</th>
           <th>売上日</th>
-          <th>未払い費用</th>
+          <th>未払費用</th>
         </tr>
       </thead>
       <tbody>
@@ -31,8 +31,8 @@
     
     <table class="table table-bordered table-condensed" id="total-unpaid-table">
       <tr>
-        <th colspan=2>支払い未完了オーダー件数</th>
-        <th colspan=2>支払い未完了費用合計</th>
+        <th colspan=2>費用未払オーダー件数</th>
+        <th colspan=2>未払費用合計</th>
       </tr>
       <tr>
         <td colspan=2><%= @orders.count %>件</td>
