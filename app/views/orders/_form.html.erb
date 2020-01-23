@@ -244,7 +244,7 @@
       <div class="subtitle-area"><p>関連画像</p></div>
     
       <div class="row">
-        
+
         <div class="col-xs-9 form-inline form-img-select-area">
           <div class="form-group">
             <%= f.label :img_1, class: "label-#{yield(:class_text)}" %>
@@ -262,10 +262,10 @@
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
-          <div class="col-xs-2 img-note-label-area">
+          <div class="img-note-label">
             <%= f.label :img_1_note, class: "label-#{yield(:class_text)}" %>
           </div>
-          <div class="col-xs-10 img-note-text-area">
+          <div class="img-note-content">
             <% if params[:order] %>
               <%= f.text_field :img_1_note, value: params[:order][:img_1_note], class: "form-control" %>
             <% else %>
@@ -274,7 +274,7 @@
           </div>
         </div>
         
-        <div class="col-xs-12 form-inline img-select-area">
+        <div class="col-xs-9 form-inline img-select-area">
           <div class="form-group">
             <%= f.label :img_2, class: "label-#{yield(:class_text)}" %>
           </div>
@@ -291,10 +291,10 @@
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
-          <div class="col-xs-2 img-note-label-area">
+          <div class="img-note-label">
             <%= f.label :img_2_note, class: "label-#{yield(:class_text)}" %>
           </div>
-          <div class="col-xs-10 img-note-text-area">
+          <div class="img-note-content">
             <% if params[:order] %>
               <%= f.text_field :img_2_note, value: params[:order][:img_2_note], class: "form-control" %>
             <% else %>
@@ -320,10 +320,10 @@
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
-          <div class="col-xs-2 img-note-label-area">
+          <div class="img-note-label">
             <%= f.label :img_3_note, class: "label-#{yield(:class_text)}" %>
           </div>
-          <div class="col-xs-10 img-note-text-area">
+          <div class="img-note-content">
             <% if params[:order] %>
               <%= f.text_field :img_3_note, value: params[:order][:img_3_note], class: "form-control" %>
             <% else %>
@@ -349,10 +349,10 @@
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
-          <div class="col-xs-2 img-note-label-area">
+          <div class="img-note-label">
             <%= f.label :img_4_note, class: "label-#{yield(:class_text)}" %>
           </div>
-          <div class="col-xs-10 img-note-text-area">
+          <div class="img-note-content">
             <% if params[:order] %>
               <%= f.text_field :img_4_note, value: params[:order][:img_4_note], class: "form-control" %>
             <% else %>
@@ -378,10 +378,10 @@
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
-          <div class="col-xs-2 img-note-label-area">
+          <div class="img-note-label">
             <%= f.label :img_5_note, class: "label-#{yield(:class_text)}" %>
           </div>
-          <div class="col-xs-10 img-note-text-area">
+          <div class="img-note-content">
             <% if params[:order] %>
               <%= f.text_field :img_5_note, value: params[:order][:img_5_note], class: "form-control" %>
             <% else %>
@@ -407,10 +407,10 @@
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
-          <div class="col-xs-2 img-note-label-area">
+          <div class="img-note-label">
             <%= f.label :img_6_note, class: "label-#{yield(:class_text)}" %>
           </div>
-          <div class="col-xs-10 img-note-text-area">
+          <div class="img-note-content">
             <% if params[:order] %>
               <%= f.text_field :img_6_note, value: params[:order][:img_6_note], class: "form-control" %>
             <% else %>
@@ -436,10 +436,10 @@
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
-          <div class="col-xs-2 img-note-label-area">
+          <div class="img-note-label">
             <%= f.label :img_7_note, class: "label-#{yield(:class_text)}" %>
           </div>
-          <div class="col-xs-10 img-note-text-area">
+          <div class="img-note-content">
             <% if params[:order] %>
               <%= f.text_field :img_7_note, value: params[:order][:img_7_note], class: "form-control" %>
             <% else %>
@@ -465,10 +465,10 @@
           </div>
         <% end %>
         <div class="col-xs-12 form-img-note-area">
-          <div class="col-xs-2 img-note-label-area">
+          <div class="img-note-label">
             <%= f.label :img_8_note, class: "label-#{yield(:class_text)}" %>
           </div>
-          <div class="col-xs-10 img-note-text-area">
+          <div class="img-note-content">
             <% if params[:order] %>
               <%= f.text_field :img_8_note, value: params[:order][:img_8_note], class: "form-control" %>
             <% else %>

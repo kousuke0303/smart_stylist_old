@@ -72,12 +72,15 @@ input[type=checkbox].del-checkbox {
   margin: 10px 0 10px 0;
 }
 
-.img-note-label-area {
-  padding: 0;
+.img-note-label {
+  display: inline-block;
+  float: left;
+  width: 23%;
 }
 
-.img-note-text-area {
-  padding: 0;
+.img-note-content {
+  display: inline-block;
+  width: 77%;
 }
 
 .order-submit-area {
