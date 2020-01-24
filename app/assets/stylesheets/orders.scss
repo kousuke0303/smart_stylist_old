@@ -75,6 +75,7 @@ input[type=file].file-select {
   margin-right: 10px;
   padding-top: 2px;
   transform: scale(0.8);
+  vertical-align: middle;
 }
 
 .img-note-area {
@@ -89,7 +90,7 @@ input[type=file].file-select {
   display: inline-block;
   float: left;
   height: 44px;
-  padding: 7px 0 0 5px;
+  padding-top: 5px;
   text-align: center;
   width: 30%;
 }
