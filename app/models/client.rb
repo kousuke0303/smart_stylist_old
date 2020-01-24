@@ -9,7 +9,7 @@ class Client < ApplicationRecord
   before_save { self.fax = NKF.nkf('-w -Z4', fax).delete("^0-9") unless fax.blank? }
   
   validates :name, presence: true, length: { maximum: 50 }
-  validates :kana, length: { maximum: 50 },
+  validates :kana, length: { maximum: 50 }, allow_blank: true,
                   format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "は全角カタカナのみで入力して下さい" }
   validates :tel_1, length: { maximum: 20 }
   validates :tel_2, length: { maximum: 20 }
