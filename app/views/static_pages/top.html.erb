@@ -2,37 +2,37 @@
 
 <div class="row">
   
-  <div class="col-lg-4 col-md-6">
+  <div class="col-xs-12 col-lg-4 col-md-6">
     <%= link_to(new_user_order_path(current_user), class: "main-link") do %>
       <div class="circle circle-1"><span class="main-btn main-btn-1">新規オーダー</span></div>
     <% end %>
   </div>
   
-  <div class="col-lg-4 col-md-6">
+  <div class="col-xs-12 col-lg-4 col-md-6">
     <%= link_to(user_orders_path(current_user), class: "main-link") do %>
       <div class="circle circle-2"><span class="main-btn main-btn-2">取引中オーダー</span></div>
     <% end %>
   </div>
   
-  <div class="col-lg-4 col-md-6">
+  <div class="col-xs-12 col-lg-4 col-md-6">
     <%= link_to(users_orders_traded_path(current_user), class: "main-link") do %>
       <div class="circle circle-3"><span class="main-btn main-btn-3">月間売上管理</span></div>
     <% end %>
   </div>
 
-  <div class="col-lg-4 col-md-6">
+  <div class="col-xs-12 col-lg-4 col-md-6">
     <%= link_to(users_orders_unpaid_path(current_user), class: "main-link") do %>
       <div class="circle circle-4"><span class="main-btn main-btn-4">未払い費用管理</span></div>
     <% end %>
   </div>
   
-  <div class="col-lg-4 col-md-6">
+  <div class="col-xs-12 col-lg-4 col-md-6">
     <%= link_to(user_clients_path(current_user), class: "main-link") do %>
       <div class="circle circle-5"><span class="main-btn main-btn-5">顧客情報管理</span></div>
     <% end %>
   </div>
   
-  <div class="col-lg-4 col-md-6">
+  <div class="col-xs-12 col-lg-4 col-md-6">
     <%= link_to(user_plants_path(current_user), class: "main-link") do %>
       <div class="circle circle-6"><span class="main-btn main-btn-6">契約工場管理</span></div>
     <% end %>

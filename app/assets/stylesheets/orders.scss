@@ -35,8 +35,13 @@ div.ui-datepicker {
   text-align: center;
 }
 
+.payed {
+  font-size: 0.5em !important;
+  padding-top: 2px;
+}
+
 input[type=checkbox].pay-checkbox {
-  margin-top: 10px;
+  margin-top: 13px;
   transform: scale(1.5);
 }
 
@@ -44,35 +49,54 @@ input[type=checkbox].pay-checkbox {
   margin-top: 5px;
 }
 
-.file-select-area {
-  padding-top: 4px;
+.img-form-item {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  margin: 0 0 10px 0;
 }
 
-.form-img-select-area {
-  margin-top: 5px;
+.img-form-above {
+  border-bottom: 1px solid gainsboro;
 }
 
-.del-img-check-area {
-  margin-top: 3px;
-  padding: 0 27px 0 0px;
-  text-align: right;
+.img-label-area {
+  display: inline-block;
+  float: left;
+  width: 18%;
+}
+
+.img-form-area {
+  display: inline-block;
+  float: left;
+  width: 82%;
+}
+
+input[type=file].file-select {
+  margin-right: 10px;
+  padding-top: 2px;
+  transform: scale(0.8);
+}
+
+.img-note-area {
+  display: inline-block;
+  border-right: 1px solid gainsboro;
+  float: left;
+  padding: 5px 15px 5px 0;
+  width: 80%;
+}
+
+.img-del-area {
+  display: inline-block;
+  float: left;
+  height: 44px;
+  padding: 7px 0 0 5px;
+  text-align: center;
+  width: 20%;
 }
 
 input[type=checkbox].del-checkbox {
-  margin: 10px 0 0 10px;
+  margin-left: 10px;
   transform: scale(1.5);
-}
-
-.form-img-note-area {
-  margin: 10px 0 10px 0;
-}
-
-.img-note-label-area {
-  padding: 0;
-}
-
-.img-note-text-area {
-  padding: 0;
 }
 
 .order-submit-area {
@@ -130,7 +154,25 @@ input[type=checkbox].del-checkbox {
   height: 764px;
   justify-content: center;
   margin: 0 auto;
-  width: 574px;
+  width: 100%;
+}
+
+@media screen and (max-width: 640px) {
+	.img-display-area {
+    align-items: center;
+    background-color: black;
+    border: 2px solid;
+    display: flex;
+    height: 500px;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+}
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .img-title-area {
@@ -149,7 +191,7 @@ input[type=checkbox].del-checkbox {
   height: 80px;
   margin: 0 auto 20px;
   padding: 5px 10px;
-  width: 574px;
+  width: auto;
 }
 
 .show-btn-area {
