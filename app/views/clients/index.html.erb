@@ -34,9 +34,9 @@
     <table class="table table-bordered table-condensed table-hover" id="user-clients-table">
       <thead>
         <tr>
-          <td><%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-sm btn-primary" %></td>
-          <th><%= params[:search_birth].present? ? "誕生日" : "電話番号" %></th>
-          <th>住所</th>
+          <td width=30%><%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-sm btn-primary" %></td>
+          <th width=35%><%= params[:search_birth].present? ? "生年月日" : "電話番号" %></th>
+          <th width=35%>住所</th>
         </tr>
       </thead>
       <tbody>
@@ -45,9 +45,7 @@
             <td><%= link_to client.name, user_client_path(@user, client) %></td>
             <td>
               <% if params[:search_birth].present? %>
-                <%= client.birth_year.present? ? client.birth_year.year : "--" %>年
-                <%= client.birth_month.present? ? client.birth_month : "--" %>月
-                <%= client.birth_day.present? ? client.birth_day : "--" %>日
+                <%= client.birth_year.present? ? client.birth_year.year : "--" %>年<%= client.birth_month.present? ? client.birth_month : "--" %>月<%= client.birth_day.present? ? client.birth_day : "--" %>日
               <% else %>
                 <%= client.tel_1 %>
               <% end %>
