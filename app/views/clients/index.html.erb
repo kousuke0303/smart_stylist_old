@@ -41,8 +41,8 @@
       </thead>
       <tbody>
         <% @clients.each do |client| %>
-          <tr>
-            <td><%= link_to client.name, user_client_path(@user, client) %></td>
+          <tr class="hover" data-href="<%= user_client_path(@user, client) %>">
+            <td><%= client.name %></td>
             <td>
               <% if params[:search_birth].present? %>
                 <%= client.birth_year.present? ? client.birth_year.year : "--" %>年<%= client.birth_month.present? ? client.birth_month : "--" %>月<%= client.birth_day.present? ? client.birth_day : "--" %>日
@@ -58,3 +58,5 @@
     <%= will_paginate %>
   </div>
 </div>
+
+<%= render 'shared/tr_link_jq' %>

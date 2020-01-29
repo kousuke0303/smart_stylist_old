@@ -8,7 +8,6 @@
     <table class="table table-bordered table-condensed table-hover" id="unpaid-orders-table">
       <thead>
         <tr>
-          <th width=5%></th>
           <th>受注日</th>
           <th>売上日</th>
           <th>未払費用</th>
@@ -16,8 +15,7 @@
       </thead>
       <tbody>
         <% @orders.each do |order| %>
-          <tr>
-            <td><%= link_to "詳細", user_order_path(@user, order), class: "btn btn-sm btn-primary" %></td>
+          <tr class="hover" data-href="<%= user_order_path(@user, order) %>">
             <td><%= l(order.order_date, format: :long) %></td>
             <td><%= l(order.sales_date, format: :long) if order.sales_date.present? %></td>
             <td><span class="red"><%= total_unpaid(order) %></span>円</td>
@@ -39,3 +37,5 @@
     </table>
   </div>
 </div>
+
+<%= render 'shared/tr_link_jq' %>

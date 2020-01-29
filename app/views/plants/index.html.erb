@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <% @plants.each do |plant| %>
-          <tr data-href="<%= user_plant_path(@user, plant) %>">
+          <tr class="hover" data-href="<%= user_plant_path(@user, plant) %>">
             <td><%= plant.name %></td>
             <td><%= plant.tel_1 %></td>
           </tr>
@@ -25,16 +25,4 @@
   </div>
 </div>
 
-<script>
-jQuery(function($) {
-  $('tbody tr[data-href]').addClass('clickable').click( function() {
-      window.location = $(this).attr('data-href');
-  }).find('a').hover( function() {
-      $(this).parents('tr').unbind('click');
-  }, function() {
-      $(this).parents('tr').click( function() {
-          window.location = $(this).attr('data-href');
-      });
-  });
-});
-</script>
+<%= render 'shared/tr_link_jq' %>

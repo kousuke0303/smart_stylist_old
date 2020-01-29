@@ -4,6 +4,9 @@
 /* ユーザー顧客一覧テーブル */
 
 #user-clients-table {
+  tr.hover {
+    cursor:  pointer;
+  }
   th {
     text-align: center;
     vertical-align: middle;
