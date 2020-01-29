@@ -111,6 +111,8 @@ input[type=checkbox].del-checkbox {
     cursor:  pointer;
   }
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }
@@ -124,12 +126,20 @@ input[type=checkbox].del-checkbox {
 
 #order-show-table {
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }
   td {
     text-align: center;
     vertical-align: middle;
+  }
+  td.hover {
+    cursor: pointer;
+  }
+  td.hover:hover {
+    background-color: whitesmoke;
   }
   td.total-unpaid {
     color: red;
@@ -209,6 +219,8 @@ img {
     cursor:  pointer;
   }
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }
@@ -222,6 +234,8 @@ img {
 
 #traded-total-table {
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }
@@ -238,6 +252,8 @@ img {
     cursor:  pointer;
   }
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }
@@ -254,6 +270,8 @@ img {
     cursor:  pointer;
   }
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }
@@ -270,6 +288,8 @@ img {
     cursor:  pointer;
   }
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }
@@ -283,6 +303,8 @@ img {
 
 #total-unpaid-table {
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }

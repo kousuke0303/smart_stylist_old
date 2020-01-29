@@ -7,8 +7,8 @@
     <table class="table table-bordered table-condensed" id="order-show-table">
       <tr>
         <th width=20%>顧客名</th>
-        <td colspan=3 width=75%>
-          <%= link_to client_name(@order), user_client_path(@user, @order.client_id) %>
+        <td colspan=3 width=75% class="hover" data-href="<%= user_client_path(@user, @order.client_id) %>">
+          <%= client_name(@order) %>
         </td>
       </tr>
       <tr>
@@ -17,8 +17,8 @@
       </tr>
       <tr>
         <th>受注工場</th>
-        <td colspan=3>
-          <%= link_to plant_name(@order), user_plant_path(@user, @order.plant_id) if @order.plant_id.present? %>
+        <td colspan=3 class="hover" data-href="<%= user_plant_path(@user, @order.plant_id) %>">
+          <%= plant_name(@order) %>
           </td>
       </tr>
       <tr>
@@ -255,3 +255,17 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  jQuery(function($) {
+    $('tbody td[data-href]').addClass('clickable').click( function() {
+        window.location = $(this).attr('data-href');
+    }).find('a').hover( function() {
+        $(this).parents('td').unbind('click');
+    }, function() {
+        $(this).parents('td').click( function() {
+            window.location = $(this).attr('data-href');
+        });
+    });
+  });
+</script>

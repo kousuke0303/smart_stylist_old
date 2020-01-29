@@ -30,11 +30,13 @@
       <div class="col-xs-6 col-md-5 col-md-offset-2"><%= render 'shared/search' %></div>
     </div>
     
+    <%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-md btn-primary" %>
+    
     <%= will_paginate %>
     <table class="table table-bordered table-condensed table-hover" id="user-clients-table">
       <thead>
         <tr>
-          <td width=30%><%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-sm btn-primary" %></td>
+          <th width=30%>顧客名</td>
           <th width=35%><%= params[:search_birth].present? ? "生年月日" : "電話番号" %></th>
           <th width=35%>住所</th>
         </tr>

@@ -4,10 +4,13 @@
 /* ユーザー顧客一覧テーブル */
 
 #user-clients-table {
+  margin-top: 10px;
   tr.hover {
     cursor:  pointer;
   }
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
   }
@@ -72,6 +75,8 @@
 
 #client-table {
   th {
+    background-color: navy;
+    color: silver;
     text-align: center;
     vertical-align: middle;
     width: 30%;
