@@ -50,7 +50,7 @@ module OrdersHelper
   def total_unpaid(order)
     unpaid_w = order.wage if order.wage.present? && order.wage_pay == false
     unpaid_c = order.cloth if order.cloth.present? && order.cloth_pay == false
-    unpaid_l = order.wage if order.lining.present? && order.lining_pay == false
+    unpaid_l = order.lining if order.lining.present? && order.lining_pay == false
     unpaid_b = order.button if order.button.present? && order.button_pay == false
     unpaid_p = order.postage if order.postage.present? && order.postage_pay == false
     unpaid_o = order.other if order.other.present? && order.other_pay == false
