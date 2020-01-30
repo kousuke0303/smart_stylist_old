@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.date :order_date
       t.date :sales_date
       t.string :retail
+      t.integer :deposit
       t.integer :wage
       t.integer :cloth
       t.integer :lining

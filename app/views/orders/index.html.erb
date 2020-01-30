@@ -14,7 +14,7 @@
             <th>受注日</th>
             <th>納品予定日</th>
             <th>上代</th>
-            <th>費用合計</th>
+            <th>入金</th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +24,14 @@
               <td><%= l(order.order_date, format: :long) %></td>
               <td><%= l(order.delivery, format: :long) if order.delivery.present? %></td>
               <td><%= order.retail %>円</td>
-              <td><%= put_price_or_bar(total_cost(order)) %></td>
+              <td>
+                <% not_deposit(order) %>
+                <% if @not_deposit == 0 %>
+                  済
+                <% else %>
+                  <span class="red">未</span>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.date "order_date"
     t.date "sales_date"
     t.string "retail"
+    t.integer "deposit"
     t.integer "wage"
     t.integer "cloth"
     t.integer "lining"

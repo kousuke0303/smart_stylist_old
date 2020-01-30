@@ -6,7 +6,7 @@
       <div class="row">
         
         <div class="col-xs-6">
-          <%= f.label :client_id, "顧客名(必須)", class: "label-#{yield(:class_text)}" %>
+          <%= f.label :"顧客名 ※必須", class: "label-#{yield(:class_text)}" %>
           <%= f.collection_select(:client_id, @clients, :id, :name, {prompt: "顧客を選択"},
               {class: "form-control"}) %>
         </div>
@@ -31,8 +31,8 @@
     
       <div class="row">
         
-        <div class="col-xs-4">
-          <%= f.label :kind, "品名(必須)", class: "label-#{yield(:class_text)}" %>
+        <div class="col-xs-6">
+          <%= f.label :"品名 ※必須", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:kind].present? %>
             <%= f.select :kind, options_for_select({"S": "S", "SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP",
                                                     "WSP": "WSP", "WSPP": "WSPP", "SWVP": "SWVP", "SWVPP": "SWVPP",
@@ -48,8 +48,8 @@
           <% end %>
         </div>
         
-        <div class="col-xs-4">
-          <%= f.label :plant_id, "発注工場(必須)", class: "label-#{yield(:class_text)}" %>
+        <div class="col-xs-6">
+          <%= f.label :"発注工場 ※必須", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:plant_id].present? %>
             <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]},
                   {class: "form-control"}) %>
@@ -59,17 +59,26 @@
           <% end %>
         </div>
         
-        <div class="col-xs-4">
-          <%= f.label :retail, "上代(必須)", class: "label-#{yield(:class_text)}" %>
+        <div class="col-xs-6">
+          <%= f.label :"上代(円) ※必須", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] %>
             <%= f.text_field :retail, value: params[:order][:retail], class: "form-control" %>
           <% else %>
             <%= f.text_field :retail, class: "form-control" %>
           <% end %>
         </div>
+        
+        <div class="col-xs-6">
+          <%= f.label :"入金(円)", class: "label-#{yield(:class_text)}" %>
+          <% if params[:order] %>
+            <%= f.text_field :deposit, value: params[:order][:deposit], class: "form-control" %>
+          <% else %>
+            <%= f.text_field :deposit, class: "form-control" %>
+          <% end %>
+        </div>
 
         <div class="col-xs-4">
-          <%= f.label :order_date, "受注日(必須)", class: "label-#{yield(:class_text)}" %>
+          <%= f.label :"受注日 ※必須", class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:order_date].present? %>
             <%= f.text_field :order_date, value: params[:order][:order_date], class: "datepicker form-control" %>
           <% elsif @order.order_date.present? %>

@@ -48,6 +48,7 @@ ja:
           order_date: 受注日
           sales_date: 売上日
           retail: 上代
+          deposit: 入金
           wage: 工賃
           cloth: 生地
           lining: 裏地

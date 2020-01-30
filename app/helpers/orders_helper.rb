@@ -11,20 +11,28 @@ module OrdersHelper
     @order.img_8.purge if params[:order][:del_img_8] == "1"
   end
 
+  # オーダーの持つ顧客名を返す
   def client_name(order)
     client = Client.find(order.client_id)
     client.name
   end
   
+  # 費用詳細の状態を返す
   def show_cost_detail(detail)
     detail.present? ? "#{detail}円" : "未入力"
   end
   
+  # オーダーの持つ工場名名を返す
   def plant_name(order)
     plant = Plant.find(order.plant_id)
     plant.name
   end
   
+  def not_deposit(order)
+    @not_deposit = order.retail.to_i - order.deposit.to_i
+  end
+  
+  # 費用合計を算出
   def total_cost(order)
     order.wage.present? ? wage = order.wage.to_i : wage = 0
     order.cloth.present? ? cloth = order.cloth.to_i : cloth = 0
@@ -35,6 +43,7 @@ module OrdersHelper
     total_cost = wage + cloth + lining + button + postage + other
   end
   
+  # 粗利を算出
   def gross_profit(order)
     gross_profit = order.retail.to_i - total_cost(order).to_i
   end
@@ -47,6 +56,7 @@ module OrdersHelper
     total ? "#{total}円" : "--"
   end
   
+  # オーダーの未払い費用合計を算出
   def total_unpaid(order)
     unpaid_w = order.wage if order.wage.present? && order.wage_pay == false
     unpaid_c = order.cloth if order.cloth.present? && order.cloth_pay == false
@@ -58,6 +68,7 @@ module OrdersHelper
                    unpaid_b.to_i + unpaid_p.to_i + unpaid_o.to_i
   end
   
+  # ユーザーのの全未払い費用合計を算出
   def all_unpaid(user)
     orders = Order.where(user_id: user.id, unpaid: true)
     orders.each do |order|
