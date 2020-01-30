@@ -3,25 +3,32 @@
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
     <h1>契約工場一覧</h1>
-    <%= link_to "新規工場登録", new_user_plant_path(@user), class: "btn btn-md btn-primary" %>
-    <%= will_paginate %>
-    <table class="table table-bordered table-condensed table-hover" id="user-plants-table">
-      <thead>
-        <tr>
-          <th width=50%>工場名</td>
-          <th width=50%>電話番号(1)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @plants.each do |plant| %>
-          <tr class="hover" data-href="<%= user_plant_path(@user, plant) %>">
-            <td><%= plant.name %></td>
-            <td><%= plant.tel_1 %></td>
+    <% if @plants.count == 0 %>
+      <div class="no-plant-msg">
+        <h1>登録がありません</h1>
+        <%= link_to "新規工場登録", new_user_plant_path(@user), class: "btn btn-lg btn-primary" %>
+      </div>
+    <% else %>
+      <%= link_to "新規工場登録", new_user_plant_path(@user), class: "btn btn-md btn-primary" %>
+      <%= will_paginate %>
+      <table class="table table-bordered table-condensed table-hover" id="user-plants-table">
+        <thead>
+          <tr>
+            <th width=50%>工場名</td>
+            <th width=50%>電話番号(1)</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate %>
+        </thead>
+        <tbody>
+          <% @plants.each do |plant| %>
+            <tr class="hover" data-href="<%= user_plant_path(@user, plant) %>">
+              <td><%= plant.name %></td>
+              <td><%= plant.tel_1 %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate %>
+    <% end %>
   </div>
 </div>
 

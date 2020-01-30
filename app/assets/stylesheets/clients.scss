@@ -1,6 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* ユーザー顧客未登録時メッセージ */
+
+.no-client-msg {
+  border: 5px solid black;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
 /* ユーザー顧客一覧テーブル */
 
 #user-clients-table {
