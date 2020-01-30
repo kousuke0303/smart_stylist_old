@@ -13,18 +13,19 @@ class Order < ApplicationRecord
   attr_accessor :del_img_1, :del_img_2, :del_img_3, :del_img_4, :del_img_5, :del_img_6, :del_img_7, :del_img_8,
                 :narrow
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
+  before_save { self.retail = self.retail.to_i }
   
   validates :client_id, presence: true
   validates :kind, presence: true
   validates :plant_id, presence: true
   validates :order_date, presence: true
   validates :retail, presence: true
-  validates :wage, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
-  validates :cloth, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
-  validates :lining, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
-  validates :button, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
-  validates :postage, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
-  validates :other, numericality: { only_integer: true, greater_than: 0, less_than: 100_000_000 }, allow_blank: true
+  validates :wage, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
+  validates :cloth, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
+  validates :lining, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
+  validates :button, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
+  validates :postage, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
+  validates :other, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
   validates :note, length: { maximum: 150 }
   validates :img_1_note, length: { maximum: 100 }
   validates :img_2_note, length: { maximum: 100 }
@@ -61,7 +62,8 @@ class Order < ApplicationRecord
   
   def ratail_rule
     errors.add(:retail, "は数字で入力してください。") if retail.present? && retail !~ /^[0-9]+$/
-    errors.add(:retail, "が費用に対して不足しています。") if retail.present? && total_cost(self) > self.retail.to_i
+    errors.add(:retail, "は10000000より小さい値にしてください") if retail.to_i >= 10_000_000
+    errors.add(:retail, "が費用に対して不足しています。") if retail.present? && total_cost(self) > self.retail.to_i && retail =~ /^[0-9]+$/
   end
   
   def note_with_img
