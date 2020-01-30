@@ -3,37 +3,41 @@
 <div class="row">
   <div class="col-xs-12 col-md-8 col-md-offset-2">
     <h1>費用未払オーダー一覧</h1>
-    <%= will_paginate %>
-    <table class="table table-bordered table-condensed table-hover" id="unpaid-orders-table">
-      <thead>
-        <tr>
-          <th>受注日</th>
-          <th>売上日</th>
-          <th>未払費用</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @orders.each do |order| %>
-          <tr class="hover" data-href="<%= user_order_path(@user, order) %>">
-            <td><%= l(order.order_date, format: :long) %></td>
-            <td><%= l(order.sales_date, format: :long) if order.sales_date.present? %></td>
-            <td><span class="red"><%= total_unpaid(order) %></span>円</td>
+    <% if @orders.count == 0 %>
+      <%= render 'no_order_info' %>
+    <% else %>
+      <%= will_paginate %>
+      <table class="table table-bordered table-condensed table-hover" id="unpaid-orders-table">
+        <thead>
+          <tr>
+            <th>受注日</th>
+            <th>売上日</th>
+            <th>未払費用</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate %>
-    
-    <table class="table table-bordered table-condensed" id="total-unpaid-table">
-      <tr>
-        <th colspan=2>費用未払オーダー件数</th>
-        <th colspan=2>未払費用合計</th>
-      </tr>
-      <tr>
-        <td colspan=2><%= @orders.count %>件</td>
-        <td colspan=2><span class="red"><%= all_unpaid(@user) %></span>円</td>
-      </tr>
-    </table>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr class="hover" data-href="<%= user_order_path(@user, order) %>">
+              <td><%= l(order.order_date, format: :long) %></td>
+              <td><%= l(order.sales_date, format: :long) if order.sales_date.present? %></td>
+              <td><span class="red"><%= total_unpaid(order) %></span>円</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate %>
+      
+      <table class="table table-bordered table-condensed" id="total-unpaid-table">
+        <tr>
+          <th colspan=2>費用未払オーダー件数</th>
+          <th colspan=2>未払費用合計</th>
+        </tr>
+        <tr>
+          <td colspan=2><%= @orders.count %>件</td>
+          <td colspan=2><span class="red"><%= all_unpaid(@user) %></span>円</td>
+        </tr>
+      </table>
+    <% end %>
   </div>
 </div>
 
