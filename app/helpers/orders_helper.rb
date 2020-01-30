@@ -51,11 +51,7 @@ module OrdersHelper
   def put_price_or_bar(integer)
     integer > 0 ? "#{integer}円" : "--"
   end
-  
-  def put_total_price_or_bar(total)
-    total ? "#{total}円" : "--"
-  end
-  
+
   # オーダーの未払い費用合計を算出
   def total_unpaid(order)
     unpaid_w = order.wage if order.wage.present? && order.wage_pay == false

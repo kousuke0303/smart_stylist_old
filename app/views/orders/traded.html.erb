@@ -29,7 +29,7 @@
               <td><%= l(order.sales_date, format: :long) %></td>
               <td><%= l(order.order_date, format: :long) %></td>
               <td><%= order.retail %>円<% @total_retail = @total_retail.to_i + order.retail.to_i %></td>
-              <td><%= put_price_or_bar(gross_profit(order)) %></td>
+              <td><%= gross_profit(order) %>円</td>
               <% @all_cost = @all_cost.to_i + total_cost(order).to_i  %>
               <% @total_gross_profit = @total_gross_profit.to_i + gross_profit(order).to_i %>
             </tr>
@@ -47,9 +47,9 @@
           </tr>
           <tr>
             <td><%= @orders.count %>件</td>
-            <td><%= put_total_price_or_bar(@total_retail) %></td>
-            <td><%= put_total_price_or_bar(@all_cost) %></td>
-            <td><%= put_total_price_or_bar(@total_gross_profit) %></td>
+            <td><%= @total_retail %>円</td>
+            <td><%= put_price_or_bar(@all_cost) %></td>
+            <td><%= p@total_gross_profit %>円</td>
           </tr>
       </table>
     <% end %>
