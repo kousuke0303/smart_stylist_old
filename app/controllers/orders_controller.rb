@@ -62,13 +62,6 @@ class OrdersController < ApplicationController
   end
   
   def traded
-    @all_traded_orders.each do |order|
-      @total_retail = @total_retail.to_i + order.retail.to_i
-      total_cost(order)
-      @all_cost = @all_cost.to_i + total_cost(order).to_i
-      gross_profit(order)
-      @total_gross_profit = @total_gross_profit.to_i + gross_profit(order).to_i
-    end
   end
   
   def unpaid
