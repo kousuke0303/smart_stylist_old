@@ -64,17 +64,6 @@ module OrdersHelper
     unpaid_b = order.button if order.button.present? && order.button_pay == false
     unpaid_p = order.postage if order.postage.present? && order.postage_pay == false
     unpaid_o = order.other if order.other.present? && order.other_pay == false
-    @total_unpaid = unpaid_w.to_i + unpaid_c.to_i + unpaid_l.to_i +
-                   unpaid_b.to_i + unpaid_p.to_i + unpaid_o.to_i
-  end
-  
-  # ユーザーのの全未払い費用合計を算出
-  def all_unpaid(user)
-    orders = Order.where(user_id: user.id, unpaid: true)
-    orders.each do |order|
-      total_unpaid(order)
-      @all_unpaid = @all_unpaid.to_i + total_unpaid(order).to_i
-    end
-      @all_unpaid
+    @total_unpaid = unpaid_w.to_i + unpaid_c.to_i + unpaid_l.to_i + unpaid_b.to_i + unpaid_p.to_i + unpaid_o.to_i
   end
 end

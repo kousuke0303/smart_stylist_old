@@ -32,7 +32,8 @@
           <% if @not_deposit == 0 %>
             全額済
           <% else %>
-            済：<%= @order.deposit.to_i %>円　　<span class="red">未：<%= @not_deposit %>円</span>
+            済：<%= @order.deposit.to_i %>円　　
+            <span class="red">未</span>：<span class="red"><%= @not_deposit %></span>円
           <% end %>
         </td>
       </tr>
