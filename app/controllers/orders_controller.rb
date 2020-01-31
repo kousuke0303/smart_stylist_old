@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @trading_orders = Order.where(user_id: @user.id, sales_date: nil)
+    @trading_orders = Order.where(user_id: @user.id, traded: false)
     @orders = @trading_orders.order(:order_date).paginate(page: params[:page])
     @trading_orders.each do |order|
       @total_retail = @total_retail.to_i + order.retail.to_i
@@ -107,7 +107,7 @@ class OrdersController < ApplicationController
     Date.current.beginning_of_month : params[:date].to_date
     @last_day = @first_day.end_of_month
     one_month = [*@first_day..@last_day]
-    @all_traded_orders = Order.where(user_id: @user.id, sales_date: @first_day..@last_day).order(:sales_date)
+    @all_traded_orders = Order.where(user_id: @user.id, traded: true, sales_date: @first_day..@last_day).order(:sales_date)
     @orders = @all_traded_orders.paginate(page: params[:page])
   end
   

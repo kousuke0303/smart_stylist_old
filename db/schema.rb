@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.date "sales_date"
     t.string "retail"
     t.integer "deposit"
+    t.boolean "traded", default: false
     t.integer "wage"
     t.integer "cloth"
     t.integer "lining"

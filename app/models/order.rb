@@ -14,6 +14,7 @@ class Order < ApplicationRecord
                 :narrow
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
   before_save { self.retail = self.retail.to_i }
+  before_save { self.traded = true if self.retail.to_i == self.deposit.to_i && self.sales_date.present? }
   
   validates :client_id, presence: true
   validates :kind, presence: true
