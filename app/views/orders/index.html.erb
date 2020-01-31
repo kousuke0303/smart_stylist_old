@@ -3,6 +3,26 @@
 <div class="row">
   <div class="col-xs-12 col-md-10 col-md-offset-1">
     <h1>取引中オーダー一覧</h1>
+    <div class="row">
+      <div class="col-xs-12 col-md-6 order-narrow-area">
+        <%= form_with url: user_orders_path(@user), method: :get, local: true do |f| %>
+          <div>
+            <%= f.date_select :narrow_year, {prompt: "--", discard_month: true, start_year: Time.current.year, end_year: Time.current.year-100},
+                                            {class: "form-control"} %>
+          </div>
+          <div>年</div>
+          <div>
+            <%= f.select :narrow_month, options_for_select(
+                      {"1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07", "8": "08", "9": "09", "10": "10", "11": "11", "12": "12"}),
+                      {prompt: "--"}, class: "form-control" %>
+          </div>
+          <div>月</div>
+          <div><%= f.submit "検索", class: "btn btn-md btn-primary btn-block" %></div>
+          <div><%= link_to "リセット", user_orders_path(@user),
+                                            class: "btn btn-md btn-default btn-block" %></div>
+        <% end %>
+      </div>
+    </div>
     <% if @orders.count == 0 %>
       <%= render 'no_order_info' %>
     <% else %>
