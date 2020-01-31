@@ -28,7 +28,12 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @trading_orders = Order.where(user_id: @user.id, traded: false)
+    if params["narrow_year(1i)"] && params["narrow_year(1i)"].present? && params["narrow_month"] && params["narrow_month"].present?
+      @trading_orders = Order.where(user_id: @user.id, traded: false).
+                              where("order_date LIKE ?", "%#{params["narrow_year(1i)"]}-#{params["narrow_month"]}%")
+    else
+      @trading_orders = Order.where(user_id: @user.id, traded: false)
+    end
     @orders = @trading_orders.order(:order_date).paginate(page: params[:page])
     @trading_orders.each do |order|
       @total_retail = @total_retail.to_i + order.retail.to_i
