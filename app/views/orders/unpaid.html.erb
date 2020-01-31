@@ -21,7 +21,6 @@
               <td><%= l(order.order_date, format: :long) %></td>
               <td><%= l(order.sales_date, format: :long) if order.sales_date.present? %></td>
               <td><span class="red"><%= total_unpaid(order) %></span>円</td>
-              <% @all_unpaid = @all_unpaid.to_i + @total_unpaid.to_i %>
             </tr>
           <% end %>
         </tbody>
@@ -34,7 +33,7 @@
           <th width=50%>未払費用合計</th>
         </tr>
         <tr>
-          <td><%= @orders.count %>件</td>
+          <td><%= @all_unpaid_orders.count %>件</td>
           <td><span class="red"><%= @all_unpaid %></span>円</td>
         </tr>
       </table>

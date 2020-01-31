@@ -79,6 +79,9 @@ class OrdersController < ApplicationController
   def unpaid
     @all_unpaid_orders = Order.where(user_id: @user.id, unpaid: true)
     @orders = @all_unpaid_orders.order(:order_date).paginate(page: params[:page])
+    @all_unpaid_orders.each do |order|
+      @all_unpaid = @all_unpaid.to_i + total_unpaid(order).to_i
+    end
   end
   
   # beforeフィルター
