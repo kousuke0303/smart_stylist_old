@@ -30,8 +30,6 @@
               <td><%= l(order.order_date, format: :long) %></td>
               <td><%= order.retail %>円<% @total_retail = @total_retail.to_i + order.retail.to_i %></td>
               <td><%= gross_profit(order) %>円</td>
-              <% @all_cost = @all_cost.to_i + total_cost(order).to_i  %>
-              <% @total_gross_profit = @total_gross_profit.to_i + gross_profit(order).to_i %>
             </tr>
           <% end %>
         </tbody>
@@ -40,17 +38,17 @@
       
       <table class="table table-bordered table-condensed" id="traded-total-table">
         <tr>
-            <th width=25%>件数</th>
-            <th width=25%>上代合計</th>
-            <th width=25%>費用合計</th>
-            <th width=25%>粗利合計</th>
-          </tr>
-          <tr>
-            <td><%= @orders.count %>件</td>
-            <td><%= @total_retail %>円</td>
-            <td><%= put_price_or_bar(@all_cost) %></td>
-            <td><%= p@total_gross_profit %>円</td>
-          </tr>
+          <th width=25%>件数</th>
+          <th width=25%>上代合計</th>
+          <th width=25%>費用合計</th>
+          <th width=25%>粗利合計</th>
+        </tr>
+        <tr>
+          <td><%= @all_traded_orders.count %>件</td>
+          <td><%= @total_retail %>円</td>
+          <td><%= put_price_or_bar(@all_cost) %></td>
+          <td><%= @total_gross_profit %>円</td>
+        </tr>
       </table>
     <% end %>
   </div>

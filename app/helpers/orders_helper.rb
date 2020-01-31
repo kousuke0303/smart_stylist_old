@@ -28,6 +28,7 @@ module OrdersHelper
     plant.name
   end
   
+  # 未入金額を算出
   def not_deposit(order)
     @not_deposit = order.retail.to_i - order.deposit.to_i
   end

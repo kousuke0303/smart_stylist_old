@@ -131,6 +131,21 @@ input[type=checkbox].del-checkbox {
   }
 }
 
+/* 取引中オーダー集計テーブル */
+
+#total-trading-table {
+  th {
+    background-color: navy;
+    color: silver;
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
 /* オーダー詳細テーブル */
 
 #order-show-table {

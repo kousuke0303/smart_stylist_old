@@ -37,6 +37,29 @@
         </tbody>
       </table>
       <%= will_paginate %>
+      
+      <table class="table table-bordered table-condensed" id="total-trading-table">
+        <tr>
+          <th width=33%>件数</th>
+          <th width=33%>上代合計</th>
+          <th>費用合計</th>
+        </tr>
+        <tr>
+          <td><%= @trading_orders.count %>件</td>
+          <td><%= @total_retail %>円</td>
+          <td><%= @all_total_cost %>円</td>
+        </tr>
+        <tr>
+          <th>粗利合計</th>
+          <th>入金合計</th>
+          <th>未入金合計</th>
+        </tr>
+        <tr>
+          <td><%= @total_gross_profit %>円</td>
+          <td><%= @total_deposit %>円</td>
+          <td><span class="red"><%= @totlal_not_deposit %></span>円</td>
+        </tr>
+      </table>
     <% end %>
   </div>
 </div>

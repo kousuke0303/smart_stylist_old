@@ -28,7 +28,15 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.where(user_id: @user.id, sales_date: nil).order(:order_date).paginate(page: params[:page])
+    @trading_orders = Order.where(user_id: @user.id, sales_date: nil)
+    @orders = @trading_orders.order(:order_date).paginate(page: params[:page])
+    @trading_orders.each do |order|
+      @total_retail = @total_retail.to_i + order.retail.to_i
+      @all_total_cost = @all_total_cost.to_i + total_cost(order).to_i
+      @total_gross_profit = @total_gross_profit.to_i + gross_profit(order).to_i
+      @total_deposit = @total_deposit.to_i + order.deposit.to_i
+      @totlal_not_deposit = @totlal_not_deposit.to_i + not_deposit(order).to_i
+    end
   end
   
   def show
@@ -62,10 +70,15 @@ class OrdersController < ApplicationController
   end
   
   def traded
+    @all_traded_orders.each do |order|
+      @all_cost = @all_cost.to_i + total_cost(order).to_i
+      @total_gross_profit = @total_gross_profit.to_i + gross_profit(order).to_i
+    end
   end
   
   def unpaid
-    @orders = Order.where(user_id: @user.id, unpaid: true).order(:order_date).paginate(page: params[:page])
+    @all_unpaid_orders = Order.where(user_id: @user.id, unpaid: true)
+    @orders = @all_unpaid_orders.order(:order_date).paginate(page: params[:page])
   end
   
   # beforeフィルター
