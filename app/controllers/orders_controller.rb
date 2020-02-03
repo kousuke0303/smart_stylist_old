@@ -110,8 +110,11 @@ class OrdersController < ApplicationController
   end
   
   def set_one_month
-    @first_day = params[:date].nil? ?
-    Date.current.beginning_of_month : params[:date].to_date
+    if params["narrow_year(1i)"] && params["narrow_year(1i)"].present? && params["narrow_month"] && params["narrow_month"].present?
+      @first_day = "#{params["narrow_year(1i)"]}-#{params["narrow_month"]}-01".to_date
+    else
+      @first_day = Date.current.beginning_of_month
+    end
     @last_day = @first_day.end_of_month
     one_month = [*@first_day..@last_day]
     @all_traded_orders = Order.where(user_id: @user.id, traded: true, sales_date: @first_day..@last_day).order(:sales_date)

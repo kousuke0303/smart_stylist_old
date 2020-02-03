@@ -3,11 +3,29 @@
 <div class="row">
   <div class="col-xs-12 col-md-10 col-md-offset-1">
     <h1>取引済オーダー一覧</h1>
-    <h1>
-      <%= link_to "＜", users_orders_traded_path(@user, date: @first_day.prev_month), class: "btn btn-md btn-primary" %>
-      <%= @first_day.strftime("%Y年%m月") %>
-      <%= link_to "＞", users_orders_traded_path(@user, date: @first_day.next_month), class: "btn btn-md btn-primary" %>
-    </h1>
+    <h1><%= @first_day.strftime("%Y年%m月") %></h1>
+    
+    <div class="row">
+      <div class="col-xs-12 narrow-order-label">対象月を変更</div>
+      <div class="col-xs-12 col-md-6 order-narrow-area">
+        <%= form_with url: users_orders_traded_path(@user), method: :get, local: true do |f| %>
+          <div>
+            <%= f.date_select :narrow_year, {prompt: "--", discard_month: true, start_year: Time.current.year,
+                end_year: Time.current.year-100, selected: @first_day}, {class: "form-control"} %>
+          </div>
+          <div>年</div>
+          <div>
+            <%= f.select :narrow_month, options_for_select({"1": "1", "2": "2", "3": "3", "4": "4",
+                "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "11": "11", "12": "12"},
+                selected: @first_day.month), {prompt: "--"}, class: "form-control" %>
+          </div>
+          <div>月</div>
+          <div><%= f.submit "検索", class: "btn btn-md btn-primary btn-block" %></div>
+          <div><%= link_to "リセット", users_orders_traded_path(@user), class: "btn btn-md btn-default btn-block" %></div>
+        <% end %>
+      </div>
+    </div>
+    
     <% if @orders.count == 0 %>
       <%= render 'no_order_info' %>
     <% else %>
