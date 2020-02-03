@@ -22,6 +22,46 @@
   padding: 0 15px 0 0;
 }
 
+.deposit-form-left {
+  padding: 0 0 0 15px;
+}
+
+.deposit-form-right {
+  padding: 0 15px 0 0;
+}
+
+#copy-retail {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  width: 100%;
+}
+
+#copy-retail:hover {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+
+#copy-retail:active {
+  color: #fff;
+  background-color: #204d74;
+  border-color: #122b40;
+}
+
 div.ui-datepicker {
   font-size: 85%;
   width: 220px;

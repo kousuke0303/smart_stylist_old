@@ -94,7 +94,8 @@ class OrdersController < ApplicationController
   
   def set_clients_of_user
     if params[:order] && params[:order][:narrow].present?
-      @clients = @user.clients.where("name LIKE ?", "%#{params[:order][:narrow]}%")
+      @clients = Client.where(user_id: @user.id).where("name LIKE ?", "%#{params[:order][:narrow]}%").
+                        or(Client.where(user_id: @user.id).where("kana LIKE ?", "%#{params[:order][:narrow]}%"))
     else
       @clients = @user.clients.all
     end
