@@ -71,7 +71,12 @@ p {
 }
 
 .dropdown-menu {
+  background-color: whitesmoke !important;
   font-size: 0.8em;
+  position: absolute !important;
+  a {
+    color: black !important;
+  }
 }
 
 th {
@@ -84,6 +89,11 @@ td {
 
 /* トップページ */
 
+.main-item {
+  margin-top: 30px;
+  text-align: center;
+}
+
 a.main-link {
   text-decoration: none;
 }
@@ -91,8 +101,8 @@ a.main-link {
 .circle {
   background: midnightblue;
   border-radius: 50%;
+  display: inline-block;
   height: 200px;
-  margin: 30px 0px auto;
   text-align: center;
   width: 350px;
 }
