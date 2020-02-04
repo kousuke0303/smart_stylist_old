@@ -6,7 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.date :sales_date
       t.string :retail
       t.integer :deposit
-      t.boolean :traded, default: false
+      t.boolean :traded
       t.integer :wage
       t.integer :cloth
       t.integer :lining
