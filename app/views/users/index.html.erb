@@ -2,14 +2,13 @@
 <% provide(:search_url, users_path) %>
 <% provide(:search_title, "ユーザー検索") %>
 
-<% if params[:search].present? %>
-  <h1>検索結果</h1>
-<% else %>
-  <h1>ユーザー一覧</h1>
-<% end %>
-
 <div class="row">
   <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <% if params[:search].present? %>
+      <h1>検索結果</h1>
+    <% else %>
+      <h1>ユーザー一覧</h1>
+    <% end %>
     <div class="row search-area">
       <div class="col-xs-12 col-md-6 col-md-offset-6">
         <%= render 'shared/search' %>
@@ -20,10 +19,10 @@
     <table class="table table-bordered table-condensed table-hover" id="table-users">
       <thead>
         <tr>
-          <th>名前</th>
-          <th>メールアドレス</th>
-          <th></th>
-          <th></th>
+          <th width=40%>名前</th>
+          <th width=40%>メールアドレス</th>
+          <th width=10%></th>
+          <th width=10%></th>
         </tr>
       </thead>
   

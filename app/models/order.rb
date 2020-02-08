@@ -29,14 +29,14 @@ class Order < ApplicationRecord
   validates :postage, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
   validates :other, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
   validates :note, length: { maximum: 150 }
-  validates :img_1_note, length: { maximum: 100 }
-  validates :img_2_note, length: { maximum: 100 }
-  validates :img_3_note, length: { maximum: 100 }
-  validates :img_4_note, length: { maximum: 100 }
-  validates :img_5_note, length: { maximum: 100 }
-  validates :img_6_note, length: { maximum: 100 }
-  validates :img_7_note, length: { maximum: 100 }
-  validates :img_8_note, length: { maximum: 100 }
+  validates :img_1_note, length: { maximum: 40 }
+  validates :img_2_note, length: { maximum: 40 }
+  validates :img_3_note, length: { maximum: 40 }
+  validates :img_4_note, length: { maximum: 40 }
+  validates :img_5_note, length: { maximum: 40 }
+  validates :img_6_note, length: { maximum: 40 }
+  validates :img_7_note, length: { maximum: 40 }
+  validates :img_8_note, length: { maximum: 40 }
   validates :user_id, presence: true
   
   validate :ratail_rule
