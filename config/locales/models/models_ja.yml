@@ -5,6 +5,8 @@ ja:
       plant: 契約工場
       client: 顧客
       order: オーダー
+      question: 秘密の質問
+      answer: 回答
     attributes:
         user:
           id: ID
