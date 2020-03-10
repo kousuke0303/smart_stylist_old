@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 100 }, uniqueness: true,
                     format: { with: VALID_EMAIL_REGEX }
   validates :question, presence: true
-  validates :answer, presence: true, length: { maximum: 30 }
+  validates :answer, presence: true, length: { maximum: 20 }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validate :exclude_space_in_answer
