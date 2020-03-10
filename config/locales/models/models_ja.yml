@@ -5,13 +5,13 @@ ja:
       plant: 契約工場
       client: 顧客
       order: オーダー
-      question: 秘密の質問
-      answer: 回答
     attributes:
         user:
           id: ID
           name: 名前・会社名
           email: メールアドレス
+          question: 秘密の質問
+          answer: 回答
           password: パスワード
           password_confirmation: パスワード再入力
           admin: 管理者権限
