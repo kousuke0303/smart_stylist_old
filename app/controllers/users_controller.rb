@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :login_once, only: [:new, :create]
   before_action :admin_user, only: :index
   
-  $question = {"好きな食べ物は？": "好きな食べ物は？", "好きな映画のタイトルは？": "好きな映画のタイトルは？",
+  $questions = {"好きな食べ物は？": "好きな食べ物は？", "好きな映画のタイトルは？": "好きな映画のタイトルは？",
                "ペットの名前は？": "ペットの名前は？", "思い出の場所は？": "思い出の場所は？",
                "座右の銘は？": "座右の銘は？", "応援しているチームは？": "応援しているチームは？"}
   

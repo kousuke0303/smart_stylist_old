@@ -8,7 +8,7 @@
   <%= f.email_field :email, class: "form-control" %>
   
   <%= f.label :"秘密の質問 ※必パスワード再発行時に必須", class: "label-#{yield(:class_text)}" %>
-  <%= f.select :question, $question, {}, class: "form-control" %>
+  <%= f.select :question, $questions, {}, class: "form-control" %>
   
   <%= f.label :"回答 ※必パスワード再発行時に必須", class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :answer, placeholder: "20文字以内、スペースなし", class: "form-control" %>

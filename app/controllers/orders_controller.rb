@@ -9,6 +9,10 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_one_month, only: :traded
   
+  $order_kinds = {"S": "S", "SP": "SP", "SVP": "SVP", "SPP": "SPP", "SVPP": "SVPP", "WSP": "WSP", "WSPP": "WSPP",
+                  "SWVP": "SWVP", "SWVPP": "SWVPP", "V": "V", "WV": "WV", "P": "P", "PP": "PP", "COAT": "COAT",
+                  "SHIRT": "SHIRT", "SHOES": "SHOES"}
+  
   def new
     @order = Order.new
   end
