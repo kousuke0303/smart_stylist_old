@@ -13,6 +13,13 @@ class User < ApplicationRecord
   validates :answer, presence: true, length: { maximum: 30 }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validate :exclude_space_in_answer
+  
+  def exclude_space_in_answer
+    if self.answer.present?
+      errors.add(:answer, "に空白は使用出来ません") if self.answer.include?(" ") || self.answer.include?("　")
+    end
+  end
   
   def User.digest(string)
     cost = 
@@ -39,6 +46,6 @@ class User < ApplicationRecord
   end
   
   def forget
-  update_attribute(:remember_digest, nil)
+    update_attribute(:remember_digest, nil)
   end
 end
