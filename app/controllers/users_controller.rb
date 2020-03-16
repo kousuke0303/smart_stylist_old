@@ -52,6 +52,12 @@ class UsersController < ApplicationController
     flash[:success] = "#{@user.name}のデータを削除しました。"
     redirect_to users_url
   end
+  
+  def reset_password
+  end
+
+  def update_password
+  end
 
   private
 

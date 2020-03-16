@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get    '/users/:id/orders/unpaid', to: 'orders#unpaid', as: 'users_orders_unpaid'
   
   resources :users do
+    get 'reset_password', on: :collection
+    patch 'update_password', on: :member
     resources :plants
     resources :clients
     resources :orders
