@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :update_password]
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_or_admin_user, only: [:edit, :update, :show, :destroy]
   before_action :login_once, only: [:new, :create]
@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   end
   
   def reset_password
+    @user = User.find(params[:id]) if params[:id]
     if params[:email] && params[:question] && params[:answer]
       if @user = User.find_by(email: params[:email], question: params[:question], answer: params[:answer])
         redirect_to reset_password_users_url(id: @user.id)
@@ -65,6 +66,7 @@ class UsersController < ApplicationController
   end
 
   def update_password
+    redirect_to reset_password_users_url(id: @user.id)
   end
 
   private

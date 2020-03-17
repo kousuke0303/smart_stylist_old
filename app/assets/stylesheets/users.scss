@@ -47,6 +47,21 @@
   }  
 }
 
+/* パスワード再設定ページ */
+
 .label-reset-password {
   margin-top: 5px;
+}
+
+#password-reset-user-table {
+  th {
+    background-color: navy;
+    color: silver;
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
 }
