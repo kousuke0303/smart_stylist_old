@@ -54,6 +54,14 @@ class UsersController < ApplicationController
   end
   
   def reset_password
+    if params[:email] && params[:question] && params[:answer]
+      if @user = User.find_by(email: params[:email], question: params[:question], answer: params[:answer])
+        redirect_to reset_password_users_url(id: @user.id)
+      else
+        flash[:danger] = "アカウントが見つかりませんでした"
+        redirect_to reset_password_users_url
+      end
+    end
   end
 
   def update_password
