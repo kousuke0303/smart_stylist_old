@@ -39,6 +39,50 @@
   font-size: 1.3em;
 }
 
+/* 利用規約 */
+
+.terms-of-service {
+  border: 1px solid black;
+  height: 300px;
+  margin-top: 10px;
+  overflow: scroll;
+  padding: 5px;
+  p {
+    font-size: 0.8em;
+    margin: 0;
+  }
+}
+
+.terms-title {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.clause-title {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.clause-content {
+  p {
+    font-size: 0.8em;
+    margin: 0;
+  }
+  ol {
+    font-size: 0.8em;
+    margin: 0 0 0 0px;
+    padding: 0px 0px 0px 20px;
+  }
+}
+
+.terms-end {
+  font-size: 0.8em;
+  margin: 10px 10px 10px 0;
+  text-align: right;
+}
+
 /* ユーザー情報入力フォーム */
 
 .label-signup {
