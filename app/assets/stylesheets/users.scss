@@ -83,6 +83,26 @@
   text-align: right;
 }
 
+/* 利用規約同意確認エリア */
+
+.confirm-consent-area {
+  border: 1px solid black;
+  margin-top: 10px;
+  padding: 10px 10px 10px 15px;
+  input[type=checkbox] {
+    transform: scale(1.5);
+  }
+  span {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+}
+
+.link-to-input-form {
+  margin: 15px 0;
+  text-align: center;
+}
+
 /* ユーザー情報入力フォーム */
 
 .label-signup {

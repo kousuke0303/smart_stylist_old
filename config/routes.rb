@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   resources :users do
     get 'reset_password', on: :collection
+    get 'terms_of_service', on: :collection
     patch 'update_password', on: :member
     resources :plants
     resources :clients

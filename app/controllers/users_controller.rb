@@ -74,6 +74,9 @@ class UsersController < ApplicationController
       render :reset_password
     end
   end
+  
+  def terms_of_service
+  end
 
   private
 
