@@ -172,21 +172,33 @@ a.main-link {
   padding: 30px 15px 0 0 ;
 }
 
-/* debug */
+/* 料金説明 */
 
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+.plan-title {
+  background: gainsboro;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 15px 0 15px 0;
+  text-align: center;
+}
+
+.price-explain {
+  font-size: 2em;
+}
+
+.free-span {
+  color: red;
+}
+
+.free-span-explain {
+  border-bottom: 1px solid red;
+  font-size: 1.3em;
 }
 
 /* 利用規約 */
 
 .terms-of-service {
+  background: whitesmoke;
   border: 1px solid black;
   height: 300px;
   margin-top: 10px;
@@ -228,6 +240,7 @@ a.main-link {
 
 .confirm-consent-area {
   border: 1px solid black;
+  border-radius: 10px;
   margin-top: 10px;
   padding: 10px 10px 10px 15px;
   input[type=checkbox] {
@@ -239,9 +252,15 @@ a.main-link {
   }
 }
 
+.link-to-input-form {
+  margin: 15px 0;
+  text-align: center;
+}
+
 /* プライバシーポリシー */
 
 .privacy-policy {
+  background: whitesmoke;
   border: 1px solid black;
   margin-top: 10px;
   padding: 5px;
@@ -270,4 +289,26 @@ a.main-link {
       padding: 0px 0px 0px 20px;
     }
   }
+  div.policy-end {
+    font-size: 0.8em;
+    margin: 10px 10px 10px 0;
+    text-align: right;
+  }
+}
+
+.back-from-policy {
+  margin: 15px 0;
+  text-align: center;
+}
+
+/* debug */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
 }
