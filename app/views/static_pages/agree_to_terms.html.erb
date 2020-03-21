@@ -1,0 +1,39 @@
+<% provide(:title, "agree_to_terms") %>
+
+<div class="row">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    
+    <div class="plan-title">
+      <div class="price-explain">月額 1,980円</div>
+      <div class="price-explain">初回登録後、<span class="free-span">30日間無料</span></div>
+      <span class="free-span-explain">無料お試し期間中に退会された場合、料金は発生しません。<span>
+    </div>
+    
+    <div class="terms-reduction">
+      <%= render 'terms_sentences' %>
+    </div>
+    
+    <div class="confirm-consent-area">
+      <%= form_with(url: "#", local: true) do |f| %>
+        <%= f.check_box :confirm_consent, id: "confirm-consent" %><span>利用規約に同意する</spam>
+      <% end %>
+    </div>
+    
+    <div class="link-to-input-form">
+      <%= link_to "アカウント情報入力画面へ", signup_path, class: "btn btn-lg btn-primary", id: "link-to-input-form" %>
+    </div>
+  
+  </div>
+</div>
+
+<script>
+  var btn = $('#link-to-input-form');
+  $(btn).attr('disabled', 'disabled');
+  $('#confirm-consent').change(function() {
+    if ( $(this).is(':checked')){ 
+      $(btn).removeAttr('disabled');
+    } else { 
+      $(btn).attr('disabled', 'disabled');
+    }
+  });
+</script>

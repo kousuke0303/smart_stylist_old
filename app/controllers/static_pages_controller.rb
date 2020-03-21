@@ -4,6 +4,9 @@ class StaticPagesController < ApplicationController
   def top
   end
   
+  def agree_to_terms
+  end
+  
   def terms_of_service
   end
   
