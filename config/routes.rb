@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'static_pages#top'
-  get '/agree_to_terms', to: 'static_pages#agree_to_terms'
   get '/terms_of_service', to: 'static_pages#terms_of_service'
   get '/privacy_policy', to: 'static_pages#privacy_policy'
   

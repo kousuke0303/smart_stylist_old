@@ -172,7 +172,7 @@ a.main-link {
   padding: 30px 15px 0 0 ;
 }
 
-/* 利用規約同意ページ */
+/* 利用規約 */
 
 .plan-title {
   background: gainsboro;
@@ -216,21 +216,12 @@ a.main-link {
   }
 }
 
-/* 利用規約専用ページ */
-
-.terms-full {
-  border: 1px solid black;
-}
-
-.back-from-terms {
-  margin-top: 10px;
-  text-align: center;
-}
-
-/* 利用規約文 */
-
 .terms-sentences {
   background: whitesmoke;
+  border: 1px solid black;
+  height: 300px;
+  margin-top: 10px;
+  overflow: scroll;
   padding: 5px;
   div.terms-title {
     font-size: 1.4em;
