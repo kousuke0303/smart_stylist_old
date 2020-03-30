@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :update_password]
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_or_admin_user, only: [:edit, :update, :show, :destroy]
-  before_action :login_once, only: [:new, :create]
+  before_action :login_once, only: [:new, :create, :reset_password, :update_password]
   before_action :admin_user, only: :index
   
   $questions = {"好きな食べ物は？": "好きな食べ物は？", "好きな映画のタイトルは？": "好きな映画のタイトルは？",
