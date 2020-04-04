@@ -13,8 +13,13 @@ Rails.application.routes.draw do
   get    '/users/:id/orders/unpaid', to: 'orders#unpaid', as: 'users_orders_unpaid'
   
   resources :users do
-    get 'reset_password', on: :collection
-    patch 'update_password', on: :member
+    get   'reset_password', on: :collection
+    member do
+      patch 'update_password'
+      get   'new_payment'
+      get   'edit_payment'
+      post 'pay'
+    end
     resources :plants
     resources :clients
     resources :orders

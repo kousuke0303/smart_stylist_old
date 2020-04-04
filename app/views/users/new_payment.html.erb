@@ -1,0 +1,51 @@
+<% provide(:title, "New Payment") %>
+
+<h1>カード情報入力</h1>
+<%= form_with(url: pay_user_path(@user), local: true, id: "charge-form") do |f| %>
+  <div>
+    <%= f.label :"カード番号" %>
+    <%= f.text_field :number, placeholder: "カード番号", maxlength: "16", class: "form-control number", id: "number" %>
+    
+    <%= f.label :cvc, "CVC" %>
+    <%= f.text_field :cvc, placeholder: "CVC", maxlength: "3", class: "form-control cvc", id: "cvc" %>
+    
+    <%= f.label :"有効期限" %>
+    <%= f.text_field :exp_month, placeholder: "月", maxlength: "2", class: "form-control exp_mm", id: "exp_mm" %>
+    <%= f.text_field :exp_year, placeholder: "年", maxlength: "2", class: "form-control exp_yy", id: "exp_yy" %>
+    
+    <%= f.submit "送信", class: "btn btn-default", id: "charge" %>
+  </div>
+<% end %>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  var form = $('#charge-form');
+  $('#charge').on('click', function() {
+    Payjp.setPublicKey('pk_test_5bd87ccb1496f22cd1ea0a63');
+    form.find('input[type=submit]').prop('disabled', true);
+    var card = {
+      number: '4242424242424242',
+      cvc: '123',
+      exp_month: '12',
+      exp_year: '2020'
+    };
+    Payjp.createToken(card, function(status, response) {
+      if (status == 200) {
+        alert("OK");
+        $('.number').removeAttr('name');
+        $('.cvc').removeAttr('name');
+        $('.exp_mm').removeAttr('name');
+        $('.exp_yy').removeAttr('name');
+
+        var token = response.id;
+        $('#charge-form').append($('<input type="hidden" name="payjpToken" class="payjp-token">').val(token));
+        $('#charge-form').get(0).submit();
+      }
+      else {
+        alert('カード情報を取得出来ませんでした。');
+        form.find('#charge').prop('disabled', false);
+      }
+    });
+  });
+});
+</script>
