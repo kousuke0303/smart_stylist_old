@@ -14,12 +14,12 @@
       <div class="col-xs-12">
         <%= f.label :"有効期限 ※必須", class: "new-payment-label" %>
       </div>
-      <div class="col-xs-5 exp-mm">  
-        <%= f.text_field :exp_month, placeholder: "MM", maxlength: "2", class: "form-control exp_mm", id: "exp_mm" %>
+      <div class="col-xs-5 exp-mm-form">  
+        <%= f.text_field :exp_month, placeholder: "MM", maxlength: "2", class: "form-control exp-mm", id: "exp-mm" %>
       </div>
       <div class="col-xs-2 separate-mm-yy">／</div>
-      <div class="col-xs-5 exp-yy">
-        <%= f.text_field :exp_year, placeholder: "YYYY", maxlength: "4", class: "form-control exp_yy", id: "exp_yy" %>
+      <div class="col-xs-5 exp-yy-form">
+        <%= f.text_field :exp_year, placeholder: "YYYY", maxlength: "4", class: "form-control exp-yy", id: "exp-yy" %>
       </div>
       <div class="col-xs-12 new-payment-btn-area">
         <%= f.submit "送信", class: "btn btn-md btn-primary", id: "charge" %>
@@ -38,10 +38,10 @@ $(document).on('turbolinks:load', function() {
     Payjp.setPublicKey('pk_test_5bd87ccb1496f22cd1ea0a63');
     form.find('input[type=submit]').prop('disabled', true);
     var card = {
-      number: '4242424242424242',
-      cvc: '123',
-      exp_month: '08',
-      exp_year: '2020'
+      number: $('#number').val(),
+      cvc: $('#cvc').val(),
+      exp_month: $('#exp-mm').val(),
+      exp_year: $('#exp-yy').val()
     };
     Payjp.createToken(card, function(status, response) {
       if (status == 200) {
