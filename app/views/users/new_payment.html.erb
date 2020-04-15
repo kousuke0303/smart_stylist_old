@@ -48,8 +48,8 @@ $(document).on('turbolinks:load', function() {
         alert("OK");
         $('.number').removeAttr('name');
         $('.cvc').removeAttr('name');
-        $('.exp_mm').removeAttr('name');
-        $('.exp_yy').removeAttr('name');
+        $('.exp-mm').removeAttr('name');
+        $('.exp-yy').removeAttr('name');
 
         var token = response.id;
         $('#charge-form').append($('<input type="hidden" name="payjpToken" class="payjp-token">').val(token));
