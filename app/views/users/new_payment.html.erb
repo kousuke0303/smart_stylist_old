@@ -2,32 +2,41 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-4 col-md-offset-4">
-    <h1>カード情報入力</h1>
-    <%= form_with(url: pay_user_path(@user), local: true, id: "charge-form") do |f| %>
-      <div class="col-xs-12">
-        <%= f.label :"カード番号 ※必須", class: "new-payment-label" %>
-        <%= f.text_field :number, placeholder: "カード番号", maxlength: "16", class: "form-control", id: "number" %>
-
-        <%= f.label :"セキュリティーコード ※必須", class: "new-payment-label" %>
-        <%= f.text_field :cvc, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", class: "form-control", id: "cvc" %>
-      </div>
-      <div class="col-xs-12">
-        <%= f.label :"有効期限 ※必須", class: "new-payment-label" %>
-      </div>
-      <div class="col-xs-5 exp-mm">  
-        <%= f.text_field :exp_month, placeholder: "MM", maxlength: "2", class: "form-control", id: "exp-mm" %>
-      </div>
-      <div class="col-xs-2 separate-mm-yy">／</div>
-      <div class="col-xs-5 exp-yy">
-        <%= f.text_field :exp_year, placeholder: "YYYY", maxlength: "4", class: "form-control", id: "exp-yy" %>
-      </div>
-      <div class="col-xs-12 new-payment-btn-area">
-        <%= f.submit "送信", class: "btn btn-md btn-primary", id: "charge" %>
-        <%= link_to :back do %>
-          <button class="btn btn-md btn-default">戻る</button>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h1>カード情報入力</h1></div>
+      
+      <%= form_with(url: pay_user_path(@user), local: true, id: "charge-form") do |f| %>
+        <div class="panel-body">
+          <div>
+            <%= f.label :"カード番号 ※必須", class: "new-payment-label" %>
+            <%= f.text_field :number, placeholder: "カード番号", maxlength: "16", class: "form-control", id: "number" %>
+    
+            <%= f.label :"セキュリティーコード ※必須", class: "new-payment-label" %>
+            <%= f.text_field :cvc, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", class: "form-control", id: "cvc" %>
+          </div>
+          <div>
+            <%= f.label :"有効期限 ※必須", class: "new-payment-label" %>
+          </div>
+          <div class="exp-area">
+            <div class="exp-mm">  
+              <%= f.text_field :exp_month, placeholder: "MM", maxlength: "2", class: "form-control", id: "exp-mm" %>
+            </div>
+            <div class="separate-mm-yy">／</div>
+            <div class="exp-yy">
+              <%= f.text_field :exp_year, placeholder: "YYYY", maxlength: "4", class: "form-control", id: "exp-yy" %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel-footer new-payment-btn-area">
+          <%= f.submit "送信", class: "btn btn-md btn-primary", id: "charge" %>
+          <%= link_to :back do %>
+            <button class="btn btn-md btn-default">戻る</button>
+          <% end %>
+        </div>
+      <% end %>
+      
+    </div>
   </div>
 </div>
 
@@ -45,7 +54,6 @@ $(document).on('turbolinks:load', function() {
     };
     Payjp.createToken(card, function(status, response) {
       if (status == 200) {
-        alert("OK");
         $('#number').removeAttr('name');
         $('#cvc').removeAttr('name');
         $('#exp-mm').removeAttr('name');

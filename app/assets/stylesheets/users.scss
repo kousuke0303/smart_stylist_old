@@ -72,21 +72,30 @@
   margin-top: 5px;
 }
 
-.exp-mm {
-  padding-right: 0;
-}
-
-.separate-mm-yy {
-  font-size: 1.5em;
-  margin-top: 2px;
+.exp-area {
   text-align: center;
 }
 
+.exp-mm {
+  float: left;
+  display: inline-block;
+  width: 45%;
+}
+
+.separate-mm-yy {
+  display: inline-block;
+  font-size: 1.5em;
+  margin-top: 2px;
+  text-align: center;
+  width: 10%;
+}
+
 .exp-yy {
-  padding-left: 0;
+  display: inline-block;
+  float: right;
+  width: 45%;
 }
 
 .new-payment-btn-area {
-  margin-top: 10px;
   text-align: center;
 }
