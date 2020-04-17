@@ -80,6 +80,13 @@ class UsersController < ApplicationController
   
   def pay
     if params[:payjpToken]
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.create(
+      description: '登録テスト',
+      email: @user.email,
+      card: params[:payjpToken],
+      metadata: {user_id: @user.id}
+      ) 
       flash[:success] = "成功"
       redirect_to @user
     else

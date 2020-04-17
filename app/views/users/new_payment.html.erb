@@ -44,7 +44,7 @@
 $(document).on('turbolinks:load', function() {
   var form = $('#charge-form');
   $('#charge').on('click', function() {
-    Payjp.setPublicKey('pk_test_5bd87ccb1496f22cd1ea0a63');
+    Payjp.setPublicKey("<%= ENV['PAYJP_KEY'] %>");
     form.find('input[type=submit]').prop('disabled', true);
     var card = {
       number: $('#number').val(),
