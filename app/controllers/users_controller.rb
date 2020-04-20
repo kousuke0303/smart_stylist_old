@@ -48,6 +48,11 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    if @user.customer_id.present?
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.retrieve(@user.customer_id)
+      customer.delete
+    end
     @user.destroy
     flash[:success] = "#{@user.name}のデータを削除しました。"
     redirect_to users_url
@@ -82,11 +87,11 @@ class UsersController < ApplicationController
     if params[:payjpToken]
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       customer = Payjp::Customer.create(
-      description: '登録テスト',
       email: @user.email,
       card: params[:payjpToken],
       metadata: {user_id: @user.id}
-      ) 
+      )
+      @user.update_attributes(customer_id: customer.id)
       flash[:success] = "成功"
       redirect_to @user
     else

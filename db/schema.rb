@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.string "remember_digest"
     t.string "question"
     t.string "answer"
+    t.string "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false

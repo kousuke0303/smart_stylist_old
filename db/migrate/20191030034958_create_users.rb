@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :remember_digest
       t.string :question
       t.string :answer
+      t.string :customer_id
 
       t.timestamps
     end
