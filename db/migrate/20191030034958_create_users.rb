@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :question
       t.string :answer
       t.string :customer_id
+      t.date :complete_register
 
       t.timestamps
     end

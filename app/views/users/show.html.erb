@@ -23,6 +23,16 @@
           <th>回答</th>
           <td><%= @user.answer %></td>
         </tr>
+        <% if @user.complete_register.present? %>
+          <tr>
+            <th>登録完了日</th>
+            <td><%= @user.complete_register.strftime("%Y年%m月%d日") %></td>
+          </tr>
+          <tr>
+            <th>無料お試し期限</th>
+            <td><%= @user.complete_register.next_day(30).strftime("%Y年%m月%d日") %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     <div class="to-user-edit">
