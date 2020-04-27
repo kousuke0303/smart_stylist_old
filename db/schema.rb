@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.string "question"
     t.string "answer"
     t.string "customer_id"
+    t.string "card_id"
     t.date "complete_register"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

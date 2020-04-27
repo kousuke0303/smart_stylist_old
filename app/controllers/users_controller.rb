@@ -91,7 +91,7 @@ class UsersController < ApplicationController
       card: params[:payjpToken],
       metadata: {user_id: @user.id}
       )
-      @user.update_attributes(customer_id: customer.id, complete_register: Date.current)
+      @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], complete_register: Date.current)
       flash[:success] = "成功"
       redirect_to @user
     else

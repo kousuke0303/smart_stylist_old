@@ -60,7 +60,9 @@ $(document).on('turbolinks:load', function() {
         $('#exp-yy').removeAttr('name');
 
         var token = response.id;
-        $('#charge-form').append($('<input type="hidden" name="payjpToken" class="payjp-token">').val(token));
+        var card_id = response.card.id;
+        $('#charge-form').append($('<input type="hidden" name="payjpToken">').val(token));
+        $('#charge-form').append($('<input type="hidden" name="card_id">').val(card_id));
         $('#charge-form').get(0).submit();
       }
       else {
