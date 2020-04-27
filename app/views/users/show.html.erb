@@ -4,37 +4,34 @@
   <div class="col-xs-12 col-md-8 col-md-offset-2">
     <h1>アカウント情報</h1>
     <table class="table table-bordered table-condensed" id="user-table">
-      <thead>
+      <tr>
+        <th width=50%>名前</th>
+        <td width=50%><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>秘密の質問</th>
+        <td><%= @user.question %></td>
+      </tr>
+      <tr>
+        <th>回答</th>
+        <td><%= @user.answer %></td>
+      </tr>
+      <% if @user.complete_register.present? %>
         <tr>
-          <th width=50%>名前</th>
-          <td width=50%><%= @user.name %></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= @user.email %></td>
+          <th>登録完了日</th>
+          <td><%= @user.complete_register.strftime("%Y年%m月%d日") %></td>
         </tr>
         <tr>
-          <th>秘密の質問</th>
-          <td><%= @user.question %></td>
+          <th>無料お試し期限</th>
+          <td><%= @user.complete_register.next_day(30).strftime("%Y年%m月%d日") %></td>
         </tr>
-        <tr>
-          <th>回答</th>
-          <td><%= @user.answer %></td>
-        </tr>
-        <% if @user.complete_register.present? %>
-          <tr>
-            <th>登録完了日</th>
-            <td><%= @user.complete_register.strftime("%Y年%m月%d日") %></td>
-          </tr>
-          <tr>
-            <th>無料お試し期限</th>
-            <td><%= @user.complete_register.next_day(30).strftime("%Y年%m月%d日") %></td>
-          </tr>
-        <% end %>
-      </tbody>
+      <% end %>
     </table>
+    
     <div class="to-user-edit">
       <%= link_to "編集する", edit_user_path(@user), class: "btn btn-md btn-primary" %>
       <%= link_to "アカウントを削除", user_path(@user), method: :delete, class: "btn btn-md btn-danger",
@@ -43,6 +40,25 @@
         <button class="btn btn-md btn-default">戻る</button>
       <% end %>
     </div>
+    
+    <% if @card_info %>
+      <h1>クレジットカード情報</h1>
+      <table class="table table-bordered table-condensed" id="card-table">
+        <tr>
+          <th width=50%>ブランド</th>
+          <td width=50%><%= @card_info.brand %></td>
+        </tr>
+        <tr>
+          <th width=50%>カード番号</th>
+          <td width=50%>**** **** **** <%= @card_info.last4 %></td>
+        </tr>
+        <tr>
+          <th width=50%>有効期限</th>
+          <td width=50%><%= @card_info.exp_year %>年<%= @card_info.exp_month %>月</td>
+        </tr>
+      </table>
+      <div class="to-card-edit"><%= link_to "クレジットカード情報を編集する", "#", class: "btn btn-md btn-primary" %></div>
+    <% end %>
   </div>
 </div>
 

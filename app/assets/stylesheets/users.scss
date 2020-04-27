@@ -17,6 +17,23 @@
   text-align: center;
 }
 
+#card-table {
+  th {
+    background-color: navy;
+    color: silver;
+    text-align: center;
+    vertical-align: middle;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+.to-card-edit {
+  text-align: center;
+}
+
 /* ユーザー情報入力フォーム */
 
 .label-signup {

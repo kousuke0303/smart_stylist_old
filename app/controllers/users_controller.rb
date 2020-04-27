@@ -18,6 +18,11 @@ class UsersController < ApplicationController
   end
   
   def show
+    if @user.customer_id.present? && @user.card_id.present?
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.retrieve(@user.customer_id)
+      @card_info = customer.cards.retrieve(@user.card_id)
+    end
   end
   
   def new
