@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     member do
       patch 'update_password'
       get   'new_payment'
-      get   'edit_payment'
+      get   'edit_card'
       post 'pay'
+      post 'update_card'
     end
     resources :plants
     resources :clients

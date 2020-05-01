@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :update_password, :new_payment, :pay]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :update_password, :new_payment, :pay, :edit_card, :update_card]
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :correct_or_admin_user, only: [:edit, :update, :show, :destroy]
   before_action :login_once, only: [:new, :create, :reset_password, :update_password]
@@ -102,7 +102,10 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit_payment
+  def edit_card
+  end
+  
+  def update_card
   end
 
   private

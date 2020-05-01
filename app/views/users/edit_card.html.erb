@@ -1,0 +1,22 @@
+<% provide(:title, "Edit Card") %>
+
+<div class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h1>カード情報入力</h1></div>
+      
+      <%= form_with(url: update_card_user_path(@user), local: true, id: "edit-card-form") do |f| %>
+        <div class="panel-body">
+        </div>
+      
+        <div class="panel-footer edit-card-btn-area">
+          <%= f.submit "送信", class: "btn btn-md btn-primary", id: "" %>
+          <%= link_to :back do %>
+            <button class="btn btn-md btn-default">戻る</button>
+          <% end %>
+        </div>
+        
+      <% end %>
+    </div>
+  </div>
+</div>
