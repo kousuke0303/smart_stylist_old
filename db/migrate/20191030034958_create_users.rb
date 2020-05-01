@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :answer
       t.string :customer_id
       t.string :card_id
+      t.string :subscription_id
       t.date :complete_register
 
       t.timestamps

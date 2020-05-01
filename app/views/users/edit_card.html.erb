@@ -1,16 +1,35 @@
 <% provide(:title, "Edit Card") %>
 
 <div class="row">
-  <div class="col-xs-12 col-md-4 col-md-offset-4">
+  <div class="col-xs-12 col-md-4 col-md-offset-4 edit-card">
     <div class="panel panel-default">
-      <div class="panel-heading"><h1>カード情報入力</h1></div>
+      <div class="panel-heading"><h1>クレジットカード変更</h1></div>
       
       <%= form_with(url: update_card_user_path(@user), local: true, id: "edit-card-form") do |f| %>
         <div class="panel-body">
+          <div>
+            <%= f.label :"カード番号 ※必須", class: "edit-payment-label" %>
+            <%= f.text_field :number, placeholder: "カード番号", maxlength: "16", class: "form-control", id: "number" %>
+    
+            <%= f.label :"セキュリティーコード ※必須", class: "edit-payment-label" %>
+            <%= f.text_field :cvc, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", class: "form-control", id: "cvc" %>
+          </div>
+          <div>
+            <%= f.label :"有効期限 ※必須", class: "edit-payment-label" %>
+          </div>
+          <div class="exp-area">
+            <div class="exp-mm">  
+              <%= f.text_field :exp_month, placeholder: "MM", maxlength: "2", class: "form-control", id: "exp-mm" %>
+            </div>
+            <div class="separate-mm-yy">／</div>
+            <div class="exp-yy">
+              <%= f.text_field :exp_year, placeholder: "YYYY", maxlength: "4", class: "form-control", id: "exp-yy" %>
+            </div>
+          </div>
         </div>
       
         <div class="panel-footer edit-card-btn-area">
-          <%= f.submit "送信", class: "btn btn-md btn-primary", id: "" %>
+          <%= f.submit "送信", class: "btn btn-md btn-primary", id: "update" %>
           <%= link_to :back do %>
             <button class="btn btn-md btn-default">戻る</button>
           <% end %>
@@ -20,3 +39,37 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  var form = $('#edit-card-form');
+  $('#update').on('click', function() {
+    Payjp.setPublicKey("<%= ENV['PAYJP_KEY'] %>");
+    form.find('input[type=submit]').prop('disabled', true);
+    var card = {
+      number: $('#number').val(),
+      cvc: $('#cvc').val(),
+      exp_month: $('#exp-mm').val(),
+      exp_year: $('#exp-yy').val()
+    };
+    Payjp.createToken(card, function(status, response) {
+      if (status == 200) {
+        $('#number').removeAttr('name');
+        $('#cvc').removeAttr('name');
+        $('#exp-mm').removeAttr('name');
+        $('#exp-yy').removeAttr('name');
+
+        var token = response.id;
+        var card_id = response.card.id;
+        $('#charge-form').append($('<input type="hidden" name="payjpToken">').val(token));
+        $('#charge-form').append($('<input type="hidden" name="card_id">').val(card_id));
+        $('#charge-form').get(0).submit();
+      }
+      else {
+        alert('カード情報を取得出来ませんでした。');
+        form.find('#update').prop('disabled', false);
+      }
+    });
+  });
+});
+</script>

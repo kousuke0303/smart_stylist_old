@@ -92,9 +92,9 @@ class UsersController < ApplicationController
     if params[:payjpToken]
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       customer = Payjp::Customer.create(email: @user.email, card: params[:payjpToken], metadata: {user_id: @user.id})
-      @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], complete_register: Date.current)
-      Payjp::Subscription.create(plan: 'smartstylisttest', customer: @user.customer_id)
-      flash[:success] = "成功"
+      subscription = Payjp::Subscription.create(plan: 'smartstylisttest', customer: customer.id)
+      @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], subscription_id: subscription.id, complete_register: Date.current)
+      flash[:success] = "クレジットカードを登録しました。只今より、本サービスをご利用いただけます。"
       redirect_to @user
     else
       flash[:danger] = "失敗"
@@ -106,6 +106,14 @@ class UsersController < ApplicationController
   end
   
   def update_card
+    if params[:payjpToken]
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      flash[:success] = "クレジットカードを変更しました。"
+      redirect_to @user
+    else
+      flash[:danger] = "失敗"
+      redirect_to @user
+    end
   end
 
   private

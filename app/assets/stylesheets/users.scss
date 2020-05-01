@@ -101,6 +101,10 @@
 
 /* 新規クレジットカード登録ページ */
 
+.new-card {
+  margin-top: 30px;
+}
+
 .new-payment-label {
   margin-top: 5px;
 }
@@ -130,5 +134,19 @@
 }
 
 .new-payment-btn-area {
+  text-align: center;
+}
+
+/* クレジットカード更新ページ */
+
+.edit-card {
+  margin-top: 30px;
+}
+
+.edit-payment-label {
+  margin-top: 5px;
+}
+
+.edit-card-btn-area {
   text-align: center;
 }
