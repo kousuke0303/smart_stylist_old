@@ -17,6 +17,22 @@
   text-align: center;
 }
 
+.urge-payment {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin-top: 10px;
+  .urge-payment-msg {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+  }
+  .to-new-payment {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}
+
 #card-table {
   th {
     background-color: navy;

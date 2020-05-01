@@ -91,12 +91,9 @@ class UsersController < ApplicationController
   def pay
     if params[:payjpToken]
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-      customer = Payjp::Customer.create(
-      email: @user.email,
-      card: params[:payjpToken],
-      metadata: {user_id: @user.id}
-      )
+      customer = Payjp::Customer.create(email: @user.email, card: params[:payjpToken], metadata: {user_id: @user.id})
       @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], complete_register: Date.current)
+      Payjp::Subscription.create(plan: 'smartstylisttest', customer: @user.customer_id)
       flash[:success] = "成功"
       redirect_to @user
     else

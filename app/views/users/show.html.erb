@@ -58,6 +58,11 @@
         </tr>
       </table>
       <div class="to-card-edit"><%= link_to "クレジットカード情報を編集する", "#", class: "btn btn-md btn-primary" %></div>
+    <% else %>
+      <div class="urge-payment">
+        <div class="urge-payment-msg">クレジットカード情報を入力して、<br>アカウント登録を完了させてください。</div>
+        <div class="to-new-payment"><%= link_to "カード情報入力画面へ", new_payment_user_path(@user), class: "btn btn-md btn-primary" %></div>
+      </div>
     <% end %>
   </div>
 </div>
