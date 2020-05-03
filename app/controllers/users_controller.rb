@@ -108,6 +108,8 @@ class UsersController < ApplicationController
   def update_card
     if params[:payjpToken]
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.retrieve(@user.customer_id)
+      card = customer.cards.retrieve(@user.card_id)
       flash[:success] = "クレジットカードを変更しました。"
       redirect_to @user
     else
