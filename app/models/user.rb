@@ -4,6 +4,10 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   
   attr_accessor :remember_token
+  attr_accessor :number
+  attr_accessor :cvc
+  attr_accessor :exp_year
+  attr_accessor :exp_month
   before_save { self.email = email.downcase }
   
   validates :name, presence: true, length: { maximum: 50 }

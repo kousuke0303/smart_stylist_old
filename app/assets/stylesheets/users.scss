@@ -17,22 +17,6 @@
   text-align: center;
 }
 
-.urge-payment {
-  border: 2px solid red;
-  border-radius: 5px;
-  margin-top: 10px;
-  .urge-payment-msg {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 10px 0;
-    text-align: center;
-  }
-  .to-new-payment {
-    margin-bottom: 10px;
-    text-align: center;
-  }
-}
-
 #card-table {
   th {
     background-color: navy;
@@ -50,17 +34,58 @@
   text-align: center;
 }
 
-/* ユーザー情報入力フォーム */
+/* ユーザー登録フォーム */
 
 .label-signup {
   margin-top: 5px;
 }
 
-.label-user--edit {
+.card-panel {
+  margin-top: 20px;
+}
+
+.card-title {
+  font-size: 1.5em;
+  line-height: 30px;
+  text-align: center;
+}
+
+.exp-area {
+  text-align: center;
+}
+
+.exp-mm {
+  float: left;
+  display: inline-block;
+  width: 45%;
+}
+
+.separate-mm-yy {
+  display: inline-block;
+  font-size: 1.5em;
+  margin-top: 2px;
+  text-align: center;
+  width: 10%;
+}
+
+.exp-yy {
+  display: inline-block;
+  float: right;
+  width: 45%;
+}
+
+.user-create-submit {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ユーザー編集フォーム */
+
+.label-user-edit {
   margin-top: 5px;
 }
 
-.user-submit-area {
+.user-edit-submit {
   margin-top: 10px;
   text-align: center;
 }
@@ -97,44 +122,6 @@
     text-align: center;
     vertical-align: middle;
   }
-}
-
-/* 新規クレジットカード登録ページ */
-
-.new-card {
-  margin-top: 30px;
-}
-
-.new-payment-label {
-  margin-top: 5px;
-}
-
-.exp-area {
-  text-align: center;
-}
-
-.exp-mm {
-  float: left;
-  display: inline-block;
-  width: 45%;
-}
-
-.separate-mm-yy {
-  display: inline-block;
-  font-size: 1.5em;
-  margin-top: 2px;
-  text-align: center;
-  width: 10%;
-}
-
-.exp-yy {
-  display: inline-block;
-  float: right;
-  width: 45%;
-}
-
-.new-payment-btn-area {
-  text-align: center;
 }
 
 /* クレジットカード更新ページ */

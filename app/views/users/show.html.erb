@@ -40,31 +40,23 @@
         <button class="btn btn-md btn-default">戻る</button>
       <% end %>
     </div>
-    
-    <% if @card_info %>
-      <h1>クレジットカード情報</h1>
-      <table class="table table-bordered table-condensed" id="card-table">
-        <tr>
-          <th width=50%>ブランド</th>
-          <td width=50%><%= @card_info.brand %></td>
-        </tr>
-        <tr>
-          <th width=50%>カード番号</th>
-          <td width=50%>**** **** **** <%= @card_info.last4 %></td>
-        </tr>
-        <tr>
-          <th width=50%>有効期限</th>
-          <td width=50%><%= @card_info.exp_year %>年<%= @card_info.exp_month %>月</td>
-        </tr>
-      </table>
-      <div class="to-card-edit"><%= link_to "クレジットカード情報を編集する", edit_card_user_path(@user), class: "btn btn-md btn-primary" %></div>
-    <% else %>
-      <div class="urge-payment">
-        <div class="urge-payment-msg">クレジットカード情報を入力して、<br>アカウント登録を完了させてください。</div>
-        <div class="to-new-payment"><%= link_to "カード情報入力画面へ", new_payment_user_path(@user), class: "btn btn-md btn-primary" %></div>
-      </div>
-    <% end %>
+
+    <h1>クレジットカード情報</h1>
+    <table class="table table-bordered table-condensed" id="card-table">
+      <tr>
+        <th width=50%>ブランド</th>
+        <td width=50%><%= @card_info.brand %></td>
+      </tr>
+      <tr>
+        <th width=50%>カード番号</th>
+        <td width=50%>**** **** **** <%= @card_info.last4 %></td>
+      </tr>
+      <tr>
+        <th width=50%>有効期限</th>
+        <td width=50%><%= @card_info.exp_year %>年<%= @card_info.exp_month %>月</td>
+      </tr>
+    </table>
+    <div class="to-card-edit"><%= link_to "クレジットカード情報を編集する", edit_card_user_path(@user), class: "btn btn-md btn-primary" %></div>
+  
   </div>
 </div>
-
-<div><%= link_to "カード情報入力画面へ", new_payment_user_path(@user), class: "btn btn-md btn-primary" %></div>

@@ -1,10 +1,94 @@
 <% provide(:title, "Sign up") %>
-<% provide(:class_text, "signup") %>
-<% provide(:button_text, "新規作成") %>
 
 <div class="row">
   <div class="col-xs-12 col-md-6 col-md-offset-3">
     <h1>ユーザー登録</h1>
-    <%= render "form" %>
+    <%= form_with(model: @user, local: true, id: "create-user-form") do |f| %>
+      <%= render 'shared/error_messages', object: @user %>
+    
+      <%= f.label :name, class: "label-signup" %>
+      <%= f.text_field :name, class: "form-control" %>
+    
+      <%= f.label :email, class: "label-signup" %>
+      <%= f.email_field :email, class: "form-control" %>
+      
+      <%= f.label :"秘密の質問 ※パスワード再発行時に必須", class: "label-signup" %>
+      <%= f.select :question, $questions, {}, class: "form-control" %>
+      
+      <%= f.label :"回答 ※パスワード再発行時に必須", class: "label-signup" %>
+      <%= f.text_field :answer, placeholder: "20文字以内、スペースなし", class: "form-control" %>
+    
+      <%= f.label :password, class: "label-signup" %>
+      <%= f.password_field :password, class: "form-control" %>
+    
+      <%= f.label :password_confirmation, class: "label-signup" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+      
+      <div class="panel panel-default card-panel">
+        <div class="panel-heading card-title">クレジットカード</div>
+        <div class="panel-body">
+          <div>
+            <%= f.label :"カード番号", class: "label-signup" %>
+            <%= f.text_field :number, placeholder: "カード番号", maxlength: "16", class: "form-control", id: "number" %>
+    
+            <%= f.label :"セキュリティーコード", class: "label-signup" %>
+            <%= f.text_field :cvc, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", class: "form-control", id: "cvc" %>
+          </div>
+          <div>
+            <%= f.label :"有効期限", class: "label-signup" %>
+          </div>
+          <div class="exp-area">
+            <div class="exp-mm">  
+              <%= f.text_field :exp_month, placeholder: "MM", maxlength: "2", class: "form-control", id: "exp-mm" %>
+            </div>
+            <div class="separate-mm-yy">／</div>
+            <div class="exp-yy">
+              <%= f.text_field :exp_year, placeholder: "YYYY", maxlength: "4", class: "form-control", id: "exp-yy" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="user-create-submit">
+        <%= f.submit "新規作成", class: "btn btn-md btn-primary", id: "create" %>
+        <%= link_to :back do %>
+          <button class="btn btn-md btn-default">戻る</button>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  var form = $('#create-user-form');
+  $('#create').on('click', function() {
+    Payjp.setPublicKey("<%= ENV['PAYJP_KEY'] %>");
+    form.find('input[type=submit]').prop('disabled', true);
+    var card = {
+      number: $('#number').val(),
+      cvc: $('#cvc').val(),
+      exp_month: $('#exp-mm').val(),
+      exp_year: $('#exp-yy').val()
+    };
+    Payjp.createToken(card, function(status, response) {
+      if (status == 200) {
+        $('#number').removeAttr('name');
+        $('#cvc').removeAttr('name');
+        $('#exp-mm').removeAttr('name');
+        $('#exp-yy').removeAttr('name');
+
+        var token = response.id;
+        var card_id = response.card.id;
+        $('#create-user-form').append($('<input type="hidden" name="payjpToken">').val(token));
+        $('#create-user-form').append($('<input type="hidden" name="card_id">').val(card_id));
+        $('#create-user-form').get(0).submit();
+      }
+      else {
+        alert('カード情報を取得出来ませんでした。');
+        form.find('#create').prop('disabled', false);
+      }
+    });
+  });
+});
+</script>

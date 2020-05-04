@@ -16,9 +16,7 @@ Rails.application.routes.draw do
     get   'reset_password', on: :collection
     member do
       patch 'update_password'
-      get   'new_payment'
       get   'edit_card'
-      post 'pay'
       post 'update_card'
     end
     resources :plants
