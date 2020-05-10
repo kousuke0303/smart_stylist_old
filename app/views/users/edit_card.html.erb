@@ -61,9 +61,9 @@ $(document).on('turbolinks:load', function() {
 
         var token = response.id;
         var card_id = response.card.id;
-        $('#charge-form').append($('<input type="hidden" name="payjpToken">').val(token));
-        $('#charge-form').append($('<input type="hidden" name="card_id">').val(card_id));
-        $('#charge-form').get(0).submit();
+        $('#edit-card-form').append($('<input type="hidden" name="payjpToken">').val(token));
+        $('#edit-card-form').append($('<input type="hidden" name="card_id">').val(card_id));
+        $('#edit-card-form').get(0).submit();
       }
       else {
         alert('カード情報を取得出来ませんでした。');
