@@ -35,7 +35,8 @@ class UsersController < ApplicationController
         Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
         customer = Payjp::Customer.create(card: params[:payjpToken], metadata: {user_id: @user.id})
         subscription = Payjp::Subscription.create(plan: 'testtest', customer: customer.id)
-        @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], subscription_id: subscription.id, complete_register: Date.current)
+        @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], subscription_id: subscription.id,
+                                complete_register: Date.current, pay_status: true)
         log_in @user
         flash[:success] = "新規アカウントを登録しました。"
         redirect_to @user
@@ -103,6 +104,10 @@ class UsersController < ApplicationController
     old_card = customer.cards.retrieve(@user.card_id)
     old_card.delete
     @user.update_attributes(card_id: new_card.id)
+    unless @user.pay_status?
+      subscription = Payjp::Subscription.retrieve(@user.subscription_id)
+      subscription.resume
+    end
     flash[:success] = "クレジットカードを変更しました。"
     redirect_to @user
   end
