@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.string "card_id"
     t.string "subscription_id"
     t.date "complete_register"
+    t.boolean "pay_status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
