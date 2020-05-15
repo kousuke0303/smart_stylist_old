@@ -105,8 +105,9 @@ class UsersController < ApplicationController
     @user.update_attributes(card_id: new_card.id)
     begin
       subscription = Payjp::Subscription.retrieve(@user.subscription_id)
-      if subscription.status == "paused" && subscription.status == "canceled"
+      if subscription.status == "paused" || subscription.status == "canceled"
         subscription.resume
+        @user.update_attributes(pay_status: true)
         flash[:success] = "クレジットカードを更新し、サービスの利用を再開しました。"
       else
         flash[:success] = "クレジットカードを更新しました。"
