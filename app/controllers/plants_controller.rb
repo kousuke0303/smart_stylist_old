@@ -3,6 +3,7 @@ class PlantsController < ApplicationController
   before_action :set_user_by_user_id
   before_action :set_plant, only: [:show, :destroy, :edit, :update]
   before_action :logged_in_user
+  before_action :only_pay_status_true
   before_action :correct_user_by_user_id
 
   def index

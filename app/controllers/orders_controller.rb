@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_user, only: [:traded, :unpaid]
   before_action :set_user_by_user_id, only: [:new, :create, :edit, :update, :show, :index, :destroy]
   before_action :logged_in_user
+  before_action :only_pay_status_true
   before_action :correct_user, only: [:traded, :unpaid]
   before_action :correct_user_by_user_id, only: [:new, :create, :edit, :update, :show, :index, :destroy]
   before_action :set_clients_of_user, only: [:new, :create, :edit, :update]

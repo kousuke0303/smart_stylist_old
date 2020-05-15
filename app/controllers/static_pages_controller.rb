@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :logged_in_user, only: :top
+  before_action :only_pay_status_true, only: :top
   
   def top
   end

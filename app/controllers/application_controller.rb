@@ -7,57 +7,7 @@ class ApplicationController < ActionController::Base
   include OrdersHelper
   include UsersHelper
   
-  # beforeフィルター
-    
-  # params[:id]からユーザーを取得。
-  def set_user
-    @user = User.find(params[:id])
-  end
-  
-  # params[:user_id]からユーザーを取得。
-  def set_user_by_user_id
-    @user = User.find(params[:user_id])
-  end
-
-  # ログイン済みのユーザーか確認します。
-  def logged_in_user
-    unless logged_in?
-      store_location
-      redirect_to login_url
-    end
-  end
-  
-  # アクセスしたユーザーが現在ログインしているユーザー、または管理者か確認します。
-  def correct_or_admin_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user) || current_user.admin?
-  end
-  
-  # アクセスユーザーが現在ログインしているユーザーか([:idで])確認します。
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
-  
-  # アクセスユーザーが現在ログインしているユーザーか([user_:idで])確認します。
-  def correct_user_by_user_id
-    @user = User.find(params[:user_id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
-  
-  # システム管理権限所有かどうか判定します。
-  def admin_user
-    redirect_to root_url unless current_user.admin?
-  end
-  
-  # ログイン済みユーザーのアクセス制限
-  def login_once
-    if logged_in?
-      flash[:info] = "すでにログインしています。"
-      redirect_to root_url
-    end
-  end
-  
+  # 郵便番号から住所取得
   def zipcode_api(parameter)
     zipcode = NKF.nkf('-w -Z4', parameter[:zipcode]).delete("^0-9")
     # hash形式でパラメタ文字列を指定し、URL形式にエンコード
@@ -100,6 +50,65 @@ class ApplicationController < ActionController::Base
       @message = "e.message"
     rescue => e
       @message = "e.message"
+    end
+  end
+  
+  # beforeフィルター
+    
+  # params[:id]からユーザーを取得
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
+  # params[:user_id]からユーザーを取得。
+  def set_user_by_user_id
+    @user = User.find(params[:user_id])
+  end
+
+  # ログイン済みのユーザーか確認
+  def logged_in_user
+    unless logged_in?
+      store_location
+      redirect_to login_url
+    end
+  end
+  
+  # アクセスしたユーザーが現在ログインしているユーザー、または管理者か確認
+  def correct_or_admin_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user) || current_user.admin?
+  end
+  
+  # アクセスユーザーが現在ログインしているユーザーか([:idで])確認
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+  
+  # アクセスユーザーが現在ログインしているユーザーか([user_:idで])確認
+  def correct_user_by_user_id
+    @user = User.find(params[:user_id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+  
+  # システム管理権限所有かどうか判定
+  def admin_user
+    redirect_to root_url unless current_user.admin?
+  end
+  
+  # ログイン済みユーザーのアクセス制限
+  def login_once
+    if logged_in?
+      flash[:info] = "すでにログインしています。"
+      redirect_to root_url
+    end
+  end
+  
+  # 支払いが有効のユーザーのみアクセス許可
+  def only_pay_status_true
+    if !current_user.admin? && !current_user.pay_status?
+      flash[:danger] = "クレジットカードを更新し、サービスの利用を再開してください。"
+      redirect_to current_user
     end
   end
 end

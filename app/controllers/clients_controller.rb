@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
   before_action :set_user_by_user_id
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
+  before_action :only_pay_status_true
   before_action :correct_user_by_user_id
   
   def index
