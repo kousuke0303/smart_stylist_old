@@ -20,14 +20,22 @@
         <th>回答</th>
         <td><%= @user.answer %></td>
       </tr>
-      <% if @user.complete_register.present? %>
+      <tr>
+        <th>登録完了日</th>
+        <td><%= @user.created_at.strftime("%Y年%m月%d日") %></td>
+      </tr>
+      <tr>
+        <th>無料お試し期限</th>
+        <td><%= @user.created_at.next_day(30).strftime("%Y年%m月%d日") %></td>
+      </tr>
+      <tr>
+        <th>初回課金日</th>
+        <td><%= @user.created_at.next_day(31).strftime("%Y年%m月%d日") %></td>
+      </tr>
+      <% if @user.restart_service_date.present? %>
         <tr>
-          <th>登録完了日</th>
-          <td><%= @user.created_at.strftime("%Y年%m月%d日") %></td>
-        </tr>
-        <tr>
-          <th>無料お試し期限</th>
-          <td><%= @user.created_at.next_day(30).strftime("%Y年%m月%d日") %></td>
+          <th>サービス利用再開日</th>
+          <td><%= @user.restart_service_date.strftime("%Y年%m月%d日") %></td>
         </tr>
       <% end %>
     </table>
