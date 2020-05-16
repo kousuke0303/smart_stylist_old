@@ -3,7 +3,7 @@
   
   <div class="row">
     <div class="col-xs-6 col-md-6">
-      <%= f.label :name, "顧客名 (必須)", class: "label-#{yield(:class_text)}" %>
+      <%= f.label :name, "顧客名 ※必須", class: "label-#{yield(:class_text)}" %>
       <% if params[:client] %>
         <%= f.text_field :name, value: params[:client][:name], class: "form-control" %>
       <% else %>
@@ -12,11 +12,11 @@
     </div>
     
     <div class="col-xs-6 col-md-6">
-      <%= f.label :"フリガナ(全角カナ)", class: "label-#{yield(:class_text)}" %>
+      <%= f.label :"フリガナ ※必須", class: "label-#{yield(:class_text)}" %>
       <% if params[:client] %>
         <%= f.text_field :kana, value: params[:client][:kana], class: "form-control" %>
       <% else %>
-        <%= f.text_field :kana, class: "form-control" %>
+        <%= f.text_field :kana, placeholder: "全角カタカナ", class: "form-control" %>
       <% end %>
     </div>
 
