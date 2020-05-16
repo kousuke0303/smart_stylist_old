@@ -179,16 +179,23 @@ a.main-link {
   border: 1px solid black;
   border-radius: 10px;
   padding: 15px 0 15px 0;
-  text-align: center;
   .price {
     font-size: 2em;
+    text-align: center;
     span {
       color: red;
     }
   }
+  .trial-span {
+    font-size: 2em;
+    text-align: center;
+    }
   .trial-explain {
-    border-bottom: 1px solid red;
     font-size: 1.3em;
+    text-align: center;
+    span {
+      border-bottom: 1px solid red;
+    }
   }
   .subscription-detail {
     .detail-title {
