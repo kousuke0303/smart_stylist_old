@@ -7,6 +7,13 @@
       <div class="price">月額 1,980円</div>
       <div class="price">初回登録後、<span>30日間無料</span></div>
       <span class="trial-explain">無料お試し期間中に退会された場合、料金は発生しません。</span>
+      <div class="subscription-detail">
+        <div class="detail-title">定期課金について</div>
+        <div class="detail-explain">
+          <div class="col-xs-12 col-lg-2 detail-item">課金日</div>
+          <div class="col-xs-12 col-lg-10 detail-content">無料お試し期間最終日翌日(初日)から、以降一ヶ月毎</div>
+        </div>
+      </div>
     </div>
     
     <div class="terms-sentences">
@@ -174,7 +181,7 @@
     <% unless logged_in? %>
       <div class="confirm-consent-area">
         <%= form_with(url: "#", local: true) do |f| %>
-          <%= f.check_box :confirm_consent, id: "confirm-consent" %><span>利用規約に同意する</spam>
+          <%= f.check_box :confirm_consent, id: "confirm-consent" %><span>利用規約に同意する</span>
         <% end %>
       </div>
     <% end %>

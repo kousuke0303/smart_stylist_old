@@ -190,16 +190,20 @@ a.main-link {
     border-bottom: 1px solid red;
     font-size: 1.3em;
   }
+  .subscription-detail {
+    .detail-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      padding: 10px 0;
+      text-align: center;
+    }
+    .detail-explain {
+      
+    }
+  }
 }
 
 /* 利用規約 */
-
-.terms-reduction {
-  border: 1px solid black;
-  height: 300px;
-  margin-top: 10px;
-  overflow: scroll;
-}
 
 .terms-sentences {
   background: whitesmoke;
