@@ -36,17 +36,17 @@ class UsersController < ApplicationController
         @user.save
         Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
         customer = Payjp::Customer.create(card: params[:payjpToken], metadata: {user_id: @user.id})
-        subscription = Payjp::Subscription.create(plan: 'with_trial', customer: customer.id)
+        subscription = Payjp::Subscription.create(plan: 'test', customer: customer.id)
         @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], subscription_id: subscription.id, pay_status: true)
         log_in @user
-        flash[:success] = "新規アカウントを登録しました。"
+        flash[:success] = "新規アカウントを作成しました。"
         redirect_to @user
       end
     else
       render :new
     end
   rescue ActiveRecord::RecordInvalid 
-    flash[:danger] = "新規アカウントを登録出来ませんでした。"
+    flash[:danger] = "新規アカウントを作成出来ませんでした。"
     redirect_to root_url
   end
   
