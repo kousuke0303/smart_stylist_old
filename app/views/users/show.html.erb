@@ -28,10 +28,10 @@
         <th>無料お試し期限</th>
         <td><%= @user.created_at.next_day(30).strftime("%Y年%m月%d日") %></td>
       </tr>
-      <% if @user.restart_service_date.present? %>
+      <% if @user.service_restarted_on.present? %>
         <tr>
           <th>サービス利用再開日</th>
-          <td><%= @user.restart_service_date.strftime("%Y年%m月%d日") %></td>
+          <td><%= @user.service_restarted_on.strftime("%Y年%m月%d日") %></td>
         </tr>
       <% end %>
     </table>
