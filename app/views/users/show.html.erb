@@ -28,10 +28,6 @@
         <th>無料お試し期限</th>
         <td><%= @user.created_at.next_day(30).strftime("%Y年%m月%d日") %></td>
       </tr>
-      <tr>
-        <th>初回課金日</th>
-        <td><%= @user.created_at.next_day(31).strftime("%Y年%m月%d日") %></td>
-      </tr>
       <% if @user.restart_service_date.present? %>
         <tr>
           <th>サービス利用再開日</th>
@@ -49,7 +45,7 @@
       <% end %>
     </div>
 
-    <% if @info %>
+    <% if @card_info %>
       <h1>クレジットカード情報</h1>
       <table class="table table-bordered table-condensed" id="card-table">
         <tr>

@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         @user.save
         Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
         customer = Payjp::Customer.create(card: params[:payjpToken], metadata: {user_id: @user.id})
-        subscription = Payjp::Subscription.create(plan: 'test', customer: customer.id)
+        subscription = Payjp::Subscription.create(plan: 'test_with_trial', customer: customer.id)
         @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], subscription_id: subscription.id, pay_status: true)
         log_in @user
         flash[:success] = "新規アカウントを作成しました。"
@@ -99,26 +99,31 @@ class UsersController < ApplicationController
   end
   
   def update_card
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    customer = Payjp::Customer.retrieve(@user.customer_id)
-    old_card = customer.cards.retrieve(@user.card_id)
-    old_card.delete
-    new_card = customer.cards.create(card: params[:payjpToken])
-    @user.update_attributes(card_id: new_card.id)
-    begin
-      subscription = Payjp::Subscription.retrieve(@user.subscription_id)
-      if subscription.status == "paused" || subscription.status == "canceled"
-        subscription.resume
-        @user.update_attributes(pay_status: true)
+    ActiveRecord::Base.transaction do
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.retrieve(@user.customer_id)
+      old_card = customer.cards.retrieve(@user.card_id)
+      old_card.delete
+      new_card = customer.cards.create(card: params[:payjpToken])
+      @user.update_attributes(card_id: new_card.id)
+      begin
+        subscription = Payjp::Subscription.retrieve(@user.subscription_id)
+        if subscription.status == "paused" || subscription.status == "canceled"
+          subscription.resume
+          @user.update_attributes(pay_status: true)
+          flash[:success] = "クレジットカードを更新し、サービスの利用を再開しました。"
+        else
+          flash[:success] = "クレジットカードを更新しました。"
+        end
+      rescue
+        subscription = Payjp::Subscription.create(plan: 'test_no_trial', customer: customer.id)
+        @user.update_attributes(subscription_id: subscription.id, restart_service_date: Date.current)
         flash[:success] = "クレジットカードを更新し、サービスの利用を再開しました。"
-      else
-        flash[:success] = "クレジットカードを更新しました。"
       end
-    rescue
-      subscription = Payjp::Subscription.create(plan: 'no_trial', customer: customer.id)
-      @user.update_attributes(subscription_id: subscription.id, restart_service_date: Date.current)
-      flash[:success] = "クレジットカードを更新し、サービスの利用を再開しました。"
+      redirect_to @user
     end
+  rescue ActiveRecord::RecordInvalid 
+    flash[:danger] = "クレジットカードを更新出来ませんでした。"
     redirect_to @user
   end
 
