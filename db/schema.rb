@@ -126,10 +126,9 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.string "subscription_id"
     t.date "service_restarted_on"
     t.boolean "pay_status", default: false
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
-    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
