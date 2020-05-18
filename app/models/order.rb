@@ -42,7 +42,7 @@ class Order < ApplicationRecord
   validate :ratail_rule
   validate :deposit_limit
   validate :ordered_on_than_sold_on_fast_if_invalid
-  validate :ordered_on_than_delivery_fast_if_invalid
+  validate :ordered_on_than_delivered_on_fast_if_invalid
   validate :invalid_pay_without_cost
   validate :note_with_img
   
@@ -50,8 +50,8 @@ class Order < ApplicationRecord
     errors.add(:ordered_on, "より早い売上日は無効です") if ordered_on.present? && sold_on.present? && ordered_on > sold_on
   end
   
-  def ordered_on_than_delivery_fast_if_invalid
-    errors.add(:ordered_on, "より早い納品予定日は無効です") if ordered_on.present? && delivery.present? && ordered_on > delivery
+  def ordered_on_than_delivered_on_fast_if_invalid
+    errors.add(:ordered_on, "より早い納品予定日は無効です") if ordered_on.present? && delivered_on.present? && ordered_on > delivered_on
   end
   
   def invalid_pay_without_cost

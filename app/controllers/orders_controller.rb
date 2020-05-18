@@ -130,7 +130,7 @@ class OrdersController < ApplicationController
 
     def order_params
       params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :deposit, :note, :ordered_on, :sold_on,
-                                    :delivery, :wage, :cloth, :lining, :button, :postage, :other, :user_id,
+                                    :delivered_on, :wage, :cloth, :lining, :button, :postage, :other, :user_id,
                                     :wage_pay, :cloth_pay, :lining_pay, :button_pay, :postage_pay, :other_pay,
                                     :narrow, :img_1, :img_2, :img_3, :img_4, :img_5, :img_6, :img_7, :img_8,
                                     :img_1_note, :img_2_note, :img_3_note, :img_4_note, :img_5_note,:img_6_note,

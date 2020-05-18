@@ -46,7 +46,7 @@
       </tr>
       <tr>
         <th>納品予定日</th>
-        <td colspan=3><%= l(@order.delivery, format: :long) if @order.delivery.present? %></td>
+        <td colspan=3><%= l(@order.delivered_on, format: :long) if @order.delivered_on.present? %></td>
       </tr>
       <tr>
         <th>粗利</th>

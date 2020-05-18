@@ -102,13 +102,13 @@
         </div>
         
         <div class="col-xs-4">
-          <%= f.label :delivery, class: "label-#{yield(:class_text)}" %>
-          <% if params[:order] && params[:order][:delivery].present? %>
-            <%= f.text_field :delivery,value: params[:order][:delivery], class: "datepicker form-control" %>
-          <% elsif @order.delivery.present? %>
-            <%= f.text_field :delivery, value: @order.delivery.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
+          <%= f.label :delivered_on, class: "label-#{yield(:class_text)}" %>
+          <% if params[:order] && params[:order][:delivered_on].present? %>
+            <%= f.text_field :delivered_on,value: params[:order][:delivered_on], class: "datepicker form-control" %>
+          <% elsif @order.delivered_on.present? %>
+            <%= f.text_field :delivered_on, value: @order.delivered_on.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
           <% else %>
-            <%= f.text_field :delivery, placeholder: "年/月/日", class: "datepicker form-control" %>
+            <%= f.text_field :delivered_on, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
         </div>
         

@@ -56,7 +56,7 @@
             <tr class="hover" data-href="<%= user_order_path(@user, order) %>">
               <td><%= client_name(order) %></td>
               <td><%= l(order.ordered_on, format: :long) %></td>
-              <td><%= l(order.delivery, format: :long) if order.delivery.present? %></td>
+              <td><%= l(order.delivered_on, format: :long) if order.delivered_on.present? %></td>
               <td><%= order.retail %>円</td>
               <td>
                 <% not_deposit(order) %>

@@ -4,6 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :kind
       t.date :ordered_on
       t.date :sold_on
+      t.date :delivered_on
       t.string :retail
       t.integer :deposit
       t.boolean :traded
@@ -23,7 +24,6 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :note
       t.integer :plant_id
       t.integer :user_id
-      t.date :delivery
       t.string :img_1
       t.string :img_2
       t.string :img_3

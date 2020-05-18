@@ -49,6 +49,7 @@ ja:
           kind: 品名
           ordered_on: 受注日
           sold_on: 売上日
+          delivered_on: 納品予定日
           retail: 上代
           deposit: 受領金額
           wage: 工賃
@@ -59,7 +60,6 @@ ja:
           other: その他
           note: 備考
           plant_id: 発注工場
-          delivery: 納品予定日
           client_id: 顧客名
           img_1: 画像(1)
           img_2: 画像(2)
