@@ -47,7 +47,7 @@ ja:
         order:
           id: ID
           kind: 品名
-          order_date: 受注日
+          ordered_on: 受注日
           sales_date: 売上日
           retail: 上代
           deposit: 受領金額

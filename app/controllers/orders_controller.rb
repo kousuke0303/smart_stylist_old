@@ -36,11 +36,11 @@ class OrdersController < ApplicationController
     if params["narrow_year(1i)"] && params["narrow_year(1i)"].present? && params["narrow_month"] && params["narrow_month"].present?
       @searched_date = "#{params["narrow_year(1i)"]}-#{params["narrow_month"]}-01".to_date
       @trading_orders = Order.where(user_id: @user.id, traded: false).
-                              where("order_date LIKE ?", "%#{params["narrow_year(1i)"]}-#{params["narrow_month"]}%")
+                              where("ordered_on LIKE ?", "%#{params["narrow_year(1i)"]}-#{params["narrow_month"]}%")
     else
       @trading_orders = Order.where(user_id: @user.id, traded: false)
     end
-    @orders = @trading_orders.order(:order_date).paginate(page: params[:page])
+    @orders = @trading_orders.order(:ordered_on).paginate(page: params[:page])
     @trading_orders.each do |order|
       @total_retail = @total_retail.to_i + order.retail.to_i
       @all_total_cost = @all_total_cost.to_i + total_cost(order).to_i
@@ -89,7 +89,7 @@ class OrdersController < ApplicationController
   
   def unpaid
     @all_unpaid_orders = Order.where(user_id: @user.id, unpaid: true)
-    @orders = @all_unpaid_orders.order(:order_date).paginate(page: params[:page])
+    @orders = @all_unpaid_orders.order(:ordered_on).paginate(page: params[:page])
     @all_unpaid_orders.each do |order|
       @all_unpaid = @all_unpaid.to_i + total_unpaid(order).to_i
     end
@@ -129,7 +129,7 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :deposit, :note, :order_date, :sales_date,
+      params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :deposit, :note, :ordered_on, :sales_date,
                                     :delivery, :wage, :cloth, :lining, :button, :postage, :other, :user_id,
                                     :wage_pay, :cloth_pay, :lining_pay, :button_pay, :postage_pay, :other_pay,
                                     :narrow, :img_1, :img_2, :img_3, :img_4, :img_5, :img_6, :img_7, :img_8,

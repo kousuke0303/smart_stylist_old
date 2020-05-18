@@ -18,7 +18,7 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr class="hover" data-href="<%= user_order_path(@user, order) %>">
-              <td><%= l(order.order_date, format: :long) %></td>
+              <td><%= l(order.ordered_on, format: :long) %></td>
               <td><%= l(order.sales_date, format: :long) if order.sales_date.present? %></td>
               <td><span class="red"><%= total_unpaid(order) %></span>円</td>
             </tr>

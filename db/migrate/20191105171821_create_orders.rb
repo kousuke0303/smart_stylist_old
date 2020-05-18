@@ -2,7 +2,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
   def change
     create_table :orders do |t|
       t.string :kind
-      t.date :order_date
+      t.date :ordered_on
       t.date :sales_date
       t.string :retail
       t.integer :deposit

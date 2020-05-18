@@ -19,7 +19,7 @@ class Order < ApplicationRecord
   validates :client_id, presence: true
   validates :kind, presence: true
   validates :plant_id, presence: true
-  validates :order_date, presence: true
+  validates :ordered_on, presence: true
   validates :retail, presence: true
   validates :deposit, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
   validates :wage, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
@@ -41,17 +41,17 @@ class Order < ApplicationRecord
   
   validate :ratail_rule
   validate :deposit_limit
-  validate :order_date_than_sales_date_fast_if_invalid
-  validate :order_date_than_delivery_fast_if_invalid
+  validate :ordered_on_than_sales_date_fast_if_invalid
+  validate :ordered_on_than_delivery_fast_if_invalid
   validate :invalid_pay_without_cost
   validate :note_with_img
   
-  def order_date_than_sales_date_fast_if_invalid
-    errors.add(:order_date, "より早い売上日は無効です") if order_date.present? && sales_date.present? && order_date > sales_date
+  def ordered_on_than_sales_date_fast_if_invalid
+    errors.add(:ordered_on, "より早い売上日は無効です") if ordered_on.present? && sales_date.present? && ordered_on > sales_date
   end
   
-  def order_date_than_delivery_fast_if_invalid
-    errors.add(:order_date, "より早い納品予定日は無効です") if order_date.present? && delivery.present? && order_date > delivery
+  def ordered_on_than_delivery_fast_if_invalid
+    errors.add(:ordered_on, "より早い納品予定日は無効です") if ordered_on.present? && delivery.present? && ordered_on > delivery
   end
   
   def invalid_pay_without_cost
