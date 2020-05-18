@@ -42,7 +42,7 @@
       </tr>
       <tr>
         <th>売上日</th>
-        <td colspan=3><%= l(@order.sales_date, format: :long) if @order.sales_date.present? %></td>
+        <td colspan=3><%= l(@order.sold_on, format: :long) if @order.sold_on.present? %></td>
       </tr>
       <tr>
         <th>納品予定日</th>

@@ -68,7 +68,7 @@
             <% @histories.each do |history| %>
               <tr class="hover" data-href="<%= user_order_path(@user, history) %>">
                 <td><%= l(history.ordered_on, format: :long) %></td>
-                <td><%= l(history.sales_date, format: :long) if history.sales_date.present? %></td>
+                <td><%= l(history.sold_on, format: :long) if history.sold_on.present? %></td>
                 <td><%= history.retail %>円</td>
               </tr>
             <% end %>

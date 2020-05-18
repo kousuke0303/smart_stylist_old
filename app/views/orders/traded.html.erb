@@ -44,7 +44,7 @@
           <% @orders.each do |order| %>
             <tr class="hover" data-href="<%= user_order_path(@user, order) %>">
               <td><%= client_name(order) %></td>
-              <td><%= l(order.sales_date, format: :long) %></td>
+              <td><%= l(order.sold_on, format: :long) %></td>
               <td><%= l(order.ordered_on, format: :long) %></td>
               <td><%= order.retail %>円<% @total_retail = @total_retail.to_i + order.retail.to_i %></td>
               <td><%= gross_profit(order) %>円</td>

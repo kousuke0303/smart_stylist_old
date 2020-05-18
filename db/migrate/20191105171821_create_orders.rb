@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
     create_table :orders do |t|
       t.string :kind
       t.date :ordered_on
-      t.date :sales_date
+      t.date :sold_on
       t.string :retail
       t.integer :deposit
       t.boolean :traded

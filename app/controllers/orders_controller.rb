@@ -73,7 +73,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     flash[:success] = "オーダーを削除しました。"
-    if !@order.sales_date.nil?
+    if !@order.sold_on.nil?
       redirect_to users_orders_traded_url(@user)
     else
       redirect_to user_orders_url(@user)
@@ -122,14 +122,14 @@ class OrdersController < ApplicationController
     end
     @last_day = @first_day.end_of_month
     one_month = [*@first_day..@last_day]
-    @all_traded_orders = Order.where(user_id: @user.id, traded: true, sales_date: @first_day..@last_day).order(:sales_date)
+    @all_traded_orders = Order.where(user_id: @user.id, traded: true, sold_on: @first_day..@last_day).order(:sold_on)
     @orders = @all_traded_orders.paginate(page: params[:page])
   end
   
   private
 
     def order_params
-      params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :deposit, :note, :ordered_on, :sales_date,
+      params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :deposit, :note, :ordered_on, :sold_on,
                                     :delivery, :wage, :cloth, :lining, :button, :postage, :other, :user_id,
                                     :wage_pay, :cloth_pay, :lining_pay, :button_pay, :postage_pay, :other_pay,
                                     :narrow, :img_1, :img_2, :img_3, :img_4, :img_5, :img_6, :img_7, :img_8,

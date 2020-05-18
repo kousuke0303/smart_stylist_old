@@ -14,7 +14,7 @@ class Order < ApplicationRecord
                 :narrow
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
   before_save { self.retail = self.retail.to_i }
-  before_save { self.retail.to_i == self.deposit.to_i && self.sales_date.present? ? self.traded = true : self.traded = false }
+  before_save { self.retail.to_i == self.deposit.to_i && self.sold_on.present? ? self.traded = true : self.traded = false }
   
   validates :client_id, presence: true
   validates :kind, presence: true
@@ -41,13 +41,13 @@ class Order < ApplicationRecord
   
   validate :ratail_rule
   validate :deposit_limit
-  validate :ordered_on_than_sales_date_fast_if_invalid
+  validate :ordered_on_than_sold_on_fast_if_invalid
   validate :ordered_on_than_delivery_fast_if_invalid
   validate :invalid_pay_without_cost
   validate :note_with_img
   
-  def ordered_on_than_sales_date_fast_if_invalid
-    errors.add(:ordered_on, "より早い売上日は無効です") if ordered_on.present? && sales_date.present? && ordered_on > sales_date
+  def ordered_on_than_sold_on_fast_if_invalid
+    errors.add(:ordered_on, "より早い売上日は無効です") if ordered_on.present? && sold_on.present? && ordered_on > sold_on
   end
   
   def ordered_on_than_delivery_fast_if_invalid

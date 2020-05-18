@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
   create_table "orders", force: :cascade do |t|
     t.string "kind"
     t.date "ordered_on"
-    t.date "sales_date"
+    t.date "sold_on"
     t.string "retail"
     t.integer "deposit"
     t.boolean "traded"
