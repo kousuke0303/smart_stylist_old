@@ -33,11 +33,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       ActiveRecord::Base.transaction do
-        @user.save
+        @user.save!
         Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
         customer = Payjp::Customer.create(card: params[:payjpToken], metadata: {user_id: @user.id})
         subscription = Payjp::Subscription.create(plan: 'test_with_trial', customer: customer.id)
-        @user.update_attributes(customer_id: customer.id, card_id: params[:card_id], subscription_id: subscription.id, pay_status: true)
+        @user.update_attributes!(customer_id: customer.id, card_id: params[:card_id], subscription_id: subscription.id, pay_status: true)
         log_in @user
         flash[:success] = "新規アカウントを作成しました。"
         redirect_to @user
