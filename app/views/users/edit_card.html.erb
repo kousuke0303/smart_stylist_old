@@ -7,6 +7,14 @@
       
       <%= form_with(url: update_card_user_path(@user), local: true, id: "edit-card-form") do |f| %>
         <div class="panel-body">
+          <div class="card-icons row">
+            <div class="col-xs-2"><%= image_tag "/card_images/visa.png" %></div>
+            <div class="col-xs-2"><%= image_tag "/card_images/mastercard.png" %></div>
+            <div class="col-xs-2"><%= image_tag "/card_images/jcb.png" %></div>
+            <div class="col-xs-2"><%= image_tag "/card_images/americanexpress.png" %></div>
+            <div class="col-xs-2"><%= image_tag "/card_images/dinersclub.png" %></div>
+            <div class="col-xs-2"><%= image_tag "/card_images/discover.png" %></div>
+          </div>
           <div>
             <%= f.label :"カード番号 ※必須", class: "edit-payment-label" %>
             <%= f.text_field :number, placeholder: "カード番号", maxlength: "16", class: "form-control", id: "number" %>
