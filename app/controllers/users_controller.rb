@@ -23,6 +23,9 @@ class UsersController < ApplicationController
       customer = Payjp::Customer.retrieve(@user.customer_id)
       @card_info = customer.cards.retrieve(@user.card_id)
     end
+    begin
+      @subscription = Payjp::Subscription.retrieve(@user.subscription_id)
+    end
   end
   
   def new

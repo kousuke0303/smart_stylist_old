@@ -24,14 +24,19 @@
         <th>登録完了日</th>
         <td><%= @user.created_at.strftime("%Y年%m月%d日") %></td>
       </tr>
-      <tr>
-        <th>無料お試し期限</th>
-        <td><%= @user.created_at.next_day(30).strftime("%Y年%m月%d日") %></td>
-      </tr>
-      <% if @user.service_restarted_on.present? %>
+      <% if @subscription %>
+        <% if @subscription.trial_end %>
+          <tr>
+            <th>無料お試し期限</th>
+            <td><%= (Time.at(@subscription.trial_end) + 9.hours).strftime("%Y年%m月%d日　%H:%M:%S") %></td>
+          </tr>
+        <% end %>
         <tr>
-          <th>サービス利用再開日</th>
-          <td><%= @user.service_restarted_on.strftime("%Y年%m月%d日") %></td>
+          <th>現在のサイクル</th>
+          <td>
+            開始　<%=(Time.at(@subscription.current_period_start) + 9.hours).strftime("%Y年%m月%d日　%H:%M:%S") %><br>
+            終了　<%= (Time.at(@subscription.current_period_end) + 9.hours).strftime("%Y年%m月%d日　%H:%M:%S") %><br>
+          </td>
         </tr>
       <% end %>
     </table>
