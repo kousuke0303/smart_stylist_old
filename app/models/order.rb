@@ -10,8 +10,7 @@ class Order < ApplicationRecord
   has_one_attached :img_7
   has_one_attached :img_8
   
-  attr_accessor :del_img_1, :del_img_2, :del_img_3, :del_img_4, :del_img_5, :del_img_6, :del_img_7, :del_img_8,
-                :narrow
+  attr_accessor :del_img_1, :del_img_2, :del_img_3, :del_img_4, :del_img_5, :del_img_6, :del_img_7, :del_img_8, :narrow
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
   before_save { self.retail = self.retail.to_i }
   before_save { self.retail.to_i == self.deposit.to_i && self.sold_on.present? ? self.traded = true : self.traded = false }
@@ -74,13 +73,13 @@ class Order < ApplicationRecord
   end
   
   def note_with_img
-    errors.add(:img_1, "が登録されていません") if img_1.nil? && img_1_note.present?
-    errors.add(:img_2, "が登録されていません") if img_2.nil? && img_2_note.present?
-    errors.add(:img_3, "が登録されていません") if img_3.nil? && img_3_note.present?
-    errors.add(:img_4, "が登録されていません") if img_4.nil? && img_4_note.present?
-    errors.add(:img_5, "が登録されていません") if img_5.nil? && img_5_note.present?
-    errors.add(:img_6, "が登録されていません") if img_6.nil? && img_6_note.present?
-    errors.add(:img_7, "が登録されていません") if img_7.nil? && img_7_note.present?
-    errors.add(:img_8, "が登録されていません") if img_8.nil? && img_8_note.present?
+    errors.add(:img_1, "が登録されていません") if !img_1.attached? && img_1_note.present?
+    errors.add(:img_2, "が登録されていません") if !img_2.attached? && img_2_note.present?
+    errors.add(:img_3, "が登録されていません") if !img_3.attached? && img_3_note.present?
+    errors.add(:img_4, "が登録されていません") if !img_4.attached? && img_4_note.present?
+    errors.add(:img_5, "が登録されていません") if !img_5.attached? && img_5_note.present?
+    errors.add(:img_6, "が登録されていません") if !img_6.attached? && img_6_note.present?
+    errors.add(:img_7, "が登録されていません") if !img_7.attached? && img_7_note.present?
+    errors.add(:img_8, "が登録されていません") if !img_8.attached? && img_8_note.present?
   end
 end
