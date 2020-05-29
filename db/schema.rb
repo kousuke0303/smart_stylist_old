@@ -124,7 +124,6 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.string "customer_id"
     t.string "card_id"
     t.string "subscription_id"
-    t.date "service_restarted_on"
     t.boolean "pay_status", default: false
     t.boolean "admin", default: false
     t.datetime "created_at", null: false

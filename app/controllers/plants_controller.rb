@@ -11,7 +11,7 @@ class PlantsController < ApplicationController
   end
   
   def show
-    @histories = Order.where(plant_id: @plant.id).paginate(page: params[:page],  per_page: 10).order(ordered_on: :desc)
+    @histories = @user.orders.where(plant_id: @plant.id).paginate(page: params[:page],  per_page: 10).order(ordered_on: :desc)
     @plants = @histories
   end
   

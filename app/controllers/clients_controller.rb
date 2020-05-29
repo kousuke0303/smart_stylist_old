@@ -7,18 +7,18 @@ class ClientsController < ApplicationController
   
   def index
     if params[:search]
-      @clients = Client.where(user_id: @user.id).where("name LIKE ?", "%#{params[:search]}%").
-                 or(Client.where(user_id: @user.id).where("kana LIKE ?", "%#{params[:search]}%")).order(:kana).paginate(page: params[:page])
+      @clients = @user.clients.where("name LIKE ?", "%#{params[:search]}%").
+                 or(@user.clients.where("kana LIKE ?", "%#{params[:search]}%")).order(:kana).paginate(page: params[:page])
     elsif params[:search_birth].present?
-      @clients = Client.where(user_id: @user.id, birth_month: params[:search_birth]).
+      @clients = @user.clients.where(birth_month: params[:search_birth]).
                  order(:birth_day).paginate(page: params[:page])
     else
-      @clients = Client.where(user_id: @user.id).order(:kana).paginate(page: params[:page])
+      @clients = @user.clients.order(:kana).paginate(page: params[:page])
     end
   end
   
   def show
-    @histories = Order.where(client_id: @client.id).paginate(page: params[:page],  per_page: 10).order(ordered_on: :desc)
+    @histories = @user.orders.where(client_id: @client.id).paginate(page: params[:page],  per_page: 10).order(ordered_on: :desc)
     @clients = @histories
   end
   
