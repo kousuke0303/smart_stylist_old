@@ -23,8 +23,10 @@ class UsersController < ApplicationController
       customer = Payjp::Customer.retrieve(@user.customer_id)
       @card_info = customer.cards.retrieve(@user.card_id)
     end
-    begin
+    ActiveRecord::Base.transaction do
       @subscription = Payjp::Subscription.retrieve(@user.subscription_id)
+    rescue
+      @subscription = nil
     end
   end
   
