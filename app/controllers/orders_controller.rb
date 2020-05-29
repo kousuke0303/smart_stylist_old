@@ -35,10 +35,10 @@ class OrdersController < ApplicationController
   def index
     if params["narrow_year(1i)"] && params["narrow_year(1i)"].present? && params["narrow_month"] && params["narrow_month"].present?
       @searched_date = "#{params["narrow_year(1i)"]}-#{params["narrow_month"]}-01".to_date
-      @trading_orders = Order.where(user_id: @user.id, traded: false).
+      @trading_orders = @user.orders.where(traded: false).
                               where("ordered_on LIKE ?", "%#{params["narrow_year(1i)"]}-#{params["narrow_month"]}%")
     else
-      @trading_orders = Order.where(user_id: @user.id, traded: false)
+      @trading_orders = @user.orders.where(traded: false)
     end
     @orders = @trading_orders.order(:ordered_on).paginate(page: params[:page])
     @trading_orders.each do |order|
@@ -88,7 +88,7 @@ class OrdersController < ApplicationController
   end
   
   def unpaid
-    @all_unpaid_orders = Order.where(user_id: @user.id, unpaid: true)
+    @all_unpaid_orders = @user.orders.where(unpaid: true)
     @orders = @all_unpaid_orders.order(:ordered_on).paginate(page: params[:page])
     @all_unpaid_orders.each do |order|
       @all_unpaid = @all_unpaid.to_i + total_unpaid(order).to_i
@@ -99,15 +99,15 @@ class OrdersController < ApplicationController
   
   def set_clients_of_user
     if params[:order] && params[:order][:narrow].present?
-      @clients = Client.where(user_id: @user.id).where("name LIKE ?", "%#{params[:order][:narrow]}%").
-                        or(Client.where(user_id: @user.id).where("kana LIKE ?", "%#{params[:order][:narrow]}%"))
+      @clients = @user.clients.where("name LIKE ?", "%#{params[:order][:narrow]}%").
+                        or(@user.clients.where("kana LIKE ?", "%#{params[:order][:narrow]}%"))
     else
-      @clients = @user.clients.all
+      @clients = @user.clients
     end
   end
   
   def set_plants_of_user
-    @plants = Plant.where(user_id: @user.id)
+    @plants = @user.plants
   end
   
   def set_order
@@ -122,7 +122,7 @@ class OrdersController < ApplicationController
     end
     @last_day = @first_day.end_of_month
     one_month = [*@first_day..@last_day]
-    @all_traded_orders = Order.where(user_id: @user.id, traded: true, sold_on: @first_day..@last_day).order(:sold_on)
+    @all_traded_orders = @user.orders.where(traded: true, sold_on: @first_day..@last_day).order(:sold_on)
     @orders = @all_traded_orders.paginate(page: params[:page])
   end
   
