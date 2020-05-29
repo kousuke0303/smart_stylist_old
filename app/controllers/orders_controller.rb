@@ -35,8 +35,7 @@ class OrdersController < ApplicationController
   def index
     if params["narrow_year(1i)"] && params["narrow_year(1i)"].present? && params["narrow_month"] && params["narrow_month"].present?
       @searched_date = "#{params["narrow_year(1i)"]}-#{params["narrow_month"]}-01".to_date
-      @trading_orders = @user.orders.where(traded: false).
-                              where("ordered_on LIKE ?", "%#{params["narrow_year(1i)"]}-#{params["narrow_month"]}%")
+      @trading_orders = @user.orders.where(traded: false).where(ordered_on: @searched_date.in_time_zone.all_month)
     else
       @trading_orders = @user.orders.where(traded: false)
     end
