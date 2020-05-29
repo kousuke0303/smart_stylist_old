@@ -15,14 +15,14 @@ class OrdersController < ApplicationController
                   "SHIRT": "SHIRT", "SHOES": "SHOES"}
   
   def new
-    @order = Order.new
+    @order = @user.orders.build
   end
   
   def create
     if params[:narrow_client_button]
       redirect_to new_user_order_url(@user, order: order_params)
     else
-      @order = Order.new(order_params)
+      @order = @user.orders.build(order_params)
       if @order.save
         flash[:success] = "新規オーダーを登録しました。"
         redirect_to user_order_url(@user, @order)
@@ -95,6 +95,17 @@ class OrdersController < ApplicationController
     end
   end
   
+  def del_img
+    @order.img_1.purge if params[:order][:del_img_1] == "1"
+    @order.img_2.purge if params[:order][:del_img_2] == "1"
+    @order.img_3.purge if params[:order][:del_img_3] == "1"
+    @order.img_4.purge if params[:order][:del_img_4] == "1"
+    @order.img_5.purge if params[:order][:del_img_5] == "1"
+    @order.img_6.purge if params[:order][:del_img_6] == "1"
+    @order.img_7.purge if params[:order][:del_img_7] == "1"
+    @order.img_8.purge if params[:order][:del_img_8] == "1"
+  end
+  
   # beforeフィルター
   
   def set_clients_of_user
@@ -130,7 +141,7 @@ class OrdersController < ApplicationController
 
     def order_params
       params.require(:order).permit(:client_id, :kind, :plant_id, :retail, :deposit, :note, :ordered_on, :sold_on,
-                                    :delivered_on, :wage, :cloth, :lining, :button, :postage, :other, :user_id,
+                                    :delivered_on, :wage, :cloth, :lining, :button, :postage, :other,
                                     :wage_pay, :cloth_pay, :lining_pay, :button_pay, :postage_pay, :other_pay,
                                     :narrow, :img_1, :img_2, :img_3, :img_4, :img_5, :img_6, :img_7, :img_8,
                                     :img_1_note, :img_2_note, :img_3_note, :img_4_note, :img_5_note,:img_6_note,

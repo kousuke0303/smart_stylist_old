@@ -16,7 +16,7 @@ class PlantsController < ApplicationController
   end
   
   def new
-    @plant = Plant.new
+    @plant = @user.plants.build
     zipcode_api(params[:plant]) if params[:plant]
   end
   
@@ -24,7 +24,7 @@ class PlantsController < ApplicationController
     if params[:zip_search_button]
       redirect_to new_user_plant_url(@user, plant: plant_params)
     else
-      @plant = Plant.new(plant_params)
+      @plant = @user.plants.build(plant_params)
       if @plant.save
         flash[:success] = "新規工場を登録しました。"
         redirect_to user_plant_url(@user, @plant)
@@ -52,7 +52,7 @@ class PlantsController < ApplicationController
   end
   
   def destroy
-    if Order.where(plant_id: @plant.id).count > 0
+    if @user.orders.where(plant_id: @plant.id).count > 0
       flash[:danger] = "オーダーに登録中の工場は削除出来ません。"
       redirect_to user_plant_url(@user, @plant)
     else
@@ -72,6 +72,6 @@ class PlantsController < ApplicationController
 
     def plant_params
       params.require(:plant).permit(:name, :address, :tel_1, :tel_2, :fax, :email, :staff_1,
-                                    :staff_2, :note, :user_id, :zipcode)
+                                    :staff_2, :note, :zipcode)
     end
 end

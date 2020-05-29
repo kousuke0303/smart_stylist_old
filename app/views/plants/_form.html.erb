@@ -92,8 +92,6 @@
     <%= f.text_field :note, class: "form-control" %>
   <% end %>
   
-  <%= f.hidden_field :user_id, value: @user.id %>
-  
   <div class="plant-submit-area">
     <%= f.submit yield(:button_text), class: "btn btn-primary btn-md" %>
     <%= link_to :back do %>

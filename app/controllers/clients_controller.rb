@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
   end
   
   def new
-    @client = Client.new
+    @client = @user.clients.build
     zipcode_api(params[:client]) if params[:client]
   end
   
@@ -31,7 +31,7 @@ class ClientsController < ApplicationController
     if params[:zip_search_button]
       redirect_to new_user_client_url(@user, client: client_params)
     else
-      @client = Client.new(client_params)
+      @client = @user.clients.build(client_params)
       if @client.save
         flash[:success] = "新規顧客を登録しました。"
         redirect_to user_client_url(@user, @client)
@@ -59,7 +59,7 @@ class ClientsController < ApplicationController
   end
   
   def destroy
-    if Order.where(client_id: @client.id).count > 0
+    if @user.orders.where(client_id: @client.id).count > 0
       flash[:danger] = "オーダーに登録中の顧客は削除出来ません。"
       redirect_to user_client_url(@user, @client)
     else
@@ -79,6 +79,6 @@ class ClientsController < ApplicationController
 
     def client_params
       params.require(:client).permit(:name, :kana, :address, :tel_1, :tel_2, :fax, :email, :work,
-                                     :note, :user_id, :zipcode, :birth_year, :birth_month, :birth_day)
+                                     :note, :zipcode, :birth_year, :birth_month, :birth_day)
     end
 end
