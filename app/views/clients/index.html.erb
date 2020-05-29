@@ -32,14 +32,11 @@
     </div>
     
     <% if @clients.count == 0 %>
-    
       <div class="no-client-msg">
         <h1>登録がありません</h1>
         <%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-lg btn-primary" %>
       </div>
-      
     <% else %>
-      
       <%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-md btn-primary" %>
       
       <%= will_paginate %>
@@ -68,6 +65,7 @@
         </tbody>
       </table>
       <%= will_paginate %>
+      
     <% end %>
   </div>
 </div>

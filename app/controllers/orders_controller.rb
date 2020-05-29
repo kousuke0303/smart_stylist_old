@@ -95,14 +95,39 @@ class OrdersController < ApplicationController
   end
   
   def del_img
-    @order.img_1.purge if params[:order][:del_img_1] == "1"
-    @order.img_2.purge if params[:order][:del_img_2] == "1"
-    @order.img_3.purge if params[:order][:del_img_3] == "1"
-    @order.img_4.purge if params[:order][:del_img_4] == "1"
-    @order.img_5.purge if params[:order][:del_img_5] == "1"
-    @order.img_6.purge if params[:order][:del_img_6] == "1"
-    @order.img_7.purge if params[:order][:del_img_7] == "1"
-    @order.img_8.purge if params[:order][:del_img_8] == "1"
+    if params[:order][:del_img_1] == "1"
+      @order.img_1.purge
+      @order.img_1_note = nil
+    end
+    if params[:order][:del_img_2] == "1"
+      @order.img_2.purge
+      @order.img_2_note = nil
+    end
+    if params[:order][:del_img_3] == "1"
+      @order.img_3.purge
+      @order.img_3_note = nil
+    end
+    if params[:order][:del_img_4] == "1"
+      @order.img_4.purge
+      @order.img_4_note = nil
+    end
+    if params[:order][:del_img_5] == "1"
+      @order.img_5.purge
+      @order.img_5_note = nil
+    end
+    if params[:order][:del_img_6] == "1"
+      @order.img_6.purge
+      @order.img_6_note = nil
+    end
+    if params[:order][:del_img_7] == "1"
+      @order.img_7.purge
+      @order.img_7_note = nil
+    end
+    if params[:order][:del_img_8] == "1"
+      @order.img_8.purge
+      @order.img_8_note = nil
+    end
+    @order.save
   end
   
   # beforeフィルター
