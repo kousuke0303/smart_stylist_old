@@ -4,37 +4,41 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-8 col-md-offset-2">
-    <% if @clients.count == 0 %>
+    <% if params[:search].present? %>
+      <h1>"<%= params[:search] %>"の検索結果</h1>
+    <% elsif params[:search_birth].present? %>
+      <h1><%= params[:search_birth] %>月の検索結果</h1>
+    <% else %>
       <h1>顧客情報一覧</h1>
+    <% end %>
+    
+    <div class="row search-area">
+      <div class="col-xs-6 col-md-5">
+        <div class="row">
+          <%= form_with url: yield(:search_url), method: :get, local: true do |f| %>
+            <p class="search-birth-tilte">誕生月で検索</p>
+            <div class="col-xs-8 search-birth-left">
+              <%= f.select :search_birth, options_for_select(
+                    {"1月": 1, "2月": 2, "3月": 3, "4月": 4, "5月": 5, "6月": 6, "7月": 7, "8月": 8,
+                     "9月": 9, "10月": 10, "11月": 11, "12月": 12}), {prompt: "誕生月を選択"}, class: "form-control" %>
+            </div>
+            <div class="col-xs-4 search-birth-right">
+              <%= f.submit "検索", class: "btn btn-md btn-block btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-5 col-md-offset-2"><%= render 'shared/search' %></div>
+    </div>
+    
+    <% if @clients.count == 0 %>
+    
       <div class="no-client-msg">
         <h1>登録がありません</h1>
         <%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-lg btn-primary" %>
       </div>
+      
     <% else %>
-      <% if params[:search].present? || params[:search_birth].present? %>
-        <h1>検索結果</h1>
-      <% else %>
-        <h1>顧客情報一覧</h1>
-      <% end %>
-  
-      <div class="row search-area">
-        <div class="col-xs-6 col-md-5">
-          <div class="row">
-            <%= form_with url: yield(:search_url), method: :get, local: true do |f| %>
-              <p class="search-birth-tilte">誕生月で検索</p>
-              <div class="col-xs-8 search-birth-left">
-                <%= f.select :search_birth, options_for_select(
-                      {"1月": 1, "2月": 2, "3月": 3, "4月": 4, "5月": 5, "6月": 6, "7月": 7, "8月": 8,
-                       "9月": 9, "10月": 10, "11月": 11, "12月": 12}), {prompt: "誕生月を選択"}, class: "form-control" %>
-              </div>
-              <div class="col-xs-4 search-birth-right">
-                <%= f.submit "検索", class: "btn btn-md btn-block btn-primary" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="col-xs-6 col-md-5 col-md-offset-2"><%= render 'shared/search' %></div>
-      </div>
       
       <%= link_to "新規顧客登録", new_user_client_path(@user), class: "btn btn-md btn-primary" %>
       
