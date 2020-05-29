@@ -10,7 +10,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :customer_id
       t.string :card_id
       t.string :subscription_id
-      t.date :service_restarted_on
       t.boolean :pay_status, default: false
       t.boolean :admin, default: false
 

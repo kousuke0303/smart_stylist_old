@@ -120,7 +120,7 @@ class UsersController < ApplicationController
         end
       rescue
         subscription = Payjp::Subscription.create(plan: 'test_no_trial', customer: customer.id)
-        @user.update_attributes!(subscription_id: subscription.id, service_restarted_on: Date.current, pay_status: true)
+        @user.update_attributes!(subscription_id: subscription.id, pay_status: true)
         flash[:success] = "クレジットカードを更新し、サービスの利用を再開しました。"
       end
       redirect_to @user
