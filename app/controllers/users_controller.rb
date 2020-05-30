@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     end
   rescue ActiveRecord::RecordInvalid 
     flash[:danger] = "新規アカウントを作成出来ませんでした。"
-    redirect_to root_url
+    redirect_to new_user_url
   end
   
   def edit
