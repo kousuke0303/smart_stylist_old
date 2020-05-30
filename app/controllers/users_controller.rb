@@ -41,7 +41,7 @@ class UsersController < ApplicationController
         @user.save!
         Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
         customer = Payjp::Customer.create(card: params[:payjpToken], metadata: {user_id: @user.id})
-        subscription = Payjp::Subscription.create(plan: 'test_with_trial', customer: customer.id)
+        subscription = Payjp::Subscription.create(plan: 'smartstylist_with_trial', customer: customer.id)
         @user.update_attributes!(customer_id: customer.id, card_id: params[:card_id], subscription_id: subscription.id, pay_status: true)
         log_in @user
         flash[:success] = "新規アカウントを作成しました。"
@@ -121,7 +121,7 @@ class UsersController < ApplicationController
           flash[:success] = "クレジットカードを更新しました。"
         end
       rescue
-        subscription = Payjp::Subscription.create(plan: 'test_no_trial', customer: customer.id)
+        subscription = Payjp::Subscription.create(plan: 'smartstylist_no_trial', customer: customer.id)
         @user.update_attributes!(subscription_id: subscription.id, pay_status: true)
         flash[:success] = "クレジットカードを更新し、サービスの利用を再開しました。"
       end
