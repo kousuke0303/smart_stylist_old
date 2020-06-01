@@ -52,7 +52,7 @@ p {
 
 #logo {
   float: left;
-  font-size: 3em;
+  font-size: 2.8em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -76,6 +76,65 @@ p {
   position: absolute !important;
   a {
     color: black !important;
+  }
+}
+
+//* スマホ *//
+
+@media screen and (max-width: 480px) {
+  .logo {
+    float: right;
+  }
+  .pc-menu {
+    display: none;
+  }
+  .hamburger-menu {
+    background: white;
+    display: block !important;
+    float: left;
+    height: 70px;
+    width: 40px;
+    .three-line {
+      background: black;
+      height: 50px;
+      
+      span {
+        display: inline-block;
+        transition: all .4s;
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        width: 40px;
+        height: 4px;
+        background: white;
+        border-radius: 5px;
+      }
+      span:nth-of-type(1) {
+        margin: 14px 0 0 15px;
+        }
+      span:nth-of-type(2) {
+        margin: 28px 0 0 15px;
+      }
+      span:nth-of-type(3) {
+        margin: 42px 0 0 15px;
+      }
+      .active span:nth-of-type(1) {
+        transform: translateY(12px) rotate(-45deg);
+        
+      }
+      .active span:nth-of-type(2) {
+        opacity: 0;
+      }
+      .active span:nth-of-type(3) {
+        transform: translateY(-15px) rotate(45deg);
+      }
+    }
+    .menu-text {
+      background: black;
+      color: white;
+      height: 20px;
+      text-align: center;
+    }
   }
 }
 

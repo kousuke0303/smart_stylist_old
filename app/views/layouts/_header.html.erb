@@ -1,32 +1,38 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-7">
-      <%= link_to "Smart Stylist", root_path, id: "logo" %>
+    <div data-toggle="push-menu" role="button" class="hamburger-menu hidden">
+      <div class="three-line">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <div class="col-xs-12 col-md-5">
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <% if logged_in? %>
-              <% if current_user.admin? %>
-                <li><%= link_to "ユーザー一覧", users_path %></li>
-              <% end %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  メニュー <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "アカウント", current_user %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to "利用規約", terms_of_service_path %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
-                </ul>
-              </li>
+      <div class="menu-text">menu</div>
+    </div>
+    <div class="logo">
+    <%= link_to "Smart Stylist", root_path, id: "logo" %>
+    </div>
+    <div>
+      <nav>
+        <ul class="nav navbar-nav navbar-right pc-menu">
+          <% if logged_in? %>
+            <% if current_user.admin? %>
+              <li><%= link_to "ユーザー一覧", users_path %></li>
             <% end %>
-          </ul>
-        </nav>
-      </div>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                メニュー <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "アカウント", current_user %></li>
+                <li class="divider"></li>
+                <li><%= link_to "利用規約", terms_of_service_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
     </div>
   </div>
 </header>
