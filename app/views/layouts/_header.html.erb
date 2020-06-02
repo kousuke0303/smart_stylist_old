@@ -5,7 +5,7 @@
     <% if logged_in? %>
       <div class="sp-menu hidden">
         <div class="top-space"></div>
-        <div data-toggle="push-menu" role="button" tabindex="0" class="hamburger-menu">
+        <div role="button" class="hamburger-menu">
           <span></span>
           <span></span>
           <span></span>
@@ -45,7 +45,7 @@
 
 <script>
   $('.hamburger-menu').on('click', function() {
-    $('.sidebar').toggle();
+    alert("AA");
     // $('.sm_main_content').toggle();
     // $('.sm_sidebar').toggle();
     // $('.sm_sidebar').toggleClass('col-sm-2');

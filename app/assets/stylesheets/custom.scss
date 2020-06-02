@@ -53,7 +53,7 @@ p {
 
 #logo {
   float: left;
-  font-size: 2.8em;
+  font-size: 2.7em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -339,6 +339,10 @@ a.main-link {
   .logo {
     display: inline-block;
   }
+  #logo {
+    font-size: 2.3em;
+    margin-top: 5px;
+  }
   .pc-menu {
     display: none;
   }
@@ -347,7 +351,7 @@ a.main-link {
     display: block !important;
     float: left;
     height: 70px;
-    margin-right: 5px;
+    margin-right: 10px;
     width: 40px;
     .top-space {
       background: black;
@@ -358,7 +362,7 @@ a.main-link {
       height: 40px;
       span {
         display: inline-block;
-        transition: all .4s;
+        transition-duration: .4s;
         box-sizing: border-box;
         position: absolute;
         left: 0;
@@ -376,12 +380,6 @@ a.main-link {
       span:nth-of-type(3) {
         margin: 36px 0 0 15px;
       }
-    }
-    .hamburger-menu:focus {
-      outline: 0;
-    }
-    .hamburger-menu:active {
-      outline: 0;
     }
     .hamburger-menu:active span:nth-of-type(1) {
       transform: translateY(18px) rotate(-45deg);

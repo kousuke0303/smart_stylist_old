@@ -1,12 +1,10 @@
-<% if logged_in? %>
-  <div class="sp-sidebar">
-    <ul>
-      <% if current_user.admin? %>
-        <li><span><%= link_to "> ユーザー一覧", users_path %></span></li>
-      <% end %>
-      <li><%= link_to "> アカウント", current_user %></li>
-      <li><%= link_to "> 利用規約", terms_of_service_path %></li>
-      <li><%= link_to "> ログアウト", logout_path, method: :delete %></li>
-    </ul>
-  </div>
-<% end %>
+<div class="sp-sidebar hidden">
+  <ul>
+    <% if current_user.admin? %>
+      <li><span><%= link_to "> ユーザー一覧", users_path %></span></li>
+    <% end %>
+    <li><%= link_to "> アカウント", current_user %></li>
+    <li><%= link_to "> 利用規約", terms_of_service_path %></li>
+    <li><%= link_to "> ログアウト", logout_path, method: :delete %></li>
+  </ul>
+</div>
