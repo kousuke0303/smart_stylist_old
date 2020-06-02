@@ -1,12 +1,13 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <div data-toggle="push-menu" role="button" class="hamburger-menu hidden">
-      <div class="three-line">
+    <div class="sm-menu hidden">
+      <div class="top-space"></div>
+      <div data-toggle="push-menu" role="button" tabindex="0" class="hamburger-menu">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <div class="menu-text">menu</div>
+      <div class="menu-logo">menu</div>
     </div>
     <div class="logo">
     <%= link_to "Smart Stylist", root_path, id: "logo" %>
@@ -36,3 +37,15 @@
     </div>
   </div>
 </header>
+
+<script>
+  $('.hamburger-menu').on('click', function() {
+
+    // $('.sm_main_content').toggle();
+    // $('.sm_sidebar').toggle();
+    // $('.sm_sidebar').toggleClass('col-sm-2');
+    // $('.sm_sidebar').toggleClass('sm_mobile_sidebar');
+    // $('.sm_sidebar_menu').toggleClass('sm_mobile_sidebar_menu')
+    // $('body').toggleClass('sm_sidebar_open');
+  });
+</script>
