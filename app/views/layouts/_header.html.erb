@@ -6,9 +6,9 @@
       <div class="sp-menu hidden">
         <div class="top-space"></div>
         <div role="button" class="hamburger-menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span class="line-1"></span>
+          <span class="line-2"></span>
+          <span class="line-3"></span>
         </div>
         <div class="menu-logo">menu</div>
       </div>
@@ -44,13 +44,20 @@
 </header>
 
 <script>
-  $('.hamburger-menu').on('click', function() {
-    alert("AA");
-    // $('.sm_main_content').toggle();
-    // $('.sm_sidebar').toggle();
-    // $('.sm_sidebar').toggleClass('col-sm-2');
-    // $('.sm_sidebar').toggleClass('sm_mobile_sidebar');
-    // $('.sm_sidebar_menu').toggleClass('sm_mobile_sidebar_menu')
-    // $('body').toggleClass('sm_sidebar_open');
-  });
+$('.hamburger-menu').on('click', function() {
+  var menu = $(this)
+  var target = $('.sp-sidebar')
+  var status = target.css('display')
+  if( status === 'none') {
+    menu.children('.line-1').css('transform','translateY(18px) rotate(-45deg)');
+    menu.children('.line-2').css('opacity','0');
+    menu.children('.line-3').css('transform','translateY(-18px) rotate(45deg)');
+    target.css('display', 'block');
+  } else {
+    menu.children('.line-1').css('transform','');
+    menu.children('.line-2').css('opacity','');
+    menu.children('.line-3').css('transform','');
+    target.css('display', 'none');
+  }
+});
 </script>
