@@ -10,15 +10,14 @@ class ClientsController < ApplicationController
       @clients = @user.clients.where("name LIKE ?", "%#{params[:search]}%").
                  or(@user.clients.where("kana LIKE ?", "%#{params[:search]}%")).order(:kana).paginate(page: params[:page])
     elsif params[:search_birth].present?
-      @clients = @user.clients.where(birth_month: params[:search_birth]).
-                 order(:birth_day).paginate(page: params[:page])
+      @clients = @user.clients.where(birth_month: params[:search_birth]).order(:birth_day).paginate(page: params[:page])
     else
       @clients = @user.clients.order(:kana).paginate(page: params[:page])
     end
   end
   
   def show
-    @histories = @user.orders.where(client_id: @client.id).paginate(page: params[:page],  per_page: 10).order(ordered_on: :desc)
+    @histories = @client.orders.paginate(page: params[:page], per_page: 10).order(ordered_on: :desc)
     @clients = @histories
   end
   
