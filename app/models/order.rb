@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :client
+  belongs_to :user
   include OrdersHelper
   has_one_attached :img_1
   has_one_attached :img_2
@@ -15,7 +16,6 @@ class Order < ApplicationRecord
   before_save { self.retail = self.retail.to_i }
   before_save { self.retail.to_i == self.deposit.to_i && self.sold_on.present? ? self.traded = true : self.traded = false }
   
-  validates :client_id, presence: true
   validates :kind, presence: true
   validates :plant_id, presence: true
   validates :ordered_on, presence: true
@@ -36,7 +36,6 @@ class Order < ApplicationRecord
   validates :img_6_note, length: { maximum: 40 }
   validates :img_7_note, length: { maximum: 40 }
   validates :img_8_note, length: { maximum: 40 }
-  validates :user_id, presence: true
   
   validate :ratail_rule
   validate :deposit_limit

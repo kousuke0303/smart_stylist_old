@@ -23,7 +23,6 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.boolean :unpaid, default: false
       t.string :note
       t.integer :plant_id
-      t.integer :user_id
       t.string :img_1
       t.string :img_2
       t.string :img_3
@@ -40,6 +39,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :img_6_note
       t.string :img_7_note
       t.string :img_8_note
+      t.references :user, foreign_key: true
       t.references :client, foreign_key: true
 
       t.timestamps
