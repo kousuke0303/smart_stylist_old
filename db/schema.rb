@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.boolean "unpaid", default: false
     t.string "note"
     t.integer "plant_id"
-    t.integer "user_id"
     t.string "img_1"
     t.string "img_2"
     t.string "img_3"
@@ -92,10 +91,12 @@ ActiveRecord::Schema.define(version: 2019_12_31_025942) do
     t.string "img_6_note"
     t.string "img_7_note"
     t.string "img_8_note"
+    t.integer "user_id"
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "plants", force: :cascade do |t|
