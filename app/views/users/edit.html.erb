@@ -8,22 +8,22 @@
       <%= render 'shared/error_messages', object: @user %>
     
       <%= f.label :name, class: "label-user-edit" %>
-      <%= f.text_field :name, class: "form-control" %>
+      <%= f.text_field :name, maxlength: 30, class: "form-control" %>
     
       <%= f.label :email, class: "label-user-edit" %>
-      <%= f.email_field :email, class: "form-control" %>
+      <%= f.email_field :email, maxlength: 254, class: "form-control" %>
       
       <%= f.label :"秘密の質問 ※パスワード再発行時に必須", class: "label-user-edit" %>
       <%= f.select :question, $questions, {}, class: "form-control" %>
       
       <%= f.label :"回答 ※パスワード再発行時に必須", class: "label-user-edit" %>
-      <%= f.text_field :answer, placeholder: "20文字以内、スペースなし", class: "form-control" %>
+      <%= f.text_field :answer, maxlength: 20, placeholder: "20文字以内、スペースなし", class: "form-control" %>
     
       <%= f.label :password, class: "label-user-edit" %>
-      <%= f.password_field :password, class: "form-control" %>
+      <%= f.password_field :password, maxlength: 12, class: "form-control" %>
     
       <%= f.label :password_confirmation, class: "label-user-edit" %>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
+      <%= f.password_field :password_confirmation, maxlength: 12, class: "form-control" %>
     
       <div class="user-edit-submit">
         <%= f.submit "更新", class: "btn btn-md btn-primary" %>

@@ -3,18 +3,18 @@
   
   <%= f.label :name, "工場名 ※必須", class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
-    <%= f.text_field :name, value: params[:plant][:name], class: "form-control" %>
+    <%= f.text_field :name, value: params[:plant][:name], maxlength: 30, class: "form-control" %>
   <% else %>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, maxlength: 30, class: "form-control" %>
   <% end %>
   
   <div class="row">
     <div class="col-xs-9 form-zip-left">
       <%= f.label "住所検索", class: "label-#{yield(:class_text)}" %>
       <% if @zipcode %>
-        <%= f.text_field :zipcode, value: @zipcode, class: "form-control", placeholder: "郵便番号を入力" %>
+        <%= f.text_field :zipcode, value: @zipcode, maxlength: 8, class: "form-control", placeholder: "郵便番号を入力" %>
       <% else %>
-        <%= f.text_field :zipcode, class: "form-control", placeholder: "郵便番号を入力" %>
+        <%= f.text_field :zipcode, maxlength: 8, class: "form-control", placeholder: "郵便番号を入力" %>
       <% end %>
     </div>
     <div class="col-xs-3 form-zip-right">
@@ -24,72 +24,72 @@
   
   <%= f.label :address, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] && @zipcode %>
-    <%= f.text_field :address, value: @result_address, class: "form-control" %>
+    <%= f.text_field :address, value: @result_address, maxlength: 50, class: "form-control" %>
   <% elsif params[:plant] %>
-    <%= f.text_field :address, value: params[:plant][:address], class: "form-control" %>
+    <%= f.text_field :address, value: params[:plant][:address], maxlength: 50, class: "form-control" %>
   <% else %>
-    <%= f.text_field :address, class: "form-control" %>
+    <%= f.text_field :address, maxlength: 50, class: "form-control" %>
   <% end %>
   
   <div class="row">
     <div class="col-xs-6 col-md-6">
       <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
       <% if params[:plant] %>
-        <%= f.telephone_field :tel_1, value: params[:plant][:tel_1], class: "form-control" %>
+        <%= f.telephone_field :tel_1, value: params[:plant][:tel_1], maxlength: 11, class: "form-control" %>
       <% else %>
-        <%= f.telephone_field :tel_1, class: "form-control" %>
+        <%= f.telephone_field :tel_1, maxlength: 11, class: "form-control" %>
       <% end %>
     </div>
     
     <div class="col-xs-6 col-md-6"> 
       <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
       <% if params[:plant] %>
-        <%= f.telephone_field :tel_2, value: params[:plant][:tel_2], class: "form-control" %>
+        <%= f.telephone_field :tel_2, value: params[:plant][:tel_2], maxlength: 11, class: "form-control" %>
       <% else %>
-        <%= f.telephone_field :tel_2, class: "form-control" %>
+        <%= f.telephone_field :tel_2, maxlength: 11, class: "form-control" %>
       <% end %>
     </div>
   </div>
   
   <%= f.label :fax, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
-    <%= f.telephone_field :fax, value: params[:plant][:fax], class: "form-control" %>
+    <%= f.telephone_field :fax, value: params[:plant][:fax], maxlength: 10, class: "form-control" %>
   <% else %>
-    <%= f.telephone_field :fax, class: "form-control" %>
+    <%= f.telephone_field :fax, maxlength: 10, class: "form-control" %>
   <% end %>
   
   <%= f.label :email, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
-    <%= f.email_field :email, value: params[:plant][:email], class: "form-control" %>
+    <%= f.email_field :email, value: params[:plant][:email], maxlength: 254, class: "form-control" %>
   <% else %>
-    <%= f.email_field :email, class: "form-control" %>
+    <%= f.email_field :email, maxlength: 254, class: "form-control" %>
   <% end %>
   
   <div class="row">
     <div class="col-xs-6 col-md-6">
       <%= f.label :staff_1, class: "label-#{yield(:class_text)}" %>
       <% if params[:plant] %>
-        <%= f.text_field :staff_1, value: params[:plant][:staff_1], class: "form-control" %>
+        <%= f.text_field :staff_1, value: params[:plant][:staff_1], maxlength: 30, class: "form-control" %>
       <% else %>
-        <%= f.text_field :staff_1, class: "form-control" %>
+        <%= f.text_field :staff_1, maxlength: 30, class: "form-control" %>
       <% end %>
     </div>
     
     <div class="col-xs-6 col-md-6">   
       <%= f.label :staff_2, class: "label-#{yield(:class_text)}" %>
       <% if params[:plant] %>
-        <%= f.text_field :staff_2, value: params[:plant][:staff_2], class: "form-control" %>
+        <%= f.text_field :staff_2, value: params[:plant][:staff_2], maxlength: 30, class: "form-control" %>
       <% else %>
-        <%= f.text_field :staff_2, class: "form-control" %>
+        <%= f.text_field :staff_2, maxlength: 30, class: "form-control" %>
       <% end %>
     </div>
   </div>
   
   <%= f.label :note, class: "label-#{yield(:class_text)}" %>
   <% if params[:plant] %>
-    <%= f.text_field :note, value: params[:plant][:note], class: "form-control" %>
+    <%= f.text_field :note, value: params[:plant][:note], maxlength: 100, class: "form-control" %>
   <% else %>
-    <%= f.text_field :note, class: "form-control" %>
+    <%= f.text_field :note, maxlength: 100, class: "form-control" %>
   <% end %>
   
   <div class="plant-submit-area">

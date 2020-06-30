@@ -7,22 +7,22 @@
       <%= render 'shared/error_messages', object: @user %>
     
       <%= f.label :name, class: "label-signup" %>
-      <%= f.text_field :name, class: "form-control" %>
+      <%= f.text_field :name, maxlength: 30, class: "form-control" %>
     
       <%= f.label :email, class: "label-signup" %>
-      <%= f.email_field :email, class: "form-control" %>
+      <%= f.email_field :email, maxlength: 254, class: "form-control" %>
       
       <%= f.label :"秘密の質問 ※パスワード再発行時に必須", class: "label-signup" %>
       <%= f.select :question, $questions, {}, class: "form-control" %>
       
       <%= f.label :"回答 ※パスワード再発行時に必須", class: "label-signup" %>
-      <%= f.text_field :answer, placeholder: "20文字以内、スペースなし", class: "form-control" %>
+      <%= f.text_field :answer, maxlength: 20, placeholder: "20文字以内、スペースなし", class: "form-control" %>
     
       <%= f.label :password, class: "label-signup" %>
-      <%= f.password_field :password, class: "form-control" %>
+      <%= f.password_field :password, maxlength: 12, class: "form-control" %>
     
       <%= f.label :password_confirmation, class: "label-signup" %>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
+      <%= f.password_field :password_confirmation, maxlength: 12, class: "form-control" %>
       
       <div class="panel panel-default card-panel">
         <div class="panel-heading card-title">クレジットカード</div>
@@ -37,21 +37,21 @@
           </div>
           <div>
             <%= f.label :"カード番号", class: "label-signup" %>
-            <%= f.text_field :number, placeholder: "カード番号", maxlength: "16", class: "form-control", id: "number" %>
+            <%= f.text_field :number, placeholder: "カード番号", maxlength: 16, class: "form-control", id: "number" %>
     
             <%= f.label :"セキュリティーコード", class: "label-signup" %>
-            <%= f.text_field :cvc, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", class: "form-control", id: "cvc" %>
+            <%= f.text_field :cvc, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: 4, class: "form-control", id: "cvc" %>
           </div>
           <div>
             <%= f.label :"有効期限", class: "label-signup" %>
           </div>
           <div class="exp-area">
             <div class="exp-mm">  
-              <%= f.text_field :exp_month, placeholder: "MM", maxlength: "2", class: "form-control", id: "exp-mm" %>
+              <%= f.text_field :exp_month, placeholder: "MM", maxlength: 2, class: "form-control", id: "exp-mm" %>
             </div>
             <div class="separate-mm-yy">／</div>
             <div class="exp-yy">
-              <%= f.text_field :exp_year, placeholder: "YYYY", maxlength: "4", class: "form-control", id: "exp-yy" %>
+              <%= f.text_field :exp_year, placeholder: "YYYY", maxlength: 4, class: "form-control", id: "exp-yy" %>
             </div>
           </div>
         </div>

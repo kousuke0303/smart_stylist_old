@@ -27,7 +27,7 @@ class Order < ApplicationRecord
   validates :button, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
   validates :postage, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
   validates :other, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
-  validates :note, length: { maximum: 150 }
+  validates :note, length: { maximum: 100 }
   validates :img_1_note, length: { maximum: 40 }
   validates :img_2_note, length: { maximum: 40 }
   validates :img_3_note, length: { maximum: 40 }

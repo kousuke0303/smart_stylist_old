@@ -10,13 +10,12 @@ class User < ApplicationRecord
   attr_accessor :exp_month
   before_save { self.email = email.downcase }
   
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, length: { maximum: 100 }, uniqueness: true,
-                    format: { with: VALID_EMAIL_REGEX }
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :email, presence: true, length: { maximum: 254 }, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :question, presence: true
   validates :answer, presence: true, length: { maximum: 20 }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 6, maximum: 12 }, allow_nil: true
   validate :exclude_space_in_answer
   
   def exclude_space_in_answer
