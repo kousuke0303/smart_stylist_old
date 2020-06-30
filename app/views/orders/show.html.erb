@@ -258,7 +258,7 @@
   <% end %>
     
   <div class="col-xs-12 col-md-8 col-md-offset-2 show-btn-area">
-    <%= link_to "オーダー内容を更新", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
+    <%= link_to "オーダー編集", edit_user_order_path(@user, @order), class: "btn btn-md btn-primary" %>
     <%= link_to "削除", user_order_path(@user, @order), method: :delete, 
         class: "btn btn-md btn-danger", data: { confirm: "このオーダーを削除してよろしいですか？" } %>
     <%= link_to :back do %>
