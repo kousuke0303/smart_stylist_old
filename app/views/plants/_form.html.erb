@@ -1,7 +1,7 @@
 <%= form_with(model: @plant, url: yield(:url), local: true) do |f| %>
   <%= render "shared/error_messages", object: @plant %>
   
-  <%= f.label :name, "工場名 ※必須", class: "label-#{yield(:class_text)}" %>
+  <%= f.label :name, class: "label-#{yield(:class_text)} required-form" %>
   <% if params[:plant] %>
     <%= f.text_field :name, value: params[:plant][:name], maxlength: 30, class: "form-control" %>
   <% else %>
@@ -10,7 +10,7 @@
   
   <div class="row">
     <div class="col-xs-9 form-zip-left">
-      <%= f.label "住所検索", class: "label-#{yield(:class_text)}" %>
+      <%= f.label :zipcode, "住所検索", class: "label-#{yield(:class_text)}" %>
       <% if @zipcode %>
         <%= f.text_field :zipcode, value: @zipcode, maxlength: 8, class: "form-control", placeholder: "郵便番号を入力" %>
       <% else %>

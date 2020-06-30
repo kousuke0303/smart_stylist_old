@@ -3,7 +3,7 @@
   
   <div class="row">
     <div class="col-xs-6 col-md-6">
-      <%= f.label :name, "顧客名 ※必須", class: "label-#{yield(:class_text)}" %>
+      <%= f.label :name, class: "label-#{yield(:class_text)} required-form" %>
       <% if params[:client] %>
         <%= f.text_field :name, value: params[:client][:name], maxlength: 30, class: "form-control" %>
       <% else %>
@@ -12,7 +12,7 @@
     </div>
     
     <div class="col-xs-6 col-md-6">
-      <%= f.label :"フリガナ ※必須", class: "label-#{yield(:class_text)}" %>
+      <%= f.label :kana, class: "label-#{yield(:class_text)} required-form" %>
       <% if params[:client] %>
         <%= f.text_field :kana, value: params[:client][:kana], maxlength: 30, class: "form-control" %>
       <% else %>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="col-xs-9 form-zip-left">
-      <%= f.label "住所検索", class: "label-#{yield(:class_text)}" %>
+      <%= f.label :zipcode, "住所検索", class: "label-#{yield(:class_text)}" %>
       <% if @zipcode %>
         <%= f.text_field :zipcode, value: @zipcode, maxlength: 8, class: "form-control", placeholder: "郵便番号を入力" %>
       <% else %>
