@@ -88,6 +88,17 @@ td {
   font-size: 1em;
 }
 
+/* form */
+
+.required-form:after {
+  background: red;
+  border-radius: 5px;
+  color: white;
+  content: "必須";
+  margin-left: 1em;
+  padding: 1px 3px;
+}
+
 /* トップページ */
 
 .main-item {

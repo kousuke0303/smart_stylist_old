@@ -7,16 +7,16 @@
     <%= form_with(model: @user, local: true) do |f| %>
       <%= render 'shared/error_messages', object: @user %>
     
-      <%= f.label :name, class: "label-user-edit" %>
+      <%= f.label :name, class: "label-user-edit required-form" %>
       <%= f.text_field :name, maxlength: 30, class: "form-control" %>
     
-      <%= f.label :email, class: "label-user-edit" %>
+      <%= f.label :email, class: "label-user-edit required-form" %>
       <%= f.email_field :email, maxlength: 254, class: "form-control" %>
       
-      <%= f.label :"秘密の質問 ※パスワード再発行時に必須", class: "label-user-edit" %>
+      <%= f.label :question, class: "label-user-edit required-form" %>
       <%= f.select :question, $questions, {}, class: "form-control" %>
       
-      <%= f.label :"回答 ※パスワード再発行時に必須", class: "label-user-edit" %>
+      <%= f.label :answer, class: "label-user-edit required-form" %>
       <%= f.text_field :answer, maxlength: 20, placeholder: "20文字以内、スペースなし", class: "form-control" %>
     
       <%= f.label :password, class: "label-user-edit" %>

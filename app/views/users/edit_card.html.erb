@@ -16,14 +16,14 @@
             <!--<div class="col-xs-2"><%= image_tag "/card_images/discover.png" %></div>-->
           </div>
           <div>
-            <%= f.label :"カード番号 ※必須", class: "edit-payment-label" %>
+            <%= f.label :"カード番号", class: "edit-payment-label required-form" %>
             <%= f.text_field :number, placeholder: "カード番号", maxlength: 16, class: "form-control", id: "number" %>
     
-            <%= f.label :"セキュリティーコード ※必須", class: "edit-payment-label" %>
+            <%= f.label :"セキュリティーコード", class: "edit-payment-label required-form" %>
             <%= f.text_field :cvc, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: 4, class: "form-control", id: "cvc" %>
           </div>
           <div>
-            <%= f.label :"有効期限 ※必須", class: "edit-payment-label" %>
+            <%= f.label :"有効期限", class: "edit-payment-label required-form" %>
           </div>
           <div class="exp-area">
             <div class="exp-mm">  
