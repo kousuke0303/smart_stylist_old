@@ -18,6 +18,7 @@ class Order < ApplicationRecord
   
   validates :kind, presence: true
   validates :plant_id, presence: true
+  validates :client_id, presence: true
   validates :ordered_on, presence: true
   validates :retail, presence: true
   validates :deposit, numericality: { only_integer: true, greater_than: 0, less_than: 10_000_000 }, allow_blank: true
