@@ -53,30 +53,30 @@
           <% end %>
         </div>
         <form name="f1">
-        <div class="col-xs-6">
-          <%= f.label :retail, "上代 (円)", class: "label-#{yield(:class_text)} required-form" %>
-          <% if params[:order] %>
-            <%= f.text_field :retail, maxlength: 7, value: params[:order][:retail], class: "form-control", id: "retail" %>
-          <% else %>
-            <%= f.text_field :retail, maxlength: 7, class: "form-control", id: "retail" %>
-          <% end %>
-        </div>
-        
-        <div class="col-xs-6">
-          <div class="row">
-            <div class="col-xs-12"><%= f.label :deposit, "受領済金額 (円)", class: "label-#{yield(:class_text)}" %></div>
-            <div class="col-xs-8 deposit-form-left">
-              <% if params[:order] %>
-                <%= f.text_field :deposit, maxlength: 7, value: params[:order][:deposit], class: "form-control", id: "target" %>
-              <% else %>
-                <%= f.text_field :deposit, maxlength: 7, class: "form-control", id: "target" %>
-              <% end %>
-            </div>
-            <div class="col-xs-4 deposit-form-right">
-              <input value="全額" type="button" id="copy-retail">
+          <div class="col-xs-6">
+            <%= f.label :retail, "上代 (円)", class: "label-#{yield(:class_text)} required-form" %>
+            <% if params[:order] %>
+              <%= f.text_field :retail, maxlength: 7, value: params[:order][:retail], class: "form-control", id: "retail" %>
+            <% else %>
+              <%= f.text_field :retail, maxlength: 7, class: "form-control", id: "retail" %>
+            <% end %>
+          </div>
+          
+          <div class="col-xs-6">
+            <div class="row">
+              <div class="col-xs-12"><%= f.label :deposit, "受領済金額 (円)", class: "label-#{yield(:class_text)}" %></div>
+              <div class="col-xs-8 deposit-form-left">
+                <% if params[:order] %>
+                  <%= f.text_field :deposit, maxlength: 7, value: params[:order][:deposit], class: "form-control", id: "deposit" %>
+                <% else %>
+                  <%= f.text_field :deposit, maxlength: 7, class: "form-control", id: "deposit" %>
+                <% end %>
+              </div>
+              <div class="col-xs-4 deposit-form-right">
+                <input value="全額" type="button" id="copy-retail">
+              </div>
             </div>
           </div>
-        </div>
         </form>
 
         <div class="col-xs-4">
@@ -473,6 +473,9 @@
 <% end %>
 
 <script>
+
+  // datepicker
+  
   $('.datepicker').datepicker({
     showButtonPanel: true,
   });
@@ -493,9 +496,11 @@
       });
     }
   })();
-
-  document.getElementById("copy-retail").onclick = function() {
-    var retail = document.getElementById( "retail" ).value;
-    document.getElementById( "target" ).value = retail;
-  };
+  
+  // 上代を受領済金額にコピー
+  
+  $('#copy-retail').on('click', function() {
+    var retail = $('#retail').val();
+    $('#deposit').val(retail);
+  });
 </script>
