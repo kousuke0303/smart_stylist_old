@@ -268,7 +268,7 @@
             <% end %>
           </div>
           <div class="img-del-area">
-            <% if @order.img_1.attached? %>
+            <% if @order.img_1.attached? && current_page?("/users/#{@user.id}/orders/#{@order.id}/edit") %>
               <%= f.label :"削除", class: "label-#{yield(:class_text)}" %>
               <% if params[:order] && params[:order][:del_img_1] == "1" %>
                 <%= f.check_box :del_img_1, checked: true, class: "del-checkbox" %>
@@ -294,7 +294,7 @@
             <% end %>
           </div>
           <div class="img-del-area">
-            <% if @order.img_2.attached? %>
+            <% if @order.img_2.attached? && current_page?("/users/#{@user.id}/orders/#{@order.id}/edit") %>
               <%= f.label :"削除", class: "label-#{yield(:class_text)}" %>
               <% if params[:order] && params[:order][:del_img_2] == "1" %>
                 <%= f.check_box :del_img_2, checked: true, class: "del-checkbox" %>
@@ -320,7 +320,7 @@
             <% end %>
           </div>
           <div class="img-del-area">
-            <% if @order.img_3.attached? %>
+            <% if @order.img_3.attached? && current_page?("/users/#{@user.id}/orders/#{@order.id}/edit") %>
               <%= f.label :"削除", class: "label-#{yield(:class_text)}" %>
               <% if params[:order] && params[:order][:del_img_3] == "1" %>
                 <%= f.check_box :del_img_3, checked: true, class: "del-checkbox" %>
@@ -346,7 +346,7 @@
             <% end %>
           </div>
           <div class="img-del-area">
-            <% if @order.img_4.attached? %>
+            <% if @order.img_4.attached? && current_page?("/users/#{@user.id}/orders/#{@order.id}/edit") %>
               <%= f.label :"削除", class: "label-#{yield(:class_text)}" %>
               <% if params[:order] && params[:order][:del_img_4] == "1" %>
                 <%= f.check_box :del_img_4, checked: true, class: "del-checkbox" %>
@@ -372,7 +372,7 @@
             <% end %>
           </div>
           <div class="img-del-area">
-            <% if @order.img_5.attached? %>
+            <% if @order.img_5.attached? && current_page?("/users/#{@user.id}/orders/#{@order.id}/edit") %>
               <%= f.label :"削除", class: "label-#{yield(:class_text)}" %>
               <% if params[:order] && params[:order][:del_img_5] == "1" %>
                 <%= f.check_box :del_img_5, checked: true, class: "del-checkbox" %>
@@ -398,7 +398,7 @@
             <% end %>
           </div>
           <div class="img-del-area">
-            <% if @order.img_6.attached? %>
+            <% if @order.img_6.attached? && current_page?("/users/#{@user.id}/orders/#{@order.id}/edit") %>
               <%= f.label :"削除", class: "label-#{yield(:class_text)}" %>
               <% if params[:order] && params[:order][:del_img_6] == "1" %>
                 <%= f.check_box :del_img_6, checked: true, class: "del-checkbox" %>
@@ -424,7 +424,7 @@
             <% end %>
           </div>
           <div class="img-del-area">
-            <% if @order.img_7.attached? %>
+            <% if @order.img_7.attached? && current_page?("/users/#{@user.id}/orders/#{@order.id}/edit") %>
               <%= f.label :"削除", class: "label-#{yield(:class_text)}" %>
               <% if params[:order] && params[:order][:del_img_7] == "1" %>
                 <%= f.check_box :del_img_7, checked: true, class: "del-checkbox" %>
@@ -450,7 +450,7 @@
             <% end %>
           </div>
           <div class="img-del-area">
-            <% if @order.img_8.attached? %>
+            <% if @order.img_8.attached? && current_page?("/users/#{@user.id}/orders/#{@order.id}/edit") %>
               <%= f.label :"削除", class: "label-#{yield(:class_text)}" %>
               <% if params[:order] && params[:order][:del_img_8] == "1" %>
                 <%= f.check_box :del_img_8, checked: true, class: "del-checkbox" %>
