@@ -3,9 +3,9 @@
   
   <%= f.label :name, class: "label-#{yield(:class_text)} required-form" %>
   <% if params[:plant] %>
-    <%= f.text_field :name, value: params[:plant][:name], maxlength: 30, class: "form-control" %>
+    <%= f.text_field :name, value: params[:plant][:name], maxlength: 30, class: "form-control", required: "required" %>
   <% else %>
-    <%= f.text_field :name, maxlength: 30, class: "form-control" %>
+    <%= f.text_field :name, maxlength: 30, class: "form-control", required: "required" %>
   <% end %>
   
   <div class="row">
