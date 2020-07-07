@@ -9,6 +9,7 @@
       <% else %>
         <%= f.text_field :name, maxlength: 30, class: "form-control", required: "required" %>
       <% end %>
+      <div class="form-alert name-alert">顧客名を入力してください。</div>
     </div>
     
     <div class="col-xs-6 col-md-6">
@@ -160,14 +161,23 @@ $(document).on('turbolinks:load', function() {
 
   // フォームのバリデーション
   
+  const name = $('input[name="client[name]"]');
   const kana = $('input[name="client[kana]"]');
   const tel_1 = $('input[name="client[tel_1]"]');
   const tel_2 = $('input[name="client[tel_2]"]');
   const fax = $('input[name="client[fax]"]');
   const email = $('input[name="client[email]"]');
   
+  function nameChecker() {
+    if(!name.val() || name.val().match(/^[ 　\r\n\t]*$/)) {
+      $('.name-alert').css('display', 'block');
+    } else {
+      $('.name-alert').css('display', 'none');
+    }
+  };
+  
   function kanaChecker() {
-    if(!kana.val() || kana.val().match(/^[ 　\r\n\t]*$/) || kana.val().match(/^[ァ-ヶー　]+$/)) {
+    if(!kana.val().match(/^[ 　\r\n\t]*$/) && kana.val().match(/^[ァ-ヶー　]+$/)) {
       $('.kana-alert').css('display', 'none');
     } else {
       $('.kana-alert').css('display', 'block');
@@ -206,6 +216,10 @@ $(document).on('turbolinks:load', function() {
     }
   }
   
+  $(name).blur(function() {
+    nameChecker();
+  });
+  
   $(kana).blur(function() {
     kanaChecker();
   });
@@ -227,6 +241,7 @@ $(document).on('turbolinks:load', function() {
   });
   
   $('#client-submit').on('click', function() {
+    nameChecker();
     kanaChecker();
     tel1Checker();
     tel2Checker();
