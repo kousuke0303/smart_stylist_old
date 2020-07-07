@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   require 'net/http'
   require 'uri'
   require 'json'
+  require 'nkf'
   include SessionsHelper
   include OrdersHelper
   include UsersHelper
