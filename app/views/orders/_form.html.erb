@@ -33,22 +33,18 @@
         <div class="col-xs-6">
           <%= f.label :kind, class: "label-#{yield(:class_text)} required-form" %>
           <% if params[:order] && params[:order][:kind].present? %>
-            <%= f.select :kind, options_for_select($order_kinds, params[:order][:kind]),
-                {}, class: "form-control" %>
+            <%= f.select :kind, options_for_select($order_kinds, params[:order][:kind]), {}, class: "form-control" %>
           <% else %>
-            <%= f.select :kind, options_for_select($order_kinds, @order.kind),
-                {prompt: "タイプを選択"}, class: "form-control" %>
+            <%= f.select :kind, options_for_select($order_kinds, @order.kind), {prompt: "タイプを選択"}, class: "form-control" %>
           <% end %>
         </div>
         
         <div class="col-xs-6">
           <%= f.label :plant_id, class: "label-#{yield(:class_text)} required-form" %>
           <% if params[:order] && params[:order][:plant_id].present? %>
-            <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]},
-                  {class: "form-control"}) %>
+            <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]}, {class: "form-control"}) %>
           <% else %>
-            <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"},
-                {class: "form-control"}) %>
+            <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"}, {class: "form-control"}) %>
           <% end %>
         </div>
         <form name="f1">
@@ -81,9 +77,9 @@
         <div class="col-xs-4">
           <%= f.label :ordered_on, class: "label-#{yield(:class_text)} required-form" %>
           <% if params[:order] && params[:order][:ordered_on].present? %>
-            <%= f.text_field :ordered_on, maxlength: 10, value: params[:order][:ordered_on], class: "datepicker form-control" %>
+            <%= f.text_field :ordered_on, maxlength: 10, placeholder: "年/月/日", value: params[:order][:ordered_on], class: "datepicker form-control" %>
           <% elsif @order.ordered_on.present? %>
-            <%= f.text_field :ordered_on, maxlength: 10, value: @order.ordered_on.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
+            <%= f.text_field :ordered_on, maxlength: 10, placeholder: "年/月/日", value: @order.ordered_on.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
           <% else %>
             <%= f.text_field :ordered_on, maxlength: 10, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
@@ -92,9 +88,9 @@
         <div class="col-xs-4">
           <%= f.label :sold_on, class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:sold_on].present? %>
-            <%= f.text_field :sold_on, maxlength: 10, value: params[:order][:sold_on], class: "datepicker form-control" %>
+            <%= f.text_field :sold_on, maxlength: 10, placeholder: "年/月/日", value: params[:order][:sold_on], class: "datepicker form-control" %>
           <% elsif @order.sold_on.present? %>
-            <%= f.text_field :sold_on, maxlength: 10, value: @order.sold_on.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
+            <%= f.text_field :sold_on, maxlength: 10, placeholder: "年/月/日", value: @order.sold_on.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
           <% else %>
             <%= f.text_field :sold_on, maxlength: 10, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
@@ -103,9 +99,9 @@
         <div class="col-xs-4">
           <%= f.label :delivered_on, class: "label-#{yield(:class_text)}" %>
           <% if params[:order] && params[:order][:delivered_on].present? %>
-            <%= f.text_field :delivered_on, maxlength: 10, value: params[:order][:delivered_on], class: "datepicker form-control" %>
+            <%= f.text_field :delivered_on, maxlength: 10, placeholder: "年/月/日", value: params[:order][:delivered_on], class: "datepicker form-control" %>
           <% elsif @order.delivered_on.present? %>
-            <%= f.text_field :delivered_on, maxlength: 10, value: @order.delivered_on.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
+            <%= f.text_field :delivered_on, maxlength: 10, placeholder: "年/月/日", value: @order.delivered_on.strftime("%Y/%m/%d"), class: "datepicker form-control" %>
           <% else %>
             <%= f.text_field :delivered_on, maxlength: 10, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
