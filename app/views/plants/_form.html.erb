@@ -106,77 +106,81 @@
 
 <script>
 
-// フォームのバリデーション
-
-const tel_1 = $('input[name="plant[tel_1]"]');
-const tel_2 = $('input[name="plant[tel_2]"]');
-const fax = $('input[name="plant[fax]"]');
-const email = $('input[name="plant[email]"]');
-
-function tel1Checker() {
-  if(!tel_1.val() || tel_1.val().match(/^[ 　\r\n\t]*$/) || tel_1.val().match(/^\d{10,11}$/)) {
-    $('.tel1-alert').css('display', 'none');
-  } else {
-    $('.tel1-alert').css('display', 'block');
-  }
-};
-
-function tel2Checker() {
-  if(!tel_2.val() || tel_2.val().match(/^[ 　\r\n\t]*$/) || tel_2.val().match(/^\d{10,11}$/)) {
-    $('.tel2-alert').css('display', 'none');
-  } else {
-    $('.tel2-alert').css('display', 'block');
-  }
-};
-
-function faxChecker() {
-  if(!fax.val() || fax.val().match(/^[ 　\r\n\t]*$/) || fax.val().match(/^\d{10}$/)) {
-    $('.fax-alert').css('display', 'none');
-  } else {
-    $('.fax-alert').css('display', 'block');
-  }
-};
-
-function emailChecker() {
-  if(!email.val() || email.val().match(/^[ 　\r\n\t]*$/) || email.val().match(/^[\w+\-.]+@[a-z\d\-.]+\.[a-z]+$/)) {
-    $('.email-alert').css('display', 'none');
-  } else {
-    $('.email-alert').css('display', 'block');
-  }
-}
-
-$(tel_1).blur(function() {
-  tel1Checker();
-});
-
-$(tel_2).blur(function() {
-  tel2Checker();
-});
-
-$(fax).blur(function() {
-  faxChecker();
-});
-
-$(email).blur(function() {
-  emailChecker();
-});
-
-$('#plant-submit').on('click', function() {
-  tel1Checker();
-  tel2Checker();
-  faxChecker();
-  emailChecker();
-  $('.form-alert').each(function() {
-    if($(this).css('display') == 'block') {
-      event.preventDefault();
+$(document).on('turbolinks:load', function() {
+  
+  // フォームのバリデーション
+  
+  const tel_1 = $('input[name="plant[tel_1]"]');
+  const tel_2 = $('input[name="plant[tel_2]"]');
+  const fax = $('input[name="plant[fax]"]');
+  const email = $('input[name="plant[email]"]');
+  
+  function tel1Checker() {
+    if(!tel_1.val() || tel_1.val().match(/^[ 　\r\n\t]*$/) || tel_1.val().match(/^\d{10,11}$/)) {
+      $('.tel1-alert').css('display', 'none');
+    } else {
+      $('.tel1-alert').css('display', 'block');
     }
+  };
+  
+  function tel2Checker() {
+    if(!tel_2.val() || tel_2.val().match(/^[ 　\r\n\t]*$/) || tel_2.val().match(/^\d{10,11}$/)) {
+      $('.tel2-alert').css('display', 'none');
+    } else {
+      $('.tel2-alert').css('display', 'block');
+    }
+  };
+  
+  function faxChecker() {
+    if(!fax.val() || fax.val().match(/^[ 　\r\n\t]*$/) || fax.val().match(/^\d{10}$/)) {
+      $('.fax-alert').css('display', 'none');
+    } else {
+      $('.fax-alert').css('display', 'block');
+    }
+  };
+  
+  function emailChecker() {
+    if(!email.val() || email.val().match(/^[ 　\r\n\t]*$/) || email.val().match(/^[\w+\-.]+@[a-z\d\-.]+\.[a-z]+$/)) {
+      $('.email-alert').css('display', 'none');
+    } else {
+      $('.email-alert').css('display', 'block');
+    }
+  }
+  
+  $(tel_1).blur(function() {
+    tel1Checker();
   });
-});
+  
+  $(tel_2).blur(function() {
+    tel2Checker();
+  });
+  
+  $(fax).blur(function() {
+    faxChecker();
+  });
+  
+  $(email).blur(function() {
+    emailChecker();
+  });
+  
+  $('#plant-submit').on('click', function() {
+    tel1Checker();
+    tel2Checker();
+    faxChecker();
+    emailChecker();
+    $('.form-alert').each(function() {
+      if($(this).css('display') == 'block') {
+        event.preventDefault();
+      }
+    });
+  });
+  
+  // 郵便番号検索時はrequired削除
+  
+  $('input[name="zip_search_button"]').on('click', function() {
+    $('input[name="plant[name]"]').removeAttr("required");
+  });
 
-// 郵便番号検索時はrequired削除
-
-$('input[name="zip_search_button"]').on('click', function() {
-  $('input[name="plant[name]"]').removeAttr("required");
 });
 
 </script>
