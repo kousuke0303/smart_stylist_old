@@ -46,36 +46,36 @@
     <div class="col-xs-6 col-md-6">
       <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
       <% if params[:client] %>
-        <%= f.telephone_field :tel_1, value: params[:client][:tel_1], maxlength: 11, class: "form-control" %>
+        <%= f.telephone_field :tel_1, value: params[:client][:tel_1], maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
       <% else %>
-        <%= f.telephone_field :tel_1, maxlength: 11, class: "form-control" %>
+        <%= f.telephone_field :tel_1, maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
       <% end %>
     </div>
     
     <div class="col-xs-6 col-md-6"> 
       <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
       <% if params[:client] %>
-        <%= f.telephone_field :tel_2, value: params[:client][:tel_2], maxlength: 11, class: "form-control" %>
+        <%= f.telephone_field :tel_2, value: params[:client][:tel_2], maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
       <% else %>
-        <%= f.telephone_field :tel_2, maxlength: 11, class: "form-control" %>
+        <%= f.telephone_field :tel_2, maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
       <% end %>
     </div>
   
     <div class="col-xs-12 col-md-12"> 
       <%= f.label :fax, class: "label-#{yield(:class_text)}" %>
       <% if params[:client] %>
-        <%= f.telephone_field :fax, value: params[:client][:fax], maxlength: 10, class: "form-control" %>
+        <%= f.telephone_field :fax, value: params[:client][:fax], maxlength: 10, class: "form-control", placeholder: "半角数字10桁" %>
       <% else %>
-        <%= f.telephone_field :fax, maxlength: 10, class: "form-control" %>
+        <%= f.telephone_field :fax, maxlength: 10, class: "form-control", placeholder: "半角数字10桁" %>
       <% end %>
     </div>
   
     <div class="col-xs-12 col-md-12"> 
       <%= f.label :email, class: "label-#{yield(:class_text)}" %>
       <% if params[:client] %>
-        <%= f.email_field :email, value: params[:client][:email], maxlength: 254, class: "form-control" %>
+        <%= f.email_field :email, value: params[:client][:email], maxlength: 254, class: "form-control", placeholder: "example@email.com" %>
       <% else %>
-        <%= f.email_field :email, maxlength: 254, class: "form-control" %>
+        <%= f.email_field :email, maxlength: 254, class: "form-control", placeholder: "example@email.com" %>
       <% end %>
     </div>
 
@@ -148,3 +148,21 @@
     <% end %>
   </div>
 <% end %>
+
+<script>
+
+// フォームのバリデーション
+
+const kana = $('input[name="plant[kana]"]');
+const tel_1 = $('input[name="plant[tel_1]"]');
+const tel_2 = $('input[name="plant[tel_2]"]');
+const fax = $('input[name="plant[fax]"]');
+const email = $('input[name="plant[email]"]');
+
+// 郵便番号検索時はrequired削除
+
+$('input[name="zip_search_button"]').on('click', function() {
+  $('input[name="client[name]"]').removeAttr("required");
+  $('input[name="client[kana]"]').removeAttr("required");
+});
+</script>
