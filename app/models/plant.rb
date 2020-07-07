@@ -3,9 +3,9 @@ class Plant < ApplicationRecord
   
   attr_accessor :zipcode
   before_save { self.email = email.downcase unless email.nil? }
-  before_save { self.tel_1 = NKF.nkf('-w -Z4', tel_1).delete("^0-9") unless tel_1.blank? }
-  before_save { self.tel_2 = NKF.nkf('-w -Z4', tel_2).delete("^0-9") unless tel_2.blank? }
-  before_save { self.fax = NKF.nkf('-w -Z4', fax).delete("^0-9") unless fax.blank? }
+  before_save { self.tel_1 = tel_1.delete("　") }
+  before_save { self.tel_2 =  tel_2.delete("　") }
+  before_save { self.fax =  fax.delete("　") }
   
   validates :name, presence: true, length: { maximum: 30 }
   validates :address, length: { maximum: 50 }

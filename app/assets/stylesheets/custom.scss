@@ -88,7 +88,30 @@ td {
   font-size: 1em;
 }
 
-/* form */
+/* flash_messages */
+
+.alert {
+  margin-top: 10px;
+}
+
+/* error_messages */
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+/* 必須項目フォーム */
 
 .required-form:after {
   background: red;
@@ -97,6 +120,16 @@ td {
   content: "必須";
   margin-left: 1em;
   padding: 1px 3px;
+}
+
+/* フォームalert */
+
+.form-alert {
+  background: #F2DEDE;
+  border-radius: 3px;
+  color: #A94442;
+  display: none;
+  padding: 5px 10px;
 }
 
 /* トップページ */
@@ -123,29 +156,6 @@ a.main-link {
   color: white;
   font-size: 3.4em;
   line-height: 200px;
-}
-
-/* flash_messages */
-
-.alert {
-  margin-top: 10px;
-}
-
-/* error_messages */
-
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
 }
 
 /* 検索フォーム */
