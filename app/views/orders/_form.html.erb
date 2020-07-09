@@ -47,6 +47,7 @@
             <%= f.collection_select(:plant_id, @plants, :id, :name, {selected: params[:order][:plant_id]}, {class: "form-control"}) %>
           <% else %>
             <%= f.collection_select(:plant_id, @plants, :id, :name, {prompt: "工場を選択"}, {class: "form-control"}) %>
+            <div class="form-alert plant-id-alert">工場選択必須</div>
           <% end %>
         </div>
         
@@ -482,6 +483,7 @@
     
     const clientId = $('select[name="order[client_id]"]');
     const kind = $('select[name="order[kind]"]');
+    const plantId = $('select[name="order[plant_id]"]');
   
     // 上代を受領済金額にコピー
     
@@ -518,6 +520,14 @@
       }
     };
     
+    function plantIdChecker() {
+      if(plantId.val() == '') {
+        $('.plant-id-alert').css('display', 'block');
+      } else {
+        $('.plant-id-alert').css('display', 'none');
+      }
+    };
+    
     // 入力フォーム離脱時のバリデーション確認
     
     clientId.change(function() {
@@ -528,11 +538,16 @@
       kindChecker();
     });
     
+    plantId.change(function() {
+      plantIdChecker();
+    });
+    
     // 送信前のバリデーション確認
     
     $('#order-submit').on('click', function() {
       clientIdChecker();
       kindChecker();
+      plantIdChecker();
       $('.form-alert').each(function() {
         if($(this).css('display') == 'block') {
           event.preventDefault();
