@@ -101,7 +101,7 @@ input[type=checkbox].pay-checkbox {
 .img-form-item {
   border: 1px solid gainsboro;
   border-radius: 5px;
-  margin: 0 0 10px 0;
+  margin: 10px 0 0 0;
 }
 
 .img-form-above {
@@ -150,6 +150,7 @@ input[type=checkbox].del-checkbox {
 }
 
 .order-submit-area {
+  margin-top: 10px;
   text-align: center;
 }
 
