@@ -5,4 +5,5 @@ class ApplicationRecord < ActiveRecord::Base
   VALID_KANA_REGEX = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/i
   VALID_TEL_REGEX = /\A\d{10,11}\z/i
   VALID_FAX_REGEX = /\A\d{10}\z/i
+  ONLY_SPACE_REGEX = /\A[ 　\r\n\t]*\z/i
 end
