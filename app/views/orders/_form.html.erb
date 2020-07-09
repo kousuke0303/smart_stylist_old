@@ -8,6 +8,7 @@
         <div class="col-xs-6">
           <%= f.label :client_id, class: "label-#{yield(:class_text)} required-form" %>
           <%= f.collection_select(:client_id, @clients.order(:kana), :id, :name, {prompt: "顧客を選択"}, {class: "form-control"}) %>
+          <div class="form-alert client-id-alert">顧客選択必須</div>
         </div>
         
         <div class="col-xs-6">
@@ -458,7 +459,7 @@
       </div>
     
       <div class="order-submit-area">  
-        <%= f.submit yield(:button_text), class: "btn btn-md btn-primary" %>
+        <%= f.submit yield(:button_text), class: "btn btn-md btn-primary", id: "order-submit" %>
         <%= link_to :back do %>
           <button class="btn btn-md btn-default">戻る</button>
         <% end %>
@@ -470,6 +471,10 @@
 <script>
 
   $(document).on('turbolinks:load', function() {
+    
+    // 代入
+    
+    const clientId = $('select[name="order[client_id]"]');
   
     // 上代を受領済金額にコピー
     
@@ -487,6 +492,33 @@
     $.datepicker._gotoToday = function(id) { 
       $(id).datepicker('setDate', new Date()).datepicker('hide').blur().change();
     };
+    
+    // 各項目のバリデーション確認関数
+    
+    function clientIdChecker() {
+      if(clientId.val() == '') {
+        $('.client-id-alert').css('display', 'block');
+      } else {
+        $('.client-id-alert').css('display', 'none');
+      }
+    };
+    
+    // 入力フォーム離脱時のバリデーション確認
+    
+    clientId.change(function() {
+      clientIdChecker();
+    });
+    
+    // 送信前のバリデーション確認
+    
+    $('#order-submit').on('click', function() {
+      clientIdChecker();
+      $('.form-alert').each(function() {
+        if($(this).css('display') == 'block') {
+          event.preventDefault();
+        }
+      });
+    });
     
   });
   
