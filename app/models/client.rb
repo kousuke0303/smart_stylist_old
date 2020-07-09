@@ -3,10 +3,15 @@ class Client < ApplicationRecord
   has_many :orders, dependent: :destroy
   
   attr_accessor :zipcode
+  before_save { self.address = nil if address.match(ONLY_SPACE_REGEX) }
+  before_save { self.tel_1 = nil if tel_1.match(ONLY_SPACE_REGEX) }
+  before_save { self.tel_2 = nil if tel_2.match(ONLY_SPACE_REGEX) }
+  before_save { self.fax = nil if fax.match(ONLY_SPACE_REGEX) }
   before_save { self.email = email.downcase unless email.nil? }
-  before_save { self.tel_1 = tel_1.delete("　") unless tel_1.nil? }
-  before_save { self.tel_2 = tel_2.delete("　") unless tel_2.nil? }
-  before_save { self.fax = fax.delete("　") unless fax.nil? }
+  before_save { self.email = nil if email.match(ONLY_SPACE_REGEX) }
+  before_save { self.work = nil if work.match(ONLY_SPACE_REGEX) }
+  before_save { self.note = nil if note.match(ONLY_SPACE_REGEX) }
+
   
   validates :name, presence: true, length: { maximum: 30 }
   validates :kana, presence: true, length: { maximum: 30 }, format: { with: VALID_KANA_REGEX }
