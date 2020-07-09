@@ -15,6 +15,15 @@ class Order < ApplicationRecord
   before_save { total_unpaid(self) > 0 ? self.unpaid = true : self.unpaid = false }
   before_save { self.retail = self.retail.to_i }
   before_save { self.retail.to_i == self.deposit.to_i && self.sold_on.present? ? self.traded = true : self.traded = false }
+  before_save { self.note = nil if !note.nil? && note.match(ONLY_SPACE_REGEX) }
+  before_save { self.img_1_note = nil if !img_1_note.nil? && img_1_note.match(ONLY_SPACE_REGEX) }
+  before_save { self.img_2_note = nil if !img_2_note.nil? && img_2_note.match(ONLY_SPACE_REGEX) }
+  before_save { self.img_3_note = nil if !img_3_note.nil? && img_3_note.match(ONLY_SPACE_REGEX) }
+  before_save { self.img_4_note = nil if !img_4_note.nil? && img_4_note.match(ONLY_SPACE_REGEX) }
+  before_save { self.img_5_note = nil if !img_5_note.nil? && img_5_note.match(ONLY_SPACE_REGEX) }
+  before_save { self.img_6_note = nil if !img_6_note.nil? && img_6_note.match(ONLY_SPACE_REGEX) }
+  before_save { self.img_7_note = nil if !img_7_note.nil? && img_7_note.match(ONLY_SPACE_REGEX) }
+  before_save { self.img_8_note = nil if !img_8_note.nil? && img_8_note.match(ONLY_SPACE_REGEX) }
   
   validates :kind, presence: true
   validates :plant_id, presence: true
