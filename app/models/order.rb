@@ -73,7 +73,7 @@ class Order < ApplicationRecord
   
   def ratail_rule
     errors.add(:retail, "は数値で入力してください") if retail.present? && retail !~ /^[0-9]+$/
-    errors.add(:retail, "は10000000より小さい値にしてください") if retail.to_i >= 10_000_000
+    errors.add(:retail, "は1~9999999までの値にしてください") unless retail.to_i.between?(1, 9_999_999)
     errors.add(:retail, "が費用に対して不足しています") if retail.present? && total_cost(self) > self.retail.to_i && retail =~ /^[0-9]+$/
   end
   
