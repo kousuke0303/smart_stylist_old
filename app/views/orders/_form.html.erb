@@ -2,10 +2,9 @@
   <%= render "shared/error_messages", object: @order %>
   
   <div class="row">
-    <div><button id="test">テスト</button></div>
     <div class="col-md-12">
-      <div class="row">
       
+      <div class="row">
         <div class="col-xs-6">
           <%= f.label :client_id, class: "label-#{yield(:class_text)} required-form" %>
           <%= f.collection_select(:client_id, @clients.order(:kana), :id, :name, {prompt: "顧客を選択"}, {class: "form-control"}) %>
@@ -27,11 +26,9 @@
             </div>
           </div>
         </div> 
-        
       </div>
     
       <div class="row">
-        
         <div class="col-xs-6">
           <%= f.label :kind, class: "label-#{yield(:class_text)} required-form" %>
           <% if params[:order] && params[:order][:kind].present? %>
@@ -51,7 +48,6 @@
           <% end %>
           <div class="form-alert plant-id-alert">工場選択必須</div>
         </div>
-        
       </div>
       
       <div class="row">
@@ -572,11 +568,6 @@
           event.preventDefault();
         }
       });
-    });
-    
-    $('#test').on('click', function() {
-      retailChecker();
-      event.preventDefault();
     });
     
   });
