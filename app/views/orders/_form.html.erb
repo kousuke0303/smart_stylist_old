@@ -533,12 +533,14 @@
     };
     
     function retailChecker() {
-      if(retail.val().match(/^\d{7}$/)) {
+      var retailVal = retail.val();
+      if(retailVal.match(/^\d{1,7}$/) && parseInt(retailVal, 10) >= 1 && parseInt(retailVal, 10) <= 9999999) {
         $('.retail-alert').css('display', 'none');
       } else {
         $('.retail-alert').css('display', 'block');
       }
     };
+    
     
     // 入力フォーム離脱時のバリデーション確認
     
@@ -554,12 +556,17 @@
       plantIdChecker();
     });
     
+    retail.blur(function() {
+      retailChecker();
+    });
+    
     // 送信前のバリデーション確認
     
     $('#order-submit').on('click', function() {
       clientIdChecker();
       kindChecker();
       plantIdChecker();
+      retailChecker();
       $('.form-alert').each(function() {
         if($(this).css('display') == 'block') {
           event.preventDefault();
