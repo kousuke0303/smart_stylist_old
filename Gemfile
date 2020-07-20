@@ -36,6 +36,11 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'webdrivers'
+end
+
 group :production do
   gem 'pg', '0.20.0'
   gem 'rails_12factor'
