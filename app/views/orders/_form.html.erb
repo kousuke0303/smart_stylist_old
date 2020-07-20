@@ -3,7 +3,7 @@
   
   <div class="row">
     <div class="col-md-12">
-      
+      <button id="test">test</button>
       <div class="row">
         <div class="col-xs-6">
           <%= f.label :client_id, class: "label-#{yield(:class_text)} required-form" %>
@@ -90,6 +90,7 @@
           <% else %>
             <%= f.text_field :ordered_on, maxlength: 10, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
+          <div class="form-alert ordered-on-alert">日付必須</div>
         </div>
         
         <div class="col-xs-4">
@@ -101,6 +102,7 @@
           <% else %>
             <%= f.text_field :sold_on, maxlength: 10, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
+          <div class="form-alert sold-on-alert">日付入力</div>
         </div>
         
         <div class="col-xs-4">
@@ -112,6 +114,7 @@
           <% else %>
             <%= f.text_field :delivered_on, maxlength: 10, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
+          <div class="form-alert delivered-on-alert">日付入力</div>
         </div>
         
         <div class="col-xs-12">
@@ -484,6 +487,9 @@
     const kind = $('select[name="order[kind]"]');
     const plantId = $('select[name="order[plant_id]"]');
     const retail = $('input[name="order[retail]"]');
+    const orderedOn = $('input[name="order[ordered_on]"]');
+    const soldOn = $('input[name="order[sold_on]"]');
+    const deliveredOn = $('input[name="order[delivered_on]"]');
     
     // 上代を受領済金額にコピー
     
@@ -537,6 +543,61 @@
       }
     };
     
+    function orderedOnChecker() {
+      var val = orderedOn.val();
+      if(!val.match(/^\d{4}\/\d{2}\/\d{2}$/)) {
+        $('.ordered-on-alert').css('display', 'block');
+      } else {
+        var y = val.split("/")[0];
+        var m = val.split("/")[1] - 1;
+        var d = val.split("/")[2];
+        var date = new Date(y,m,d);
+        if(date.getFullYear() != y || date.getMonth() != m || date.getDate() != d) {
+          $('.ordered-on-alert').css('display', 'block');
+        } else {
+          $('.ordered-on-alert').css('display', 'none');
+        }
+      }
+    };
+    
+    function soldOnChecker() {
+      var val = soldOn.val();
+      if(val == '') {
+        $('.sold-on-alert').css('display', 'none');
+      } else if(val.match(/^\d{4}\/\d{2}\/\d{2}$/)) {
+        var y = val.split("/")[0];
+        var m = val.split("/")[1] - 1;
+        var d = val.split("/")[2];
+        var date = new Date(y,m,d);
+        if(date.getFullYear() != y || date.getMonth() != m || date.getDate() != d) {
+          $('.sold-on-alert').css('display', 'block');
+        } else {
+          $('.sold-on-alert').css('display', 'none');
+        }
+      } else {
+        $('.sold-on-alert').css('display', 'block');
+      }
+    };
+    
+    function deliveredOnChecker() {
+      var val = deliveredOn.val();
+      if(val == '') {
+        $('.delivered-on-alert').css('display', 'none');
+      } else if(val.match(/^\d{4}\/\d{2}\/\d{2}$/)) {
+        var y = val.split("/")[0];
+        var m = val.split("/")[1] - 1;
+        var d = val.split("/")[2];
+        var date = new Date(y,m,d);
+        if(date.getFullYear() != y || date.getMonth() != m || date.getDate() != d) {
+          $('.delivered-on-alert').css('display', 'block');
+        } else {
+          $('.delivered-on-alert').css('display', 'none');
+        }
+      } else {
+        $('.delivered-on-alert').css('display', 'block');
+      }
+    };
+    
     
     // 入力フォーム離脱時のバリデーション確認
     
@@ -556,6 +617,18 @@
       retailChecker();
     });
     
+    orderedOn.blur(function() {
+      orderedOnChecker();
+    });
+    
+    soldOn.blur(function() {
+      soldOnChecker();
+    });
+    
+    deliveredOn.blur(function() {
+      deliveredOnChecker();
+    });
+    
     // 送信前のバリデーション確認
     
     $('#order-submit').on('click', function() {
@@ -563,11 +636,19 @@
       kindChecker();
       plantIdChecker();
       retailChecker();
+      orderedOnChecker();
+      soldOnChecker();
+      deliveredOnChecker();
       $('.form-alert').each(function() {
         if($(this).css('display') == 'block') {
           event.preventDefault();
         }
       });
+    });
+    
+    $('#test').on('click', function() {
+      alert(soldOn.val());
+      event.preventDefault();
     });
     
   });
