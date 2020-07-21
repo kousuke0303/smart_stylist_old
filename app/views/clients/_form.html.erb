@@ -168,7 +168,7 @@
     const fax = $('input[name="client[fax]"]');
     const email = $('input[name="client[email]"]');
     
-    function nameChecker() {
+    function checkName() {
       if(!name.val() || name.val().match(/^[ 　\r\n\t]*$/)) {
         $('.name-alert').css('display', 'block');
       } else {
@@ -176,7 +176,7 @@
       }
     };
     
-    function kanaChecker() {
+    function checkKana() {
       if(!kana.val().match(/^[ 　\r\n\t]*$/) && kana.val().match(/^[ァ-ヶー　]+$/)) {
         $('.kana-alert').css('display', 'none');
       } else {
@@ -184,7 +184,7 @@
       }
     };
     
-    function tel1Checker() {
+    function checkTel1() {
       if(!tel1.val() || tel1.val().match(/^[ 　\r\n\t]*$/) || tel1.val().match(/^\d{10,11}$/)) {
         $('.tel1-alert').css('display', 'none');
       } else {
@@ -192,7 +192,7 @@
       }
     };
     
-    function tel2Checker() {
+    function checkTel2() {
       if(!tel2.val() || tel2.val().match(/^[ 　\r\n\t]*$/) || tel2.val().match(/^\d{10,11}$/)) {
         $('.tel2-alert').css('display', 'none');
       } else {
@@ -200,7 +200,7 @@
       }
     };
     
-    function faxChecker() {
+    function checkFax() {
       if(!fax.val() || fax.val().match(/^[ 　\r\n\t]*$/) || fax.val().match(/^\d{10}$/)) {
         $('.fax-alert').css('display', 'none');
       } else {
@@ -208,7 +208,7 @@
       }
     };
     
-    function emailChecker() {
+    function checkEmail() {
       if(!email.val() || email.val().match(/^[ 　\r\n\t]*$/) || email.val().match(/^[\w+\-.]+@[a-z\d\-.]+\.[a-z]+$/)) {
         $('.email-alert').css('display', 'none');
       } else {
@@ -217,36 +217,36 @@
     };
     
     name.blur(function() {
-      nameChecker();
+      checkName();
     });
     
     kana.blur(function() {
-      kanaChecker();
+      checkKana();
     });
     
     tel1.blur(function() {
-      tel1Checker();
+      checkTel1();
     });
     
     tel2.blur(function() {
-      tel2Checker();
+      checkTel2();
     });
     
     fax.blur(function() {
-      faxChecker();
+      checkFax();
     });
     
     email.blur(function() {
-      emailChecker();
+      checkEmail();
     });
     
     $('#client-submit').on('click', function() {
-      nameChecker();
-      kanaChecker();
-      tel1Checker();
-      tel2Checker();
-      faxChecker();
-      emailChecker();
+      checkName();
+      checkKana();
+      checkTel1();
+      checkTel2();
+      checkFax();
+      checkEmail();
       $('.form-alert').each(function() {
         if($(this).css('display') == 'block') {
           event.preventDefault();

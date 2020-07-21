@@ -494,8 +494,8 @@
     // 上代を受領済金額にコピー
     
     $('#copy-retail').on('click', function() {
-      var retail = $('#retail').val();
-      $('#deposit').val(retail);
+      let retailVal = $('#retail').val();
+      $('#deposit').val(retailVal);
     });
   
     // datepicker
@@ -510,7 +510,7 @@
     
     // 各項目のバリデーション確認関数
     
-    function clientIdChecker() {
+    function checkClientId() {
       if(clientId.val() == '') {
         $('.client-id-alert').css('display', 'block');
       } else {
@@ -518,7 +518,7 @@
       }
     };
     
-    function kindChecker() {
+    function checkkind() {
       if(kind.val() == '') {
         $('.kind-alert').css('display', 'block');
       } else {
@@ -526,7 +526,7 @@
       }
     };
     
-    function plantIdChecker() {
+    function checkPlantId() {
       if(plantId.val() == '') {
         $('.plant-id-alert').css('display', 'block');
       } else {
@@ -534,8 +534,8 @@
       }
     };
     
-    function retailChecker() {
-      var retailVal = retail.val();
+    function checkRetail() {
+      let retailVal = retail.val();
       if(retailVal.match(/^\d{1,7}$/) && parseInt(retailVal, 10) >= 1 && parseInt(retailVal, 10) <= 9999999) {
         $('.retail-alert').css('display', 'none');
       } else {
@@ -543,7 +543,7 @@
       }
     };
     
-    function orderedOnChecker() {
+    function checkOrderedOn() {
       var val = orderedOn.val();
       if(!val.match(/^\d{4}\/\d{2}\/\d{2}$/)) {
         $('.ordered-on-alert').css('display', 'block');
@@ -560,7 +560,7 @@
       }
     };
     
-    function soldOnChecker() {
+    function checkSoldOn() {
       var val = soldOn.val();
       if(val == '') {
         $('.sold-on-alert').css('display', 'none');
@@ -579,7 +579,7 @@
       }
     };
     
-    function deliveredOnChecker() {
+    function checkDeliveredOn() {
       var val = deliveredOn.val();
       if(val == '') {
         $('.delivered-on-alert').css('display', 'none');
@@ -602,43 +602,43 @@
     // 入力フォーム離脱時のバリデーション確認
     
     clientId.change(function() {
-      clientIdChecker();
+      checkClientId();
     });
     
     kind.change(function() {
-      kindChecker();
+      checkkind();
     });
     
     plantId.change(function() {
-      plantIdChecker();
+      checkPlantId();
     });
     
     retail.blur(function() {
-      retailChecker();
+      checkRetail();
     });
     
     orderedOn.blur(function() {
-      orderedOnChecker();
+      checkOrderedOn();
     });
     
     soldOn.blur(function() {
-      soldOnChecker();
+      checkSoldOn();
     });
     
     deliveredOn.blur(function() {
-      deliveredOnChecker();
+      checkDeliveredOn();
     });
     
     // 送信前のバリデーション確認
     
     $('#order-submit').on('click', function() {
-      clientIdChecker();
-      kindChecker();
-      plantIdChecker();
-      retailChecker();
-      orderedOnChecker();
-      soldOnChecker();
-      deliveredOnChecker();
+      checkClientId();
+      checkkind();
+      checkPlantId();
+      checkRetail();
+      checkOrderedOn();
+      checkSoldOn();
+      checkDeliveredOn();
       $('.form-alert').each(function() {
         if($(this).css('display') == 'block') {
           event.preventDefault();
