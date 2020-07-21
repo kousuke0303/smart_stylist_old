@@ -1,5 +1,5 @@
 <script>
-  (function($) {
+  jquery(function($) {
     $('tbody tr[data-href]').addClass('clickable').click( function() {
       window.location = $(this).attr('data-href');
     }).find('a').hover( function() {
