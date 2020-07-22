@@ -645,6 +645,38 @@
       }
     };
     
+    function checkButton() {
+      let buttonVal = button.val();
+      if(buttonVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.button-alert').css('display', 'none');
+      } else if(buttonVal.match(/^\d{1,7}$/) && parseInt(buttonVal, 10) >= 1) {
+        $('.button-alert').css('display', 'none');
+      } else {
+        $('.button-alert').css('display', 'block');
+      }
+    };
+    
+    function checkPostage() {
+      let postageVal = postage.val();
+      if(postageVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.postage-alert').css('display', 'none');
+      } else if(postageVal.match(/^\d{1,7}$/) && parseInt(postageVal, 10) >= 1) {
+        $('.postage-alert').css('display', 'none');
+      } else {
+        $('.postage-alert').css('display', 'block');
+      }
+    };
+    
+    function checkOther() {
+      let otherVal = other.val();
+      if(otherVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.other-alert').css('display', 'none');
+      } else if(otherVal.match(/^\d{1,7}$/) && parseInt(otherVal, 10) >= 1) {
+        $('.other-alert').css('display', 'none');
+      } else {
+        $('.other-alert').css('display', 'block');
+      }
+    };
     
     // 入力フォーム離脱時のバリデーション確認
     
@@ -688,6 +720,18 @@
       checkLining();
     });
     
+    button.blur(function() {
+      checkButton();
+    });
+    
+    postage.blur(function() {
+      checkPostage();
+    });
+    
+    other.blur(function() {
+      checkOther();
+    });
+    
     // 送信前のバリデーション確認
     
     $('#order-submit').on('click', function() {
@@ -701,6 +745,9 @@
       checkWage();
       checkCloth();
       checkLining();
+      checkButton();
+      checkPostage();
+      checkOther();
       $('.form-alert').each(function() {
         if($(this).css('display') == 'block') {
           event.preventDefault();
