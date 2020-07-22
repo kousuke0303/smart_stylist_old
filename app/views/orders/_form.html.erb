@@ -90,7 +90,7 @@
           <% else %>
             <%= f.text_field :ordered_on, maxlength: 10, placeholder: "年/月/日", class: "datepicker form-control" %>
           <% end %>
-          <div class="form-alert ordered-on-alert">日付必須</div>
+          <div class="form-alert ordered-on-alert">日付入力必須</div>
         </div>
         
         <div class="col-xs-4">
@@ -139,6 +139,7 @@
               <% else %>
                 <%= f.text_field :wage, maxlength: 7, class: "form-control" %>
               <% end %>
+              <div class="form-alert wage-alert">数値入力</div>
             </div>
             <div class="col-xs-4 cost-right">
               <%= f.label :"支払済", class: "label-#{yield(:class_text)} payed" %><br>
@@ -160,6 +161,7 @@
               <% else %>
                 <%= f.text_field :cloth, maxlength: 7, class: "form-control" %>
               <% end %>
+              <div class="form-alert cloth-alert">数値入力</div>
             </div>
             <div class="col-xs-4 cost-right">
               <%= f.label :"支払済", class: "label-#{yield(:class_text)} payed" %><br>
@@ -181,6 +183,7 @@
               <% else %>
                 <%= f.text_field :lining, maxlength: 7, class: "form-control" %>
               <% end %>
+              <div class="form-alert lining-alert">数値入力</div>
             </div>
             <div class="col-xs-4 cost-right">
               <%= f.label :"支払済", class: "label-#{yield(:class_text)} payed" %><br>
@@ -192,7 +195,9 @@
             </div>
           </div>
         </div>
+      </div>
         
+      <div class="row">
         <div class="col-xs-4">
           <div class="row">
             <div class="col-xs-8 cost-left">
@@ -202,6 +207,7 @@
               <% else %>
                 <%= f.text_field :button, maxlength: 7, class: "form-control" %>
               <% end %>
+              <div class="form-alert button-alert">数値入力</div>
             </div>
             <div class="col-xs-4 cost-right">
               <%= f.label :"支払済", class: "label-#{yield(:class_text)} payed" %><br>
@@ -223,6 +229,7 @@
               <% else %>
                 <%= f.text_field :postage, maxlength: 7, class: "form-control" %>
               <% end %>
+              <div class="form-alert postage-alert">数値入力</div>
             </div>
             <div class="col-xs-4 cost-right">
               <%= f.label :"支払済", class: "label-#{yield(:class_text)} payed" %><br>
@@ -244,6 +251,7 @@
               <% else %>
                 <%= f.text_field :other, maxlength: 7, class: "form-control" %>
               <% end %>
+              <div class="form-alert other-alert">数値入力</div>
             </div>
             <div class="col-xs-4 cost-right">
               <%= f.label :"支払済", class: "label-#{yield(:class_text)} payed" %><br>
@@ -490,6 +498,12 @@
     const orderedOn = $('input[name="order[ordered_on]"]');
     const soldOn = $('input[name="order[sold_on]"]');
     const deliveredOn = $('input[name="order[delivered_on]"]');
+    const wage = $('input[name="order[wage]"]');
+    const cloth = $('input[name="order[cloth]"]');
+    const lining = $('input[name="order[lining]"]');
+    const button = $('input[name="order[button]"]');
+    const postage = $('input[name="order[postage]"]');
+    const other = $('input[name="order[other]"]');
     
     // 上代を受領済金額にコピー
     
@@ -536,7 +550,7 @@
     
     function checkRetail() {
       let retailVal = retail.val();
-      if(retailVal.match(/^\d{1,7}$/) && parseInt(retailVal, 10) >= 1 && parseInt(retailVal, 10) <= 9999999) {
+      if(retailVal.match(/^\d{1,7}$/) && parseInt(retailVal, 10) >= 1) {
         $('.retail-alert').css('display', 'none');
       } else {
         $('.retail-alert').css('display', 'block');
@@ -598,6 +612,39 @@
       }
     };
     
+    function checkWage() {
+      let wageVal = wage.val();
+      if(wageVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.wage-alert').css('display', 'none');
+      } else if(wageVal.match(/^\d{1,7}$/) && parseInt(wageVal, 10) >= 1) {
+        $('.wage-alert').css('display', 'none');
+      } else {
+        $('.wage-alert').css('display', 'block');
+      }
+    };
+    
+    function checkCloth() {
+      let clothVal = cloth.val();
+      if(clothVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.cloth-alert').css('display', 'none');
+      } else if(clothVal.match(/^\d{1,7}$/) && parseInt(clothVal, 10) >= 1) {
+        $('.cloth-alert').css('display', 'none');
+      } else {
+        $('.cloth-alert').css('display', 'block');
+      }
+    };
+    
+    function checkLining() {
+      let liningVal = lining.val();
+      if(liningVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.lining-alert').css('display', 'none');
+      } else if(liningVal.match(/^\d{1,7}$/) && parseInt(liningVal, 10) >= 1) {
+        $('.lining-alert').css('display', 'none');
+      } else {
+        $('.lining-alert').css('display', 'block');
+      }
+    };
+    
     
     // 入力フォーム離脱時のバリデーション確認
     
@@ -629,6 +676,18 @@
       checkDeliveredOn();
     });
     
+    wage.blur(function() {
+      checkWage();
+    });
+    
+    cloth.blur(function() {
+      checkCloth();
+    });
+    
+    lining.blur(function() {
+      checkLining();
+    });
+    
     // 送信前のバリデーション確認
     
     $('#order-submit').on('click', function() {
@@ -639,6 +698,9 @@
       checkOrderedOn();
       checkSoldOn();
       checkDeliveredOn();
+      checkWage();
+      checkCloth();
+      checkLining();
       $('.form-alert').each(function() {
         if($(this).css('display') == 'block') {
           event.preventDefault();
