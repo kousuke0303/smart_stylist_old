@@ -17,7 +17,7 @@ class PlantsController < ApplicationController
   
   def new
     @plant = @user.plants.build
-    zipcode_api(params[:plant]) if params[:plant]
+    zipcode_api(params[:zipcode]) if params[:zipcode]
   end
   
   def create
@@ -35,7 +35,7 @@ class PlantsController < ApplicationController
   end
   
   def edit
-    zipcode_api(params[:plant]) if params[:plant]
+    zipcode_api(params[:zipcode]) if params[:zipcode]
   end
   
   def update

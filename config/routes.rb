@@ -19,7 +19,10 @@ Rails.application.routes.draw do
       get   'edit_card'
       post 'update_card'
     end
-    resources :plants
+    resources :plants do
+      post 'new_zip', on: :collection, to: 'plants#new'
+      post 'edit_zip', on: :member, to: 'plants#edit'
+    end
     resources :clients
     resources :orders
   end

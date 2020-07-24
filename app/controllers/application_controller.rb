@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   
   # 郵便番号から住所取得
   def zipcode_api(parameter)
-    zipcode = NKF.nkf('-w -Z4', parameter[:zipcode]).delete("^0-9")
+    zipcode = NKF.nkf('-w -Z4', parameter).delete("^0-9")
     # hash形式でパラメタ文字列を指定し、URL形式にエンコード
     params = URI.encode_www_form({zipcode: zipcode})
     # URIを解析し、hostやportをバラバラに取得できるようにする
