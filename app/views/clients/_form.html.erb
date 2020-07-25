@@ -4,84 +4,50 @@
   <div class="row">
     <div class="col-xs-6 col-md-6">
       <%= f.label :name, class: "label-#{yield(:class_text)} required-form" %>
-      <% if params[:client] %>
-        <%= f.text_field :name, value: params[:client][:name], maxlength: 30, class: "form-control", required: "required" %>
-      <% else %>
-        <%= f.text_field :name, maxlength: 30, class: "form-control", required: "required" %>
-      <% end %>
+      <%= f.text_field :name, maxlength: 30, class: "form-control", required: "required" %>
       <div class="form-alert name-alert">顧客名を入力してください。</div>
     </div>
     
     <div class="col-xs-6 col-md-6">
       <%= f.label :kana, class: "label-#{yield(:class_text)} required-form" %>
-      <% if params[:client] %>
-        <%= f.text_field :kana, value: params[:client][:kana], maxlength: 30, class: "form-control", required: "required" %>
-      <% else %>
-        <%= f.text_field :kana, placeholder: "全角カタカナ", maxlength: 30, class: "form-control", required: "required" %>
-      <% end %>
+      <%= f.text_field :kana, placeholder: "全角カタカナ", maxlength: 30, class: "form-control", required: "required" %>
       <div class="form-alert kana-alert">全角カタカナで入力してください。</div>
     </div>
 
     <div class="col-xs-9 form-zip-left">
-      <%= f.label :zipcode, "住所検索", class: "label-#{yield(:class_text)}" %>
-      <% if @zipcode %>
-        <%= f.text_field :zipcode, value: @zipcode, maxlength: 8, class: "form-control", placeholder: "郵便番号を入力" %>
-      <% else %>
-        <%= f.text_field :zipcode, maxlength: 8, class: "form-control", placeholder: "郵便番号を入力" %>
-      <% end %>
+      <label class="label-<%= yield(:class_text) %>">住所検索</label>
+      <input type="text" class="form-control", maxlength=8, placeholder="郵便番号を入力" id="zip-form">
     </div>
     <div class="col-xs-3 form-zip-right">
-      <%= f.submit "検索", name: "zip_search_button", class: "btn btn-md btn-primary btn-block" %>
+      <button class="btn btn-md btn-primary btn-block" type="button" id="search-zip">検索</button>
     </div>
   
     <div class="col-xs-12 col-md-12">
       <%= f.label :address, class: "label-#{yield(:class_text)}" %>
-      <% if params[:client] && @zipcode %>
-        <%= f.text_field :address, value: @result_address, maxlength: 50, class: "form-control" %>
-      <% elsif params[:client] %>
-        <%= f.text_field :address, value: params[:client][:address], maxlength: 50, class: "form-control" %>
-      <% else %>
-        <%= f.text_field :address, maxlength: 50, class: "form-control" %>
-      <% end %>
+      <%= f.text_field :address, maxlength: 50, class: "form-control" %>
     </div>
   
     <div class="col-xs-6 col-md-6">
       <%= f.label :tel_1, class: "label-#{yield(:class_text)}" %>
-      <% if params[:client] %>
-        <%= f.telephone_field :tel_1, value: params[:client][:tel_1], maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
-      <% else %>
-        <%= f.telephone_field :tel_1, maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
-      <% end %>
+      <%= f.telephone_field :tel_1, maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
       <div class="form-alert tel1-alert">電話番号形式で入力してください。</div>
     </div>
     
     <div class="col-xs-6 col-md-6"> 
       <%= f.label :tel_2, class: "label-#{yield(:class_text)}" %>
-      <% if params[:client] %>
-        <%= f.telephone_field :tel_2, value: params[:client][:tel_2], maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
-      <% else %>
-        <%= f.telephone_field :tel_2, maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
-      <% end %>
+      <%= f.telephone_field :tel_2, maxlength: 11, class: "form-control", placeholder: "半角数字10~11桁" %>
       <div class="form-alert tel2-alert">電話番号形式で入力してください。</div>
     </div>
   
     <div class="col-xs-12 col-md-12"> 
       <%= f.label :fax, class: "label-#{yield(:class_text)}" %>
-      <% if params[:client] %>
-        <%= f.telephone_field :fax, value: params[:client][:fax], maxlength: 10, class: "form-control", placeholder: "半角数字10桁" %>
-      <% else %>
-        <%= f.telephone_field :fax, maxlength: 10, class: "form-control", placeholder: "半角数字10桁" %>
-      <% end %>
+      <%= f.telephone_field :fax, maxlength: 10, class: "form-control", placeholder: "半角数字10桁" %>
       <div class="form-alert fax-alert">FAX番号形式で入力してください。</div>
     </div>
   
     <div class="col-xs-12 col-md-12"> 
       <%= f.label :email, class: "label-#{yield(:class_text)}" %>
-      <% if params[:client] %>
-        <%= f.text_field :email, value: params[:client][:email], maxlength: 254, class: "form-control", placeholder: "example@email.com" %>
-      <% else %>
-        <%= f.text_field :email, maxlength: 254, class: "form-control", placeholder: "example@email.com" %>
-      <% end %>
+      <%= f.text_field :email, maxlength: 254, class: "form-control", placeholder: "example@email.com" %>
       <div class="form-alert email-alert">メールアドレス形式で入力してください。</div>
     </div>
 
@@ -89,25 +55,12 @@
       <%= f.label :"生年月日", class: "label-#{yield(:class_text)}" %>
       <div class="row">
         <div class="col-xs-3 col-md-3 year-form">
-          <% if params[:client] %>
-            <%= f.date_select(:birth_year,
-                              {include_blank: true, selected: Date.new(params[:client]["birth_year(1i)"].to_i,1,1),
-                              start_year: Date.current.year, end_year: Date.current.year - 100,
-                              discard_month: true}, {class: "form-control"}
-                              ) %>
-          <% else %>
-            <%= f.date_select(:birth_year,
-                              {include_blank: true, start_year: Date.current.year,
-                              end_year: Date.current.year - 100,discard_month: true}, {class: "form-control"}
-                              ) %>
-          <% end %>
+          <%= f.date_select(:birth_year, {include_blank: true, start_year: Date.current.year, end_year: Date.current.year - 100,discard_month: true}, {class: "form-control"}) %>
         </div>
         <div class="col-xs-1 col-md-1 year-string">年</div>
         
         <div class="col-xs-3 col-md-3 month-form">
-          <% if params[:client] && !params[:client][:birth_month].nil? %>
-            <%= f.select :birth_month, options_for_select($birth_months, params[:client][:birth_month]), {include_blank: true}, class: "form-control" %>
-          <% elsif @client.birth_month.present? %>
+          <% if @client.birth_month.present? %>
             <%= f.select :birth_month, options_for_select($birth_months, selected: @client.birth_month), {include_blank: true}, class: "form-control" %>
           <% else %>
             <%= f.select :birth_month, options_for_select($birth_months), {include_blank: true}, class: "form-control" %>
@@ -116,9 +69,7 @@
         <div class="col-xs-1 col-md-1 month-string">月</div>
         
         <div class="col-xs-3 col-md-3 day-form">
-          <% if params[:client] && !params[:client][:birth_day].nil? %>
-            <%= f.select :birth_day, options_for_select($birth_days, params[:client][:birth_day]), {include_blank: true}, class: "form-control" %>
-          <% elsif @client.birth_day.present? %>
+          <% if @client.birth_day.present? %>
             <%= f.select :birth_day, options_for_select($birth_days, @client.birth_day), {include_blank: true}, class: "form-control" %>
           <% else %>
             <%= f.select :birth_day, options_for_select($birth_days), {include_blank: true}, class: "form-control" %>
@@ -130,20 +81,12 @@
 
     <div class="col-xs-6 col-md-6">
       <%= f.label :work, class: "label-#{yield(:class_text)}" %>
-      <% if params[:client] %>
-        <%= f.text_field :work, value: params[:client][:work], maxlength: 20, class: "form-control" %>
-      <% else %>
-        <%= f.text_field :work, maxlength: 20, class: "form-control" %>
-      <% end %>
+      <%= f.text_field :work, maxlength: 20, class: "form-control" %>
     </div>
   
     <div class="col-xs-6 col-md-6">
       <%= f.label :note, class: "label-#{yield(:class_text)}" %>
-      <% if params[:client] %>
-        <%= f.text_field :note, value: params[:client][:note], maxlength: 100, class: "form-control" %>
-      <% else %>
-        <%= f.text_field :note, maxlength: 100, class: "form-control" %>
-      <% end %>
+      <%= f.text_field :note, maxlength: 100, class: "form-control" %>
     </div>
   </div>
   
@@ -155,12 +98,17 @@
   </div>
 <% end %>
 
+<div hidden>
+  <%= form_with(url: yield(:zip_search_url), remote: true, id: "search-zip-form") do |s| %>
+    <%= s.text_field :zipcode, id: "send-zip-form" %>
+    <%= s.submit "", id: "send-zip" %>
+  <% end %>
+</div>
+
 <script>
-  
   $(document).on('turbolinks:load', function() {
   
     // フォームのバリデーション
-    
     const name = $('input[name="client[name]"]');
     const kana = $('input[name="client[kana]"]');
     const tel1 = $('input[name="client[tel_1]"]');
@@ -252,15 +200,18 @@
           event.preventDefault();
         }
       });
+      $(this).prop("disabled", true);
+      $(this).prop("disabled", false);
     });
     
-    // 郵便番号検索時はrequired削除
-    
-    $('input[name="zip_search_button"]').on('click', function() {
-      $('input[name="client[name]"]').removeAttr("required");
-      $('input[name="client[kana]"]').removeAttr("required");
+    // ajaxで郵便番号検索
+    $('#search-zip').on('click', function() {
+      let zipcode = $('#zip-form').val();
+      $('#send-zip-form').val([zipcode]);
+      $('#send-zip').trigger('click');
+      $(this).prop("disabled", true);
+      $(this).prop("disabled", false);
     });
   
   });
-
 </script>

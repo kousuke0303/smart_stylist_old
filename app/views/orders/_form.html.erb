@@ -486,11 +486,9 @@
 <% end %>
 
 <script>
-
   $(document).on('turbolinks:load', function() {
     
     // 代入
-    
     const clientId = $('select[name="order[client_id]"]');
     const kind = $('select[name="order[kind]"]');
     const plantId = $('select[name="order[plant_id]"]');
@@ -506,14 +504,12 @@
     const other = $('input[name="order[other]"]');
     
     // 上代を受領済金額にコピー
-    
     $('#copy-retail').on('click', function() {
       let retailVal = $('#retail').val();
       $('#deposit').val(retailVal);
     });
   
     // datepicker
-    
     $('.datepicker').datepicker({
       showButtonPanel: true,
     });
@@ -523,7 +519,6 @@
     };
     
     // 各項目のバリデーション確認関数
-    
     function checkClientId() {
       if(clientId.val() == '') {
         $('.client-id-alert').css('display', 'block');
@@ -679,7 +674,6 @@
     };
     
     // 入力フォーム離脱時のバリデーション確認
-    
     clientId.change(function() {
       checkClientId();
     });
@@ -733,7 +727,6 @@
     });
     
     // 送信前のバリデーション確認
-    
     $('#order-submit').on('click', function() {
       checkClientId();
       checkkind();
@@ -753,6 +746,8 @@
           event.preventDefault();
         }
       });
+      $(this).prop("disabled", true);
+      $(this).prop("disabled", false);
     });
     
     $('#test').on('click', function() {
@@ -761,5 +756,4 @@
     });
     
   });
-  
 </script>

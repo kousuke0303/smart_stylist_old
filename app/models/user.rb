@@ -16,9 +16,9 @@ class User < ApplicationRecord
   validates :answer, presence: true, length: { maximum: 20 }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6, maximum: 12 }, allow_nil: true
-  validate :exclude_space_in_answer
+  validate :reject_space_in_answer
   
-  def exclude_space_in_answer
+  def reject_space_in_answer
     if self.answer.present?
       errors.add(:answer, "に空白は使用出来ません") if self.answer.include?(" ") || self.answer.include?("　")
     end

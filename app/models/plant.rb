@@ -1,7 +1,6 @@
 class Plant < ApplicationRecord
   belongs_to :user
   
-  attr_accessor :zipcode
   before_save { self.address = nil if !address.nil? && address.match(ONLY_SPACE_REGEX) }
   before_save { self.tel_1 = nil if !tel_1.nil? && tel_1.match(ONLY_SPACE_REGEX) }
   before_save { self.tel_2 = nil if !tel_2.nil? && tel_2.match(ONLY_SPACE_REGEX) }

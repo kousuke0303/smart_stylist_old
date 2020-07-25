@@ -2,7 +2,6 @@ class Client < ApplicationRecord
   belongs_to :user
   has_many :orders, dependent: :destroy
   
-  attr_accessor :zipcode
   before_save { self.address = nil if !address.nil? && address.match(ONLY_SPACE_REGEX) }
   before_save { self.tel_1 = nil if !tel_1.nil? && tel_1.match(ONLY_SPACE_REGEX) }
   before_save { self.tel_2 = nil if !tel_2.nil? && tel_2.match(ONLY_SPACE_REGEX) }
@@ -11,7 +10,6 @@ class Client < ApplicationRecord
   before_save { self.email = nil if !email.nil? && email.match(ONLY_SPACE_REGEX) }
   before_save { self.work = nil if !work.nil? && work.match(ONLY_SPACE_REGEX) }
   before_save { self.note = nil if !note.nil? && note.match(ONLY_SPACE_REGEX) }
-
   
   validates :name, presence: true, length: { maximum: 30 }
   validates :kana, presence: true, length: { maximum: 30 }, format: { with: VALID_KANA_REGEX }

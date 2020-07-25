@@ -28,7 +28,7 @@ class ClientsController < ApplicationController
   
   def new
     @client = @user.clients.build
-    zipcode_api(params[:client]) if params[:client]
+    zipcode_api(params[:zipcode]) if params[:zipcode]
   end
   
   def create
@@ -46,7 +46,7 @@ class ClientsController < ApplicationController
   end
   
   def edit
-    zipcode_api(params[:client]) if params[:client]
+    zipcode_api(params[:zipcode]) if params[:zipcode]
   end
   
   def update

@@ -71,11 +71,9 @@
 </div>
 
 <script>
-
   $(document).on('turbolinks:load', function() {
     
     // フォームのバリデーション
-    
     const name = $('input[name="plant[name]"]');
     const tel1 = $('input[name="plant[tel_1]"]');
     const tel2 = $('input[name="plant[tel_2]"]');
@@ -153,10 +151,11 @@
           event.preventDefault();
         }
       });
+      $(this).prop("disabled", true);
+      $(this).prop("disabled", false);
     });
     
     // ajaxで郵便番号検索
-    
     $('#search-zip').on('click', function() {
       let zipcode = $('#zip-form').val();
       $('#send-zip-form').val([zipcode]);
@@ -166,5 +165,4 @@
     });
   
   });
-
 </script>

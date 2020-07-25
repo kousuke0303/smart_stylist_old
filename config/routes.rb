@@ -23,7 +23,10 @@ Rails.application.routes.draw do
       post 'new_zip', on: :collection, to: 'plants#new'
       post 'edit_zip', on: :member, to: 'plants#edit'
     end
-    resources :clients
+    resources :clients do
+      post 'new_zip', on: :collection, to: 'clients#new'
+      post 'edit_zip', on: :member, to: 'clients#edit'
+    end
     resources :orders
   end
 end
