@@ -485,6 +485,8 @@
   </div>
 <% end %>
 
+<div><button id="test">test</button></div>
+
 <script>
   $(document).on('turbolinks:load', function() {
     
@@ -502,6 +504,12 @@
     const button = $('input[name="order[button]"]');
     const postage = $('input[name="order[postage]"]');
     const other = $('input[name="order[other]"]');
+    const wagePay = $('input[name="order[wage_pay]"]');
+    const clothPay = $('input[name="order[cloth_pay]"]');
+    const liningPay = $('input[name="order[lining_pay]"]');
+    const buttonPay = $('input[name="order[button_pay]"]');
+    const postagePay = $('input[name="order[postage_pay]"]');
+    const otherPay = $('input[name="order[other_pay]"]');
     
     // 上代を受領済金額にコピー
     $('#copy-retail').on('click', function() {
@@ -609,9 +617,12 @@
     
     function checkWage() {
       let wageVal = wage.val();
-      if(wageVal.match(/^[ 　\r\n\t]*$/)) {
+      let wagePayVal = $('input[name="order[wage_pay]"]:checked').val();
+      if(wagePayVal && wageVal.match(/^\d{1,7}$/) && parseInt(wageVal, 10) >= 1) {
         $('.wage-alert').css('display', 'none');
-      } else if(wageVal.match(/^\d{1,7}$/) && parseInt(wageVal, 10) >= 1) {
+      } else if(!wagePayVal && wageVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.wage-alert').css('display', 'none');
+      } else if(!wagePayVal && wageVal.match(/^\d{1,7}$/) && parseInt(wageVal, 10) >= 1) {
         $('.wage-alert').css('display', 'none');
       } else {
         $('.wage-alert').css('display', 'block');
@@ -620,9 +631,12 @@
     
     function checkCloth() {
       let clothVal = cloth.val();
-      if(clothVal.match(/^[ 　\r\n\t]*$/)) {
+      let clothPayVal = $('input[name="order[cloth_pay]"]:checked').val();
+      if(clothPayVal && clothVal.match(/^\d{1,7}$/) && parseInt(clothVal, 10) >= 1) {
         $('.cloth-alert').css('display', 'none');
-      } else if(clothVal.match(/^\d{1,7}$/) && parseInt(clothVal, 10) >= 1) {
+      } else if(!clothPayVal && clothVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.cloth-alert').css('display', 'none');
+      } else if(!clothPayVal && clothVal.match(/^\d{1,7}$/) && parseInt(clothVal, 10) >= 1) {
         $('.cloth-alert').css('display', 'none');
       } else {
         $('.cloth-alert').css('display', 'block');
@@ -631,9 +645,12 @@
     
     function checkLining() {
       let liningVal = lining.val();
-      if(liningVal.match(/^[ 　\r\n\t]*$/)) {
+      let liningPayVal = $('input[name="order[lining_pay]"]:checked').val();
+      if(liningPayVal && liningVal.match(/^\d{1,7}$/) && parseInt(liningVal, 10) >= 1) {
         $('.lining-alert').css('display', 'none');
-      } else if(liningVal.match(/^\d{1,7}$/) && parseInt(liningVal, 10) >= 1) {
+      } else if(!liningPayVal && liningVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.lining-alert').css('display', 'none');
+      } else if(!liningPayVal && liningVal.match(/^\d{1,7}$/) && parseInt(liningVal, 10) >= 1) {
         $('.lining-alert').css('display', 'none');
       } else {
         $('.lining-alert').css('display', 'block');
@@ -642,9 +659,12 @@
     
     function checkButton() {
       let buttonVal = button.val();
-      if(buttonVal.match(/^[ 　\r\n\t]*$/)) {
+      let buttonPayVal = $('input[name="order[button_pay]"]:checked').val();
+      if(buttonPayVal && buttonVal.match(/^\d{1,7}$/) && parseInt(buttonVal, 10) >= 1) {
         $('.button-alert').css('display', 'none');
-      } else if(buttonVal.match(/^\d{1,7}$/) && parseInt(buttonVal, 10) >= 1) {
+      } else if(!buttonPayVal && buttonVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.button-alert').css('display', 'none');
+      } else if(!buttonPayVal && buttonVal.match(/^\d{1,7}$/) && parseInt(buttonVal, 10) >= 1) {
         $('.button-alert').css('display', 'none');
       } else {
         $('.button-alert').css('display', 'block');
@@ -653,9 +673,12 @@
     
     function checkPostage() {
       let postageVal = postage.val();
-      if(postageVal.match(/^[ 　\r\n\t]*$/)) {
+      let postagePayVal = $('input[name="order[postage_pay]"]:checked').val();
+      if(postagePayVal && postageVal.match(/^\d{1,7}$/) && parseInt(postageVal, 10) >= 1) {
         $('.postage-alert').css('display', 'none');
-      } else if(postageVal.match(/^\d{1,7}$/) && parseInt(postageVal, 10) >= 1) {
+      } else if(!postagePayVal && postageVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.postage-alert').css('display', 'none');
+      } else if(!postagePayVal && postageVal.match(/^\d{1,7}$/) && parseInt(postageVal, 10) >= 1) {
         $('.postage-alert').css('display', 'none');
       } else {
         $('.postage-alert').css('display', 'block');
@@ -664,9 +687,12 @@
     
     function checkOther() {
       let otherVal = other.val();
-      if(otherVal.match(/^[ 　\r\n\t]*$/)) {
+      let otherPayVal = $('input[name="order[other_pay]"]:checked').val();
+      if(otherPayVal && otherVal.match(/^\d{1,7}$/) && parseInt(otherVal, 10) >= 1) {
         $('.other-alert').css('display', 'none');
-      } else if(otherVal.match(/^\d{1,7}$/) && parseInt(otherVal, 10) >= 1) {
+      } else if(!otherPayVal && otherVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.other-alert').css('display', 'none');
+      } else if(!otherPayVal && otherVal.match(/^\d{1,7}$/) && parseInt(otherVal, 10) >= 1) {
         $('.other-alert').css('display', 'none');
       } else {
         $('.other-alert').css('display', 'block');
@@ -726,6 +752,30 @@
       checkOther();
     });
     
+    wagePay.change(function() {
+      checkWage();
+    });
+    
+    clothPay.change(function() {
+      checkCloth();
+    });
+    
+    liningPay.change(function() {
+      checkLining();
+    });
+    
+    buttonPay.change(function() {
+      checkButton();
+    });
+    
+    postagePay.change(function() {
+      checkPostage();
+    });
+    
+    otherPay.change(function() {
+      checkOther();
+    });
+    
     // 送信前のバリデーション確認
     $('#order-submit').on('click', function() {
       checkClientId();
@@ -751,8 +801,12 @@
     });
     
     $('#test').on('click', function() {
-      alert(soldOn.val());
-      event.preventDefault();
+      let wagePayVal = $('input[name="order[wage_pay]"]:checked').val();
+      if(!wagePayVal) {
+        alert("ok");
+      } else {
+        alert("no");
+      }
     });
     
   });
