@@ -292,6 +292,7 @@
           </div>
         </div>
       </div>
+      <div class="form-alert img-1-alert">画像(1)を選択</div>
         
       <div class="row img-form-item">
         <div class="col-xs-12 img-form-above">
@@ -318,6 +319,7 @@
           </div>
         </div>
       </div>
+      <div class="form-alert img-2-alert">画像(2)を選択</div>
         
       <div class="row img-form-item">
         <div class="col-xs-12 img-form-above">
@@ -344,6 +346,7 @@
           </div>
         </div>
       </div>
+      <div class="form-alert img-3-alert">画像(3)を選択</div>
         
       <div class="row img-form-item">
         <div class="col-xs-12 img-form-above">
@@ -370,6 +373,7 @@
           </div>
         </div>
       </div>
+      <div class="form-alert img-4-alert">画像(4)を選択</div>
         
       <div class="row img-form-item">
         <div class="col-xs-12 img-form-above">
@@ -396,6 +400,7 @@
           </div>
         </div>
       </div>
+      <div class="form-alert img-5-alert">画像(5)を選択</div>
         
       <div class="row img-form-item">
         <div class="col-xs-12 img-form-above">
@@ -422,6 +427,7 @@
           </div>
         </div>
       </div>
+      <div class="form-alert img-6-alert">画像(6)を選択</div>
         
       <div class="row img-form-item">
         <div class="col-xs-12 img-form-above">
@@ -448,6 +454,7 @@
           </div>
         </div>
       </div>
+      <div class="form-alert img-7-alert">画像(7)を選択</div>
         
       <div class="row img-form-item">
         <div class="col-xs-12 img-form-above">
@@ -474,6 +481,7 @@
           </div>
         </div>
       </div>
+      <div class="form-alert img-8-alert">画像(8)を選択</div>
     
       <div class="order-submit-area">  
         <%= f.submit yield(:button_text), class: "btn btn-md btn-primary", id: "order-submit" %>
@@ -484,8 +492,6 @@
     </div>
   </div>
 <% end %>
-
-<div><button id="test">test</button></div>
 
 <script>
   $(document).on('turbolinks:load', function() {
@@ -510,6 +516,22 @@
     const buttonPay = $('input[name="order[button_pay]"]');
     const postagePay = $('input[name="order[postage_pay]"]');
     const otherPay = $('input[name="order[other_pay]"]');
+    const img1 = $('input[name="order[img_1]"]');
+    const img2 = $('input[name="order[img_2]"]');
+    const img3 = $('input[name="order[img_3]"]');
+    const img4 = $('input[name="order[img_4]"]');
+    const img5 = $('input[name="order[img_5]"]');
+    const img6 = $('input[name="order[img_6]"]');
+    const img7 = $('input[name="order[img_7]"]');
+    const img8 = $('input[name="order[img_8]"]');
+    const img1Note = $('input[name="order[img_1_note]"]');
+    const img2Note = $('input[name="order[img_2_note]"]');
+    const img3Note = $('input[name="order[img_3_note]"]');
+    const img4Note = $('input[name="order[img_4_note]"]');
+    const img5Note = $('input[name="order[img_5_note]"]');
+    const img6Note = $('input[name="order[img_6_note]"]');
+    const img7Note = $('input[name="order[img_7_note]"]');
+    const img8Note = $('input[name="order[img_8_note]"]');
     
     // 上代を受領済金額にコピー
     $('#copy-retail').on('click', function() {
@@ -699,6 +721,86 @@
       }
     };
     
+    function checkImg1() {
+      let img1File = img1[0].files[0];
+      let img1NoteVal = img1Note.val();
+      if(!img1File && !img1NoteVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.img-1-alert').css('display', 'block');
+      } else {
+        $('.img-1-alert').css('display', 'none');
+      }
+    };
+    
+    function checkImg2() {
+      let img2File = img2[0].files[0];
+      let img2NoteVal = img2Note.val();
+      if(!img2File && !img2NoteVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.img-2-alert').css('display', 'block');
+      } else {
+        $('.img-2-alert').css('display', 'none');
+      }
+    };
+    
+    function checkImg3() {
+      let img3File = img3[0].files[0];
+      let img3NoteVal = img3Note.val();
+      if(!img3File && !img3NoteVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.img-3-alert').css('display', 'block');
+      } else {
+        $('.img-3-alert').css('display', 'none');
+      }
+    };
+    
+    function checkImg4() {
+      let img4File = img4[0].files[0];
+      let img4NoteVal = img4Note.val();
+      if(!img4File && !img4NoteVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.img-4-alert').css('display', 'block');
+      } else {
+        $('.img-4-alert').css('display', 'none');
+      }
+    };
+    
+    function checkImg5() {
+      let img5File = img5[0].files[0];
+      let img5NoteVal = img5Note.val();
+      if(!img5File && !img5NoteVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.img-5-alert').css('display', 'block');
+      } else {
+        $('.img-5-alert').css('display', 'none');
+      }
+    };
+    
+    function checkImg6() {
+      let img6File = img6[0].files[0];
+      let img6NoteVal = img6Note.val();
+      if(!img6File && !img6NoteVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.img-6-alert').css('display', 'block');
+      } else {
+        $('.img-6-alert').css('display', 'none');
+      }
+    };
+    
+    function checkImg7() {
+      let img7File = img7[0].files[0];
+      let img7NoteVal = img7Note.val();
+      if(!img7File && !img7NoteVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.img-7-alert').css('display', 'block');
+      } else {
+        $('.img-7-alert').css('display', 'none');
+      }
+    };
+    
+    function checkImg8() {
+      let img8File = img8[0].files[0];
+      let img8NoteVal = img8Note.val();
+      if(!img8File && !img8NoteVal.match(/^[ 　\r\n\t]*$/)) {
+        $('.img-8-alert').css('display', 'block');
+      } else {
+        $('.img-8-alert').css('display', 'none');
+      }
+    };
+    
     // 入力フォーム離脱時のバリデーション確認
     clientId.change(function() {
       checkClientId();
@@ -776,6 +878,70 @@
       checkOther();
     });
     
+    img1.change(function() {
+      checkImg1();
+    });
+    
+    img2.change(function() {
+      checkImg2();
+    });
+    
+    img3.change(function() {
+      checkImg3();
+    });
+    
+    img4.change(function() {
+      checkImg4();
+    });
+    
+    img5.change(function() {
+      checkImg5();
+    });
+    
+    img6.change(function() {
+      checkImg6();
+    });
+    
+    img7.change(function() {
+      checkImg7();
+    });
+    
+    img8.change(function() {
+      checkImg8();
+    });
+    
+    img1Note.blur(function() {
+      checkImg1();
+    });
+    
+    img2Note.blur(function() {
+      checkImg2();
+    });
+    
+    img3Note.blur(function() {
+      checkImg3();
+    });
+    
+    img4Note.blur(function() {
+      checkImg4();
+    });
+    
+    img5Note.blur(function() {
+      checkImg5();
+    });
+    
+    img6Note.blur(function() {
+      checkImg6();
+    });
+    
+    img7Note.blur(function() {
+      checkImg7();
+    });
+    
+    img8Note.blur(function() {
+      checkImg8();
+    });
+    
     // 送信前のバリデーション確認
     $('#order-submit').on('click', function() {
       checkClientId();
@@ -791,6 +957,14 @@
       checkButton();
       checkPostage();
       checkOther();
+      checkImg1();
+      checkImg2();
+      checkImg3();
+      checkImg4();
+      checkImg5();
+      checkImg6();
+      checkImg7();
+      checkImg8();
       $('.form-alert').each(function() {
         if($(this).css('display') == 'block') {
           event.preventDefault();
@@ -798,15 +972,6 @@
       });
       $(this).prop("disabled", true);
       $(this).prop("disabled", false);
-    });
-    
-    $('#test').on('click', function() {
-      let wagePayVal = $('input[name="order[wage_pay]"]:checked').val();
-      if(!wagePayVal) {
-        alert("ok");
-      } else {
-        alert("no");
-      }
     });
     
   });
