@@ -15,13 +15,13 @@
   </div>
   
   <div class="col-xs-12 col-lg-4 col-md-6 main-item">
-    <%= link_to(users_orders_traded_path(current_user), class: "main-link") do %>
+    <%= link_to(traded_user_orders_path(current_user), class: "main-link") do %>
       <div class="circle circle-3"><span class="main-btn main-btn-3">月間売上管理</span></div>
     <% end %>
   </div>
 
   <div class="col-xs-12 col-lg-4 col-md-6 main-item">
-    <%= link_to(users_orders_unpaid_path(current_user), class: "main-link") do %>
+    <%= link_to(unpaid_user_orders_path(current_user), class: "main-link") do %>
       <div class="circle circle-4"><span class="main-btn main-btn-4">未払い費用管理</span></div>
     <% end %>
   </div>

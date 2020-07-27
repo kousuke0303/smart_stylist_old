@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-xs-12 narrow-order-label">対象月を変更</div>
       <div class="col-xs-12 col-md-6 order-narrow-area">
-        <%= form_with url: users_orders_traded_path(@user), method: :get, local: true do |f| %>
+        <%= form_with url: traded_user_orders_path(@user), method: :get, local: true do |f| %>
           <div>
             <%= f.date_select :narrow_year, {prompt: "--", discard_month: true, start_year: Time.current.year,
                 end_year: Time.current.year-100, selected: @first_day}, {class: "form-control"} %>
@@ -21,7 +21,7 @@
           </div>
           <div>月</div>
           <div><%= f.submit "検索", class: "btn btn-md btn-primary btn-block" %></div>
-          <div><%= link_to "リセット", users_orders_traded_path(@user), class: "btn btn-md btn-default btn-block" %></div>
+          <div><%= link_to "リセット", traded_user_orders_path(@user), class: "btn btn-md btn-default btn-block" %></div>
         <% end %>
       </div>
     </div>
